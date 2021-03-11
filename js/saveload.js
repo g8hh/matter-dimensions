@@ -182,14 +182,22 @@ function load_button_click() {
 }
 
 function load_window_close() {
+    let backup = create_save();
     var data = document.getElementById("load_textarea").value;
-    if (data.substring(0, 2) == "r0") {
-        data = data.replace(/[^0123456789aemnrS]/g, '');
-        if (data != "") load_save(JSON.parse(decode(data)));
+    try {
+        switch (data.substring(0, 2)) {
+            case "r0":
+                data = data.replace(/[^0123456789aemnrS]/g, '');
+                if (data != "") load_save(JSON.parse(decode(data)));
+                break;
+            case "r1":
+                data = data.replace(/[^A-Za-z0-9+/=]/g, '');
+                if (data != "") load_save(JSON.parse(atob(data.substring(2))));
+                break;
+        }
     }
-    else {
-        data = data.replace(/[^A-Za-z0-9+/=]/g, '');
-        if (data != "") load_save(JSON.parse(atob(data.substring(2))));
+    catch {
+        load_save(backup);
     }
     document.getElementById("load_textarea").value = "";
 
@@ -204,8 +212,14 @@ function save_to_local_storage() {
 
 function load_from_local_storage() {
     if (localStorage.getItem("save") !== null) {
+        let backup = create_save();
         last_local_storage_save = Date.now();
-        load_save(JSON.parse(localStorage.getItem("save")));
+        try {
+            load_save(JSON.parse(localStorage.getItem("save")));
+        }
+        catch {
+            load_save(backup);
+        }
     }
     else {
         // do the graphics stuff

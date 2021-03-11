@@ -109,7 +109,7 @@ class Autobuyer {
 
         if (typeof this.obj === 'string' || this.obj instanceof String) {
             data.push(this.buy_type);
-            data.push(this.param);
+            data.push(unescape(encodeURIComponent(this.param)));
         }
 
         return data;
@@ -131,7 +131,12 @@ class Autobuyer {
 
         if (typeof this.obj === 'string' || this.obj instanceof String) {
             this.buy_type = data[3];
-            this.param = data[4];
+            try {
+                this.param = decodeURIComponent(escape(data[4]));
+            }
+            catch {
+                this.param = data[4];
+            }
         }
 
         this.screen_update_first();
