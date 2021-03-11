@@ -10,6 +10,8 @@
     --color-900: #F7FAFC;
 
     font-size: 13.6px;
+
+    --font-family: 'larabiefont_rg', 'Courier New', Courier, monospace;
 }
 
 body {
@@ -20,7 +22,7 @@ body {
 p, textarea {
     margin: 0px;
     color: var(--color-900);
-    font-family: 'larabiefont_rg', 'Courier New', Courier, monospace;
+    font-family: var(--font-family);
 }
 
 textarea {
@@ -28,7 +30,7 @@ textarea {
 }
 
 input {
-    font-family: 'larabiefont_rg', 'Courier New', Courier, monospace;
+    font-family: var(--font-family);
 }
 
 .layout-wrapper {
@@ -259,7 +261,7 @@ input {
     left: 20%; top: 20%; right: -20%;
     z-index: 1;
     background-color: var(--color-700);
-    font-family: 'larabiefont_rg', 'Courier New', Courier, monospace;
+    font-family: var(--font-family);
     font-size: 0.75rem;
     padding: 5px 10px;
     user-select: none;
