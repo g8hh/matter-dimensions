@@ -51,6 +51,9 @@ body {
 .font-courier_new {
     --font-family: 'Courier New', Courier, monospace;
 }
+.font-recursive {
+    --font-family: 'Recursive', 'Courier New', Courier, monospace;
+}
 
 p, textarea {
     margin: 0px;
@@ -494,6 +497,7 @@ input {
     align-items: center;
 }
 .button-row input[type="text"] {
+    width: 0;
     flex-grow: 1;
 }
 
