@@ -56,7 +56,7 @@
         <link rel="stylesheet" type="text/css" href="mobile.css?rev=19">
         <link rel='shortcut icon' type='image/x-icon' href='favicon.ico'>
     </head>
-    <body>
+    <body class="theme-blue">
         <div class="layout-wrapper">
             <div class="settings-menu">
                 <div class="settings-menu-wrapper">
@@ -3811,7 +3811,7 @@
                         </div>
                     </div>
 
-                    <div class="settings-page-block" style="grid-row: 3; grid-column: 2">
+                    <div class="settings-page-block" style="grid-row: 3 / 5; grid-column: 2">
                         <p class="settings-page-block-name">Prestige confirmation</p>
                         <div>
                             <label class="settings-block-selector-checkbox display-none-until-photonic"><input type="checkbox" name="prestige_confirmation_photonic"><p>on Photonic reset</p></label>
@@ -3822,6 +3822,21 @@
                             <label class="settings-block-selector-checkbox display-none-until-dimensional"><input type="checkbox" name="prestige_confirmation_dimensional"><p>on Dimensional reset</p></label>
                             <label class="settings-block-selector-checkbox display-none-until-atomic"><input type="checkbox" name="prestige_confirmation_atomic"><p>on Atomic reset</p></label>
                             <label class="settings-block-selector-checkbox display-none-until-biological"><input type="checkbox" name="prestige_confirmation_biological"><p>on Biological reset</p></label>
+                        </div>
+                    </div>
+
+                    <div class="settings-page-block" style="grid-row: 4; grid-column: 1">
+                        <p class="settings-page-block-name">Aesthetics</p>
+                        <div>
+                            <p>Theme:</p>
+                            <label class="settings-block-selector-option"><input type="radio" name="theme" value="blue" checked><p>Blue</p></label>
+                            <label class="settings-block-selector-option"><input type="radio" name="theme" value="yellow"><p>Yellow</p></label>
+                        </div>
+                        <div>
+                            <p>Font:</p>
+                            <label class="settings-block-selector-option"><input type="radio" name="font" value="larabiefont" checked><p>Larabiefont</p></label>
+                            <label class="settings-block-selector-option"><input type="radio" name="font" value="lucida_console"><p>Lucida Console</p></label>
+                            <label class="settings-block-selector-option"><input type="radio" name="font" value="courier_new"><p>Courier New</p></label>
                         </div>
                     </div>
                 </div>

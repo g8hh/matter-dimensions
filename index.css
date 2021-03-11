@@ -1,4 +1,11 @@
 :root {
+    font-size: 13.6px;
+}
+
+body {
+    margin: 0px;
+    background-color: var(--color-100);
+
     --color-100: #1B262C;
     --color-200: #203D4E;
     --color-300: #275877;
@@ -9,14 +16,40 @@
     --color-800: #C1D9EA;
     --color-900: #F7FAFC;
 
-    font-size: 13.6px;
-
     --font-family: 'larabiefont_rg', 'Courier New', Courier, monospace;
 }
 
-body {
-    margin: 0px;
-    background-color: var(--color-100);
+.theme-blue {
+    --color-100: #1B262C;
+    --color-200: #203D4E;
+    --color-300: #275877;
+    --color-400: #2C6C97;
+    --color-500: #3483B8;
+    --color-600: #639CB8;
+    --color-700: #8CB9D8;
+    --color-800: #C1D9EA;
+    --color-900: #F7FAFC;
+}
+.theme-yellow {
+    --color-100: #2C261B;
+    --color-200: #4E3D20;
+    --color-300: #775827;
+    --color-400: #976C2C;
+    --color-500: #B88334;
+    --color-600: #B89C63;
+    --color-700: #D8B98C;
+    --color-800: #EAD9C1;
+    --color-900: #FCFAF7;
+}
+
+.font-larabiefont {
+    --font-family: 'larabiefont_rg', 'Courier New', Courier, monospace;
+}
+.font-lucida_console {
+    --font-family: 'Lucida Console', 'Courier New', Courier, monospace;
+}
+.font-courier_new {
+    --font-family: 'Courier New', Courier, monospace;
 }
 
 p, textarea {
@@ -481,7 +514,7 @@ input {
 
 .settings-page-layout {
     display: grid;
-    grid-template-rows: repeat(4, auto);
+    grid-auto-rows: auto;
     grid-template-columns: repeat(2, 1fr);
     gap: 5px;
     padding-top: 10px;

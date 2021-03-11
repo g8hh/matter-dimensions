@@ -740,6 +740,8 @@ var default_settings = {
     "matter_gain": "s_rl",
     "temperature_display": "K",
     "notation": "default",
+    "theme": "blue",
+    "font": "larabiefont",
 
     "prestige_confirmation_photonic": true,
     "prestige_confirmation_gravitonic": true,
