@@ -1,31 +1,31 @@
-function update_mechanics_first(player) {
-    update_inertia_first(player);
-    update_temperature_first(player);
-    update_collider_first(player);
-    update_settings_first(player);
+function update_mechanics_first() {
+    update_inertia_first();
+    update_temperature_first();
+    update_collider_first();
+    update_settings_first();
 
-    update_mechanics(player);
+    update_mechanics();
 }
 
-function update_mechanics(player) {
-    update_inertia(player);
-    update_temperature(player);
-    update_collider(player);
-    update_settings(player);
+function update_mechanics() {
+    update_inertia();
+    update_temperature();
+    update_collider();
+    update_settings();
 }
 
 // Inertia
 
-function inertia_gain_speed(player) {
+function inertia_gain_speed() {
     return big(1).div(player.best_time_speed).pow(player.upgrades['INERTIA_2'].get_effect()).mult(player.upgrades['INERTIA_4'].get_effect());
 }
 
-function inertia_loss_speed(player) {
+function inertia_loss_speed() {
     return big(2).pow(big(player.inertia_multiplier).subtract(1)).subtract(1);
 }
 
-function inertia_eta(player) {
-    let inertia_loss = inertia_loss_speed(player).subtract(inertia_gain_speed(player).mult(player.upgrades['INERTIA_5'].get_effect().toInt() / 100));
+function inertia_eta() {
+    let inertia_loss = inertia_loss_speed().subtract(inertia_gain_speed().mult(player.upgrades['INERTIA_5'].get_effect().toInt() / 100));
     if (inertia_loss.lt(1e-60)) return "forever";
     else return format_time(player.inertia.div(inertia_loss));  
 }
@@ -35,28 +35,28 @@ function switch_inertia_status() {
     update_inertia(me);
 }
 
-function update_inertia_first(player) {
+function update_inertia_first() {
     player.inertia_multiplier = Math.min(player.upgrades['INERTIA_3'].get_effect().toInt(), Math.max(2, player.inertia_multiplier));
 
     document.getElementById("mechanic_inertia_slider").max = player.upgrades['INERTIA_3'].get_effect().toInt();
     document.getElementById("mechanic_inertia_slider").value = player.inertia_multiplier;
 }
 
-function update_inertia(player) {
-    document.getElementById("mechanic_inertia_per_hour").textContent = format_time(inertia_gain_speed(player).mult(60 * 60 * 1000));
-    document.getElementById("mechanic_inertia_per_hour_online").textContent = format_time(inertia_gain_speed(player).mult(60 * 60 * 1000).mult(player.upgrades['INERTIA_5'].get_effect().toInt() / 100));
+function update_inertia() {
+    document.getElementById("mechanic_inertia_per_hour").textContent = format_time(inertia_gain_speed().mult(60 * 60 * 1000));
+    document.getElementById("mechanic_inertia_per_hour_online").textContent = format_time(inertia_gain_speed().mult(60 * 60 * 1000).mult(player.upgrades['INERTIA_5'].get_effect().toInt() / 100));
     document.getElementById("mechanic_inertia_cap").textContent = format_time(player.upgrades['INERTIA_1'].get_effect());
     document.getElementById("mechanic_inertia_max_multiplier").textContent = format_number(player.upgrades['INERTIA_3'].get_effect());
-    document.getElementById("mechanic_inertia_loss").textContent = format_time(inertia_loss_speed(player).mult(1000));
-    if (inertia_eta(player) == "forever") document.getElementById("mechanic_inertia_eta").textContent = inertia_eta(player);
-    else document.getElementById("mechanic_inertia_eta").textContent = "for " + inertia_eta(player);
+    document.getElementById("mechanic_inertia_loss").textContent = format_time(inertia_loss_speed().mult(1000));
+    if (inertia_eta() == "forever") document.getElementById("mechanic_inertia_eta").textContent = inertia_eta();
+    else document.getElementById("mechanic_inertia_eta").textContent = "for " + inertia_eta();
     if (player.inertia_enabled) {
         document.getElementById("mechanic_inertia_status").textContent = "enabled";
         document.getElementById("mechanic_inertia_button_text").textContent = "Disable";
         document.getElementById("mechanic_inertia_desc").style.display = "";
         document.getElementById("mechanic_inertia_desc_multiplier").textContent = format_number(player.inertia_multiplier);
-        if (inertia_eta(player) == "forever") document.getElementById("mechanic_inertia_desc_time").textContent = inertia_eta(player);
-        else document.getElementById("mechanic_inertia_desc_time").textContent = "for the next " + inertia_eta(player);
+        if (inertia_eta() == "forever") document.getElementById("mechanic_inertia_desc_time").textContent = inertia_eta();
+        else document.getElementById("mechanic_inertia_desc_time").textContent = "for the next " + inertia_eta();
     }
     else {
         document.getElementById("mechanic_inertia_status").textContent = "disabled";
@@ -103,13 +103,13 @@ function format_temperature(number, fixed=false) {
     return format_number(res, fixed) + degrees;
 }
 
-function get_temperature(player) {
+function get_temperature() {
     let base_temp = player.temperature_energy.pow(0.2).div(1000);
     if (base_temp.gt(273.15)) base_temp = big(273.15).mult(base_temp.div(273.15).log(10).add(1));
     return base_temp;
 }
 
-function get_new_temperature(player) {
+function get_new_temperature() {
     let base_temp = player.temperature_energy.div(player.space.add(1).pow(0.2)).pow(0.2).div(1000);
     if (base_temp.gt(273.15)) base_temp = big(273.15).mult(base_temp.div(273.15).log(10).add(1));
     return base_temp;
@@ -120,17 +120,17 @@ function wave_gain(type) {
     // a04: gain more waves
     wave_mult = wave_mult.mult(me.upgrades['a04'].get_effect());
     switch (type) {
-        case 'infrared': return get_temperature(me).div(2.73).pow(5).mult(wave_mult).rounddown();
-        case 'red': return get_temperature(me).div(4.222).pow(4).mult(wave_mult).rounddown();
-        case 'green': return get_temperature(me).div(5.19).pow(3).mult(wave_mult).rounddown();
-        case 'blue': return get_temperature(me).div(13.99).pow(2).mult(wave_mult).rounddown();
-        case 'ultraviolet': return get_temperature(me).div(20.28).pow(1).mult(wave_mult).rounddown();
-        case 'xray': return get_temperature(me).div(273.15).pow(0.8).mult(wave_mult).rounddown();
+        case 'infrared': return get_temperature().div(2.73).pow(5).mult(wave_mult).rounddown();
+        case 'red': return get_temperature().div(4.222).pow(4).mult(wave_mult).rounddown();
+        case 'green': return get_temperature().div(5.19).pow(3).mult(wave_mult).rounddown();
+        case 'blue': return get_temperature().div(13.99).pow(2).mult(wave_mult).rounddown();
+        case 'ultraviolet': return get_temperature().div(20.28).pow(1).mult(wave_mult).rounddown();
+        case 'xray': return get_temperature().div(273.15).pow(0.8).mult(wave_mult).rounddown();
     }
 }
 
 function can_reset_temperature(type) {
-    return !get_temperature(me).lt(temperature_reset_hint(type));
+    return !get_temperature().lt(temperature_reset_hint(type));
 }
 
 function temperature_reset_hint(type) {
@@ -191,17 +191,17 @@ function wave_effect(type) {
 
 function switch_heating_status() {
     me.heating_enabled = !me.heating_enabled;
-    update_temperature(me);
+    update_temperature();
 }
 
-function update_temperature_first(player) {
+function update_temperature_first() {
     if (player.heating_smart_distribution) document.getElementById("mechanic_temperature_smart_distribution").checked = true;
     else document.getElementById("mechanic_temperature_smart_distribution").checked = false;
 }
 
-function update_temperature(player) {
-    document.getElementById("mechanic_temperature_current").textContent = format_temperature(get_temperature(player), true);
-    document.getElementById("mechanic_temperature_future").textContent = format_temperature(get_new_temperature(player), true);
+function update_temperature() {
+    document.getElementById("mechanic_temperature_current").textContent = format_temperature(get_temperature(), true);
+    document.getElementById("mechanic_temperature_future").textContent = format_temperature(get_new_temperature(), true);
 
     if (player.heating_enabled) {
         if (player.heating_smart_distribution) document.getElementById("mechanic_temperature_heating_status").textContent = "enabled (50%)";
@@ -256,7 +256,7 @@ function update_temperature(player) {
 
 var free_atom_levels = {};
 
-function update_collider_first(player) {
+function update_collider_first() {
     for (let key of Object.keys(MECHANIC_COLLIDER_REACTION_LIST)) {
         if (key in player.active_reactions && player.active_reactions[key]) 
             document.getElementById("mechanic_collider_reaction_checkbox_" + key).checked = true;
@@ -269,13 +269,13 @@ function get_atom_level(key) {
     return big(me.upgrades[key].amt).add(free_atom_levels[key]);
 }
 
-function element_unlock_limit(player) {
+function element_unlock_limit() {
     return 6;
 }
 
-function highest_unlocked_element(player) {
+function highest_unlocked_element() {
     let base_limit = 1;
-    let max_limit = element_unlock_limit(player);
+    let max_limit = element_unlock_limit();
     return Math.min(base_limit + me.collision_points_in_synthesis, max_limit);
 }
 
@@ -306,14 +306,14 @@ function change_collision_categories(id, amt) {
     if (id == 3) me.collision_points_in_generation += amt;
 }
 
-function reaction_points_effect_photons(player) {
+function reaction_points_effect_photons() {
     return free_atom_levels['ph'].pow(0.5).add(1);
 }
-function reaction_points_effect_neutrons(player) {
+function reaction_points_effect_neutrons() {
     return free_atom_levels['n'].pow(0.5).add(1);
 }
 
-function generation_points_effect(player) {
+function generation_points_effect() {
     return big(player.collision_points_in_generation);
 }
 
@@ -369,12 +369,12 @@ function format_element(num) {
     return MECHANIC_COLLIDER_ELEMENT_NAMES[num - 1] + " (" + num + ")";
 }
 
-function levels_passed_through_reaction_ratio(player) {
+function levels_passed_through_reaction_ratio() {
     return big(0.5);
 }
 
-function update_collider(player) {
-    let generation_levels = generation_points_effect(player);
+function update_collider() {
+    let generation_levels = generation_points_effect();
 
     for (let key of Object.keys(player.upgrades)) {
         if (key.includes('a')) {
@@ -393,7 +393,7 @@ function update_collider(player) {
         document.getElementById("mechanic_collider_ck_prebreak").style.display = "none";
         document.getElementById("mechanic_collider_next_ck_hint").style.display = "";
     }
-    document.getElementById("mechanic_collider_next_ck_at").textContent = format_number(next_ck_hint(prestige_earn_collision_knowledge(player)));
+    document.getElementById("mechanic_collider_next_ck_at").textContent = format_number(next_ck_hint(prestige_earn_collision_knowledge()));
     if (prestige_earn_collision_knowledge(player).gt(100)) {
         document.getElementById("mechanic_collider_next_ck_hint").style.display = "none";
     }
@@ -415,11 +415,11 @@ function update_collider(player) {
     if (me.collision_points_in_generation == 0) document.getElementById("mechanic_collider_generation_dec").className = "upgrade disabled";
     else document.getElementById("mechanic_collider_generation_dec").className = "upgrade";
 
-    document.getElementById("mechanic_collider_synthesis_limit").textContent = format_element(element_unlock_limit(player));
-    document.getElementById("mechanic_collider_synthesis_effect").textContent = format_element(highest_unlocked_element(player));
+    document.getElementById("mechanic_collider_synthesis_limit").textContent = format_element(element_unlock_limit());
+    document.getElementById("mechanic_collider_synthesis_effect").textContent = format_element(highest_unlocked_element());
     document.getElementById("mechanic_collider_generation_effect").textContent = format_number(generation_levels);
 
-    let unlocked_elements = highest_unlocked_element(player);
+    let unlocked_elements = highest_unlocked_element();
     let elements = document.getElementsByClassName("collider-periodic-table-element");
     for (let i = 0; i < elements.length; i++) {
         elements.item(i).style.visibility = "hidden";
@@ -428,7 +428,7 @@ function update_collider(player) {
         document.getElementById("mechanic_collider_element_" + i).style.visibility = "";
     }
 
-    let transfer_ratio = levels_passed_through_reaction_ratio(player);
+    let transfer_ratio = levels_passed_through_reaction_ratio();
     document.getElementById("mechanic_collider_free_level_transfer").textContent = format_number(transfer_ratio.mult(100));
 
     let activated_reactions = 0;
@@ -472,8 +472,8 @@ function update_collider(player) {
     if (unlocked_elements < 4) document.getElementById("mechanic_collider_reactions_section_3").style.display = "none";
     else document.getElementById("mechanic_collider_reactions_section_3").style.display = "";
 
-    document.getElementById("mechanic_collider_reaction_photons").textContent = format_number(reaction_points_effect_photons(player));
-    document.getElementById("mechanic_collider_reaction_neutrons").textContent = format_number(reaction_points_effect_neutrons(player));
+    document.getElementById("mechanic_collider_reaction_photons").textContent = format_number(reaction_points_effect_photons());
+    document.getElementById("mechanic_collider_reaction_neutrons").textContent = format_number(reaction_points_effect_neutrons());
 
     for (let key of Object.keys(player.upgrades)) {
         if (key.includes('a')) {
@@ -486,7 +486,7 @@ function update_collider(player) {
 
 // Settings
 
-function update_settings_first(player) {
+function update_settings_first() {
     for (let key of Object.keys(player.settings)) {
         radio_set_setting(key, player.settings[key]);
     }
@@ -499,7 +499,7 @@ function update_settings_first(player) {
     }
 }
 
-function update_settings(player) {
+function update_settings() {
     for (let key of Object.keys(player.settings)) {
         player.settings[key] = radio_get_setting(key);
     }

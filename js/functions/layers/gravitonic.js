@@ -1,4 +1,4 @@
-function prestige_earn_gravitons(player) {
+function prestige_earn_gravitons() {
     if (!player.matter.gt(1)) return big(0);
 
     var base = big(10);
@@ -44,13 +44,13 @@ function prestige_earn_gravitons(player) {
 
     return base_gravitons.subtract(player.gravitons).rounddown().max(0);
 }
-function can_gravitonic(player) {
-    return prestige_earn_gravitons(player).gt(0);
+function can_gravitonic() {
+    return prestige_earn_gravitons().gt(0);
 }
-function gravitonic_hint(player) {
-    return gravitonic_hint_next(player, 0);
+function gravitonic_hint() {
+    return gravitonic_hint_next(0);
 }
-function gravitonic_hint_next(player, amt) {
+function gravitonic_hint_next(amt) {
     var base = big(10);
     // g30: base is 9
     base = player.upgrades['g30'].get_effect();
@@ -97,13 +97,13 @@ function gravitonic_hint_next(player, amt) {
 
 
 function reset_gravitonic(force=false, higher_reset=false, autobuyer_induced=false) {
-    if (!force && !can_gravitonic(me)) return;
+    if (!force && !can_gravitonic()) return;
     if (!force && !autobuyer_induced && me.settings['prestige_confirmation_gravitonic']) {
         let result = confirm("Are you sure you want to perform a Gravitonic reset?\n(This warning can be disabled in Settings)");
         if (!result) return;
     }
 
-    var earned_gravitons = prestige_earn_gravitons(me);
+    var earned_gravitons = prestige_earn_gravitons();
     if (!force && me.time_gravitonic - me.time_passed < 1e-9) me.achievements['36'].award();
     if (!force && me.time_gravitonic < 300) me.achievements['37'].award();
     if (!force && !earned_gravitons.lt(5)) me.achievements['34'].award();
@@ -131,8 +131,8 @@ function reset_gravitonic(force=false, higher_reset=false, autobuyer_induced=fal
     }
 
     // Gravitonic Challenge 6: Gravitonic resets all Gravitonic upgrades
-    // AUTO1_5: Gravitonic upgrades are never reset
-    if (me.challenges['g6'].inC() && !me.upgrades['AUTO1_5'].is_active()) {
+    // Gravitonic Meta-Challenge reward: Gravitonic upgrades are never reset
+    if (me.challenges['g6'].inC() && !me.challenges['g0'].completed) {
         for (let key of Object.keys(me.upgrades)) {
             if (key.includes("g")) {
                 // achievement 62: Gravitonic upgrades that provide automation are never reset
@@ -144,8 +144,8 @@ function reset_gravitonic(force=false, higher_reset=false, autobuyer_induced=fal
     }
 
     // n05: photonic upgrades are not reset
-    // achievement 96: photonic upgrades are never reset
-    if (!me.achievements['96'].complete && (higher_reset || !me.upgrades['n05'].is_active())) {
+    // Photonic Meta-Challenge reward: photonic upgrades are never reset
+    if (!me.challenges['p0'].completed && (higher_reset || !me.upgrades['n05'].is_active())) {
         for (let key of Object.keys(me.upgrades)) {
             if (key.includes("p")) {
                 me.upgrades[key].reset();
@@ -185,9 +185,9 @@ function reset_gravitonic(force=false, higher_reset=false, autobuyer_induced=fal
 
 
 
-function power_black_holes_tickspeed(player) {
+function power_black_holes_tickspeed() {
     return player.black_holes.add(1).log10().pow(2).div(3).add(1);
 }
-function power_black_holes_resource_limit(player) {
+function power_black_holes_resource_limit() {
     return player.black_holes.pow(3).add(1).div(player.black_holes.pow(3).mult(1e-60).add(1));
 }

@@ -20,7 +20,7 @@ var SAVE_BIGNUM_VARS = ["matter", "antimatter", "energy", "temperature_energy", 
                         "inertia",
                         "infrared_waves", "red_waves", "green_waves", "blue_waves", "ultraviolet_waves", "xray_waves"];
 
-function create_save(player) {
+function create_save() {
     var data = {};
 
     SAVE_NORMAL_VARS.forEach(res => {
@@ -59,7 +59,7 @@ function create_save(player) {
     return data;
 }
 
-function load_save(data, player) {
+function load_save(data) {
     player.reset();
 
     SAVE_NORMAL_VARS.forEach(res => {
@@ -128,9 +128,9 @@ function load_save(data, player) {
         change_submenu(key, default_submenu[key]);
     }
 
-    player.achievement_multiplier = get_achievements_multiplier(player);
-    update_challenges_power(player);
-    update_mechanics_first(player);
+    player.achievement_multiplier = get_achievements_multiplier();
+    update_challenges_power();
+    update_mechanics_first();
     //player.last_update_ts = Date.now();
     game_loop();
 }
@@ -164,7 +164,7 @@ function decode(str) {
 }
 
 function save_button_click() {
-    var data = JSON.stringify(create_save(me));
+    var data = JSON.stringify(create_save());
     document.getElementById("save_textarea").value = encode(data);
 
     document.getElementById("overlay_window").style.display = "";
@@ -185,11 +185,11 @@ function load_window_close() {
     var data = document.getElementById("load_textarea").value;
     if (data.substring(0, 2) == "r0") {
         data = data.replace(/[^0123456789aemnrS]/g, '');
-        if (data != "") load_save(JSON.parse(decode(data)), me);
+        if (data != "") load_save(JSON.parse(decode(data)));
     }
     else {
         data = data.replace(/[^A-Za-z0-9+/=]/g, '');
-        if (data != "") load_save(JSON.parse(atob(data.substring(2))), me);
+        if (data != "") load_save(JSON.parse(atob(data.substring(2))));
     }
     document.getElementById("load_textarea").value = "";
 
@@ -197,18 +197,18 @@ function load_window_close() {
     document.getElementById("load_window").style.display = "none";
 }
 
-function save_to_local_storage(player) {
+function save_to_local_storage() {
     last_local_storage_save = Date.now();
-    localStorage.setItem("save", JSON.stringify(create_save(player)));
+    localStorage.setItem("save", JSON.stringify(create_save()));
 }
 
-function load_from_local_storage(player) {
+function load_from_local_storage() {
     if (localStorage.getItem("save") !== null) {
         last_local_storage_save = Date.now();
-        load_save(JSON.parse(localStorage.getItem("save")), player);
+        load_save(JSON.parse(localStorage.getItem("save")));
     }
     else {
         // do the graphics stuff
-        update_mechanics_first(player);
+        update_mechanics_first();
     }
 }

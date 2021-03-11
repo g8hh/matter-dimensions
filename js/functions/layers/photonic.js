@@ -1,4 +1,4 @@
-function prestige_earn_photons(player) {
+function prestige_earn_photons() {
     var formula_exponent = new BigNumber(0.2);
     // p22: improve photon gain
     formula_exponent = player.upgrades['p22'].get_effect();
@@ -17,7 +17,7 @@ function prestige_earn_photons(player) {
     // Temperature Milestone 2: photons gain is increased
     if (player.milestones['temperature_2'].is_active()) base_photons = base_photons.mult(player.milestones['temperature_2'].get_effect());
     // reactions provide boost to photons
-    base_photons = base_photons.mult(reaction_points_effect_photons(player));
+    base_photons = base_photons.mult(reaction_points_effect_photons());
     // p53: Infrared Waves boost Photon gain
     base_photons = base_photons.mult(player.upgrades['p53'].get_effect());
     // Vacuumic Challenge 4 reward: Photon gain is multiplied by 4
@@ -28,15 +28,15 @@ function prestige_earn_photons(player) {
 
     return base_photons.max(1).rounddown();
 }
-function can_photonic(player) {
+function can_photonic() {
     // Photonic Challenge 8: Photonic resets are unavailable
     if (player.challenges['p8'].inC()) return false;
     return player.matter.lt(1e-9) || player.antimatter.lt(1e-9) || !big(1).gt(player.energy);
 }
-function photonic_hint(player) {
+function photonic_hint() {
     return big(1);
 }
-function photonic_hint_next(player, amt) {
+function photonic_hint_next(amt) {
     let resource_need = big(amt).add(1);
 
     // Vacuumic Challenge 4: Photon gain is raised to the power of 0.25
@@ -70,13 +70,13 @@ function photonic_hint_next(player, amt) {
 
 
 function reset_photonic(force=false, higher_reset=false, autobuyer_induced=false) {
-    if (!force && !can_photonic(me)) return;
+    if (!force && !can_photonic()) return;
     if (!force && !autobuyer_induced && me.settings['prestige_confirmation_photonic']) {
         let result = confirm("Are you sure you want to perform a Photonic reset?\n(This warning can be disabled in Settings)");
         if (!result) return;
     }
 
-    var earned_photons = prestige_earn_photons(me);
+    var earned_photons = prestige_earn_photons();
     if (!force && earned_photons.gt(1)) me.achievements['15'].award();
     if (!force && me.time_photonic < 200) me.achievements['27'].award();
     if (!force && earned_photons.gt(100)) me.achievements['35'].award();
@@ -114,8 +114,8 @@ function reset_photonic(force=false, higher_reset=false, autobuyer_induced=false
     }
 
     // Photonic Challenge 6: Photonic resets all Photonic upgrades
-    // achievement 96: Photonic upgrades are never reset
-    if (!me.achievements['96'].complete && me.challenges['p6'].inC()) {
+    // Photonic Meta-Challenge reward: Photonic upgrades are never reset
+    if (!me.challenges['p0'].completed && me.challenges['p6'].inC()) {
         for (let key of Object.keys(me.upgrades)) {
             if (key.includes("p")) {
                 me.upgrades[key].reset();
@@ -144,10 +144,10 @@ function reset_photonic(force=false, higher_reset=false, autobuyer_induced=false
 
 
 
-function power_light_production(player) {
+function power_light_production() {
     let base_pow = big(4);
     // Stars boost Light effect
-    base_pow = base_pow.mult(power_stars_light_effect(player));
+    base_pow = base_pow.mult(power_stars_light_effect());
 
     let base_effect = player.light.pow(base_pow).add(1);
 
@@ -157,7 +157,7 @@ function power_light_production(player) {
     return base_effect;
 }
 
-function power_light_time(player) {
+function power_light_time() {
     let base_time_speed = big(256);
     // Photonic Challenge 7: time is 256x slower
     if (player.challenges['p7'].inC()) base_time_speed = base_time_speed.mult(256);

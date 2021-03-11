@@ -1,4 +1,4 @@
-function prestige_earn_atoms(player) {
+function prestige_earn_atoms() {
     // Need to break Infinity before Atomic
     if (!player.upgrades['v211'].is_active()) return big(0);
     if (player.matter.lt(big(2).pow(1024))) return big(0);
@@ -10,7 +10,7 @@ function prestige_earn_atoms(player) {
 
     return base_income.rounddown().max(0);
 }
-function prestige_earn_collision_knowledge(player) {
+function prestige_earn_collision_knowledge() {
     // Need to break Infinity before Atomic
     if (!player.upgrades['v211'].is_active()) return big(0);
     if (player.matter.lt(big(2).pow(1024))) return big(0);
@@ -22,13 +22,13 @@ function prestige_earn_collision_knowledge(player) {
 
     return base_income.rounddown().max(0);
 }
-function can_atomic(player) {
-    return prestige_earn_atoms(player).gt(0);
+function can_atomic() {
+    return prestige_earn_atoms().gt(0);
 }
-function atomic_hint(player) {
+function atomic_hint() {
     return big(2).pow(1024);
 }
-function atomic_hint_next(player, amt) {
+function atomic_hint_next(amt) {
     let resource_need = big(amt).add(1);
 
     // a01_2: increase Atom gain
@@ -40,14 +40,14 @@ function atomic_hint_next(player, amt) {
 
 
 function reset_atomic(force=false, higher_reset=false, autobuyer_induced=false) {
-    if (!force && !can_atomic(me)) return;
+    if (!force && !can_atomic()) return;
     if (!force && !autobuyer_induced && me.settings['prestige_confirmation_atomic']) {
         let result = confirm("Are you sure you want to perform an Atomic reset?\n(This warning can be disabled in Settings)");
         if (!result) return;
     }
 
-    let earned_atoms = prestige_earn_atoms(me);
-    let earned_collision_knowledge = prestige_earn_collision_knowledge(me);
+    let earned_atoms = prestige_earn_atoms();
+    let earned_collision_knowledge = prestige_earn_collision_knowledge();
 
     // Challenge 4: all resources are capped
     me.atoms = me.atoms.add(earned_atoms).round();
@@ -81,7 +81,7 @@ function reset_atomic(force=false, higher_reset=false, autobuyer_induced=false) 
         }
     }
 
-    cap_resources(me);
+    cap_resources();
     reset_dimensional(true, true);
 
     if (!force) me.atomic_resets += 1;

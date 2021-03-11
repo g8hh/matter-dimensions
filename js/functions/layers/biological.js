@@ -1,15 +1,15 @@
-function prestige_earn_genes(player) {
+function prestige_earn_genes() {
     let base_income = player.atoms.add(1).log(6.022e23);
 
     return base_income.rounddown().max(0);
 }
-function can_biological(player) {
-    return prestige_earn_genes(player).gt(0);
+function can_biological() {
+    return prestige_earn_genes().gt(0);
 }
-function biological_hint(player) {
+function biological_hint() {
     return big(6.022e23);
 }
-function biological_hint_next(player, amt) {
+function biological_hint_next(amt) {
     let resource_need = big(amt).add(1);
 
     return big(6.022e23).pow(resource_need);
@@ -17,13 +17,13 @@ function biological_hint_next(player, amt) {
 
 
 function reset_biological(force=false, higher_reset=false, autobuyer_induced=false) {
-    if (!force && !can_biological(me)) return;
+    if (!force && !can_biological()) return;
     if (!force && !autobuyer_induced && me.settings['prestige_confirmation_biological']) {
         let result = confirm("Are you sure you want to perform a Biological reset?\n(This warning can be disabled in Settings)");
         if (!result) return;
     }
 
-    let earned_genes = prestige_earn_genes(me);
+    let earned_genes = prestige_earn_genes();
     if (!force) me.achievements['121'].award();
 
     // Challenge 4: all resources are capped
@@ -49,6 +49,7 @@ function reset_biological(force=false, higher_reset=false, autobuyer_induced=fal
         }
     //}
 
+    cap_resources();
     reset_atomic(true, true);
 
     if (!force) me.atomic_resets += 1;

@@ -1,5 +1,5 @@
-function prestige_earn_shards(player) {
-    if (!can_dimensional(player)) return big(0);
+function prestige_earn_shards() {
+    if (!can_dimensional()) return big(0);
 
     let base_income = big(0);
 
@@ -30,23 +30,23 @@ function prestige_earn_shards(player) {
 
     return base_income.rounddown().max(1);
 }
-function can_dimensional(player) {
+function can_dimensional() {
     return player.dimensions['matter_4'].amt_bought > 9.5;
 }
-function dimensional_hint(player) {
+function dimensional_hint() {
     return big(10);
 }
 
 
 
 function reset_dimensional(force=false, higher_reset=false, autobuyer_induced=false) {
-    if (!force && !can_dimensional(me)) return;
+    if (!force && !can_dimensional()) return;
     if (!force && !autobuyer_induced && me.settings['prestige_confirmation_dimensional']) {
         let result = confirm("Are you sure you want to perform a Dimensional reset?\n(This warning can be disabled in Settings)");
         if (!result) return;
     }
 
-    var earned_shards = prestige_earn_shards(me);
+    var earned_shards = prestige_earn_shards();
     if (!force) me.achievements['61'].award();
     if (!force && !earned_shards.lt(11111)) me.achievements['111'].award();
     if (!force && me.time_dimensional - me.time_passed < 1e-9) me.achievements['106'].award();
@@ -100,7 +100,7 @@ function reset_dimensional(force=false, higher_reset=false, autobuyer_induced=fa
         }
     }
 
-    cap_resources(me);
+    cap_resources();
     reset_vacuumic(true, true);
 
     if (!force) me.dimensional_resets += 1;

@@ -1,4 +1,4 @@
-function update_prestige(player) {
+function update_prestige() {
     let elements;
 
     elements = document.getElementsByClassName("prestige_currency_photonic");
@@ -33,30 +33,30 @@ function update_prestige(player) {
 
     elements = document.getElementsByClassName("power_light_production");
     for (var i = 0; i < elements.length; i++) {
-        elements.item(i).textContent = format_number(power_light_production(player));
+        elements.item(i).textContent = format_number(power_light_production());
     }
 
     elements = document.getElementsByClassName("power_black_holes_tickspeed");
     for (var i = 0; i < elements.length; i++) {
-        elements.item(i).textContent = format_number(power_black_holes_tickspeed(player));
+        elements.item(i).textContent = format_number(power_black_holes_tickspeed());
     }
 
     elements = document.getElementsByClassName("power_stars_tickspeed");
     for (var i = 0; i < elements.length; i++) {
-        elements.item(i).textContent = format_number(power_stars_tickspeed(player));
+        elements.item(i).textContent = format_number(power_stars_tickspeed());
     }
 
     elements = document.getElementsByClassName("power_stars_light_effect");
     for (var i = 0; i < elements.length; i++) {
-        elements.item(i).textContent = format_number(power_stars_light_effect(player));
+        elements.item(i).textContent = format_number(power_stars_light_effect());
     }
 
     elements = document.getElementsByClassName("power_inflation_matter");
     for (var i = 0; i < elements.length; i++) {
-        elements.item(i).textContent = format_number(power_inflation_matter(player));
+        elements.item(i).textContent = format_number(power_inflation_matter());
     }
 
-    let manifold_power = power_manifolds(player);
+    let manifold_power = power_manifolds();
     elements = document.getElementsByClassName("power_manifolds");
     for (var i = 0; i < elements.length; i++) {
         elements.item(i).textContent = format_number(manifold_power);
@@ -65,49 +65,49 @@ function update_prestige(player) {
         document.getElementById("dimensional_boost_" + i).textContent = format_number(manifold_power.pow(player.dimensions["dimensional_" + i].amt_bought));
     }
 
-    let photons_earned = prestige_earn_photons(player);
+    let photons_earned = prestige_earn_photons();
     elements = document.getElementsByClassName("prestige_currency_photonic_gain");
     for (let i = 0; i < elements.length; i++) {
         elements.item(i).textContent = format_number(photons_earned);
     }
-    let gravitons_earned = prestige_earn_gravitons(player);
+    let gravitons_earned = prestige_earn_gravitons();
     elements = document.getElementsByClassName("prestige_currency_gravitonic_gain");
     for (let i = 0; i < elements.length; i++) {
         elements.item(i).textContent = format_number(gravitons_earned);
     }
-    let neutrons_earned = prestige_earn_neutrons(player);
+    let neutrons_earned = prestige_earn_neutrons();
     elements = document.getElementsByClassName("prestige_currency_neutronic_gain");
     for (let i = 0; i < elements.length; i++) {
         elements.item(i).textContent = format_number(neutrons_earned);
     }
-    let vacuum_energy_earned = prestige_earn_vacuum_energy(player);
+    let vacuum_energy_earned = prestige_earn_vacuum_energy();
     elements = document.getElementsByClassName("prestige_currency_vacuumic_gain");
     for (let i = 0; i < elements.length; i++) {
         elements.item(i).textContent = format_number(vacuum_energy_earned);
     }
-    let shards_earned = prestige_earn_shards(player);
+    let shards_earned = prestige_earn_shards();
     elements = document.getElementsByClassName("prestige_currency_dimensional_gain");
     for (let i = 0; i < elements.length; i++) {
         elements.item(i).textContent = format_number(shards_earned);
     }
-    let atoms_earned = prestige_earn_atoms(player);
+    let atoms_earned = prestige_earn_atoms();
     elements = document.getElementsByClassName("prestige_currency_atomic_gain");
     for (let i = 0; i < elements.length; i++) {
         elements.item(i).textContent = format_number(atoms_earned);
     }
-    let collision_knowledge_earned = prestige_earn_collision_knowledge(player);
+    let collision_knowledge_earned = prestige_earn_collision_knowledge();
     elements = document.getElementsByClassName("prestige_currency_atomic_gain_ck");
     for (let i = 0; i < elements.length; i++) {
         elements.item(i).textContent = format_number(collision_knowledge_earned);
     }
-    let genes_earned = prestige_earn_genes(player);
+    let genes_earned = prestige_earn_genes();
     elements = document.getElementsByClassName("prestige_currency_biological_gain");
     for (let i = 0; i < elements.length; i++) {
         elements.item(i).textContent = format_number(genes_earned);
     }
 
 
-    if (can_photonic(player)) {
+    if (can_photonic()) {
         document.getElementById("prestige_layer_photonic_reset").className = "prestige-layer-ascend";
         document.getElementById("prestige_layer_photonic_gain").style.display = "";
         document.getElementById("prestige_layer_photonic_hint").style.display = "none";
@@ -116,7 +116,7 @@ function update_prestige(player) {
         }
         else {
             document.getElementById("prestige_layer_photonic_hint_next").style.display = "";
-            document.getElementById("prestige_layer_photonic_hint_next_amt").textContent = format_number(photonic_hint_next(player, photons_earned));
+            document.getElementById("prestige_layer_photonic_hint_next_amt").textContent = format_number(photonic_hint_next(photons_earned));
         }
         if (!player.unlocked_photonic) player.unlocked_photonic = true;
     }
@@ -124,7 +124,7 @@ function update_prestige(player) {
         document.getElementById("prestige_layer_photonic_reset").className = "prestige-layer-ascend disabled";
         document.getElementById("prestige_layer_photonic_gain").style.display = "none";
         document.getElementById("prestige_layer_photonic_hint").style.display = "";
-        document.getElementById("prestige_layer_photonic_hint_amt").textContent = format_number(photonic_hint(player));
+        document.getElementById("prestige_layer_photonic_hint_amt").textContent = format_number(photonic_hint());
         document.getElementById("prestige_layer_photonic_hint_next").style.display = "none";
     }
     if (player.unlocked_photonic) {
@@ -140,7 +140,7 @@ function update_prestige(player) {
         document.getElementById("statistics_fastest_photonic").style.display = "none";
     }
 
-    if (can_gravitonic(player)) {
+    if (can_gravitonic()) {
         document.getElementById("prestige_layer_gravitonic_reset").className = "prestige-layer-ascend";
         document.getElementById("prestige_layer_gravitonic_gain").style.display = "";
         document.getElementById("prestige_layer_gravitonic_hint").style.display = "none";
@@ -149,7 +149,7 @@ function update_prestige(player) {
         }
         else {
             document.getElementById("prestige_layer_gravitonic_hint_next").style.display = "";
-            document.getElementById("prestige_layer_gravitonic_hint_next_amt").textContent = format_number(gravitonic_hint_next(player, gravitons_earned));
+            document.getElementById("prestige_layer_gravitonic_hint_next_amt").textContent = format_number(gravitonic_hint_next(gravitons_earned));
         }
         if (!player.unlocked_gravitonic) player.unlocked_gravitonic = true;
     }
@@ -157,7 +157,7 @@ function update_prestige(player) {
         document.getElementById("prestige_layer_gravitonic_reset").className = "prestige-layer-ascend disabled";
         document.getElementById("prestige_layer_gravitonic_gain").style.display = "none";
         document.getElementById("prestige_layer_gravitonic_hint").style.display = "";
-        document.getElementById("prestige_layer_gravitonic_hint_amt").textContent = format_number(gravitonic_hint(player));
+        document.getElementById("prestige_layer_gravitonic_hint_amt").textContent = format_number(gravitonic_hint());
         document.getElementById("prestige_layer_gravitonic_hint_next").style.display = "none";
     }
     if (player.unlocked_gravitonic) {
@@ -173,7 +173,7 @@ function update_prestige(player) {
         document.getElementById("statistics_fastest_gravitonic").style.display = "none";
     }
 
-    if (can_neutronic(player)) {
+    if (can_neutronic()) {
         document.getElementById("prestige_layer_neutronic_reset").className = "prestige-layer-ascend";
         document.getElementById("prestige_layer_neutronic_gain").style.display = "";
         document.getElementById("prestige_layer_neutronic_hint").style.display = "none";
@@ -182,7 +182,7 @@ function update_prestige(player) {
         }
         else {
             document.getElementById("prestige_layer_neutronic_hint_next").style.display = "";
-            document.getElementById("prestige_layer_neutronic_hint_next_amt").textContent = format_number(neutronic_hint_next(player, neutrons_earned));
+            document.getElementById("prestige_layer_neutronic_hint_next_amt").textContent = format_number(neutronic_hint_next(neutrons_earned));
         }
         if (!player.unlocked_neutronic) player.unlocked_neutronic = true;
     }
@@ -190,7 +190,7 @@ function update_prestige(player) {
         document.getElementById("prestige_layer_neutronic_reset").className = "prestige-layer-ascend disabled";
         document.getElementById("prestige_layer_neutronic_gain").style.display = "none";
         document.getElementById("prestige_layer_neutronic_hint").style.display = "";
-        document.getElementById("prestige_layer_neutronic_hint_amt").textContent = format_number(neutronic_hint(player));
+        document.getElementById("prestige_layer_neutronic_hint_amt").textContent = format_number(neutronic_hint());
         document.getElementById("prestige_layer_neutronic_hint_next").style.display = "none";
     }
     if (player.unlocked_neutronic) {
@@ -206,7 +206,7 @@ function update_prestige(player) {
         document.getElementById("statistics_fastest_neutronic").style.display = "none";
     }
 
-    if (can_vacuumic(player)) {
+    if (can_vacuumic()) {
         document.getElementById("prestige_layer_vacuumic_reset").className = "prestige-layer-ascend";
         document.getElementById("prestige_layer_vacuumic_gain").style.display = "";
         document.getElementById("prestige_layer_vacuumic_hint").style.display = "none";
@@ -215,7 +215,7 @@ function update_prestige(player) {
         }
         else {
             document.getElementById("prestige_layer_vacuumic_hint_next").style.display = "";
-            document.getElementById("prestige_layer_vacuumic_hint_next_amt").textContent = format_number(vacuumic_hint_next(player, vacuum_energy_earned));
+            document.getElementById("prestige_layer_vacuumic_hint_next_amt").textContent = format_number(vacuumic_hint_next(vacuum_energy_earned));
         }
         if (!player.unlocked_vacuumic) player.unlocked_vacuumic = true;
     }
@@ -223,7 +223,7 @@ function update_prestige(player) {
         document.getElementById("prestige_layer_vacuumic_reset").className = "prestige-layer-ascend disabled";
         document.getElementById("prestige_layer_vacuumic_gain").style.display = "none";
         document.getElementById("prestige_layer_vacuumic_hint").style.display = "";
-        document.getElementById("prestige_layer_vacuumic_hint_amt").textContent = format_number(vacuumic_hint(player));
+        document.getElementById("prestige_layer_vacuumic_hint_amt").textContent = format_number(vacuumic_hint());
         document.getElementById("prestige_layer_vacuumic_hint_next").style.display = "none";
     }
     if (player.unlocked_vacuumic) {
@@ -241,7 +241,7 @@ function update_prestige(player) {
         document.getElementById("statistics_fastest_vacuumic").style.display = "none";
     }
 
-    if (can_dimensional(player)) {
+    if (can_dimensional()) {
         document.getElementById("prestige_layer_dimensional_reset").className = "prestige-layer-ascend";
         document.getElementById("prestige_layer_dimensional_gain").style.display = "";
         document.getElementById("prestige_layer_dimensional_hint").style.display = "none";
@@ -251,7 +251,7 @@ function update_prestige(player) {
         document.getElementById("prestige_layer_dimensional_reset").className = "prestige-layer-ascend disabled";
         document.getElementById("prestige_layer_dimensional_gain").style.display = "none";
         document.getElementById("prestige_layer_dimensional_hint").style.display = "";
-        document.getElementById("prestige_layer_dimensional_hint_amt").textContent = format_number(dimensional_hint(player));
+        document.getElementById("prestige_layer_dimensional_hint_amt").textContent = format_number(dimensional_hint());
     }
     if (player.unlocked_dimensional) {
         document.getElementById("timer_dimensional").style.display = "";
@@ -267,7 +267,7 @@ function update_prestige(player) {
     }
 
     if (player.upgrades['v211'].is_active()) player.unlocked_atomic = true;
-    if (can_atomic(player)) {
+    if (can_atomic()) {
         document.getElementById("prestige_layer_atomic_reset").className = "prestige-layer-ascend";
         document.getElementById("prestige_layer_atomic_gain").style.display = "";
         document.getElementById("prestige_layer_atomic_hint_prebreak").style.display = "none";
@@ -277,7 +277,7 @@ function update_prestige(player) {
         }
         else {
             document.getElementById("prestige_layer_atomic_hint_next").style.display = "";
-            document.getElementById("prestige_layer_atomic_hint_next_amt").textContent = format_number(atomic_hint_next(player, atoms_earned));
+            document.getElementById("prestige_layer_atomic_hint_next_amt").textContent = format_number(atomic_hint_next(atoms_earned));
         }
         if (player.achievements['93'].complete) document.getElementById("prestige_layer_atomic_gain_ck").style.display = "";
         else document.getElementById("prestige_layer_atomic_gain_ck").style.display = "none";
@@ -294,7 +294,7 @@ function update_prestige(player) {
             document.getElementById("prestige_layer_atomic_hint_prebreak").style.display = "";
             document.getElementById("prestige_layer_atomic_hint_postbreak").style.display = "none";
         }
-        document.getElementById("prestige_layer_atomic_hint_amt").textContent = format_number(atomic_hint(player));
+        document.getElementById("prestige_layer_atomic_hint_amt").textContent = format_number(atomic_hint());
         document.getElementById("prestige_layer_atomic_hint_next").style.display = "none";
     }
     if (player.unlocked_atomic) {
@@ -310,7 +310,7 @@ function update_prestige(player) {
         document.getElementById("statistics_fastest_atomic").style.display = "none";
     }
 
-    if (can_biological(player)) {
+    if (can_biological()) {
         document.getElementById("prestige_layer_biological_reset").className = "prestige-layer-ascend";
         document.getElementById("prestige_layer_biological_gain").style.display = "";
         document.getElementById("prestige_layer_biological_hint").style.display = "none";
@@ -319,7 +319,7 @@ function update_prestige(player) {
         }
         else {
             document.getElementById("prestige_layer_biological_hint_next").style.display = "";
-            document.getElementById("prestige_layer_biological_hint_next_amt").textContent = format_number(biological_hint_next(player, genes_earned));
+            document.getElementById("prestige_layer_biological_hint_next_amt").textContent = format_number(biological_hint_next(genes_earned));
         }
         if (!player.unlocked_biological) player.unlocked_biological = true;
     }
@@ -327,7 +327,7 @@ function update_prestige(player) {
         document.getElementById("prestige_layer_biological_reset").className = "prestige-layer-ascend disabled";
         document.getElementById("prestige_layer_biological_gain").style.display = "none";
         document.getElementById("prestige_layer_biological_hint").style.display = "";
-        document.getElementById("prestige_layer_biological_hint_amt").textContent = format_number(biological_hint(player));
+        document.getElementById("prestige_layer_biological_hint_amt").textContent = format_number(biological_hint());
     }
     if (player.unlocked_biological) {
         document.getElementById("timer_biological").style.display = "";
@@ -351,14 +351,14 @@ function update_prestige(player) {
         document.getElementById("power_light_time_info").style.display = "";
         elements = document.getElementsByClassName("power_light_time");
         for (var i = 0; i < elements.length; i++) {
-            elements.item(i).textContent = format_number(power_light_time(player).pow(-1));
+            elements.item(i).textContent = format_number(power_light_time().pow(-1));
         }
     }
     else if (me.upgrades['g24'].is_active()) {
         document.getElementById("power_light_time_info").style.display = "";
         elements = document.getElementsByClassName("power_light_time");
         for (var i = 0; i < elements.length; i++) {
-            elements.item(i).textContent = format_number(power_light_time(player));
+            elements.item(i).textContent = format_number(power_light_time());
         }
     }
     else document.getElementById("power_light_time_info").style.display = "none";
@@ -384,11 +384,11 @@ function update_prestige(player) {
     // tickspeed
     if (!functions[player.upgrades['TICKSPEED'].availability_function]()) document.getElementById("tickspeed_wrapper").style.display = "none";
     else document.getElementById("tickspeed_wrapper").style.display = "";
-    document.getElementById("upgrade_TICKSPEED_reduction").textContent = format_number(get_tickspeed_power(player));
+    document.getElementById("upgrade_TICKSPEED_reduction").textContent = format_number(get_tickspeed_power());
 
     // vacuumic tree
-    document.getElementById("respec_space_theorems").textContent = format_number(space_theorems_invested(player));
-    update_vacuumic_tree(player);
+    document.getElementById("respec_space_theorems").textContent = format_number(space_theorems_invested());
+    update_vacuumic_tree();
 
     // achievement 52: unlock buy max neutronic particles
     if (player.achievements['52'].complete) {
@@ -686,13 +686,13 @@ function update_prestige(player) {
     document.getElementById("completed_achievements_count").textContent = format_number(completed_achievements);
     document.getElementById("all_achievements_count").textContent = format_number(all_achievements);
 
-    update_unlocked_menus(player);
-    update_unlock_hint(player);
-    update_hotkey_visibility(player);
-    process_visibility_classes(player);
+    update_unlocked_menus();
+    update_unlock_hint();
+    update_hotkey_visibility();
+    process_visibility_classes();
 }
 
-function unlocked_layers(player) {
+function unlocked_layers() {
     let resets = 0;
     if (player.unlocked_photonic) resets += 1;
     if (player.unlocked_gravitonic) resets += 1;
@@ -703,7 +703,7 @@ function unlocked_layers(player) {
     return resets;
 }
 
-function update_unlocked_menus(player) {
+function update_unlocked_menus() {
     document.getElementById("menu_button_automation").style.display = "none";
     document.getElementById("menu_button_photonic").style.display = "none";
     document.getElementById("menu_button_photonic_dimensions").style.display = "none";
@@ -842,7 +842,7 @@ function update_unlocked_menus(player) {
     }
 }
 
-function update_unlock_hint(player) {
+function update_unlock_hint() {
     document.getElementById("unlock_hint_photonic").style.display = "none"; 
     document.getElementById("unlock_hint_gravitonic").style.display = "none"; 
     document.getElementById("unlock_hint_neutronic").style.display = "none"; 
@@ -860,7 +860,7 @@ function update_unlock_hint(player) {
     else if (!player.unlocked_biological) document.getElementById("unlock_hint_biological").style.display = "";
 }
 
-function update_hotkey_visibility(player) {
+function update_hotkey_visibility() {
     document.getElementById("hotkey_photonic").style.display = "none"; 
     document.getElementById("hotkey_gravitonic").style.display = "none"; 
     document.getElementById("hotkey_neutronic").style.display = "none"; 
@@ -896,7 +896,7 @@ function update_hotkey_visibility(player) {
     if (unlocked_layers(player) > 0) document.getElementById("hotkey_upgrade_ids").style.display = ""; 
 }
 
-function process_visibility_classes(player) {
+function process_visibility_classes() {
     let elements_hide; 
     let elements_none;
 
@@ -1051,11 +1051,11 @@ function process_visibility_classes(player) {
 
 
 
-function get_tickspeed_power(player) {
+function get_tickspeed_power() {
     let base_pow = big(2);
 
     // black holes boost tickspeed power
-    base_pow = base_pow.mult(power_black_holes_tickspeed(player));
+    base_pow = base_pow.mult(power_black_holes_tickspeed());
     // p41: tickspeed power is increased
     base_pow = base_pow.mult(player.upgrades['p41'].get_effect());
 
@@ -1073,7 +1073,7 @@ function get_tickspeed_power(player) {
 
     return base_pow;
 }
-function space_theorems_invested(player) {
+function space_theorems_invested() {
     let space_theorems = big(0);
     
     for (let key of Object.keys(player.upgrades)) {
@@ -1086,7 +1086,7 @@ function space_theorems_invested(player) {
 
     return space_theorems;
 }
-function respec_vacuumic_tree(player) {
+function respec_vacuumic_tree() {
     if (me.settings['prestige_confirmation_vacuumic_tree']) {
         let default_limit = big(1e10);
         // achievement 42: you can store 2 times more resources
@@ -1101,7 +1101,7 @@ function respec_vacuumic_tree(player) {
     }
 
     // Challenge 4: all resources are capped
-    player.space_theorems = player.space_theorems.add(space_theorems_invested(player)).round().min(me.challenge_strength_4);
+    player.space_theorems = player.space_theorems.add(space_theorems_invested()).round().min(me.challenge_strength_4);
 
     for (let key of Object.keys(player.upgrades)) {
         if (key.includes("v") && !key.includes("v0")) {
@@ -1116,8 +1116,8 @@ function respec_vacuumic_tree(player) {
     reset_vacuumic(true);
 }
 
-function cap_resources(player) {
-    update_challenges_power(player);
+function cap_resources() {
+    update_challenges_power();
 
     player.matter = player.matter.min(player.challenge_strength_4);
     player.antimatter = player.antimatter.min(player.challenge_strength_4);
@@ -1168,7 +1168,7 @@ function cap_resources(player) {
         me.dimensions[key].amt = me.dimensions[key].amt.min(player.challenge_strength_4);
     }
 }
-function get_space_production(player) {
+function get_space_production() {
     let space_production = big(0);
     if (!player.matter.lt(1e10)) space_production = big(2).pow(player.matter.log(10).subtract(10)).mult(0.01);
     // d63: speed up space production

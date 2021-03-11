@@ -38,7 +38,7 @@ function format_time(milliseconds) {
     return result;
 }
 
-function screen_update(player) {
+function screen_update() {
     let resources = ["space_theorems",
                     "challenge_strength_1", "challenge_addinfo_2", "challenge_strength_2", "challenge_strength_3", "challenge_strength_4", 
                     "challenge_strength_6", "challenge_strength_8", "challenge_strength_9",
@@ -99,5 +99,5 @@ function screen_update(player) {
 
     document.getElementById("achievement_bonus").textContent = format_number(player.achievement_multiplier);
 
-    update_prestige(player);
+    update_prestige();
 }

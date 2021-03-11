@@ -45,7 +45,7 @@ class Achievement {
     }
 }
 
-function get_achievements_multiplier(player) {
+function get_achievements_multiplier() {
     var base_bonus = big(1.1);
     // Temperature Milestone 1: achievement bonus is increased
     if (player.milestones['temperature_1'].is_active()) base_bonus = player.milestones['temperature_1'].get_effect();

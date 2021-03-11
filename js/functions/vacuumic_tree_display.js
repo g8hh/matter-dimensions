@@ -85,7 +85,7 @@ var vacuumic_tree_connections = {
     "v201_v211": [["v201", "v211"]],
 };
 
-function update_vacuumic_tree(player) {
+function update_vacuumic_tree() {
     for (let key of Object.keys(vacuumic_tree_connections)) {
         let visible = false;
         let possible = false;
@@ -108,7 +108,7 @@ function update_vacuumic_tree(player) {
     }
 }
 
-function update_vacuumic_tree_old(player) {
+function update_vacuumic_tree_old() {
     if (player.upgrades['v11'].amt > 0) {
         if (player.upgrades['v21'].amt > 0) document.getElementById("vacuumic_tree_line_v11_v21").className = "vacuumic-tree-line active";
         else document.getElementById("vacuumic_tree_line_v11_v21").className = "vacuumic-tree-line possible";

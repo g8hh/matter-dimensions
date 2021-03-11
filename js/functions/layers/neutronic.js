@@ -1,4 +1,4 @@
-function prestige_earn_neutrons(player) {
+function prestige_earn_neutrons() {
     if (player.dimensions['matter_1'].amt.lt(1)) return big(0);
 
     var base = big(10);
@@ -19,7 +19,7 @@ function prestige_earn_neutrons(player) {
         // d92: gain more Neutrons based on Dimensional resets
         if (me.upgrades['d92'].is_active()) base_neutrons = base_neutrons.mult(me.upgrades['d92'].get_effect());
         // reactions provide boost to Neutrons
-        base_neutrons = base_neutrons.mult(reaction_points_effect_neutrons(player));
+        base_neutrons = base_neutrons.mult(reaction_points_effect_neutrons());
         // Vacuumic Challenge 4 reward: Neutron gain is multiplied by 4
         if (player.challenges['v4'].completed) base_neutrons = base_neutrons.mult(4);
     }
@@ -29,17 +29,17 @@ function prestige_earn_neutrons(player) {
 
     return base_neutrons.rounddown().max(0);
 }
-function can_neutronic(player) {
-    return prestige_earn_neutrons(player).gt(0);
+function can_neutronic() {
+    return prestige_earn_neutrons().gt(0);
 }
-function neutronic_hint(player) {
+function neutronic_hint() {
     var base = big(10);
     // n03: base is lower
     base = player.upgrades['n03'].get_effect();
 
     return base;
 }
-function neutronic_hint_next(player, amt) {
+function neutronic_hint_next(amt) {
     let resource_need = big(amt).add(1);
 
     // Vacuumic Challenge 4: Neutron gain is raised to the power of 0.25
@@ -50,7 +50,7 @@ function neutronic_hint_next(player, amt) {
     // d92: gain more Neutrons based on Dimensional resets
     if (me.upgrades['d92'].is_active()) resource_need = resource_need.div(me.upgrades['d92'].get_effect());
     // reactions provide boost to Neutrons
-    resource_need = resource_need.div(reaction_points_effect_neutrons(player));
+    resource_need = resource_need.div(reaction_points_effect_neutrons());
     // Vacuumic Challenge 4 reward: Neutron gain is multiplied by 4
     if (player.challenges['v4'].completed) resource_need = resource_need.div(4);
 
@@ -67,13 +67,13 @@ function neutronic_hint_next(player, amt) {
 
 
 function reset_neutronic(force=false, higher_reset=false, autobuyer_induced=false) {
-    if (!force && !can_neutronic(me)) return;
+    if (!force && !can_neutronic()) return;
     if (!force && !autobuyer_induced && me.settings['prestige_confirmation_neutronic']) {
         let result = confirm("Are you sure you want to perform a Neutronic reset?\n(This warning can be disabled in Settings)");
         if (!result) return;
     }
 
-    var earned_neutrons = prestige_earn_neutrons(me);
+    var earned_neutrons = prestige_earn_neutrons();
     if (!force) me.achievements['32'].award();
     if (!force && earned_neutrons.gt(1)) me.achievements['45'].award();
     if (!force && me.time_neutronic < 200) me.achievements['54'].award();
@@ -111,8 +111,8 @@ function reset_neutronic(force=false, higher_reset=false, autobuyer_induced=fals
     }
 
     // v51: gravitonic upgrades are not reset
-    // AUTO1_5: Gravitonic upgrades are never reset
-    if (!me.upgrades['AUTO1_5'].is_active() && (higher_reset || !me.upgrades['v51'].is_active())) {
+    // Gravitonic Meta-Challenge reward: Gravitonic upgrades are never reset
+    if (!me.challenges['g0'].completed && (higher_reset || !me.upgrades['v51'].is_active())) {
         for (let key of Object.keys(me.upgrades)) {
             if (key.includes("g")) {
                 // achievement 62: Gravitonic upgrades that provide automation are never reset
@@ -146,7 +146,7 @@ function reset_neutronic(force=false, higher_reset=false, autobuyer_induced=fals
 
 
 
-function power_stars_tickspeed(player) {
+function power_stars_tickspeed() {
     // Neutronic Challenge 8: Stars do nothing
     if (player.challenges['n8'].inC()) return big(0);
 
@@ -163,7 +163,7 @@ function power_stars_tickspeed(player) {
 
     return base_upg;
 }
-function power_stars_light_effect(player) {
+function power_stars_light_effect() {
     // Neutronic Challenge 8: Stars do nothing
     if (player.challenges['n8'].inC()) return big(1);
 
@@ -174,13 +174,13 @@ function power_stars_light_effect(player) {
 
     return base_pow;
 }
-function power_stars_photonic_dim(player) {
+function power_stars_photonic_dim() {
     // Neutronic Challenge 8: Stars do nothing
     if (player.challenges['n8'].inC()) return big(1);
 
     return player.stars.add(1);
 }
-function power_stars_black_holes(player) {
+function power_stars_black_holes() {
     // Neutronic Challenge 8: Stars do nothing
     if (player.challenges['n8'].inC()) return big(0);
 

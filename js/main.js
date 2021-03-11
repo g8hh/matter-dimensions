@@ -756,8 +756,9 @@ var default_settings = {
 };
 
 var me = new Player();
+var player = me;
 
-function processTimedelta(player, corrected_timedelta) {
+function processTimedelta(corrected_timedelta) {
     if (player.dimensions["matter_1"].amt.gt(0)) player.time_started = true;
 
     // Fix to a potential problem: wasted all Matter on any dimensions other than 1st.
@@ -779,16 +780,16 @@ function processTimedelta(player, corrected_timedelta) {
     // Inertia boosts timespeed
     if (player.inertia_enabled && player.time_started) {
         let inertia_boost = player.inertia_multiplier;
-        if (player.inertia.lt(inertia_loss_speed(player).mult(corrected_timedelta))) {
-            inertia_boost = big(1).add(big(player.inertia_multiplier).subtract(1).mult(player.inertia).div(inertia_loss_speed(player).mult(corrected_timedelta))).toInt();
+        if (player.inertia.lt(inertia_loss_speed().mult(corrected_timedelta))) {
+            inertia_boost = big(1).add(big(player.inertia_multiplier).subtract(1).mult(player.inertia).div(inertia_loss_speed().mult(corrected_timedelta))).toInt();
             player.inertia_enabled = false;
         }
-        player.inertia = player.inertia.subtract(inertia_loss_speed(player).mult(corrected_timedelta)).max(0);
+        player.inertia = player.inertia.subtract(inertia_loss_speed().mult(corrected_timedelta)).max(0);
         timedelta *= inertia_boost;
     }
 
     player.time_passed += timedelta;
-    update_challenges_power(player);
+    update_challenges_power();
 
     player.best_time_speed = Math.min(player.best_time_speed, player.challenge_strength_1);
 
@@ -823,7 +824,7 @@ function processTimedelta(player, corrected_timedelta) {
     for (let key of Object.keys(player.dimensions).reverse()) {
         player.dimensions[key].apply_timedelta(timedelta);
         // for VC5
-        if (key.endsWith("_1")) cap_resources(player);
+        if (key.endsWith("_1")) cap_resources();
     }
 
     var generation_timedelta = timedelta;
@@ -881,14 +882,14 @@ function processTimedelta(player, corrected_timedelta) {
         player.energy = player.energy.add(energy_generated).min(player.challenge_strength_4);
     }
 
-    player.space = player.space.add(get_space_production(player).mult(timedelta / 1000));
+    player.space = player.space.add(get_space_production().mult(timedelta / 1000));
     // achievement 108: Space is not affected by resource limit
     if (!me.achievements['108'].complete) player.space = player.space.min(player.challenge_strength_4);
 
     for (let key of Object.keys(player.achievements)) {
         player.achievements[key].update();
     }
-    player.achievement_multiplier = get_achievements_multiplier(player);
+    player.achievement_multiplier = get_achievements_multiplier();
 
     for (let key of Object.keys(player.challenges)) {
         player.challenges[key].update();
@@ -900,8 +901,8 @@ function processTimedelta(player, corrected_timedelta) {
 
     // g44: passive Photon gain
     if (player.upgrades['g44'].is_active()) {
-        if (can_photonic(player)) {
-            let photons_gained = prestige_earn_photons(player).mult(timedelta / 1000).add(player.photons_carry);
+        if (can_photonic()) {
+            let photons_gained = prestige_earn_photons().mult(timedelta / 1000).add(player.photons_carry);
             // Challenge 4: all resources are capped
             player.photons = player.photons.add(photons_gained.rounddown()).round().min(player.challenge_strength_4);
 
@@ -912,8 +913,8 @@ function processTimedelta(player, corrected_timedelta) {
 
     // AUTO1_4: instantly gain Grations upon reset
     if (player.upgrades['AUTO1_4'].is_active() && player.upgrades['AUTO1_4'].enabled) {
-        if (can_gravitonic(player)) {
-            let gravitons_gained = prestige_earn_gravitons(player);
+        if (can_gravitonic()) {
+            let gravitons_gained = prestige_earn_gravitons();
             // Challenge 4: all resources are capped
             player.gravitons = player.gravitons.add(gravitons_gained).round().min(player.challenge_strength_4);
 
@@ -924,8 +925,8 @@ function processTimedelta(player, corrected_timedelta) {
 
     // AUTO2_4: passive Neutron gain
     if (player.upgrades['AUTO2_4'].is_active()) {
-        if (can_neutronic(player)) {
-            let neutrons_gained = prestige_earn_neutrons(player).mult(timedelta / 1000).add(player.neutrons_carry);
+        if (can_neutronic()) {
+            let neutrons_gained = prestige_earn_neutrons().mult(timedelta / 1000).add(player.neutrons_carry);
             // Challenge 4: all resources are capped
             player.neutrons = player.neutrons.add(neutrons_gained.rounddown()).round().min(player.challenge_strength_4);
 
@@ -949,8 +950,8 @@ function processTimedelta(player, corrected_timedelta) {
         player.black_holes = player.black_holes.add(player.upgrades['v193'].get_effect().mult(timedelta / 1000)).min(player.challenge_strength_4);
     }
     
-    cap_resources(player);
-    update_mechanics(player);
+    cap_resources();
+    update_mechanics();
 }
 
 var timedelta_carry = 0;
@@ -958,8 +959,8 @@ var timedelta_carry = 0;
 function game_loop() {
     if (document.readyState == "loading") return;
 
-    if (last_local_storage_save == -1) load_from_local_storage(me);
-    if (Date.now() - last_local_storage_save > 1000) save_to_local_storage(me);
+    if (last_local_storage_save == -1) load_from_local_storage();
+    if (Date.now() - last_local_storage_save > 1000) save_to_local_storage();
 
     let timedelta = Date.now() - me.last_update_ts;
     let corrected_timedelta = Math.min(Math.max(0, timedelta + timedelta_carry), 1000);
@@ -970,7 +971,7 @@ function game_loop() {
     // Inertia gain, pt. 1
     let inertial_timedelta = Math.max(0, timedelta - 1000); // Offline
 
-    me.inertia = me.inertia.add(inertia_gain_speed(me).mult(inertial_timedelta)).min(me.upgrades['INERTIA_1'].get_effect());
+    me.inertia = me.inertia.add(inertia_gain_speed().mult(inertial_timedelta)).min(me.upgrades['INERTIA_1'].get_effect());
 
 
     me.last_update_ts = Date.now();
@@ -979,9 +980,9 @@ function game_loop() {
     let time_loop_repeats = Math.max(1, Math.floor(corrected_timedelta / 50));
     timedelta_carry = Math.max(0, corrected_timedelta - time_loop_repeats * 50);
 
-    for (let i = 0; i < time_loop_repeats; i+=1) processTimedelta(me, 50);
+    for (let i = 0; i < time_loop_repeats; i+=1) processTimedelta(50);
 
-    screen_update(me);
+    screen_update();
     for (let key of Object.keys(current_submenu)) {
         change_submenu(key, current_submenu[key]);
     }
@@ -1096,8 +1097,9 @@ window.onload = function() {
 
 function hard_reset() {
     me = new Player();
-    save_to_local_storage(me);
-    update_mechanics_first(me);
+    player = me;
+    save_to_local_storage();
+    update_mechanics_first();
     game_loop();
 }
 

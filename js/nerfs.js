@@ -1,11 +1,11 @@
-function update_challenges_power(player) {
+function update_challenges_power() {
     player.challenge_strength_1 = 256;//1000;
     // Photonic Challenge 7: time is 256x slower
     if (player.challenges['p7'].inC()) player.challenge_strength_1 *= 256;
     // p11: time is faster
     player.challenge_strength_1 /= player.upgrades["p11"].get_effect().toInt();
     // Photonic Challenge 4: light slows down time
-    if (player.challenges['p4'].inC()) player.challenge_strength_1 *= power_light_time(player).toInt();
+    if (player.challenges['p4'].inC()) player.challenge_strength_1 *= power_light_time().toInt();
     // g24: light speeds up time
     if (player.upgrades['g24'].is_active()) player.challenge_strength_1 /= player.upgrades['g24'].get_effect().toInt();
 

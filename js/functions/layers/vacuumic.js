@@ -1,4 +1,4 @@
-function prestige_earn_vacuum_energy(player) {
+function prestige_earn_vacuum_energy() {
     if (player.matter.lt(1e10) && player.space.lt(1e-9)) return big(0);
 
     let base_ve = player.space.pow(0.5);
@@ -7,13 +7,13 @@ function prestige_earn_vacuum_energy(player) {
 
     return base_ve.roundup().max(0);
 }
-function can_vacuumic(player) {
-    return prestige_earn_vacuum_energy(player).gt(0);
+function can_vacuumic() {
+    return prestige_earn_vacuum_energy().gt(0);
 }
-function vacuumic_hint(player) {
+function vacuumic_hint() {
     return big(1e10);
 }
-function vacuumic_hint_next(player, amt) {
+function vacuumic_hint_next(amt) {
     let resource_need = big(amt).add(1);
     // blue waves boost VE
     resource_need = resource_need.div(wave_effect('blue'));
@@ -24,13 +24,13 @@ function vacuumic_hint_next(player, amt) {
 
 
 function reset_vacuumic(force=false, higher_reset=false, autobuyer_induced=false) {
-    if (!force && !can_vacuumic(me)) return;
+    if (!force && !can_vacuumic()) return;
     if (!force && !autobuyer_induced && me.settings['prestige_confirmation_vacuumic']) {
         let result = confirm("Are you sure you want to perform a Vacuumic reset?\n(This warning can be disabled in Settings)");
         if (!result) return;
     }
 
-    var earned_vacuum_energy = prestige_earn_vacuum_energy(me);
+    var earned_vacuum_energy = prestige_earn_vacuum_energy();
     if (!force && me.time_vacuumic - me.time_passed < 1e-9) me.achievements['96'].award();
 
     // achievement 115: Temperature is no longer reduced on Vacuumic
@@ -120,22 +120,22 @@ function reset_vacuumic(force=false, higher_reset=false, autobuyer_induced=false
 
 
 
-function power_inflation_matter(player) {
+function power_inflation_matter() {
     return player.inflation.add(1).pow(4);
 }
-function power_inflation_photonic(player) {
+function power_inflation_photonic() {
     let base_pow = player.inflation.add(1);
     // Vacuumic Challenge 5 reward: those three boosts are ^1.5
     if (player.challenges['v5'].completed) base_pow = base_pow.pow(1.5);
     return base_pow;
 }
-function power_inflation_gravitonic(player) {
+function power_inflation_gravitonic() {
     let base_pow = player.inflation.add(1).pow(0.1);
     // Vacuumic Challenge 5 reward: those three boosts are ^1.5
     if (player.challenges['v5'].completed) base_pow = base_pow.pow(1.5);
     return base_pow;
 }
-function power_inflation_neutronic(player) {
+function power_inflation_neutronic() {
     let base_pow = player.inflation.add(1).pow(0.075);
     // Vacuumic Challenge 5 reward: those three boosts are ^1.5
     if (player.challenges['v5'].completed) base_pow = base_pow.pow(1.5);
