@@ -301,6 +301,7 @@ input {
     font-size: 0.75rem;
     padding: 5px 10px;
     user-select: none;
+    white-space: pre-line;
 }
 .achievement-bonus {
     text-align: center;
