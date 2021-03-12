@@ -115,9 +115,9 @@ function reset_neutronic(force=false, higher_reset=false, autobuyer_induced=fals
     if (!me.challenges['g0'].completed && (higher_reset || !me.upgrades['v51'].is_active())) {
         for (let key of Object.keys(me.upgrades)) {
             if (key.includes("g")) {
-                // achievement 62: Gravitonic upgrades that provide automation are never reset
+                // achievement 55: Gravitonic upgrades that provide automation are never reset
                 // achievement 88: keep all automation upgrades
-                if ((me.achievements['62'].complete || me.achievements['88'].complete) && (key == "g41" || key == "g42")) continue;
+                if ((me.achievements['55'].complete || me.achievements['88'].complete) && (key == "g41" || key == "g42")) continue;
                 me.upgrades[key].reset();
             }
         }

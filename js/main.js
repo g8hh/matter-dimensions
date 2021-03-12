@@ -248,19 +248,19 @@ class Player {
         this.achievements["52"] = new Achievement("52", "I feel weak", "Buy 10 protons, electrons and W-bosons each.\nReward: you can max buy Neutronic particles", "check_52", "effective");
         this.achievements["53"] = new Achievement("53", "I was never challenged", "Finish Photonic Challenge 1 in less than 60 milliseconds", "check_53");
         this.achievements["54"] = new Achievement("54", "Wanna see me speed Neutronic?", "Neutronic in less than 200 milliseconds", "check_54");
-        this.achievements["55"] = new Achievement("55", "Skipping Layers", "Neutronic without Photonic or Gravitonic resets", "check_55");
+        this.achievements["55"] = new Achievement("55", "Skipping Layers", "Neutronic without Photonic or Gravitonic resets.\nReward: Gravitonic upgrades that provide automation are never reset", "check_55", "effective");
         this.achievements["56"] = new Achievement("56", "Millionaire", "Have a million of 1st Matter Dimensions", "check_56");
         this.achievements["57"] = new Achievement("57", "99% Downtime", "Gravitonic 100 times.\nReward: upon Gravitonic reset, gain a Gravitonic reset per each Graviton earned", "check_57", "effective");
         this.achievements["58"] = new Achievement("58", "Inflation Era", "Produce over 100 space per second", "check_58");
 
         this.achievements["61"] = new Achievement("61", "I'm So Meta", "Buy 10 4th Matter Dimensions.\nReward: gain an extra Shard on Dimensional resets", "check_61", "effective");
-        this.achievements["62"] = new Achievement("62", "Matter Mayhem", "Reach 1e80 matter.\nReward: Gravitonic upgrades that provide automation are never reset", "check_62", "effective");
+        this.achievements["62"] = new Achievement("62", "Matter Mayhem", "Reach 1e80 matter.\nReward: you can max buy Photonic upgrades", "check_62", "effective");
         this.achievements["63"] = new Achievement("63", "Event Horizon", "Produce 1000 Black Holes", "check_63");
-        this.achievements["64"] = new Achievement("64", "Overachiever", "Reach 1e100 matter in any Gravitonic challenge", "check_64");
+        this.achievements["64"] = new Achievement("64", "Overachiever", "Reach 1e100 matter in any Gravitonic challenge.\nReward: you can max buy Gravitonic upgrades", "check_64", "effective");
         this.achievements["65"] = new Achievement("65", "Nested Challenges", "Start a Photonic challenge inside a Gravitonic challenge", "check_65");
         this.achievements["66"] = new Achievement("66", "Solar Flare", "Get more than 1e8 Photons from a single Photonic reset", "check_66");
         this.achievements["67"] = new Achievement("67", "The Challenging Minute", "Complete 12 challenges in total", "check_67");
-        this.achievements["68"] = new Achievement("68", "SpaceX", "Have 10 Space Theorems in total.\nReward: you can max buy Photonic upgrades", "check_68", "effective");
+        this.achievements["68"] = new Achievement("68", "SpaceX", "Have 10 Space Theorems in total", "check_68");
 
         this.achievements["71"] = new Achievement("71", "NEW DIMENSIONS???", "Buy 5th Matter Dimension", "check_71");
         this.achievements["72"] = new Achievement("72", "Hex", "Buy 6th Matter Dimension", "check_72");
@@ -271,11 +271,11 @@ class Player {
         this.achievements["77"] = new Achievement("77", "The first one is always free", "Complete each regular Neutronic challenge once", "check_77");
         this.achievements["78"] = new Achievement("78", "Metaphor gotten", "Complete a Meta-Challenge", "check_78");
 
-        this.achievements["81"] = new Achievement("81", "Not a luck related achievement", "Buy 7th Matter Dimension", "check_81");
+        this.achievements["81"] = new Achievement("81", "Not a luck related achievement", "Buy 7th Matter Dimension.\nReward: unlock autobuyer for Photonic upgrades", "check_81", "effective");
         this.achievements["82"] = new Achievement("82", "Limit Break", "Break Infinity", "check_82");
         this.achievements["83"] = new Achievement("83", "Background Radiation", "Reach 2.73 K of Temperature.\nReward: unlock the option to distribute 50% of produced energy to heating", "check_83", "effective");
         this.achievements["84"] = new Achievement("84", "Republican Victory", "Obtain a Red Wave", "check_84");
-        this.achievements["85"] = new Achievement("85", "Paralympic Contestant", "Complete Gravitonic Challenge 1 or Gravitonic Challenge 2.\nReward: you can max buy Gravitonic upgrades", "check_85", "effective");
+        this.achievements["85"] = new Achievement("85", "Paralympic Contestant", "Complete Gravitonic Challenge 1 or Gravitonic Challenge 2", "check_85");
         this.achievements["86"] = new Achievement("86", "Why did I do this?", "Be in two Meta-Challenges at once", "check_86");
         this.achievements["87"] = new Achievement("87", "The second one is not so free", "Complete any Neutronic challenge twice", "check_87");
         this.achievements["88"] = new Achievement("88", "1024 bits is not enough", "Get your resource limit above 2^1024.\nReward: you always keep automation upgrades not in Automation Shop", "check_88", "effective");
@@ -285,8 +285,8 @@ class Player {
         this.achievements["93"] = new Achievement("93", "Messing with Molecules", "Perform an Atomic reset thrice.\nReward: unlock Collider in Atomic tab", "check_93", "effective");
         this.achievements["94"] = new Achievement("94", "Democratic Victory", "Obtain a Blue Wave", "check_94");
         this.achievements["95"] = new Achievement("95", "Hey, it's not cold anymore!", "Reach 0 °C (273.15 K, 32 °F) of Temperature", "check_95");
-        this.achievements["96"] = new Achievement("96", "Empty Vacuum", "Vacuumic without Photonic, Gravitonic or Neutronic resets.\nReward: always keep Photonic upgrades on resets", "check_96", "effective");
-        this.achievements["97"] = new Achievement("97", "The third one is kinda expensive", "Complete any Neutronic challenge three times", "check_97");
+        this.achievements["96"] = new Achievement("96", "Empty Vacuum", "Vacuumic without Photonic, Gravitonic or Neutronic resets", "check_96");
+        this.achievements["97"] = new Achievement("97", "The third one is kinda expensive", "Complete any Neutronic challenge three times.\nReward: you can max buy Neutronic upgrades", "check_97", "effective");
         this.achievements["98"] = new Achievement("98", "Infinite Time", "Reach 1.79e308/s tickspeed", "check_98");
 
         this.achievements["101"] = new Achievement("101", "Combinatorial Explosion", "Have 5 Collision Points", "check_101");
@@ -307,11 +307,11 @@ class Player {
         this.achievements["117"] = new Achievement("117", "The fifth one is done", "Complete any Neutronic challenge five times.\nReward: each Neutronic challenge that is completed five times divides Neutronic Meta-Challenge goal exponent by 10", "check_117", "effective");
         this.achievements["118"] = new Achievement("118", "The universe is full, go away!", "Have more Space than your resource limit.\nReward: Space gain is raised to a power of 1.1, if it is above 1/s", "check_118", "effective");
 
-        this.achievements["121"] = new Achievement("121", "It is alive!", "Go Biological", "check_121");
+        this.achievements["121"] = new Achievement("121", "It is alive!", "Go Biological.\nReward: gain twice more Atoms and Collision Knowledge on Atomic", "check_121", "effective");
         this.achievements["122"] = new Achievement("122", "I can't see what I am doing!", "Have more Atoms than your resource limit", "check_122");
         this.achievements["123"] = new Achievement("123", "IT'S OVER 9000!", "Have over 1e9000/s tickspeed", "check_123");
         this.achievements["124"] = new Achievement("124", "Completionist", "Complete Gravitonic Meta-Challenge", "check_124");
-        this.achievements["125"] = new Achievement("125", "Particle Party", "Buy 200 protons, electrons and W-Bosons each.\nReward: you can max buy Neutronic upgrades", "check_125", "effective");
+        this.achievements["125"] = new Achievement("125", "Particle Party", "Buy 200 protons, electrons and W-Bosons each", "check_125");
         this.achievements["126"] = new Achievement("126", "This achievement doesn't exist", "Have at least 9.999e9'999 matter", "check_126");
         this.achievements["127"] = new Achievement("127", "Infinite Problems", "Complete a Vacuumic challenge", "check_127");
         this.achievements["128"] = new Achievement("128", "Why did I do this again?", "Be in three Meta-Challenges at once", "check_128");
@@ -1069,9 +1069,9 @@ function hotkeydown(event) {
                 for (let i = 1; i <= 12; i++)
                     me.dimensions[current_menu + "_" + i].buy(me.dimensions[current_menu + "_" + i].binary_search_max()); 
             if (current_menu in current_submenu && current_submenu[current_menu] == "upgrades") {
-                if (current_menu == "photonic" && (me.achievements['68'].complete || me.challenges['p0'].completed)) max_buy_upgrades('p');
-                if (current_menu == "gravitonic" && (me.achievements['85'].complete || me.challenges['g0'].completed)) max_buy_upgrades('g');
-                if (current_menu == "neutronic" && (me.achievements['125'].complete)) max_buy_upgrades('n');
+                if (current_menu == "photonic" && (me.achievements['62'].complete || me.achievements['81'].complete)) max_buy_upgrades('p');
+                if (current_menu == "gravitonic" && (me.achievements['64'].complete || me.challenges['g0'].completed)) max_buy_upgrades('g');
+                if (current_menu == "neutronic" && (me.achievements['97'].complete)) max_buy_upgrades('n');
             }
             break;
         case 'Shift':

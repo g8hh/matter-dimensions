@@ -593,16 +593,16 @@ functions["upg_g40_available"] = () => {
 functions["upg_g41_available"] = () => {
     // Gravitonic Challenge 4: lower-right block is disabled
     if (me.challenges['g4'].inC()) return false;
-    // achievement 62: Gravitonic upgrades that provide automation are never reset
-    if (me.upgrades['g41'].amt > 0 && me.achievements['62'].complete) return true;
+    // achievement 55: Gravitonic upgrades that provide automation are never reset
+    if (me.upgrades['g41'].amt > 0 && me.achievements['55'].complete) return true;
 
     return me.upgrades['g40'].amt > 0;
 }
 functions["upg_g42_available"] = () => {
     // Gravitonic Challenge 4: lower-right block is disabled
     if (me.challenges['g4'].inC()) return false;
-    // achievement 62: Gravitonic upgrades that provide automation are never reset
-    if (me.upgrades['g42'].amt > 0 && me.achievements['62'].complete) return true;
+    // achievement 55: Gravitonic upgrades that provide automation are never reset
+    if (me.upgrades['g42'].amt > 0 && me.achievements['55'].complete) return true;
 
     return me.upgrades['g40'].amt > 0;
 }

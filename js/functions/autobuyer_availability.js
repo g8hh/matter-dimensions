@@ -87,8 +87,8 @@ functions["autobuyer_photonic_available"] = () => {
 };
 
 functions["autobuyer_photonic_upgrades_available"] = () => {
-    // Photonic Meta-Challenge reward: unlock autobuyer for Photonic upgrades
-    return me.challenges['p0'].completed;
+    // achievement 81: unlock autobuyer for Photonic upgrades
+    return me.achievements['81'].complete;
 };
 
 functions["autobuyer_photonic_1_available"] = () => {

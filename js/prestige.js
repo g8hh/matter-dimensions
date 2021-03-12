@@ -414,8 +414,8 @@ function update_prestige() {
     if (me.challenges['g4'].inC()) document.getElementById("block_gravitonic_4").style.display = "none";
     else document.getElementById("block_gravitonic_4").style.display = "";
 
-    // achievement 68: unlock buy max photonic upgrades
-    if (player.achievements['68'].complete || player.challenges['p0'].completed) {
+    // achievement 62: unlock buy max photonic upgrades
+    if (player.achievements['62'].complete || player.achievements['81'].complete) {
         document.getElementById("upgrades_photonic_buy_max").style.display = "";
     }
     else {
@@ -623,8 +623,8 @@ function update_prestige() {
     }
     else document.getElementById("st_autobuyer_toggle").style.display = "none";
 
-    // achievement 85: unlock buy max gravitonic upgrades
-    if (player.achievements['85'].complete || player.challenges['g0'].completed) {
+    // achievement 64: unlock buy max gravitonic upgrades
+    if (player.achievements['64'].complete || player.challenges['g0'].completed) {
         document.getElementById("upgrades_gravitonic_buy_max").style.display = "";
     }
     else {
@@ -668,8 +668,8 @@ function update_prestige() {
     }
     else document.getElementById("power_inflation_neutronic_info").style.display = "none";
 
-    // achievement 125: unlock buy max neutronic upgrades
-    if (player.achievements['125'].complete) {
+    // achievement 97: unlock buy max neutronic upgrades
+    if (player.achievements['97'].complete) {
         document.getElementById("upgrades_neutronic_buy_max").style.display = "";
     }
     else {

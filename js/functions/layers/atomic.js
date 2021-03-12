@@ -7,6 +7,8 @@ function prestige_earn_atoms() {
 
     // a01_2: increase Atom gain
     if (me.milestones['a01_2'].is_active()) base_income = base_income.mult(me.milestones['a01_2'].get_effect());
+    // achievement 121: double gain
+    if (player.achievements['121'].complete) base_income = base_income.mult(2);
 
     return base_income.rounddown().max(0);
 }
@@ -19,6 +21,8 @@ function prestige_earn_collision_knowledge() {
 
     // a03_1: increase CK gain
     if (me.milestones['a03_1'].is_active()) base_income = base_income.mult(me.milestones['a03_1'].get_effect());
+    // achievement 121: double gain
+    if (player.achievements['121'].complete) base_income = base_income.mult(2);
 
     return base_income.rounddown().max(0);
 }

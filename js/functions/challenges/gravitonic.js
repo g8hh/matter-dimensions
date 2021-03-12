@@ -16,9 +16,9 @@ functions["start_g5"] = () => {
 functions["start_g6"] = () => {
     for (let key of Object.keys(player.upgrades)) {
         if (key.includes("g")) {
-            // achievement 62: Gravitonic upgrades that provide automation are never reset
+            // achievement 55: Gravitonic upgrades that provide automation are never reset
             // achievement 88: keep all automation upgrades
-            if ((player.achievements['62'].complete || player.achievements['88'].complete) && (key == "g41" || key == "g42")) continue;
+            if ((player.achievements['55'].complete || player.achievements['88'].complete) && (key == "g41" || key == "g42")) continue;
             player.upgrades[key].reset();
         }
     }
