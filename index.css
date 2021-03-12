@@ -267,7 +267,7 @@ input {
 
     display: grid;
     grid-template-columns: repeat(8, 1fr);
-    grid-template-rows: repeat(12, 1fr);
+    grid-template-rows: repeat(13, 1fr);
     grid-gap: 10px;
 }
 .achievement-list div::before {
@@ -879,4 +879,30 @@ input {
     padding: 10px;
     font-size: 1.1em;
     text-align: center;
+}
+
+.biological-population-table {
+    display: grid;
+    gap: 5px;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-columns: 3fr 2fr 2fr;
+}
+
+.biological-population-growth-table {
+    display: grid;
+    gap: 5px;
+    grid-template-rows: 1fr auto;
+    grid-template-columns: 1fr 1fr;
+}
+
+.biological-population-growth-block {
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+}
+
+.biological-population-growth-line {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }

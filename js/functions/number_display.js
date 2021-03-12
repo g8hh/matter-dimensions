@@ -50,7 +50,7 @@ function modified_log2(number) {
     return Math.floor(Math.log2(number)) + number / Math.pow(2, Math.floor(Math.log2(number))) - 1;
 }
 
-function format_number(number, fixed=false, ignore_infinity=false, notation="") {
+function format_number(number, fixed=false, ignore_infinity=false, notation="", integer=false) {
     if (notation == "") notation = me.settings["notation"];
     if (notation == "blind") return "";
     if (!(number instanceof BigNumber)) number = new BigNumber(number);
@@ -76,6 +76,7 @@ function format_number(number, fixed=false, ignore_infinity=false, notation="") 
                 if (num_lg < 5) extra_digits = 1;
                 if (num_lg < 4) extra_digits = 2;
                 if (num_lg < 3) extra_digits = 3;
+                if (integer) extra_digits = 0;
 
                 result += pad_number(Math.pow(10, num_lg), extra_digits, fixed);
             }
@@ -91,15 +92,15 @@ function format_number(number, fixed=false, ignore_infinity=false, notation="") 
             }
             break;
         case "alternate_default":
-            result = format_number(number, fixed, ignore_infinity, "default");
+            result = format_number(number, fixed, ignore_infinity, "default", integer);
             result = result.split('e').join('ᴇ');
             break;
         case "scientific":
             if (!num_sgn) result += "-";
 
-            if (num_lg < 6) result = format_number(number, fixed, ignore_infinity, "default");
+            if (num_lg < 6) result = format_number(number, fixed, ignore_infinity, "default", integer);
             else if (num_lg < 1e12) {
-                result = format_number(number, fixed, ignore_infinity, "default");
+                result = format_number(number, fixed, ignore_infinity, "default", integer);
                 result = result.split('e').join("·10^");
             }
             else {
@@ -111,7 +112,7 @@ function format_number(number, fixed=false, ignore_infinity=false, notation="") 
             if (!num_sgn) result += "-";
 
             if (num_lg < 3) {
-                result = format_number(number, fixed, ignore_infinity, "default");
+                result = format_number(number, fixed, ignore_infinity, "default", integer);
             }
             else result += "e" + format_number(num_lg, fixed, ignore_infinity, "default");
 
@@ -120,7 +121,7 @@ function format_number(number, fixed=false, ignore_infinity=false, notation="") 
             if (!num_sgn) result += "-";
 
             if (num_lg < 3) {
-                result = format_number(number, fixed, ignore_infinity, "default");
+                result = format_number(number, fixed, ignore_infinity, "default", integer);
             }
             else result += format_number(number.log(big(2).pow(1024)), fixed, ignore_infinity, "default") + "∞";
 
@@ -133,6 +134,7 @@ function format_number(number, fixed=false, ignore_infinity=false, notation="") 
                 if (num_lg < 7) extra_digits = 1;
                 if (num_lg < 5) extra_digits = 2;
                 if (num_lg < 3) extra_digits = 3;
+                if (integer) extra_digits = 0;
 
                 result += pad_number_base2(Math.pow(2, num_lg), extra_digits, fixed);
             }
@@ -177,7 +179,7 @@ function format_number(number, fixed=false, ignore_infinity=false, notation="") 
                 '-': '➖', '.': '.', 'e': '🇪', "'": '🟦'
             };
         
-            result = format_number(number, fixed, ignore_infinity, "default");
+            result = format_number(number, fixed, ignore_infinity, "default", integer);
             if (!fixed) result = result.split('10').join('🔟');
             for (let key of Object.keys(EMOJI_REPLACEMENTS)) {
                 result = result.split(key).join(EMOJI_REPLACEMENTS[key]);

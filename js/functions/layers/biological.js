@@ -65,3 +65,13 @@ function reset_biological(force=false, higher_reset=false, autobuyer_induced=fal
 
     if (!force) game_loop();
 }
+
+
+
+function perform_extinction() {
+    let result = confirm("Are you sure you want to perform an Extinction?\n(This warning can be disabled in Settings)");
+    if (!result) return;
+
+    player.population_sacrificed = player.population_sacrificed.add(player.population.subtract(1));
+    player.population = big(1);
+}

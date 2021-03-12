@@ -11,7 +11,7 @@ var SAVE_NORMAL_VARS = ["unlocked_photonic", "unlocked_gravitonic", "unlocked_ne
                         "collision_points", "collision_points_in_reaction", "collision_points_in_synthesis", "collision_points_in_generation", "active_reactions",
                         "total_realtime", "online_realtime",
                         "version", "settings"];
-var SAVE_BIGNUM_VARS = ["matter", "antimatter", "energy", "temperature_energy", "collision_knowledge",
+var SAVE_BIGNUM_VARS = ["matter", "antimatter", "energy", "temperature_energy", "collision_knowledge", "population", "population_sacrificed",
                         "photons", "gravitons", "neutrons", "vacuum_energy", "shards", "atoms", "genes",
                         "light", "space", "black_holes", "stars", "inflation", "manifolds",
                         "max_matter", "max_photons_at_once", "max_gravitons", "max_gravitons_in_nc", 

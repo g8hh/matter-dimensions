@@ -730,7 +730,7 @@ function update_unlocked_menus() {
     document.getElementById("menu_button_atomic_collider").style.display = "none";
     document.getElementById("menu_button_biological").style.display = "none";
     document.getElementById("menu_button_biological_population").style.display = "none";
-    document.getElementById("menu_button_biological_upgrades").style.display = "none";
+    document.getElementById("menu_button_biological_evolutions").style.display = "none";
 
     // Photonic upgrades
     if (player.unlocked_photonic) {
@@ -772,7 +772,7 @@ function update_unlocked_menus() {
     if (player.unlocked_biological) {
         document.getElementById("menu_button_biological").style.display = "";
         document.getElementById("menu_button_biological_population").style.display = "";
-        document.getElementById("menu_button_biological_upgrades").style.display = "";
+        document.getElementById("menu_button_biological_evolutions").style.display = "";
     }
 
     // Photonic dimensions

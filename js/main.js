@@ -34,6 +34,9 @@ class Player {
 
         this.space_theorems = new BigNumber(0);
 
+        this.population = new BigNumber(1);
+        this.population_sacrificed = new BigNumber(0);
+
         this.collision_points = 0;
         this.collision_points_in_reaction = 0;
         this.collision_points_in_synthesis = 0;
@@ -751,6 +754,7 @@ var default_settings = {
     "prestige_confirmation_dimensional": true,
     "prestige_confirmation_atomic": true,
     "prestige_confirmation_biological": true,
+    "prestige_confirmation_extinction": true,
 
     "no_resource_limit": false,
     "show_ids": false,

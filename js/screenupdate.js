@@ -62,6 +62,13 @@ function screen_update() {
         document.getElementById("resource_" + res).textContent = format_number(player[res], true);
     });
 
+    // Reworked system for on-demand drawing
+    let var_elements = document.getElementsByClassName("variable-value");
+    for (let i = 0; i < var_elements.length; i++) {
+        if (var_elements.item(i).attributes.rounded !== undefined) var_elements.item(i).textContent = format_number(big(player[var_elements.item(i).attributes.name.value]).round(), true, false, "", true);
+        else if (var_elements.item(i).attributes.fixed !== undefined) var_elements.item(i).textContent = format_number(player[var_elements.item(i).attributes.name.value], true);
+        else var_elements.item(i).textContent = format_number(player[var_elements.item(i).attributes.name.value]);
+    }
 
     let timers = ["overall_time", "time_passed", "time_photonic", "time_gravitonic", "time_neutronic", "time_vacuumic", "time_dimensional", "time_atomic", "time_biological",
                  "fastest_photonic", "fastest_gravitonic", "fastest_neutronic", "fastest_vacuumic", "fastest_dimensional", "fastest_atomic", "fastest_biological",

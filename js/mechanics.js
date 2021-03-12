@@ -2,6 +2,7 @@ function update_mechanics_first() {
     update_inertia_first();
     update_temperature_first();
     update_collider_first();
+    update_population_first();
     update_settings_first();
 
     update_mechanics();
@@ -11,6 +12,7 @@ function update_mechanics() {
     update_inertia();
     update_temperature();
     update_collider();
+    update_population();
     update_settings();
 }
 
@@ -482,6 +484,55 @@ function update_collider() {
             document.getElementById("upgrade_" + key + "_total_level").textContent = format_number(get_atom_level(key));
         }
     }
+}
+
+// Population
+
+function update_population_first() {
+
+}
+
+function mortality_rate() {
+    let base = player.population.max(1).log(10);
+    return base;
+}
+
+function population_total_positive_change() {
+    let base = big(0);
+    return base;
+}
+
+function population_total_negative_change() {
+    let base = big(0);
+    base = base.add(mortality_rate());
+    return base;
+}
+
+function population_change_speed() {
+    let base = big(1);
+    if (population_total_positive_change().add(population_total_negative_change()).gt(0)) base = big(2).mult(population_total_positive_change()).div(population_total_positive_change().add(population_total_negative_change())).pow(2.070389328).add(0.21).pow(0.5).subtract(0.1);
+    
+    return base;
+}
+
+function extinction_effect(x=player.population_sacrificed) {
+    return x.pow(0.1).add(1);
+}
+
+function update_population() {
+    document.getElementById("mechanic_population_change_population").textContent = "-" + format_number(mortality_rate(), true);
+
+    if (population_change_speed().lt(1)) {
+        document.getElementById("mechanic_population_change_percent").classList = "neutronic-number-matter large-number";
+        document.getElementById("mechanic_population_change_percent").textContent = "-" + format_number(big(1).subtract(population_change_speed()).mult(100), true) + "%";
+    }
+    else {
+        document.getElementById("mechanic_population_change_percent").classList = "neutronic-number-gravitonic large-number";
+        document.getElementById("mechanic_population_change_percent").textContent = "+" + format_number(population_change_speed().subtract(1).mult(100), true) + "%";
+    }
+
+    document.getElementById("mechanic_population_extinction_current").textContent = format_number(extinction_effect(), true);
+    document.getElementById("mechanic_population_extinction_next").textContent = format_number(extinction_effect(player.population_sacrificed.add(player.population.subtract(1))), true);
 }
 
 // Settings
