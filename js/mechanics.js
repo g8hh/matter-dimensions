@@ -523,11 +523,11 @@ function update_population() {
     document.getElementById("mechanic_population_change_population").textContent = "-" + format_number(mortality_rate(), true);
 
     if (population_change_speed().lt(1)) {
-        document.getElementById("mechanic_population_change_percent").classList = "neutronic-number-matter large-number";
+        document.getElementById("mechanic_population_change_percent").className = "neutronic-number-matter large-number";
         document.getElementById("mechanic_population_change_percent").textContent = "-" + format_number(big(1).subtract(population_change_speed()).mult(100), true) + "%";
     }
     else {
-        document.getElementById("mechanic_population_change_percent").classList = "neutronic-number-gravitonic large-number";
+        document.getElementById("mechanic_population_change_percent").className = "neutronic-number-gravitonic large-number";
         document.getElementById("mechanic_population_change_percent").textContent = "+" + format_number(population_change_speed().subtract(1).mult(100), true) + "%";
     }
 

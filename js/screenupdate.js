@@ -104,7 +104,7 @@ function screen_update() {
         player.milestones[key].screen_update();
     }
 
-    document.body.classList = "theme-" + player.settings['theme'] + " font-" + player.settings['font'];
+    document.body.className = "theme-" + player.settings['theme'] + " font-" + player.settings['font'];
 
     document.getElementById("achievement_bonus").textContent = format_number(player.achievement_multiplier);
 
