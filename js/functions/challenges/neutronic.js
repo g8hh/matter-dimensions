@@ -1,67 +1,67 @@
 functions["start_n1"] = () => {
-    me.max_gravitons_in_nc = new BigNumber(0);
+    player.max_gravitons_in_nc = new BigNumber(0);
 };
 functions["start_n2"] = () => {
-    me.max_gravitons_in_nc = new BigNumber(0);
+    player.max_gravitons_in_nc = new BigNumber(0);
 };
 functions["start_n3"] = () => {
-    me.max_gravitons_in_nc = new BigNumber(0);
+    player.max_gravitons_in_nc = new BigNumber(0);
 };
 functions["start_n4"] = () => {
-    me.max_gravitons_in_nc = new BigNumber(0);
+    player.max_gravitons_in_nc = new BigNumber(0);
 };
 functions["start_n5"] = () => {
-    me.max_gravitons_in_nc = new BigNumber(0);
+    player.max_gravitons_in_nc = new BigNumber(0);
 };
 functions["start_n6"] = () => {
-    me.max_gravitons_in_nc = new BigNumber(0);
+    player.max_gravitons_in_nc = new BigNumber(0);
 
-    me.dimensions["protons"].reset();
-    me.dimensions["electrons"].reset();
-    me.dimensions["bosons"].reset();
+    player.dimensions["protons"].reset();
+    player.dimensions["electrons"].reset();
+    player.dimensions["bosons"].reset();
 
-    for (let key of Object.keys(me.upgrades)) {
+    for (let key of Object.keys(player.upgrades)) {
         if (key.includes("n")) {
-            me.upgrades[key].reset();
+            player.upgrades[key].reset();
         }
     }
 };
 functions["start_n7"] = () => {
-    me.max_gravitons_in_nc = new BigNumber(0);
+    player.max_gravitons_in_nc = new BigNumber(0);
 };
 functions["start_n8"] = () => {
-    me.max_gravitons_in_nc = new BigNumber(0);
+    player.max_gravitons_in_nc = new BigNumber(0);
 };
 functions["start_n0"] = () => {
-    me.max_gravitons_in_nc = new BigNumber(0);
+    player.max_gravitons_in_nc = new BigNumber(0);
 };
 
 functions["goal_n1"] = () => {
-    return !me.matter.lt(me.challenges['n1'].goal());
+    return !player.matter.lt(player.challenges['n1'].goal());
 };
 functions["goal_n2"] = () => {
-    return !me.matter.lt(me.challenges['n2'].goal());
+    return !player.matter.lt(player.challenges['n2'].goal());
 };
 functions["goal_n3"] = () => {
-    return !me.matter.lt(me.challenges['n3'].goal());
+    return !player.matter.lt(player.challenges['n3'].goal());
 };
 functions["goal_n4"] = () => {
-    return !me.matter.lt(me.challenges['n4'].goal());
+    return !player.matter.lt(player.challenges['n4'].goal());
 };
 functions["goal_n5"] = () => {
-    return !me.matter.lt(me.challenges['n5'].goal());
+    return !player.matter.lt(player.challenges['n5'].goal());
 };
 functions["goal_n6"] = () => {
-    return !me.matter.lt(me.challenges['n6'].goal());
+    return !player.matter.lt(player.challenges['n6'].goal());
 };
 functions["goal_n7"] = () => {
-    return !me.matter.lt(me.challenges['n7'].goal());
+    return !player.matter.lt(player.challenges['n7'].goal());
 };
 functions["goal_n8"] = () => {
-    return !me.matter.lt(me.challenges['n8'].goal());
+    return !player.matter.lt(player.challenges['n8'].goal());
 };
 functions["goal_n0"] = () => {
-    return !me.matter.lt(me.challenges['n0'].goal());
+    return !player.matter.lt(player.challenges['n0'].goal());
 };
 
 functions["end_n1"] = () => {
@@ -119,9 +119,9 @@ functions["goal_amt_n8"] = (c) => {
 functions["goal_amt_n0"] = (c) => {
     let base_exp = big(1e10);
     // achievement 117: each NCx5 reduces exponent /10
-    if (me.achievements['117'].complete) {
-        for (let key of Object.keys(me.challenges)) {
-            if (key.includes('n') && me.challenges[key].completions >= 5) base_exp = base_exp.div(10);
+    if (player.achievements['117'].complete) {
+        for (let key of Object.keys(player.challenges)) {
+            if (key.includes('n') && player.challenges[key].completions >= 5) base_exp = base_exp.div(10);
         }
     }
 

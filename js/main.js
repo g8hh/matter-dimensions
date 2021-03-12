@@ -761,8 +761,8 @@ var default_settings = {
     "show_all_changelog": false,
 };
 
-var me = new Player();
-var player = me;
+var player = new Player();
+var me = player;
 
 function processTimedelta(corrected_timedelta) {
     if (player.dimensions["matter_1"].amt.gt(0)) player.time_started = true;
@@ -1102,8 +1102,8 @@ window.onload = function() {
 };
 
 function hard_reset() {
-    me = new Player();
-    player = me;
+    player = new Player();
+    me = player;
     save_to_local_storage();
     update_mechanics_first();
     game_loop();
