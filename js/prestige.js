@@ -700,6 +700,7 @@ function unlocked_layers() {
     if (player.unlocked_vacuumic) resets += 1;
     if (player.unlocked_dimensional) resets += 1;
     if (player.unlocked_atomic) resets += 1;
+    if (player.unlocked_biological) resets += 1;
     return resets;
 }
 

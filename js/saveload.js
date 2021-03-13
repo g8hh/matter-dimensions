@@ -56,6 +56,13 @@ function create_save() {
         data["autobuyers"][key] = player.autobuyers[key].create_save();
     }
 
+    data["evolutions"] = {};
+    if (player.evolutions !== undefined) {
+        for (let key of Object.keys(player.evolutions)) {
+            data["evolutions"][key] = player.evolutions[key].create_save();
+        }
+    }
+
     return data;
 }
 
@@ -90,6 +97,12 @@ function load_save(data) {
         if (player.autobuyers.hasOwnProperty(key)) player.autobuyers[key].load_save(data["autobuyers"][key]);
     }
 
+    if (data["evolutions"] !== undefined) {
+        for (let key of Object.keys(data["evolutions"])) {
+            if (player.evolutions.hasOwnProperty(key)) player.evolutions[key].load_save(data["evolutions"][key]);
+        }
+    }
+
     for (let key of Object.keys(default_settings)) {
         if (!(key in player.settings)) {
             player.settings[key] = default_settings[key];
@@ -121,18 +134,6 @@ function load_save(data) {
         player.time_biological = player.overall_time;
         if (player.total_realtime > 365 * 24 * 60 * 60 * 1000) player.total_realtime = player.online_realtime; // 1970 fix
     }
-
-    change_menu(default_menu);
-
-    for (let key of Object.keys(default_submenu)) {
-        change_submenu(key, default_submenu[key]);
-    }
-
-    player.achievement_multiplier = get_achievements_multiplier();
-    update_challenges_power();
-    update_mechanics_first();
-    //player.last_update_ts = Date.now();
-    game_loop();
 }
 
 function encode(str) {
@@ -199,6 +200,7 @@ function load_window_close() {
     catch {
         load_save(backup);
     }
+    onload_tick();
     document.getElementById("load_textarea").value = "";
 
     document.getElementById("overlay_window").style.display = "none";
@@ -220,9 +222,24 @@ function load_from_local_storage() {
         catch {
             load_save(backup);
         }
+        onload_tick();
     }
     else {
         // do the graphics stuff
         update_mechanics_first();
     }
+}
+
+function onload_tick() {
+    change_menu(default_menu);
+
+    for (let key of Object.keys(default_submenu)) {
+        change_submenu(key, default_submenu[key]);
+    }
+
+    player.achievement_multiplier = get_achievements_multiplier();
+    update_challenges_power();
+    update_mechanics_first();
+    //player.last_update_ts = Date.now();
+    game_loop();
 }

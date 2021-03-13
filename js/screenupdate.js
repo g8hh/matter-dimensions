@@ -107,6 +107,10 @@ function screen_update() {
         player.milestones[key].screen_update();
     }
 
+    for (let key of Object.keys(player.evolutions)) {
+        player.evolutions[key].screen_update();
+    }
+
     document.body.className = "theme-" + player.settings['theme'] + " font-" + player.settings['font'];
 
     document.getElementById("achievement_bonus").textContent = format_number(player.achievement_multiplier);

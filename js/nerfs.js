@@ -59,8 +59,12 @@ function update_challenges_power() {
     // d81: unlock new Dimension
     if (player.upgrades['d81'].is_active()) player.challenge_strength_6 += 1;
 
+    let adj_time_passed = player.time_passed;
+    // population slows down time
+    adj_time_passed /= power_population_time().toInt();
+
     player.challenge_strength_7 = new BigNumber(3);
-    player.challenge_strength_7 = player.challenge_strength_7.pow(Math.pow((player.time_passed / 1000) + 1, 0.5) * Math.pow(2, player.time_passed / 60000) - 1);
+    player.challenge_strength_7 = player.challenge_strength_7.pow(Math.pow((adj_time_passed / 1000) + 1, 0.5) * Math.pow(2, adj_time_passed / 60000) - 1);
 
     player.challenge_strength_8 = 100;
 

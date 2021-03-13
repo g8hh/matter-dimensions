@@ -10,11 +10,11 @@ class Evolution {
     advantage: the advantage of Evolution (base speed)
     power_function: the name of function(x) that returns the effect of Evolution, when x is player[based_on] * progress
     secondary_power_function: the name of function() that returns the secondary effect of Evolution. Default: 1
-    custom_buy_function: the name of function() that makes any actions when the Evolution is bought. Default: none
     availability_function: the name of function() that returns whether the upgrade is visible. Default: true
+    custom_buy_function: the name of function() that makes any actions when the Evolution is bought. Default: none
     unlock_function: the name of function() that returns whether any additional conditions are met. Default: true
     */
-    constructor(id, cost_function, currency, currency_display_name, based_on, advantage, power_function, secondary_power_function="", custom_buy_function="", availability_function="", unlock_function="") {
+    constructor(id, cost_function, currency, currency_display_name, based_on, advantage, power_function, secondary_power_function="", availability_function="", custom_buy_function="", unlock_function="") {
         this.id = id;
         this.cost_function = cost_function;
         this.currency = currency;
@@ -34,8 +34,13 @@ class Evolution {
         this.availability_function = availability_function;
         this.unlock_function = unlock_function;
 
-        this,bought = false;
+        this.bought = false;
         this.progress = 0;
+    }
+
+    is_active() {
+        if (this.availability_function != "" && !functions[this.availability_function]()) return false;
+        return this.bought;
     }
 
     get_cost() {
@@ -56,17 +61,27 @@ class Evolution {
         else return !(player[this.currency].lt(this.get_cost()));
     }
 
-    eta(to_point = 0.9, progress=this.progress) {
-        return base_evolution_time().mult(sigmoid_rev(to_point).subtract(progress));
+    eta(to_point=0.9, progress=this.progress) {
+        return base_evolution_time().mult(sigmoid_rev(to_point) - progress).div(this.advantage).max(0);
+    }
+
+    get_based_value() {
+        if (this.based_on instanceof Dimension) return this.based_on.clone();
+        else return player[this.based_on].clone();
     }
 
     get_default_progress() {
-        let progress = 0;
-        if (this.based_on instanceof Dimension) {
-            progress = sigmoid_rev(this.currency.amt.pow(-1).max(1));
-        }
-        else progress = sigmoid_rev(player[this.currency].pow(-1).max(1));
-        return progress;
+        return sigmoid_rev(this.get_based_value().pow(-1).min(1));
+    }
+
+    get_effect(progress=this.progress) {
+        if (!this.bought) return functions[this.power_function](big(0));
+        else return functions[this.power_function](this.get_based_value().mult(population_power_multiplier()).mult(sigmoid(progress)));
+    }
+
+    get_secondary_effect() {
+        if (this.secondary_power_function == "") return big(1);
+        else return functions[this.secondary_power_function]();
     }
 
     buy() {
@@ -79,6 +94,77 @@ class Evolution {
 
         this.bought = true;
         this.progress = this.get_default_progress();
+        if (this.custom_buy_function != "") functions[this.custom_buy_function]();
+    }
+
+    apply_timedelta(timedelta) {
+        if (!this.bought) return;
+        this.progress += big(timedelta).mult(this.advantage).div(base_evolution_time()).toInt();
+    }
+
+    screen_update() {
+        let element = document.getElementById("evolution_" + this.id);
+        if (element !== undefined) {
+            if (this.availability_function != "" && !functions[this.availability_function]()) element.style.display = "none";
+            else element.style.display = "";
+            if (this.bought) element.classList.add("complete");
+            else element.classList.remove("complete");
+            if (!this.can_buy()) element.classList.add("disabled");
+            else element.classList.remove("disabled");
+
+            if (element.getElementsByClassName("advantage").length > 0)
+            element.getElementsByClassName("advantage")[0].textContent = format_number(this.advantage);
+
+            if (element.getElementsByClassName("primary-effect-prediction-desc").length > 0) {
+                if (sigmoid(this.progress).lt(0.9)) element.getElementsByClassName("primary-effect-prediction-desc")[0].style.display = "";
+                else element.getElementsByClassName("primary-effect-prediction-desc")[0].style.display = "none";
+            }
+            if (element.getElementsByClassName("implement-remaining").length > 0) {
+                if (sigmoid(this.progress).lt(0.9)) element.getElementsByClassName("implement-remaining")[0].style.display = "";
+                else element.getElementsByClassName("implement-remaining")[0].style.display = "none";
+            }
+            if (element.getElementsByClassName("cost-desc").length > 0) {
+                if (!this.bought) element.getElementsByClassName("cost-desc")[0].style.display = "";
+                else element.getElementsByClassName("cost-desc")[0].style.display = "none";
+            }
+            if (element.getElementsByClassName("progress-desc").length > 0) {
+                if (this.bought) element.getElementsByClassName("progress-desc")[0].style.display = "";
+                else element.getElementsByClassName("progress-desc")[0].style.display = "none";
+            }
+            if (element.getElementsByClassName("progress-bar-layout").length > 0) {
+                if (this.bought) element.getElementsByClassName("progress-bar-layout")[0].style.display = "";
+                else element.getElementsByClassName("progress-bar-layout")[0].style.display = "none";
+            }
+            if (element.getElementsByClassName("progress-bar").length > 0) {
+                if (this.bought) element.getElementsByClassName("progress-bar")[0].style.display = "";
+                else element.getElementsByClassName("progress-bar")[0].style.display = "none";
+
+                element.getElementsByClassName("progress-bar")[0].style.width = sigmoid(this.progress).mult(100).toInt() + "%";
+            }
+
+            if (element.getElementsByClassName("primary-effect").length > 0)
+            element.getElementsByClassName("primary-effect")[0].textContent = format_number(this.get_effect(), true);
+            if (element.getElementsByClassName("primary-effect-prediction").length > 0)
+            element.getElementsByClassName("primary-effect-prediction")[0].textContent = format_number(this.get_effect(0.9), true);
+            if (element.getElementsByClassName("secondary-effect").length > 0)
+            element.getElementsByClassName("secondary-effect")[0].textContent = format_number(this.get_secondary_effect());
+
+            if (element.getElementsByClassName("progress").length > 0)
+            element.getElementsByClassName("progress")[0].textContent = format_number(sigmoid(this.progress).mult(100), true) + "%";
+
+            if (element.getElementsByClassName("cost").length > 0) {
+                let currency_name = this.currency_display_name_plural;
+                let evolution_cost = this.get_cost();
+                if (evolution_cost.lt(1.5) && evolution_cost.gt(0.5)) currency_name = this.currency_display_name_singular;
+
+                element.getElementsByClassName("cost")[0].textContent = format_number(evolution_cost) + currency_name;
+            }
+
+            if (element.getElementsByClassName("implement-time").length > 0)
+            element.getElementsByClassName("implement-time")[0].textContent = format_time(this.eta(0.9, this.get_default_progress()));
+            if (element.getElementsByClassName("implement-remaining-time").length > 0)
+            element.getElementsByClassName("implement-remaining-time")[0].textContent = format_time(this.eta(0.9));
+        }
     }
 
     reset() {
@@ -99,6 +185,7 @@ class Evolution {
             currency_data.push(this.currency);
         }
         data.push(currency_data);
+        data.push([this.currency_display_name_singular, this.currency_display_name_plural]);
 
         let based_on_data = [];
         if (this.based_on instanceof Dimension) {
@@ -118,8 +205,6 @@ class Evolution {
     }
 
     load_save(data) {
-        data.push([this.currency_display_name_singular, this.currency_display_name_plural]);
-
         if (data[0][0] == 0) {
             this.currency = player.dimensions[data[0][1]];
         }
@@ -131,10 +216,10 @@ class Evolution {
         this.currency_display_name_plural = data[1][1];
 
         if (data[2][0] == 0) {
-            this.currency = player.dimensions[data[2][1]];
+            this.based_on = player.dimensions[data[2][1]];
         }
         else {
-            this.currency = data[2][1];
+            this.based_on = data[2][1];
         }
 
         this.bought = data[3];
@@ -143,7 +228,7 @@ class Evolution {
 }
 
 function base_evolution_time() {
-    let base = big(1000);
+    let base = big(31415);
 
     // b02: Evolutions are applied faster
     if (player.upgrades['b02'].is_active()) base = base.div(player.upgrades['b02'].get_effect());

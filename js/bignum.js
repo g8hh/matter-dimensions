@@ -252,6 +252,12 @@ class BigNumber {
         return this.log10().div(number.log10());
     }
 
+    clone() {
+        let result = big(0);
+        result.copy(this);
+        return result;
+    }
+
     toInt() {
         if (this.sign) return (Math.pow(MAX_MANTISSA, this.exp) * this.mantissa);
         else return -(Math.pow(MAX_MANTISSA, this.exp) * this.mantissa);

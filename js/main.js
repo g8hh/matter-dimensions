@@ -503,6 +503,9 @@ class Player {
         this.upgrades["b03"] = new Upgrade("b03", -1, "upg_b03_cost", "upg_b03_power", "upg_b03_unlock", "genes", [" Gene", " Genes"], "upg_b03_available");
         this.upgrades["b04"] = new Upgrade("b04", -1, "upg_b04_cost", "upg_b04_power", "upg_b04_unlock", "genes", [" Gene", " Genes"], "upg_b04_available");
 
+        this.evolutions = {};
+        this.evolutions["b01"] = new Evolution("b01", "evo_b01_cost", "genes", [" Gene", " Genes"], "population", 100, "evo_b01_power", "evo_b01_secondary", "", "evo_b01_buy");
+
         this.challenges = {};
         this.challenges["p1"] = new Challenge("p1", "Photonic Challenge 1", "photonic", [], "start_p1", "goal_p1", "end_p1");
         this.challenges["p2"] = new Challenge("p2", "Photonic Challenge 2", "photonic", [], "start_p2", "goal_p2", "end_p2");
@@ -838,6 +841,10 @@ function processTimedelta(corrected_timedelta) {
         if (key.endsWith("_1")) cap_resources();
     }
 
+    for (let key of Object.keys(player.evolutions)) {
+        player.evolutions[key].apply_timedelta(timedelta);
+    }
+
     var generation_timedelta = timedelta;
     // p13: annihilation is 2x faster
     generation_timedelta *= player.upgrades["p13"].get_effect().toInt();
@@ -960,6 +967,9 @@ function processTimedelta(corrected_timedelta) {
         // Challenge 4: all resources are capped
         player.black_holes = player.black_holes.add(player.upgrades['v193'].get_effect().mult(timedelta / 1000)).min(player.challenge_strength_4);
     }
+
+    // population growth
+    player.population = player.population.mult(population_change_speed().pow(timedelta / 60000)).max(1);
     
     cap_resources();
     update_mechanics();

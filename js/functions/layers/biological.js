@@ -61,8 +61,11 @@ function reset_biological(force=false, higher_reset=false, autobuyer_induced=fal
 
     me.atoms = big(0);
     me.collision_knowledge = big(0);
-    // a01_1: start with Shards
-    if (me.milestones['a01_1'].is_active()) me.shards = me.milestones['a01_1'].get_effect();
+    // evolution b01: start with Atoms and Collision Knowledge
+    if (me.evolutions['b01'].is_active()) {
+        me.atoms = me.evolutions['b01'].get_secondary_effect();
+        me.collision_knowledge = me.evolutions['b01'].get_secondary_effect();
+    }
 
     if (!force) me.fastest_atomic = Math.min(me.fastest_atomic, me.time_atomic);
 

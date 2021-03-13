@@ -28,6 +28,7 @@
         <script src="js/functions/upgrades/atomic.js?rev=19"></script>
         <script src="js/functions/upgrades/biological.js?rev=19"></script>
         <script src="js/functions/upgrades/other.js?rev=19"></script>
+        <script src="js/functions/evolutions/biological.js?rev=19"></script>
         <script src="js/functions/challenges/photonic.js?rev=19"></script>
         <script src="js/functions/challenges/gravitonic.js?rev=19"></script>
         <script src="js/functions/challenges/neutronic.js?rev=19"></script>
@@ -3428,9 +3429,9 @@
                                 <div class="neutronic-block-matter" style="grid-row: 1; grid-column: 2"></div>
                                 <div class="biological-population-growth-block" style="grid-row: 1; grid-column: 1">
                                     <p class="header" style="text-align: center">Fertility</p>
-                                    <div class="biological-population-growth-line" style="display: none">
+                                    <div id="mechanic_population_line_b01" class="biological-population-growth-line" style="display: none">
                                         <p>Replication</p>
-                                        <p class="neutronic-number-gravitonic" style="font-weight: bold">+0.000</p>
+                                        <p id="mechanic_population_change_b01" class="neutronic-number-gravitonic" style="font-weight: bold"></p>
                                     </div>
                                     <p style="flex-grow: 1">&nbsp;</p>
                                     <div class="biological-population-growth-line header">
@@ -3451,7 +3452,7 @@
                                     </div>
                                 </div>
                                 <p style="grid-row: 2; grid-column: 1 / 3; text-align: center">
-                                    translated to <span id="mechanic_population_change_percent" class="large-number">???</span> every minute.
+                                    translated to <span id="mechanic_population_change_percent" class="large-number"></span> every minute.
                                 </p>
                             </div>
                             <div id="upgrade_b01" class="upgrade" style="grid-row: 1; grid-column: 2" onclick="me.upgrades['b01'].buy()">
@@ -3484,16 +3485,48 @@
                             </div>
                             <div class="upgrade" style="grid-row: 3; grid-column: 2 / 4" onclick="perform_extinction()">
                                 <p><b>EXTINCTION</b><br>
-                                Reset your population back to 1, but increase strength of Evolutions based on sacrificed population.<br>
+                                Reset your population back to 1, but increase the population power based on sacrificed population.<br>
                                 Current: ×<span id="mechanic_population_extinction_current"></span><br>
                                 After Extinction: ×<span id="mechanic_population_extinction_next"></span></p>
                             </div>
                         </div>
-                        <p class="achievement-bonus" style="text-align: left; margin-top: 20px">A total population of <span class="variable-value large-number" name="population" rounded></span> provides the following boosts:</p>
+                        <p class="achievement-bonus" style="text-align: left; margin-top: 20px;">A total population of <span class="variable-value large-number" name="population" rounded></span> provides the population power of <span id="mechanic_population_total_power" class="large-number"></span> for the following boosts:</p>
+                        <p class="population-boost">×<span id="mechanic_population_power_time" style="font-weight: bold"></span> slower growth of the time-based nerf production nerf</p>
                     </div>
 
                     <div id="biological_evolutions" style="display: none;">
                         <p class="achievement-bonus">You have <span class="prestige_currency_biological large-number"></span> Genes.</p>
+                        <p>The Evolutions are not implemented straight away, but increase their power over time.<br>
+                        The time required to spread the Evolution is based on the population at the time of purchasing it.<br>
+                        Evolutions with larger Advantage (shown in top-right corner) are implemented quicker.</p>
+                        <div style="display: flex; flex-direction: row; justify-content: center;">
+                            <div class="upgrade-list-biological">
+                                <div id="evolution_b01" class="evolution" onclick="player.evolutions['b01'].buy()">
+                                    <p class="name">Replication</p>
+                                    <p class="advantage"></p>
+                                    <p>
+                                        Gain Atoms and Collision Knowledge on Biological and upon buying this upgrade (based on unlocked layers)<br>
+                                        Current: <span class="secondary-effect"></span>
+                                    </p>
+                                    <p>
+                                        Fertility rate is increased<br>
+                                        Current: +<span class="primary-effect"></span><br>
+                                        <span class="primary-effect-prediction-desc">(at 90%: +<span class="primary-effect-prediction"></span>)</span>
+                                    </p>
+                                    <div class="cost-desc">
+                                        <p style="text-align: center">Cost: <span class="cost"></span></p>
+                                        <p>To 90%: <span class="implement-time"></span></p>
+                                    </div>
+                                    <div class="progress-bar-layout"></div>
+                                    <div class="progress-bar"></div>
+                                    <div class="progress-desc">
+                                        <p style="text-align: center"><span class="progress"></span></p>
+                                        <p class="implement-remaining">To 90%: <span class="implement-remaining-time"></span></p>
+                                    </div>
+                                    <p class="upgrade-id" style="display: none">01</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 

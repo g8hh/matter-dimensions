@@ -488,6 +488,8 @@ function update_collider() {
 
 // Population
 
+const FERTILITY_EVOLUTIONS = ["b01"];
+
 function update_population_first() {
 
 }
@@ -503,6 +505,9 @@ function mortality_rate() {
 
 function population_total_positive_change() {
     let base = big(0);
+    for (let i = 0; i < FERTILITY_EVOLUTIONS.length; i++) {
+        if (player.evolutions[FERTILITY_EVOLUTIONS[i]].is_active()) base = base.add(player.evolutions[FERTILITY_EVOLUTIONS[i]].get_effect());
+    }
     return base;
 }
 
@@ -522,8 +527,18 @@ function population_change_speed() {
     return base;
 }
 
+function population_power_multiplier() {
+    let base = big(1);
+    base = base.mult(extinction_effect());
+    return base;
+}
+
 function extinction_effect(x=player.population_sacrificed) {
     return x.pow(0.1).add(1);
+}
+
+function power_population_time() {
+    return player.population.mult(population_power_multiplier()).add(1).log(2);
 }
 
 function update_population() {
@@ -543,6 +558,17 @@ function update_population() {
 
     document.getElementById("mechanic_population_extinction_current").textContent = format_number(extinction_effect(), true);
     document.getElementById("mechanic_population_extinction_next").textContent = format_number(extinction_effect(player.population_sacrificed.add(player.population.subtract(1))), true);
+
+    document.getElementById("mechanic_population_total_power").textContent = format_number(player.population.mult(population_power_multiplier()), true);
+
+    document.getElementById("mechanic_population_power_time").textContent = format_number(power_population_time(), true);
+
+    for (let i = 0; i < FERTILITY_EVOLUTIONS.length; i++) {
+        if (player.evolutions[FERTILITY_EVOLUTIONS[i]].is_active()) document.getElementById("mechanic_population_line_" + FERTILITY_EVOLUTIONS[i]).style.display = "";
+        else document.getElementById("mechanic_population_line_" + FERTILITY_EVOLUTIONS[i]).style.display = "none";
+
+        document.getElementById("mechanic_population_change_" + FERTILITY_EVOLUTIONS[i]).textContent = "+" + format_number(player.evolutions[FERTILITY_EVOLUTIONS[i]].get_effect());
+    }
 }
 
 // Settings
