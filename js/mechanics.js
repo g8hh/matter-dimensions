@@ -494,6 +494,10 @@ function update_population_first() {
 
 function mortality_rate() {
     let base = player.population.max(1).log(10);
+
+    // b03: reduce mortality rate
+    if (player.upgrades['b03'].is_active()) base = base.div(player.upgrades['b03'].get_effect());
+
     return base;
 }
 
@@ -512,6 +516,9 @@ function population_change_speed() {
     let base = big(1);
     if (population_total_positive_change().add(population_total_negative_change()).gt(0)) base = big(2).mult(population_total_positive_change()).div(population_total_positive_change().add(population_total_negative_change())).pow(2.070389328).add(0.21).pow(0.5).subtract(0.1);
     
+    // b04: speed up population change
+    if (player.upgrades['b04'].is_active()) base = base.pow(player.upgrades['b04'].get_effect());
+
     return base;
 }
 
@@ -521,6 +528,9 @@ function extinction_effect(x=player.population_sacrificed) {
 
 function update_population() {
     document.getElementById("mechanic_population_change_population").textContent = "-" + format_number(mortality_rate(), true);
+
+    document.getElementById("mechanic_population_change_positive").textContent = "+" + format_number(population_total_positive_change(), true);
+    document.getElementById("mechanic_population_change_negative").textContent = "-" + format_number(population_total_negative_change(), true);
 
     if (population_change_speed().lt(1)) {
         document.getElementById("mechanic_population_change_percent").className = "neutronic-number-matter large-number";

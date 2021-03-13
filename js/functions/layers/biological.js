@@ -1,6 +1,11 @@
 function prestige_earn_genes() {
     let base_income = player.atoms.add(1).log(6.022e23);
 
+    if (!base_income.lt(1)) {
+        // b01: gain more Genes on Biological resets
+        if (player.upgrades['b01'].is_active()) base_income = base_income.mult(player.upgrades['b01'].get_effect());
+    }
+
     return base_income.rounddown().max(0);
 }
 function can_biological() {

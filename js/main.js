@@ -498,6 +498,11 @@ class Player {
         this.upgrades["a05"] = new Upgrade("a05", -1, "upg_a05_cost", "upg_a05_power", "upg_a05_unlock", "atoms", [" Atom", " Atoms"], "upg_a05_available");
         this.upgrades["a06"] = new Upgrade("a06", -1, "upg_a06_cost", "upg_a06_power", "upg_a06_unlock", "atoms", [" Atom", " Atoms"], "upg_a06_available");
 
+        this.upgrades["b01"] = new Upgrade("b01", -1, "upg_b01_cost", "upg_b01_power", "upg_b01_unlock", "genes", [" Gene", " Genes"], "upg_b01_available");
+        this.upgrades["b02"] = new Upgrade("b02", -1, "upg_b02_cost", "upg_b02_power", "upg_b02_unlock", "genes", [" Gene", " Genes"], "upg_b02_available");
+        this.upgrades["b03"] = new Upgrade("b03", -1, "upg_b03_cost", "upg_b03_power", "upg_b03_unlock", "genes", [" Gene", " Genes"], "upg_b03_available");
+        this.upgrades["b04"] = new Upgrade("b04", -1, "upg_b04_cost", "upg_b04_power", "upg_b04_unlock", "genes", [" Gene", " Genes"], "upg_b04_available");
+
         this.challenges = {};
         this.challenges["p1"] = new Challenge("p1", "Photonic Challenge 1", "photonic", [], "start_p1", "goal_p1", "end_p1");
         this.challenges["p2"] = new Challenge("p2", "Photonic Challenge 2", "photonic", [], "start_p2", "goal_p2", "end_p2");

@@ -16,16 +16,19 @@ function format_time(milliseconds) {
     var days = Math.floor(hours / 24);
     hours -= days * 24;
 
-    let time_arr = [days, hours, minutes, seconds];
-    let period_single = ["day", "hour", "minute", "second"];
-    let period_plural = ["days", "hours", "minutes", "seconds"];
+    var years = Math.floor(days / 365);
+    days -= years * 365;
+
+    let time_arr = [years, days, hours, minutes, seconds];
+    let period_single = ["year", "day", "hour", "minute", "second"];
+    let period_plural = ["years", "days", "hours", "minutes", "seconds"];
 
     var non_nil_vars = 0;
-    for (var i = 0; i < 4; i++) if (time_arr[i] > 0 || (i == 3 && non_nil_vars == 0)) non_nil_vars++;
+    for (var i = 0; i < time_arr.length; i++) if (time_arr[i] > 0 || (i == time_arr.length - 1 && non_nil_vars == 0)) non_nil_vars++;
 
     var result = "";
-    for (var i = 0; i < 4; i++) {
-        if (time_arr[i] > 0 || (i == 3 && non_nil_vars == 1)) {
+    for (var i = 0; i < time_arr.length; i++) {
+        if (time_arr[i] > 0 || (i == time_arr.length - 1 && non_nil_vars == 1)) {
             non_nil_vars--;
             result += String(time_arr[i]) + " ";
             if (time_arr[i] == 1) result += period_single[i];
