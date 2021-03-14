@@ -316,6 +316,8 @@ class Player {
         this.achievements["127"] = new Achievement("127", "Infinite Problems", "Complete a Vacuumic challenge", "check_127");
         this.achievements["128"] = new Achievement("128", "Why did I do this again?", "Be in three Meta-Challenges at once", "check_128");
 
+        this.achievements["135"] = new Achievement("135", "Formula Break III", "Get more than 1 Gene from Biological reset.\nReward: base Gene reward from Biological resets is raised to the power of 1.618", "check_135", "effective");
+
         this.upgrades = {};
         this.upgrades["INERTIA_1"] = new Upgrade("INERTIA_1", -1, "upg_INERTIA_1_cost", "upg_INERTIA_1_power", "upg_INERTIA_1_unlock", "inertia", " of Inertia", "upg_INERTIA_1_available", "", "upg_INERTIA_1_cost_display_function", true);
         this.upgrades["INERTIA_2"] = new Upgrade("INERTIA_2", 4, "upg_INERTIA_2_cost", "upg_INERTIA_2_power", "upg_INERTIA_2_unlock", "inertia", " of Inertia", "upg_INERTIA_2_available", "", "upg_INERTIA_2_cost_display_function", true);
@@ -506,6 +508,7 @@ class Player {
 
         this.evolutions = {};
         this.evolutions["b01"] = new Evolution("b01", "evo_b01_cost", "genes", [" Gene", " Genes"], "population", 100, "evo_b01_power", "evo_b01_secondary", "", "evo_b01_buy");
+        this.evolutions["b02"] = new Evolution("b02", "evo_b02_cost", "genes", [" Gene", " Genes"], "population", 100, "evo_b02_power", "evo_b02_secondary");
 
         this.challenges = {};
         this.challenges["p1"] = new Challenge("p1", "Photonic Challenge 1", "photonic", [], "start_p1", "goal_p1", "end_p1");
@@ -888,6 +891,8 @@ function processTimedelta(corrected_timedelta) {
     energy_generated = energy_generated.mult(wave_effect('infrared'));
     // d113: anniilation produces more energy based on Shards
     if (player.upgrades['d113'].is_active()) energy_generated = energy_generated.mult(player.upgrades["d113"].get_effect());
+    // evolution b02: anniilation produces more energy based on Shards
+    if (player.evolutions['b02'].is_active()) energy_generated = energy_generated.mult(player.evolutions["b02"].get_effect());
     // Photonic Challenge 2: annihilation does not produce energy
     if (player.challenges['p2'].inC()) energy_generated = big(0);
 
@@ -1036,12 +1041,14 @@ function hotkeydown(event) {
         case 'v': reset_vacuumic(); break;
         case 'd': reset_dimensional(); break;
         case 'a': reset_atomic(); break;
+        case 'b': reset_biological(); break;
         case 'P': if (me.unlocked_photonic) change_menu('photonic'); break;
         case 'G': if (me.unlocked_gravitonic) change_menu('gravitonic'); break;
         case 'N': if (me.unlocked_neutronic) change_menu('neutronic'); break;
         case 'V': if (me.unlocked_vacuumic) change_menu('vacuumic'); break;
         case 'D': if (me.unlocked_dimensional) change_menu('dimensional'); break;
         case 'A': if (me.unlocked_atomic) change_menu('atomic'); break;
+        case 'B': if (me.unlocked_biological) change_menu('biological'); break;
         case '1': 
             if (current_menu in current_submenu && current_submenu[current_menu] == "dimensions") 
                 me.dimensions[current_menu + "_1"].buy(me.dimensions[current_menu + "_1"].binary_search_max()); 

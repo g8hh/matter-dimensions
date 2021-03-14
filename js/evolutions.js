@@ -74,8 +74,8 @@ class Evolution {
         return sigmoid_rev(this.get_based_value().pow(-1).min(1));
     }
 
-    get_effect(progress=this.progress) {
-        if (!this.bought) return functions[this.power_function](big(0));
+    get_effect(progress=this.progress, ignore_status=false) {
+        if (!this.bought && !ignore_status) return functions[this.power_function](big(0));
         else return functions[this.power_function](this.get_based_value().mult(population_power_multiplier()).mult(sigmoid(progress)));
     }
 
@@ -145,7 +145,7 @@ class Evolution {
             if (element.getElementsByClassName("primary-effect").length > 0)
             element.getElementsByClassName("primary-effect")[0].textContent = format_number(this.get_effect(), true);
             if (element.getElementsByClassName("primary-effect-prediction").length > 0)
-            element.getElementsByClassName("primary-effect-prediction")[0].textContent = format_number(this.get_effect(0.9), true);
+            element.getElementsByClassName("primary-effect-prediction")[0].textContent = format_number(this.get_effect(0.9, true), true);
             if (element.getElementsByClassName("secondary-effect").length > 0)
             element.getElementsByClassName("secondary-effect")[0].textContent = format_number(this.get_secondary_effect());
 

@@ -569,6 +569,16 @@ function update_population() {
 
         document.getElementById("mechanic_population_change_" + FERTILITY_EVOLUTIONS[i]).textContent = "+" + format_number(player.evolutions[FERTILITY_EVOLUTIONS[i]].get_effect());
     }
+
+    let boost_descriptions = document.getElementsByClassName("population-boost");
+    for (let i = 0; i < boost_descriptions.length; i++) {
+        if (boost_descriptions[i].attributes.upgrade !== undefined) {
+            if (player.upgrades[boost_descriptions[i].attributes.upgrade.value].is_active()) boost_descriptions[i].style.display = "";
+            else boost_descriptions[i].style.display = "none";
+            if (boost_descriptions[i].getElementsByClassName("upgrade-effect").length > 0)
+                boost_descriptions[i].getElementsByClassName("upgrade-effect")[0].textContent = format_number(player.upgrades[boost_descriptions[i].attributes.upgrade.value].get_effect(), true);
+        }
+    }
 }
 
 // Settings

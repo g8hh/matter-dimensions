@@ -862,12 +862,6 @@ function update_unlock_hint() {
 }
 
 function update_hotkey_visibility() {
-    document.getElementById("hotkey_photonic").style.display = "none"; 
-    document.getElementById("hotkey_gravitonic").style.display = "none"; 
-    document.getElementById("hotkey_neutronic").style.display = "none"; 
-    document.getElementById("hotkey_vacuumic").style.display = "none"; 
-    document.getElementById("hotkey_dimensional").style.display = "none"; 
-    document.getElementById("hotkey_atomic").style.display = "none"; 
     document.getElementById("hotkey_dimension_2").style.display = "none"; 
     document.getElementById("hotkey_dimension_3").style.display = "none"; 
     document.getElementById("hotkey_dimension_4").style.display = "none"; 
@@ -879,12 +873,6 @@ function update_hotkey_visibility() {
     document.getElementById("hotkey_dimension_10").style.display = "none"; 
     document.getElementById("hotkey_upgrade_ids").style.display = "none"; 
 
-    if (player.unlocked_photonic) document.getElementById("hotkey_photonic").style.display = ""; 
-    if (player.unlocked_gravitonic) document.getElementById("hotkey_gravitonic").style.display = ""; 
-    if (player.unlocked_neutronic) document.getElementById("hotkey_neutronic").style.display = ""; 
-    if (player.unlocked_vacuumic) document.getElementById("hotkey_vacuumic").style.display = ""; 
-    if (player.unlocked_dimensional) document.getElementById("hotkey_dimensional").style.display = ""; 
-    if (player.unlocked_atomic) document.getElementById("hotkey_atomic").style.display = ""; 
     if (player.challenge_strength_6 >= 2) document.getElementById("hotkey_dimension_2").style.display = ""; 
     if (player.challenge_strength_6 >= 3) document.getElementById("hotkey_dimension_3").style.display = ""; 
     if (player.challenge_strength_6 >= 4) document.getElementById("hotkey_dimension_4").style.display = ""; 

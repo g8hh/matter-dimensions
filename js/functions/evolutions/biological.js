@@ -1,9 +1,15 @@
 functions["evo_b01_cost"] = () => {
     return big(1);
 }
+functions["evo_b02_cost"] = () => {
+    return big(1);
+}
 
 functions["evo_b01_power"] = (x) => {
     return x.div(3).add(1).log(10).div(3).add(1).log(10).add(1);
+}
+functions["evo_b02_power"] = (x) => {
+    return x.max(1);
 }
 
 functions["evo_b01_secondary"] = (x) => {
@@ -15,6 +21,9 @@ functions["evo_b01_secondary"] = (x) => {
     if (player.unlocked_dimensional) base_reward -= 1;
     if (player.unlocked_atomic) base_reward -= 1;
     return big(2).pow(base_reward - 1);
+}
+functions["evo_b02_secondary"] = (x) => {
+    return big(10);
 }
 
 functions["evo_b01_buy"] = (amt) => {

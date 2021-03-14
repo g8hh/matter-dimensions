@@ -3488,7 +3488,7 @@
                                 <p id="upgrade_b04_next_cost">Cost: <span id="upgrade_b04_cost"></span></p>
                                 <p class="upgrade-id" style="display: none">04</p>
                             </div>
-                            <div class="upgrade" style="grid-row: 3; grid-column: 2 / 4" onclick="perform_extinction()">
+                            <div class="upgrade" style="grid-row: 3; grid-column: 2 / 4; display: none" onclick="perform_extinction()">
                                 <p><b>EXTINCTION</b><br>
                                 Reset your population back to 1, but increase the population power based on sacrificed population.<br>
                                 Current: ×<span id="mechanic_population_extinction_current"></span><br>
@@ -3497,6 +3497,7 @@
                         </div>
                         <p class="achievement-bonus" style="text-align: left; margin-top: 20px;">A total population of <span class="variable-value large-number" name="population" rounded></span> provides the population power of <span id="mechanic_population_total_power" class="large-number"></span> for the following boosts:</p>
                         <p class="population-boost">×<span id="mechanic_population_power_time" style="font-weight: bold"></span> slower growth of the time-based nerf production nerf</p>
+                        <p class="population-boost" upgrade="b02">×<span class="upgrade-effect" style="font-weight: bold"></span> more energy on annihilation</p>
                     </div>
 
                     <div id="biological_evolutions" style="display: none;">
@@ -3529,6 +3530,30 @@
                                         <p class="implement-remaining">To 90%: <span class="implement-remaining-time"></span></p>
                                     </div>
                                     <p class="upgrade-id" style="display: none">01</p>
+                                </div>
+
+                                <div id="evolution_b02" class="evolution" onclick="player.evolutions['b02'].buy()">
+                                    <p class="name">Metabolism</p>
+                                    <p class="advantage"></p>
+                                    <p>
+                                        Gain <span class="secondary-effect"></span> times more Photons on resets
+                                    </p>
+                                    <p>
+                                        Annihilation produces more energy<br>
+                                        Current: ×<span class="primary-effect"></span><br>
+                                        <span class="primary-effect-prediction-desc">(at 90%: ×<span class="primary-effect-prediction"></span>)</span>
+                                    </p>
+                                    <div class="cost-desc">
+                                        <p style="text-align: center">Cost: <span class="cost"></span></p>
+                                        <p>To 90%: <span class="implement-time"></span></p>
+                                    </div>
+                                    <div class="progress-bar-layout"></div>
+                                    <div class="progress-bar"></div>
+                                    <div class="progress-desc">
+                                        <p style="text-align: center"><span class="progress"></span></p>
+                                        <p class="implement-remaining">To 90%: <span class="implement-remaining-time"></span></p>
+                                    </div>
+                                    <p class="upgrade-id" style="display: none">02</p>
                                 </div>
                             </div>
                         </div>
@@ -3875,6 +3900,10 @@
                         <div class="achievement" id="achievement_128" style="grid-row: 12; grid-column: 8">
                             <p id="achievement_128_name"></p>
                         </div>
+
+                        <div class="achievement" id="achievement_135" style="grid-row: 13; grid-column: 5">
+                            <p id="achievement_135_name"></p>
+                        </div>
                     </div>
                 </div>
 
@@ -3960,18 +3989,20 @@
                     <div class="hotkey-page" id="information_hotkeys">
                         <p class="header" style="font-weight: bold; padding-left: 10px">Hotkeys</p>
                         <p>&nbsp;</p>
-                        <p id="hotkey_photonic">P - perform a Photonic reset</p>
-                        <p id="hotkey_gravitonic">G - perform a Gravitonic reset</p>
-                        <p id="hotkey_neutronic">N - perform a Neutronic reset</p>
-                        <p id="hotkey_vacuumic">V - perform a Vacuumic reset</p>
-                        <p id="hotkey_dimensional">D - perform a Dimensional reset</p>
-                        <p id="hotkey_atomic">A - perform an Atomic reset</p>
-                        <p id="hotkey_photonic">Shift+P - switch to Photonic tab</p>
-                        <p id="hotkey_gravitonic">Shift+G - switch to Gravitonic tab</p>
-                        <p id="hotkey_neutronic">Shift+N - switch to Neutronic tab</p>
-                        <p id="hotkey_vacuumic">Shift+V - switch to Vacuumic tab</p>
-                        <p id="hotkey_dimensional">Shift+D - switch to Dimensional tab</p>
-                        <p id="hotkey_atomic">Shift+A - switch to Atomic tab</p>
+                        <p class="display-none-until-photonic">P - perform a Photonic reset</p>
+                        <p class="display-none-until-gravitonic">G - perform a Gravitonic reset</p>
+                        <p class="display-none-until-neutronic">N - perform a Neutronic reset</p>
+                        <p class="display-none-until-vacuumic">V - perform a Vacuumic reset</p>
+                        <p class="display-none-until-dimensional">D - perform a Dimensional reset</p>
+                        <p class="display-none-until-atomic">A - perform an Atomic reset</p>
+                        <p class="display-none-until-biological">B - perform an Biological reset</p>
+                        <p class="display-none-until-photonic">Shift+P - switch to Photonic tab</p>
+                        <p class="display-none-until-gravitonic">Shift+G - switch to Gravitonic tab</p>
+                        <p class="display-none-until-neutronic">Shift+N - switch to Neutronic tab</p>
+                        <p class="display-none-until-vacuumic">Shift+V - switch to Vacuumic tab</p>
+                        <p class="display-none-until-dimensional">Shift+D - switch to Dimensional tab</p>
+                        <p class="display-none-until-atomic">Shift+A - switch to Atomic tab</p>
+                        <p class="display-none-until-biological">Shift+B - switch to Biological tab</p>
                         <p>1 - buy maximum amount of 1st Dimensions on screen</p>
                         <p id="hotkey_dimension_2">2 - buy maximum amount of 2nd Dimensions on screen</p>
                         <p id="hotkey_dimension_3">3 - buy maximum amount of 3rd Dimensions on screen</p>

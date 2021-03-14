@@ -1,6 +1,9 @@
 function prestige_earn_genes() {
     let base_income = player.atoms.add(1).log(6.022e23);
 
+    // achievement 135: neutron gain is raised to the power of 1.618
+    if (player.achievements['135'].complete) base_income = base_income.pow(1.618);
+
     if (!base_income.lt(1)) {
         // b01: gain more Genes on Biological resets
         if (player.upgrades['b01'].is_active()) base_income = base_income.mult(player.upgrades['b01'].get_effect());
@@ -30,6 +33,7 @@ function reset_biological(force=false, higher_reset=false, autobuyer_induced=fal
 
     let earned_genes = prestige_earn_genes();
     if (!force) me.achievements['121'].award();
+    if (!force && earned_genes.gt(1)) me.achievements['135'].award();
 
     // Challenge 4: all resources are capped
     me.genes = me.genes.add(earned_genes).min(me.challenge_strength_4);

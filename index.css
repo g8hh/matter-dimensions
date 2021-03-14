@@ -267,7 +267,7 @@ input {
 
     display: grid;
     grid-template-columns: repeat(8, 1fr);
-    grid-template-rows: repeat(13, 1fr);
+    grid-template-rows: repeat(14, 1fr);
     grid-gap: 10px;
 }
 .achievement-list div::before {
@@ -915,7 +915,7 @@ input {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: flex-start;
+    justify-content: center;
     margin-top: 10px;
 }
 
@@ -924,6 +924,7 @@ input {
     display: grid;
     grid-template-rows: 2fr 4fr 4fr 3fr;
     gap: 5px;
+    margin: 10px;
     padding: 5px;
     width: 300px;
     height: 250px;
