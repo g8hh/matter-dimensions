@@ -63,159 +63,159 @@ functions['vacuumic_12_cost'] = (amt_bought) => {
 functions['vacuumic_1_pow'] = (amt_bought, amt) => {
     let base_exp = big(2);
     // Temperature Milestone 4: multiplier per Vacuumic Dimension is increased
-    if (me.milestones['temperature_4'].is_active()) base_exp = me.milestones['temperature_4'].get_effect();
+    if (player.milestones['temperature_4'].is_active()) base_exp = player.milestones['temperature_4'].get_effect();
 
     let base_pow = base_exp.pow(amt_bought);
 
     // Dimensional Dimensions boost respective dimensions
-    base_pow = base_pow.mult(power_manifolds(me).pow(me.dimensions['dimensional_1'].amt_bought));
+    base_pow = base_pow.mult(power_manifolds().pow(player.dimensions['dimensional_1'].amt_bought));
 
     return base_pow;
 };
 functions['vacuumic_2_pow'] = (amt_bought, amt) => {
     let base_exp = big(2);
     // Temperature Milestone 4: multiplier per Vacuumic Dimension is increased
-    if (me.milestones['temperature_4'].is_active()) base_exp = me.milestones['temperature_4'].get_effect();
+    if (player.milestones['temperature_4'].is_active()) base_exp = player.milestones['temperature_4'].get_effect();
 
     let base_pow = base_exp.pow(amt_bought);
 
     // Vacuumic Challenge 2 reward: x2 multiplier to all even-numbered dimensions
-    if (me.challenges['v2'].completed) base_pow = base_pow.mult(2);
+    if (player.challenges['v2'].completed) base_pow = base_pow.mult(2);
     // Dimensional Dimensions boost respective dimensions
-    base_pow = base_pow.mult(power_manifolds(me).pow(me.dimensions['dimensional_2'].amt_bought));
+    base_pow = base_pow.mult(power_manifolds().pow(player.dimensions['dimensional_2'].amt_bought));
 
     return base_pow;
 };
 functions['vacuumic_3_pow'] = (amt_bought, amt) => {
     let base_exp = big(2);
     // Temperature Milestone 4: multiplier per Vacuumic Dimension is increased
-    if (me.milestones['temperature_4'].is_active()) base_exp = me.milestones['temperature_4'].get_effect();
+    if (player.milestones['temperature_4'].is_active()) base_exp = player.milestones['temperature_4'].get_effect();
 
     let base_pow = base_exp.pow(amt_bought);
 
     // Dimensional Dimensions boost respective dimensions
-    base_pow = base_pow.mult(power_manifolds(me).pow(me.dimensions['dimensional_3'].amt_bought));
+    base_pow = base_pow.mult(power_manifolds().pow(player.dimensions['dimensional_3'].amt_bought));
 
     // Vacuumic Challenge 3: 3rd dimensions do not produce anything
-    if (me.challenges['v3'].inC()) base_pow = big(0);
+    if (player.challenges['v3'].inC()) base_pow = big(0);
 
     return base_pow;
 };
 functions['vacuumic_4_pow'] = (amt_bought, amt) => {
     let base_exp = big(2);
     // Temperature Milestone 4: multiplier per Vacuumic Dimension is increased
-    if (me.milestones['temperature_4'].is_active()) base_exp = me.milestones['temperature_4'].get_effect();
+    if (player.milestones['temperature_4'].is_active()) base_exp = player.milestones['temperature_4'].get_effect();
 
     let base_pow = base_exp.pow(amt_bought);
 
     // Vacuumic Challenge 2 reward: x2 multiplier to all even-numbered dimensions
-    if (me.challenges['v2'].completed) base_pow = base_pow.mult(2);
+    if (player.challenges['v2'].completed) base_pow = base_pow.mult(2);
     // Dimensional Dimensions boost respective dimensions
-    base_pow = base_pow.mult(power_manifolds(me).pow(me.dimensions['dimensional_4'].amt_bought));
+    base_pow = base_pow.mult(power_manifolds().pow(player.dimensions['dimensional_4'].amt_bought));
 
     return base_pow;
 };
 functions['vacuumic_5_pow'] = (amt_bought, amt) => {
     let base_exp = big(2);
     // Temperature Milestone 4: multiplier per Vacuumic Dimension is increased
-    if (me.milestones['temperature_4'].is_active()) base_exp = me.milestones['temperature_4'].get_effect();
+    if (player.milestones['temperature_4'].is_active()) base_exp = player.milestones['temperature_4'].get_effect();
 
     let base_pow = base_exp.pow(amt_bought);
 
     // Dimensional Dimensions boost respective dimensions
-    base_pow = base_pow.mult(power_manifolds(me).pow(me.dimensions['dimensional_5'].amt_bought));
+    base_pow = base_pow.mult(power_manifolds().pow(player.dimensions['dimensional_5'].amt_bought));
 
     return base_pow;
 };
 functions['vacuumic_6_pow'] = (amt_bought, amt) => {
     let base_exp = big(2);
     // Temperature Milestone 4: multiplier per Vacuumic Dimension is increased
-    if (me.milestones['temperature_4'].is_active()) base_exp = me.milestones['temperature_4'].get_effect();
+    if (player.milestones['temperature_4'].is_active()) base_exp = player.milestones['temperature_4'].get_effect();
 
     let base_pow = base_exp.pow(amt_bought);
 
     // Vacuumic Challenge 2 reward: x2 multiplier to all even-numbered dimensions
-    if (me.challenges['v2'].completed) base_pow = base_pow.mult(2);
+    if (player.challenges['v2'].completed) base_pow = base_pow.mult(2);
     // Dimensional Dimensions boost respective dimensions
-    base_pow = base_pow.mult(power_manifolds(me).pow(me.dimensions['dimensional_6'].amt_bought));
+    base_pow = base_pow.mult(power_manifolds().pow(player.dimensions['dimensional_6'].amt_bought));
 
     return base_pow;
 };
 functions['vacuumic_7_pow'] = (amt_bought, amt) => {
     let base_exp = big(2);
     // Temperature Milestone 4: multiplier per Vacuumic Dimension is increased
-    if (me.milestones['temperature_4'].is_active()) base_exp = me.milestones['temperature_4'].get_effect();
+    if (player.milestones['temperature_4'].is_active()) base_exp = player.milestones['temperature_4'].get_effect();
 
     let base_pow = base_exp.pow(amt_bought);
 
     // Dimensional Dimensions boost respective dimensions
-    base_pow = base_pow.mult(power_manifolds(me).pow(me.dimensions['dimensional_7'].amt_bought));
+    base_pow = base_pow.mult(power_manifolds().pow(player.dimensions['dimensional_7'].amt_bought));
 
     return base_pow;
 };
 functions['vacuumic_8_pow'] = (amt_bought, amt) => {
     let base_exp = big(2);
     // Temperature Milestone 4: multiplier per Vacuumic Dimension is increased
-    if (me.milestones['temperature_4'].is_active()) base_exp = me.milestones['temperature_4'].get_effect();
+    if (player.milestones['temperature_4'].is_active()) base_exp = player.milestones['temperature_4'].get_effect();
 
     let base_pow = base_exp.pow(amt_bought);
 
     // Vacuumic Challenge 2 reward: x2 multiplier to all even-numbered dimensions
-    if (me.challenges['v2'].completed) base_pow = base_pow.mult(2);
+    if (player.challenges['v2'].completed) base_pow = base_pow.mult(2);
     // Dimensional Dimensions boost respective dimensions
-    base_pow = base_pow.mult(power_manifolds(me).pow(me.dimensions['dimensional_8'].amt_bought));
+    base_pow = base_pow.mult(power_manifolds().pow(player.dimensions['dimensional_8'].amt_bought));
 
     return base_pow;
 };
 functions['vacuumic_9_pow'] = (amt_bought, amt) => {
     let base_exp = big(2);
     // Temperature Milestone 4: multiplier per Vacuumic Dimension is increased
-    if (me.milestones['temperature_4'].is_active()) base_exp = me.milestones['temperature_4'].get_effect();
+    if (player.milestones['temperature_4'].is_active()) base_exp = player.milestones['temperature_4'].get_effect();
 
     let base_pow = base_exp.pow(amt_bought);
 
     // Dimensional Dimensions boost respective dimensions
-    base_pow = base_pow.mult(power_manifolds(me).pow(me.dimensions['dimensional_9'].amt_bought));
+    base_pow = base_pow.mult(power_manifolds().pow(player.dimensions['dimensional_9'].amt_bought));
 
     return base_pow;
 };
 functions['vacuumic_10_pow'] = (amt_bought, amt) => {
     let base_exp = big(2);
     // Temperature Milestone 4: multiplier per Vacuumic Dimension is increased
-    if (me.milestones['temperature_4'].is_active()) base_exp = me.milestones['temperature_4'].get_effect();
+    if (player.milestones['temperature_4'].is_active()) base_exp = player.milestones['temperature_4'].get_effect();
 
     let base_pow = base_exp.pow(amt_bought);
 
     // Vacuumic Challenge 2 reward: x2 multiplier to all even-numbered dimensions
-    if (me.challenges['v2'].completed) base_pow = base_pow.mult(2);
+    if (player.challenges['v2'].completed) base_pow = base_pow.mult(2);
     // Dimensional Dimensions boost respective dimensions
-    base_pow = base_pow.mult(power_manifolds(me).pow(me.dimensions['dimensional_10'].amt_bought));
+    base_pow = base_pow.mult(power_manifolds().pow(player.dimensions['dimensional_10'].amt_bought));
 
     return base_pow;
 };
 functions['vacuumic_11_pow'] = (amt_bought, amt) => {
     let base_exp = big(2);
     // Temperature Milestone 4: multiplier per Vacuumic Dimension is increased
-    if (me.milestones['temperature_4'].is_active()) base_exp = me.milestones['temperature_4'].get_effect();
+    if (player.milestones['temperature_4'].is_active()) base_exp = player.milestones['temperature_4'].get_effect();
 
     let base_pow = base_exp.pow(amt_bought);
 
     // Dimensional Dimensions boost respective dimensions
-    base_pow = base_pow.mult(power_manifolds(me).pow(me.dimensions['dimensional_11'].amt_bought));
+    base_pow = base_pow.mult(power_manifolds().pow(player.dimensions['dimensional_11'].amt_bought));
 
     return base_pow;
 };
 functions['vacuumic_12_pow'] = (amt_bought, amt) => {
     let base_exp = big(2);
     // Temperature Milestone 4: multiplier per Vacuumic Dimension is increased
-    if (me.milestones['temperature_4'].is_active()) base_exp = me.milestones['temperature_4'].get_effect();
+    if (player.milestones['temperature_4'].is_active()) base_exp = player.milestones['temperature_4'].get_effect();
 
     let base_pow = base_exp.pow(amt_bought);
 
     // Vacuumic Challenge 2 reward: x2 multiplier to all even-numbered dimensions
-    if (me.challenges['v2'].completed) base_pow = base_pow.mult(2);
+    if (player.challenges['v2'].completed) base_pow = base_pow.mult(2);
     // Dimensional Dimensions boost respective dimensions
-    base_pow = base_pow.mult(power_manifolds(me).pow(me.dimensions['dimensional_12'].amt_bought));
+    base_pow = base_pow.mult(power_manifolds().pow(player.dimensions['dimensional_12'].amt_bought));
 
     return base_pow;
 };
@@ -223,117 +223,117 @@ functions['vacuumic_12_pow'] = (amt_bought, amt) => {
 
 functions['vacuumic_1_unlock'] = () => {
     // d71: unlock Vacuumic dimensions
-    if (!me.upgrades['d71'].is_active()) return false;
+    if (!player.upgrades['d71'].is_active()) return false;
 
     return true;
 }
 functions['vacuumic_2_unlock'] = () => {
     // d71: unlock Vacuumic dimensions
-    if (!me.upgrades['d71'].is_active()) return false;
+    if (!player.upgrades['d71'].is_active()) return false;
 
     // Challenge 6: there is limited amount of dimensions
-    if (me.challenge_strength_6 < 2) return false;
+    if (player.challenge_strength_6 < 2) return false;
 
-    if (me.dimensions['vacuumic_1'].amt_bought > 0) return true;
+    if (player.dimensions['vacuumic_1'].amt_bought > 0) return true;
     return false;
 }
 functions['vacuumic_3_unlock'] = () => {
     // d71: unlock Vacuumic dimensions
-    if (!me.upgrades['d71'].is_active()) return false;
+    if (!player.upgrades['d71'].is_active()) return false;
 
     // Challenge 6: there is limited amount of dimensions
-    if (me.challenge_strength_6 < 3) return false;
+    if (player.challenge_strength_6 < 3) return false;
 
-    if (me.dimensions['vacuumic_2'].amt_bought > 0) return true;
+    if (player.dimensions['vacuumic_2'].amt_bought > 0) return true;
     return false;
 }
 functions['vacuumic_4_unlock'] = () => {
     // d71: unlock Vacuumic dimensions
-    if (!me.upgrades['d71'].is_active()) return false;
+    if (!player.upgrades['d71'].is_active()) return false;
 
     // Challenge 6: there is limited amount of dimensions
-    if (me.challenge_strength_6 < 4) return false;
+    if (player.challenge_strength_6 < 4) return false;
 
-    if (me.dimensions['vacuumic_3'].amt_bought > 0) return true;
+    if (player.dimensions['vacuumic_3'].amt_bought > 0) return true;
     return false;
 }
 functions['vacuumic_5_unlock'] = () => {
     // d71: unlock Vacuumic dimensions
-    if (!me.upgrades['d71'].is_active()) return false;
+    if (!player.upgrades['d71'].is_active()) return false;
 
     // Challenge 6: there is limited amount of dimensions
-    if (me.challenge_strength_6 < 5) return false;
+    if (player.challenge_strength_6 < 5) return false;
 
-    if (me.dimensions['vacuumic_4'].amt_bought > 0) return true;
+    if (player.dimensions['vacuumic_4'].amt_bought > 0) return true;
     return false;
 }
 functions['vacuumic_6_unlock'] = () => {
     // d71: unlock Vacuumic dimensions
-    if (!me.upgrades['d71'].is_active()) return false;
+    if (!player.upgrades['d71'].is_active()) return false;
 
     // Challenge 6: there is limited amount of dimensions
-    if (me.challenge_strength_6 < 6) return false;
+    if (player.challenge_strength_6 < 6) return false;
 
-    if (me.dimensions['vacuumic_5'].amt_bought > 0) return true;
+    if (player.dimensions['vacuumic_5'].amt_bought > 0) return true;
     return false;
 }
 functions['vacuumic_7_unlock'] = () => {
     // d71: unlock Vacuumic dimensions
-    if (!me.upgrades['d71'].is_active()) return false;
+    if (!player.upgrades['d71'].is_active()) return false;
 
     // Challenge 6: there is limited amount of dimensions
-    if (me.challenge_strength_6 < 7) return false;
+    if (player.challenge_strength_6 < 7) return false;
 
-    if (me.dimensions['vacuumic_6'].amt_bought > 0) return true;
+    if (player.dimensions['vacuumic_6'].amt_bought > 0) return true;
     return false;
 }
 functions['vacuumic_8_unlock'] = () => {
     // d71: unlock Vacuumic dimensions
-    if (!me.upgrades['d71'].is_active()) return false;
+    if (!player.upgrades['d71'].is_active()) return false;
 
     // Challenge 6: there is limited amount of dimensions
-    if (me.challenge_strength_6 < 8) return false;
+    if (player.challenge_strength_6 < 8) return false;
 
-    if (me.dimensions['vacuumic_7'].amt_bought > 0) return true;
+    if (player.dimensions['vacuumic_7'].amt_bought > 0) return true;
     return false;
 }
 functions['vacuumic_9_unlock'] = () => {
     // d71: unlock Vacuumic dimensions
-    if (!me.upgrades['d71'].is_active()) return false;
+    if (!player.upgrades['d71'].is_active()) return false;
 
     // Challenge 6: there is limited amount of dimensions
-    if (me.challenge_strength_6 < 9) return false;
+    if (player.challenge_strength_6 < 9) return false;
 
-    if (me.dimensions['vacuumic_8'].amt_bought > 0) return true;
+    if (player.dimensions['vacuumic_8'].amt_bought > 0) return true;
     return false;
 }
 functions['vacuumic_10_unlock'] = () => {
     // d71: unlock Vacuumic dimensions
-    if (!me.upgrades['d71'].is_active()) return false;
+    if (!player.upgrades['d71'].is_active()) return false;
 
     // Challenge 6: there is limited amount of dimensions
-    if (me.challenge_strength_6 < 10) return false;
+    if (player.challenge_strength_6 < 10) return false;
 
-    if (me.dimensions['vacuumic_9'].amt_bought > 0) return true;
+    if (player.dimensions['vacuumic_9'].amt_bought > 0) return true;
     return false;
 }
 functions['vacuumic_11_unlock'] = () => {
     // d71: unlock Vacuumic dimensions
-    if (!me.upgrades['d71'].is_active()) return false;
+    if (!player.upgrades['d71'].is_active()) return false;
 
     // Challenge 6: there is limited amount of dimensions
-    if (me.challenge_strength_6 < 11) return false;
+    if (player.challenge_strength_6 < 11) return false;
 
-    if (me.dimensions['vacuumic_10'].amt_bought > 0) return true;
+    if (player.dimensions['vacuumic_10'].amt_bought > 0) return true;
     return false;
 }
 functions['vacuumic_12_unlock'] = () => {
     // d71: unlock Vacuumic dimensions
-    if (!me.upgrades['d71'].is_active()) return false;
+    if (!player.upgrades['d71'].is_active()) return false;
 
     // Challenge 6: there is limited amount of dimensions
-    if (me.challenge_strength_6 < 12) return false;
+    if (player.challenge_strength_6 < 12) return false;
 
-    if (me.dimensions['vacuumic_11'].amt_bought > 0) return true;
+    if (player.dimensions['vacuumic_11'].amt_bought > 0) return true;
     return false;
 }

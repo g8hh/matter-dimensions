@@ -11,10 +11,10 @@ functions["start_v4"] = () => {
     return; // External effect
 };
 functions["start_v5"] = () => {
-    player.light = me.light.min(1e5);
-    player.black_holes = me.black_holes.min(1e5);
-    player.stars = me.stars.min(1e5);
-    player.inflation = me.inflation.min(1e5);
+    player.light = player.light.min(1e5);
+    player.black_holes = player.black_holes.min(1e5);
+    player.stars = player.stars.min(1e5);
+    player.inflation = player.inflation.min(1e5);
 };
 functions["start_v6"] = () => {
     for (let key of Object.keys(player.upgrades)) {

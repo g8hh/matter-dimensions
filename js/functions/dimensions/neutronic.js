@@ -52,15 +52,15 @@ functions['neutronic_1_pow'] = (amt_bought, amt) => {
     var base_exp = big(2);
 
     // Neutronic Challenge 8 reward: increase multiplier per Neutronic dimension
-    base_exp = me.challenges['n8'].get_effect();
+    base_exp = player.challenges['n8'].get_effect();
 
     var base_pow = base_exp.pow(amt_bought);
     // v164: boost to all Neutronic Dimensions
-    if (me.upgrades['v164'].is_active()) base_pow = base_pow.mult(me.upgrades['v164'].get_effect());
+    if (player.upgrades['v164'].is_active()) base_pow = base_pow.mult(player.upgrades['v164'].get_effect());
     // d112: Inflation boosts 1st-4th Neutronic Dimensions
-    if (me.upgrades['d112'].is_active()) base_pow = base_pow.mult(me.upgrades['d112'].get_effect());
+    if (player.upgrades['d112'].is_active()) base_pow = base_pow.mult(player.upgrades['d112'].get_effect());
     // Dimensional Dimensions boost respective dimensions
-    base_pow = base_pow.mult(power_manifolds(me).pow(me.dimensions['dimensional_1'].amt_bought));
+    base_pow = base_pow.mult(power_manifolds().pow(player.dimensions['dimensional_1'].amt_bought));
 
     return base_pow;
 };
@@ -68,17 +68,17 @@ functions['neutronic_2_pow'] = (amt_bought, amt) => {
     var base_exp = big(2);
 
     // Neutronic Challenge 8 reward: increase multiplier per Neutronic dimension
-    base_exp = me.challenges['n8'].get_effect();
+    base_exp = player.challenges['n8'].get_effect();
 
     var base_pow = base_exp.pow(amt_bought);
     // v164: boost to all Neutronic Dimensions
-    if (me.upgrades['v164'].is_active()) base_pow = base_pow.mult(me.upgrades['v164'].get_effect());
+    if (player.upgrades['v164'].is_active()) base_pow = base_pow.mult(player.upgrades['v164'].get_effect());
     // d112: Inflation boosts 1st-4th Neutronic Dimensions
-    if (me.upgrades['d112'].is_active()) base_pow = base_pow.mult(me.upgrades['d112'].get_effect());
+    if (player.upgrades['d112'].is_active()) base_pow = base_pow.mult(player.upgrades['d112'].get_effect());
     // Vacuumic Challenge 2 reward: x2 multiplier to all even-numbered dimensions
-    if (me.challenges['v2'].completed) base_pow = base_pow.mult(2);
+    if (player.challenges['v2'].completed) base_pow = base_pow.mult(2);
     // Dimensional Dimensions boost respective dimensions
-    base_pow = base_pow.mult(power_manifolds(me).pow(me.dimensions['dimensional_2'].amt_bought));
+    base_pow = base_pow.mult(power_manifolds().pow(player.dimensions['dimensional_2'].amt_bought));
 
     return base_pow;
 };
@@ -86,18 +86,18 @@ functions['neutronic_3_pow'] = (amt_bought, amt) => {
     var base_exp = big(2);
 
     // Neutronic Challenge 8 reward: increase multiplier per Neutronic dimension
-    base_exp = me.challenges['n8'].get_effect();
+    base_exp = player.challenges['n8'].get_effect();
 
     var base_pow = base_exp.pow(amt_bought);
     // v164: boost to all Neutronic Dimensions
-    if (me.upgrades['v164'].is_active()) base_pow = base_pow.mult(me.upgrades['v164'].get_effect());
+    if (player.upgrades['v164'].is_active()) base_pow = base_pow.mult(player.upgrades['v164'].get_effect());
     // d112: Inflation boosts 1st-4th Neutronic Dimensions
-    if (me.upgrades['d112'].is_active()) base_pow = base_pow.mult(me.upgrades['d112'].get_effect());
+    if (player.upgrades['d112'].is_active()) base_pow = base_pow.mult(player.upgrades['d112'].get_effect());
     // Dimensional Dimensions boost respective dimensions
-    base_pow = base_pow.mult(power_manifolds(me).pow(me.dimensions['dimensional_3'].amt_bought));
+    base_pow = base_pow.mult(power_manifolds().pow(player.dimensions['dimensional_3'].amt_bought));
 
     // Vacuumic Challenge 3: 3rd dimensions do not produce anything
-    if (me.challenges['v3'].inC()) base_pow = big(0);
+    if (player.challenges['v3'].inC()) base_pow = big(0);
 
     return base_pow;
 };
@@ -105,17 +105,17 @@ functions['neutronic_4_pow'] = (amt_bought, amt) => {
     var base_exp = big(2);
 
     // Neutronic Challenge 8 reward: increase multiplier per Neutronic dimension
-    base_exp = me.challenges['n8'].get_effect();
+    base_exp = player.challenges['n8'].get_effect();
 
     var base_pow = base_exp.pow(amt_bought);
     // v164: boost to all Neutronic Dimensions
-    if (me.upgrades['v164'].is_active()) base_pow = base_pow.mult(me.upgrades['v164'].get_effect());
+    if (player.upgrades['v164'].is_active()) base_pow = base_pow.mult(player.upgrades['v164'].get_effect());
     // d112: Inflation boosts 1st-4th Neutronic Dimensions
-    if (me.upgrades['d112'].is_active()) base_pow = base_pow.mult(me.upgrades['d112'].get_effect());
+    if (player.upgrades['d112'].is_active()) base_pow = base_pow.mult(player.upgrades['d112'].get_effect());
     // Vacuumic Challenge 2 reward: x2 multiplier to all even-numbered dimensions
-    if (me.challenges['v2'].completed) base_pow = base_pow.mult(2);
+    if (player.challenges['v2'].completed) base_pow = base_pow.mult(2);
     // Dimensional Dimensions boost respective dimensions
-    base_pow = base_pow.mult(power_manifolds(me).pow(me.dimensions['dimensional_4'].amt_bought));
+    base_pow = base_pow.mult(power_manifolds().pow(player.dimensions['dimensional_4'].amt_bought));
 
     return base_pow;
 };
@@ -123,13 +123,13 @@ functions['neutronic_5_pow'] = (amt_bought, amt) => {
     var base_exp = big(2);
 
     // Neutronic Challenge 8 reward: increase multiplier per Neutronic dimension
-    base_exp = me.challenges['n8'].get_effect();
+    base_exp = player.challenges['n8'].get_effect();
 
     var base_pow = base_exp.pow(amt_bought);
     // v164: boost to all Neutronic Dimensions
-    if (me.upgrades['v164'].is_active()) base_pow = base_pow.mult(me.upgrades['v164'].get_effect());
+    if (player.upgrades['v164'].is_active()) base_pow = base_pow.mult(player.upgrades['v164'].get_effect());
     // Dimensional Dimensions boost respective dimensions
-    base_pow = base_pow.mult(power_manifolds(me).pow(me.dimensions['dimensional_5'].amt_bought));
+    base_pow = base_pow.mult(power_manifolds().pow(player.dimensions['dimensional_5'].amt_bought));
 
     return base_pow;
 };
@@ -137,15 +137,15 @@ functions['neutronic_6_pow'] = (amt_bought, amt) => {
     var base_exp = big(2);
 
     // Neutronic Challenge 8 reward: increase multiplier per Neutronic dimension
-    base_exp = me.challenges['n8'].get_effect();
+    base_exp = player.challenges['n8'].get_effect();
 
     var base_pow = base_exp.pow(amt_bought);
     // v164: boost to all Neutronic Dimensions
-    if (me.upgrades['v164'].is_active()) base_pow = base_pow.mult(me.upgrades['v164'].get_effect());
+    if (player.upgrades['v164'].is_active()) base_pow = base_pow.mult(player.upgrades['v164'].get_effect());
     // Vacuumic Challenge 2 reward: x2 multiplier to all even-numbered dimensions
-    if (me.challenges['v2'].completed) base_pow = base_pow.mult(2);
+    if (player.challenges['v2'].completed) base_pow = base_pow.mult(2);
     // Dimensional Dimensions boost respective dimensions
-    base_pow = base_pow.mult(power_manifolds(me).pow(me.dimensions['dimensional_6'].amt_bought));
+    base_pow = base_pow.mult(power_manifolds().pow(player.dimensions['dimensional_6'].amt_bought));
 
     return base_pow;
 };
@@ -153,13 +153,13 @@ functions['neutronic_7_pow'] = (amt_bought, amt) => {
     var base_exp = big(2);
 
     // Neutronic Challenge 8 reward: increase multiplier per Neutronic dimension
-    base_exp = me.challenges['n8'].get_effect();
+    base_exp = player.challenges['n8'].get_effect();
 
     var base_pow = base_exp.pow(amt_bought);
     // v164: boost to all Neutronic Dimensions
-    if (me.upgrades['v164'].is_active()) base_pow = base_pow.mult(me.upgrades['v164'].get_effect());
+    if (player.upgrades['v164'].is_active()) base_pow = base_pow.mult(player.upgrades['v164'].get_effect());
     // Dimensional Dimensions boost respective dimensions
-    base_pow = base_pow.mult(power_manifolds(me).pow(me.dimensions['dimensional_7'].amt_bought));
+    base_pow = base_pow.mult(power_manifolds().pow(player.dimensions['dimensional_7'].amt_bought));
 
     return base_pow;
 };
@@ -167,15 +167,15 @@ functions['neutronic_8_pow'] = (amt_bought, amt) => {
     var base_exp = big(2);
 
     // Neutronic Challenge 8 reward: increase multiplier per Neutronic dimension
-    base_exp = me.challenges['n8'].get_effect();
+    base_exp = player.challenges['n8'].get_effect();
 
     var base_pow = base_exp.pow(amt_bought);
     // v164: boost to all Neutronic Dimensions
-    if (me.upgrades['v164'].is_active()) base_pow = base_pow.mult(me.upgrades['v164'].get_effect());
+    if (player.upgrades['v164'].is_active()) base_pow = base_pow.mult(player.upgrades['v164'].get_effect());
     // Vacuumic Challenge 2 reward: x2 multiplier to all even-numbered dimensions
-    if (me.challenges['v2'].completed) base_pow = base_pow.mult(2);
+    if (player.challenges['v2'].completed) base_pow = base_pow.mult(2);
     // Dimensional Dimensions boost respective dimensions
-    base_pow = base_pow.mult(power_manifolds(me).pow(me.dimensions['dimensional_8'].amt_bought));
+    base_pow = base_pow.mult(power_manifolds().pow(player.dimensions['dimensional_8'].amt_bought));
 
     return base_pow;
 };
@@ -183,13 +183,13 @@ functions['neutronic_9_pow'] = (amt_bought, amt) => {
     var base_exp = big(2);
 
     // Neutronic Challenge 8 reward: increase multiplier per Neutronic dimension
-    base_exp = me.challenges['n8'].get_effect();
+    base_exp = player.challenges['n8'].get_effect();
 
     var base_pow = base_exp.pow(amt_bought);
     // v164: boost to all Neutronic Dimensions
-    if (me.upgrades['v164'].is_active()) base_pow = base_pow.mult(me.upgrades['v164'].get_effect());
+    if (player.upgrades['v164'].is_active()) base_pow = base_pow.mult(player.upgrades['v164'].get_effect());
     // Dimensional Dimensions boost respective dimensions
-    base_pow = base_pow.mult(power_manifolds(me).pow(me.dimensions['dimensional_9'].amt_bought));
+    base_pow = base_pow.mult(power_manifolds().pow(player.dimensions['dimensional_9'].amt_bought));
 
     return base_pow;
 };
@@ -197,15 +197,15 @@ functions['neutronic_10_pow'] = (amt_bought, amt) => {
     var base_exp = big(2);
 
     // Neutronic Challenge 8 reward: increase multiplier per Neutronic dimension
-    base_exp = me.challenges['n8'].get_effect();
+    base_exp = player.challenges['n8'].get_effect();
 
     var base_pow = base_exp.pow(amt_bought);
     // v164: boost to all Neutronic Dimensions
-    if (me.upgrades['v164'].is_active()) base_pow = base_pow.mult(me.upgrades['v164'].get_effect());
+    if (player.upgrades['v164'].is_active()) base_pow = base_pow.mult(player.upgrades['v164'].get_effect());
     // Vacuumic Challenge 2 reward: x2 multiplier to all even-numbered dimensions
-    if (me.challenges['v2'].completed) base_pow = base_pow.mult(2);
+    if (player.challenges['v2'].completed) base_pow = base_pow.mult(2);
     // Dimensional Dimensions boost respective dimensions
-    base_pow = base_pow.mult(power_manifolds(me).pow(me.dimensions['dimensional_10'].amt_bought));
+    base_pow = base_pow.mult(power_manifolds().pow(player.dimensions['dimensional_10'].amt_bought));
 
     return base_pow;
 };
@@ -213,13 +213,13 @@ functions['neutronic_11_pow'] = (amt_bought, amt) => {
     var base_exp = big(2);
 
     // Neutronic Challenge 8 reward: increase multiplier per Neutronic dimension
-    base_exp = me.challenges['n8'].get_effect();
+    base_exp = player.challenges['n8'].get_effect();
 
     var base_pow = base_exp.pow(amt_bought);
     // v164: boost to all Neutronic Dimensions
-    if (me.upgrades['v164'].is_active()) base_pow = base_pow.mult(me.upgrades['v164'].get_effect());
+    if (player.upgrades['v164'].is_active()) base_pow = base_pow.mult(player.upgrades['v164'].get_effect());
     // Dimensional Dimensions boost respective dimensions
-    base_pow = base_pow.mult(power_manifolds(me).pow(me.dimensions['dimensional_11'].amt_bought));
+    base_pow = base_pow.mult(power_manifolds().pow(player.dimensions['dimensional_11'].amt_bought));
 
     return base_pow;
 };
@@ -227,15 +227,15 @@ functions['neutronic_12_pow'] = (amt_bought, amt) => {
     var base_exp = big(2);
 
     // Neutronic Challenge 8 reward: increase multiplier per Neutronic dimension
-    base_exp = me.challenges['n8'].get_effect();
+    base_exp = player.challenges['n8'].get_effect();
 
     var base_pow = base_exp.pow(amt_bought);
     // v164: boost to all Neutronic Dimensions
-    if (me.upgrades['v164'].is_active()) base_pow = base_pow.mult(me.upgrades['v164'].get_effect());
+    if (player.upgrades['v164'].is_active()) base_pow = base_pow.mult(player.upgrades['v164'].get_effect());
     // Vacuumic Challenge 2 reward: x2 multiplier to all even-numbered dimensions
-    if (me.challenges['v2'].completed) base_pow = base_pow.mult(2);
+    if (player.challenges['v2'].completed) base_pow = base_pow.mult(2);
     // Dimensional Dimensions boost respective dimensions
-    base_pow = base_pow.mult(power_manifolds(me).pow(me.dimensions['dimensional_12'].amt_bought));
+    base_pow = base_pow.mult(power_manifolds().pow(player.dimensions['dimensional_12'].amt_bought));
 
     return base_pow;
 };
@@ -243,117 +243,117 @@ functions['neutronic_12_pow'] = (amt_bought, amt) => {
 
 functions['neutronic_1_unlock'] = () => {
     // v142: unlock Neutronic dimensions
-    if (!me.upgrades['v142'].is_active()) return false;
+    if (!player.upgrades['v142'].is_active()) return false;
 
     return true;
 }
 functions['neutronic_2_unlock'] = () => {
     // v142: unlock Neutronic dimensions
-    if (!me.upgrades['v142'].is_active()) return false;
+    if (!player.upgrades['v142'].is_active()) return false;
 
     // Challenge 6: there is limited amount of dimensions
-    if (me.challenge_strength_6 < 2) return false;
+    if (player.challenge_strength_6 < 2) return false;
 
-    if (me.dimensions['neutronic_1'].amt_bought > 0) return true;
+    if (player.dimensions['neutronic_1'].amt_bought > 0) return true;
     return false;
 }
 functions['neutronic_3_unlock'] = () => {
     // v142: unlock Neutronic dimensions
-    if (!me.upgrades['v142'].is_active()) return false;
+    if (!player.upgrades['v142'].is_active()) return false;
 
     // Challenge 6: there is limited amount of dimensions
-    if (me.challenge_strength_6 < 3) return false;
+    if (player.challenge_strength_6 < 3) return false;
 
-    if (me.dimensions['neutronic_2'].amt_bought > 0) return true;
+    if (player.dimensions['neutronic_2'].amt_bought > 0) return true;
     return false;
 }
 functions['neutronic_4_unlock'] = () => {
     // v142: unlock Neutronic dimensions
-    if (!me.upgrades['v142'].is_active()) return false;
+    if (!player.upgrades['v142'].is_active()) return false;
 
     // Challenge 6: there is limited amount of dimensions
-    if (me.challenge_strength_6 < 4) return false;
+    if (player.challenge_strength_6 < 4) return false;
 
-    if (me.dimensions['neutronic_3'].amt_bought > 0) return true;
+    if (player.dimensions['neutronic_3'].amt_bought > 0) return true;
     return false;
 }
 functions['neutronic_5_unlock'] = () => {
     // v142: unlock Neutronic dimensions
-    if (!me.upgrades['v142'].is_active()) return false;
+    if (!player.upgrades['v142'].is_active()) return false;
 
     // Challenge 6: there is limited amount of dimensions
-    if (me.challenge_strength_6 < 5) return false;
+    if (player.challenge_strength_6 < 5) return false;
 
-    if (me.dimensions['neutronic_4'].amt_bought > 0) return true;
+    if (player.dimensions['neutronic_4'].amt_bought > 0) return true;
     return false;
 }
 functions['neutronic_6_unlock'] = () => {
     // v142: unlock Neutronic dimensions
-    if (!me.upgrades['v142'].is_active()) return false;
+    if (!player.upgrades['v142'].is_active()) return false;
 
     // Challenge 6: there is limited amount of dimensions
-    if (me.challenge_strength_6 < 6) return false;
+    if (player.challenge_strength_6 < 6) return false;
 
-    if (me.dimensions['neutronic_5'].amt_bought > 0) return true;
+    if (player.dimensions['neutronic_5'].amt_bought > 0) return true;
     return false;
 }
 functions['neutronic_7_unlock'] = () => {
     // v142: unlock Neutronic dimensions
-    if (!me.upgrades['v142'].is_active()) return false;
+    if (!player.upgrades['v142'].is_active()) return false;
 
     // Challenge 6: there is limited amount of dimensions
-    if (me.challenge_strength_6 < 7) return false;
+    if (player.challenge_strength_6 < 7) return false;
 
-    if (me.dimensions['neutronic_6'].amt_bought > 0) return true;
+    if (player.dimensions['neutronic_6'].amt_bought > 0) return true;
     return false;
 }
 functions['neutronic_8_unlock'] = () => {
     // v142: unlock Neutronic dimensions
-    if (!me.upgrades['v142'].is_active()) return false;
+    if (!player.upgrades['v142'].is_active()) return false;
 
     // Challenge 6: there is limited amount of dimensions
-    if (me.challenge_strength_6 < 8) return false;
+    if (player.challenge_strength_6 < 8) return false;
 
-    if (me.dimensions['neutronic_7'].amt_bought > 0) return true;
+    if (player.dimensions['neutronic_7'].amt_bought > 0) return true;
     return false;
 }
 functions['neutronic_9_unlock'] = () => {
     // v142: unlock Neutronic dimensions
-    if (!me.upgrades['v142'].is_active()) return false;
+    if (!player.upgrades['v142'].is_active()) return false;
 
     // Challenge 6: there is limited amount of dimensions
-    if (me.challenge_strength_6 < 9) return false;
+    if (player.challenge_strength_6 < 9) return false;
 
-    if (me.dimensions['neutronic_8'].amt_bought > 0) return true;
+    if (player.dimensions['neutronic_8'].amt_bought > 0) return true;
     return false;
 }
 functions['neutronic_10_unlock'] = () => {
     // v142: unlock Neutronic dimensions
-    if (!me.upgrades['v142'].is_active()) return false;
+    if (!player.upgrades['v142'].is_active()) return false;
 
     // Challenge 6: there is limited amount of dimensions
-    if (me.challenge_strength_6 < 10) return false;
+    if (player.challenge_strength_6 < 10) return false;
 
-    if (me.dimensions['neutronic_9'].amt_bought > 0) return true;
+    if (player.dimensions['neutronic_9'].amt_bought > 0) return true;
     return false;
 }
 functions['neutronic_11_unlock'] = () => {
     // v142: unlock Neutronic dimensions
-    if (!me.upgrades['v142'].is_active()) return false;
+    if (!player.upgrades['v142'].is_active()) return false;
 
     // Challenge 6: there is limited amount of dimensions
-    if (me.challenge_strength_6 < 11) return false;
+    if (player.challenge_strength_6 < 11) return false;
 
-    if (me.dimensions['neutronic_10'].amt_bought > 0) return true;
+    if (player.dimensions['neutronic_10'].amt_bought > 0) return true;
     return false;
 }
 functions['neutronic_12_unlock'] = () => {
     // v142: unlock Neutronic dimensions
-    if (!me.upgrades['v142'].is_active()) return false;
+    if (!player.upgrades['v142'].is_active()) return false;
 
     // Challenge 6: there is limited amount of dimensions
-    if (me.challenge_strength_6 < 12) return false;
+    if (player.challenge_strength_6 < 12) return false;
 
-    if (me.dimensions['neutronic_11'].amt_bought > 0) return true;
+    if (player.dimensions['neutronic_11'].amt_bought > 0) return true;
     return false;
 }
