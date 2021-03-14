@@ -199,7 +199,7 @@ functions['matter_2_pow'] = (amt_bought, amt) => {
     // n11: bonus to all Matter Dimensions
     if (player.upgrades['n11'].is_active()) base_pow = base_pow.mult(player.upgrades['n11'].get_effect());
     // n13: bonus to all Matter Dimensions
-    if (player.upgrades['n13'].is_active()) base_pow = base_pow.mult(meplayer.upgrades['n13'].get_effect());
+    if (player.upgrades['n13'].is_active()) base_pow = base_pow.mult(player.upgrades['n13'].get_effect());
     // v111: x1e6 power to all Matter Dimensions
     base_pow = base_pow.mult(player.upgrades['v111'].get_effect());
     // achievement 76: x666 power to prime-numbered Matter Dimensions
