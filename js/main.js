@@ -263,7 +263,7 @@ class Player {
         this.achievements["68"] = new Achievement("68", "SpaceX", "Have 10 Space Theorems in total", "check_68");
 
         this.achievements["71"] = new Achievement("71", "NEW DIMENSIONS???", "Buy 5th Matter Dimension", "check_71");
-        this.achievements["72"] = new Achievement("72", "Hex", "Buy 6th Matter Dimension", "check_72");
+        this.achievements["72"] = new Achievement("72", "Hex", "Buy 6th Matter Dimension.\nReward: unlock autobuyer for Photonic upgrades", "check_72", "effective");
         this.achievements["73"] = new Achievement("73", "Supernova", "Buy a Neutronic Dimension", "check_73");
         this.achievements["74"] = new Achievement("74", "Faster than a potato", "Reach 1e29/s tickspeed", "check_74");
         this.achievements["75"] = new Achievement("75", "You got past The Big Wall", "Reach 1e200 matter", "check_75");
@@ -271,7 +271,7 @@ class Player {
         this.achievements["77"] = new Achievement("77", "The first one is always free", "Complete each regular Neutronic challenge once", "check_77");
         this.achievements["78"] = new Achievement("78", "Metaphor gotten", "Complete a Meta-Challenge", "check_78");
 
-        this.achievements["81"] = new Achievement("81", "Not a luck related achievement", "Buy 7th Matter Dimension.\nReward: unlock autobuyer for Photonic upgrades", "check_81", "effective");
+        this.achievements["81"] = new Achievement("81", "Not a luck related achievement", "Buy 7th Matter Dimension", "check_81");
         this.achievements["82"] = new Achievement("82", "Limit Break", "Break Infinity", "check_82");
         this.achievements["83"] = new Achievement("83", "Background Radiation", "Reach 2.73 K of Temperature.\nReward: unlock the option to distribute 50% of produced energy to heating", "check_83", "effective");
         this.achievements["84"] = new Achievement("84", "Republican Victory", "Obtain a Red Wave", "check_84");
@@ -330,13 +330,14 @@ class Player {
         this.upgrades["AUTO1_1"] = new Upgrade("AUTO1_1", 1, "upg_AUTO1_1_cost", "upg_automation_power", "upg_automation_neutronic_unlock", "neutrons", [" Neutron", " Neutrons"], "upg_automation_neutronic_unlock");
         this.upgrades["AUTO1_2"] = new Upgrade("AUTO1_2", 1, "upg_AUTO1_2_cost", "upg_automation_power", "upg_automation_neutronic_unlock", "neutrons", [" Neutron", " Neutrons"], "upg_automation_neutronic_unlock");
         this.upgrades["AUTO1_3"] = new Upgrade("AUTO1_3", 1, "upg_AUTO1_3_cost", "upg_automation_power", "upg_automation_vacuumic_unlock", "vacuum_energy", " VE", "upg_automation_vacuumic_unlock");
+        this.upgrades["AUTO1_5"] = new Upgrade("AUTO1_5", 1, "upg_AUTO1_5_cost", "upg_automation_power", "upg_automation_dimensional_unlock", "shards", [" Shard", " Shards"], "upg_automation_dimensional_unlock");
         this.upgrades["AUTO1_4"] = new Upgrade("AUTO1_4", 1, "upg_AUTO1_4_cost", "upg_automation_power", "upg_automation_dimensional_unlock", "shards", [" Shard", " Shards"], "upg_automation_dimensional_unlock");
-        this.upgrades["AUTO1_5"] = new Upgrade("AUTO1_5", 1, "upg_AUTO1_5_cost", "upg_automation_power", "upg_automation_atomic_unlock", "atoms", [" Atom", " Atoms"], "upg_automation_atomic_unlock");
 
         this.upgrades["AUTO2_1"] = new Upgrade("AUTO2_1", 1, "upg_AUTO2_1_cost", "upg_automation_power", "upg_automation_vacuumic_unlock", "vacuum_energy", " VE", "upg_automation_vacuumic_unlock");
         this.upgrades["AUTO2_2"] = new Upgrade("AUTO2_2", 1, "upg_AUTO2_2_cost", "upg_automation_power", "upg_automation_vacuumic_unlock", "vacuum_energy", " VE", "upg_automation_vacuumic_unlock");
         this.upgrades["AUTO2_3"] = new Upgrade("AUTO2_3", 1, "upg_AUTO2_3_cost", "upg_automation_power", "upg_automation_dimensional_unlock", "shards", [" Shard", " Shards"], "upg_automation_dimensional_unlock");
         this.upgrades["AUTO2_4"] = new Upgrade("AUTO2_4", 1, "upg_AUTO2_4_cost", "upg_automation_power", "upg_automation_atomic_unlock", "atoms", [" Atom", " Atoms"], "upg_automation_atomic_unlock");
+        this.upgrades["AUTO2_5"] = new Upgrade("AUTO2_5", 1, "upg_AUTO2_5_cost", "upg_automation_power", "upg_automation_atomic_unlock", "atoms", [" Atom", " Atoms"], "upg_automation_atomic_unlock");
 
         this.upgrades["AUTO3_1"] = new Upgrade("AUTO3_1", 1, "upg_AUTO3_1_cost", "upg_automation_power", "upg_automation_dimensional_unlock", "shards", [" Shard", " Shards"], "upg_automation_dimensional_unlock");
         this.upgrades["AUTO3_2"] = new Upgrade("AUTO3_2", 1, "upg_AUTO3_2_cost", "upg_automation_power", "upg_automation_dimensional_unlock", "shards", [" Shard", " Shards"], "upg_automation_dimensional_unlock");
@@ -601,6 +602,8 @@ class Player {
         this.autobuyers["protons"] = new Autobuyer("protons", this.dimensions["protons"], "autobuyer_protons_available", false);
         this.autobuyers["electrons"] = new Autobuyer("electrons", this.dimensions["electrons"], "autobuyer_electrons_available", false);
         this.autobuyers["bosons"] = new Autobuyer("bosons", this.dimensions["bosons"], "autobuyer_bosons_available", false);
+
+        this.autobuyers["neutronic_upgrades"] = new Autobuyer("neutronic_upgrades", "neutronic_upgrades", "autobuyer_neutronic_upgrades_available", false);
 
         this.autobuyers["neutronic_1"] = new Autobuyer("neutronic_1", this.dimensions["neutronic_1"], "autobuyer_neutronic_1_available");
         this.autobuyers["neutronic_2"] = new Autobuyer("neutronic_2", this.dimensions["neutronic_2"], "autobuyer_neutronic_2_available");
@@ -1084,7 +1087,7 @@ function hotkeydown(event) {
                 for (let i = 1; i <= 12; i++)
                     me.dimensions[current_menu + "_" + i].buy(me.dimensions[current_menu + "_" + i].binary_search_max()); 
             if (current_menu in current_submenu && current_submenu[current_menu] == "upgrades") {
-                if (current_menu == "photonic" && (me.achievements['62'].complete || me.achievements['81'].complete)) max_buy_upgrades('p');
+                if (current_menu == "photonic" && (me.achievements['62'].complete || me.achievements['72'].complete)) max_buy_upgrades('p');
                 if (current_menu == "gravitonic" && (me.achievements['64'].complete || me.challenges['g0'].completed)) max_buy_upgrades('g');
                 if (current_menu == "neutronic" && (me.achievements['97'].complete)) max_buy_upgrades('n');
             }

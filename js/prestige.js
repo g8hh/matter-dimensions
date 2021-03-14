@@ -415,7 +415,7 @@ function update_prestige() {
     else document.getElementById("block_gravitonic_4").style.display = "";
 
     // achievement 62: unlock buy max photonic upgrades
-    if (player.achievements['62'].complete || player.achievements['81'].complete) {
+    if (player.achievements['62'].complete || player.achievements['72'].complete) {
         document.getElementById("upgrades_photonic_buy_max").style.display = "";
     }
     else {

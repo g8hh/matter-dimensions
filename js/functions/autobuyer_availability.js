@@ -87,8 +87,8 @@ functions["autobuyer_photonic_available"] = () => {
 };
 
 functions["autobuyer_photonic_upgrades_available"] = () => {
-    // achievement 81: unlock autobuyer for Photonic upgrades
-    return me.achievements['81'].complete;
+    // achievement 72: unlock autobuyer for Photonic upgrades
+    return me.achievements['72'].complete;
 };
 
 functions["autobuyer_photonic_1_available"] = () => {
@@ -169,8 +169,8 @@ functions["autobuyer_gravitonic_available"] = () => {
 };
 
 functions["autobuyer_gravitonic_upgrades_available"] = () => {
-    // Gravitonic Meta-Challenge reward: unlock autobuyer for Gravitonic upgrades
-    return me.challenges['g0'].completed;
+    // AUTO1_5: unlock autobuyer for Gravitonic upgrades
+    return me.upgrades["AUTO1_5"].is_active();
 };
 
 functions["autobuyer_gravitonic_1_available"] = () => {
@@ -335,6 +335,11 @@ functions["autobuyer_neutronic_12_available"] = () => {
     if (me.challenges['v2'].inC()) return false;
     // AUTO2_1: unlock Neutronic Dimension autobuyers
     return me.upgrades["AUTO2_1"].is_active();
+};
+
+functions["autobuyer_neutronic_upgrades_available"] = () => {
+    // AUTO2_5: unlock autobuyer for Neutronic upgrades
+    return me.upgrades["AUTO2_5"].is_active();
 };
 
 functions["autobuyer_vacuumic_available"] = () => {

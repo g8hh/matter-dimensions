@@ -185,14 +185,14 @@
                             <p>This row is never reset</p>
                             <p id="upgrade_AUTO1_3_next_cost">Cost: <span id="upgrade_AUTO1_3_cost"></span></p>
                         </div>
-                        <div id="upgrade_AUTO1_4" class="upgrade" style="grid-row: 1; grid-column: 5" onclick="me.upgrades['AUTO1_4'].buy()">
+                        <div id="upgrade_AUTO1_5" class="upgrade" style="grid-row: 1; grid-column: 5" onclick="me.upgrades['AUTO1_5'].buy()">
+                            <p>Unlock autobuyer for Gravitonic upgrades</p>
+                            <p id="upgrade_AUTO1_5_next_cost">Cost: <span id="upgrade_AUTO1_5_cost"></span></p>
+                        </div>
+                        <div id="upgrade_AUTO1_4" class="upgrade" style="grid-row: 1; grid-column: 6" onclick="me.upgrades['AUTO1_4'].buy()">
                             <p>Gain Gravitons as soon as you can, without reset</p>
                             <p><input id="upgrade_AUTO1_4_toggle" type="checkbox" onclick="me.upgrades['AUTO1_4'].update()" checked> Enabled</p>
                             <p id="upgrade_AUTO1_4_next_cost">Cost: <span id="upgrade_AUTO1_4_cost"></span></p>
-                        </div>
-                        <div id="upgrade_AUTO1_5" class="upgrade" style="grid-row: 1; grid-column: 6" onclick="me.upgrades['AUTO1_5'].buy()">
-                            <p>Always keep Gravitonic upgrades</p>
-                            <p id="upgrade_AUTO1_5_next_cost">Cost: <span id="upgrade_AUTO1_5_cost"></span></p>
                         </div>
 
                         <p id="automation_shop_dimensional" class="automation-shop-reset-layer" style="grid-row: 2; grid-column: 1"></p>
@@ -208,7 +208,11 @@
                             <p>This row is never reset</p>
                             <p id="upgrade_AUTO2_3_next_cost">Cost: <span id="upgrade_AUTO2_3_cost"></span></p>
                         </div>
-                        <div id="upgrade_AUTO2_4" class="upgrade" style="grid-row: 2; grid-column: 5" onclick="me.upgrades['AUTO2_4'].buy()">
+                        <div id="upgrade_AUTO2_5" class="upgrade" style="grid-row: 2; grid-column: 5" onclick="me.upgrades['AUTO2_5'].buy()">
+                            <p>Unlock autobuyer for Neutronic upgrades</p>
+                            <p id="upgrade_AUTO2_5_next_cost">Cost: <span id="upgrade_AUTO2_5_cost"></span></p>
+                        </div>
+                        <div id="upgrade_AUTO2_4" class="upgrade" style="grid-row: 2; grid-column: 6" onclick="me.upgrades['AUTO2_4'].buy()">
                             <p>Gain <span class="static-number" extra="100"></span>% of Neutrons upon reset per second</p>
                             <p id="upgrade_AUTO2_4_next_cost">Cost: <span id="upgrade_AUTO2_4_cost"></span></p>
                         </div>
@@ -1405,6 +1409,7 @@
                             <div id="upgrades_neutronic_buy_max" class="dimension-cost" onclick="max_buy_upgrades('n')" style="flex-grow: 1">
                                 <p>Buy max (M)</p>
                             </div>
+                            <div id="autobuyer_neutronic_upgrades" style="display: none"><input id="autobuyer_neutronic_upgrades_toggle" type="checkbox" onclick="me.autobuyers['neutronic_upgrades'].update_params()"></div>
                         </div>
                         <div class="upgrade-list-neutronic">
                             <div id="upgrade_n01" class="upgrade" style="grid-row: 1; grid-column: 5 / 9" onclick="me.upgrades['n01'].buy()">

@@ -133,6 +133,9 @@ function load_save(data) {
         // v0.7: Biological update
         player.time_biological = player.overall_time;
         if (player.total_realtime > 365 * 24 * 60 * 60 * 1000) player.total_realtime = player.online_realtime; // 1970 fix
+        player.upgrades['AUTO1_5'].currency = "shards";
+        player.upgrades['AUTO1_5'].currency_display_name_singular = " Shard";
+        player.upgrades['AUTO1_5'].currency_display_name_plural = " Shards";
     }
 }
 

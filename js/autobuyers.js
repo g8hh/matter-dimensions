@@ -22,6 +22,7 @@ class Autobuyer {
         if (typeof this.obj === 'string' || this.obj instanceof String) {
             if (this.obj == "photonic_upgrades") max_buy_upgrades('p');
             if (this.obj == "gravitonic_upgrades") max_buy_upgrades('g');
+            if (this.obj == "neutronic_upgrades") max_buy_upgrades('n');
         }
 
         if (me.time_passed == 0 && (typeof this.obj === 'string' || this.obj instanceof String)) return;
