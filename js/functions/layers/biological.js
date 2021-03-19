@@ -58,7 +58,7 @@ function reset_biological(force=false, higher_reset=false, autobuyer_induced=fal
         }
     //}
 
-    cap_resources();
+    update_collider();
     reset_atomic(true, true, false, 0);
 
     if (!force || higher_reset) player.biological_resets += count_as_reset_num;
