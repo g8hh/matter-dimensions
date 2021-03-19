@@ -152,17 +152,17 @@
                     <p>One of each <span id="resource_challenge_strength_8"></span> dimensions collapses each second</p>
                     <p>All costs are x^<span id="resource_challenge_strength_9"></span></p>
                     <p>Dimensions are working as if there are x^<span id="resource_challenge_strength_10"></span> of them</p>
-                    <p id="challenge_strength_11">All production above <span class="static-number" extra="2^1024"></span> is dilated with the power of <span id="resource_challenge_strength_11"></span></p>
+                    <p id="challenge_strength_11" style="display: none">All production above <span class="static-number" extra="2^1024"></span> is dilated with the power of <span id="resource_challenge_strength_11"></span></p>
                     <p>&nbsp;</p>
                     <p>You spent <span id="timer_time_passed"></span> in this reset</p>
                     <p>&nbsp;</p>
                     <p id="unlock_hint_photonic">Next layer unlocks at <span class="static-number" extra="1" finite></span> energy</p>
-                    <p id="unlock_hint_gravitonic">Next layer unlocks at <span class="static-number" extra="10" finite></span> matter</p>
-                    <p id="unlock_hint_neutronic">Next layer unlocks at <span class="static-number" extra="10" finite></span> 1st Matter Dimensions</p>
-                    <p id="unlock_hint_vacuumic">Next layer unlocks at <span class="static-number" extra="1e10" finite></span> matter</p>
-                    <p id="unlock_hint_dimensional">Next layer unlocks at <span class="static-number" extra="10" finite></span> bought 4th Matter Dimensions</p>
-                    <p id="unlock_hint_atomic">Next layer unlocks at breaking Infinity</p>
-                    <p id="unlock_hint_biological">Next layer unlocks at <span class="static-number" extra="6.022e23" finite></span> atoms</p>
+                    <p id="unlock_hint_gravitonic" style="display: none">Next layer unlocks at <span class="static-number" extra="10" finite></span> matter</p>
+                    <p id="unlock_hint_neutronic" style="display: none">Next layer unlocks at <span class="static-number" extra="10" finite></span> 1st Matter Dimensions</p>
+                    <p id="unlock_hint_vacuumic" style="display: none">Next layer unlocks at <span class="static-number" extra="1e10" finite></span> matter</p>
+                    <p id="unlock_hint_dimensional" style="display: none">Next layer unlocks at <span class="static-number" extra="10" finite></span> bought 4th Matter Dimensions</p>
+                    <p id="unlock_hint_atomic" style="display: none">Next layer unlocks at breaking Infinity</p>
+                    <p id="unlock_hint_biological" style="display: none">Next layer unlocks at <span class="static-number" extra="6.022e23" finite></span> atoms</p>
                 </div>
                 <div id="achievement_track"></div>
 
@@ -298,7 +298,7 @@
 
                 <div class="layer-info" id="section_matter">
                     <div id="matter_dimensions" class="dimension-list">
-                        <div id="tickspeed_wrapper" class="tickspeed-wrapper">
+                        <div id="tickspeed_wrapper" class="tickspeed-wrapper" style="display: none">
                             <p>Increase tickspeed for Matter Dimensions by <span id="tickspeed_compound_type">×</span><span id="upgrade_TICKSPEED_reduction"></span></p>
                             <div class="button-row">
                                 <div id="upgrade_TICKSPEED" class="upgrade" onclick="me.upgrades['TICKSPEED'].buy()">
@@ -317,7 +317,7 @@
                             </div>
                             <div id="autobuyer_matter_1" class="dimension-autobuyer" style="visibility: hidden"><input id="autobuyer_matter_1_toggle" type="checkbox" onclick="me.autobuyers['matter_1'].update_params()"></div>
                         </div>
-                        <div id="dimension_matter_2" class="dimension">
+                        <div id="dimension_matter_2" class="dimension" style="display: none">
                             <p class="dimension-name">2nd Matter Dimension</p>
                             <p class="dimension-production">×<span id="dimension_matter_2_prod"></span></p>
                             <p class="dimension-amount"><span id="dimension_matter_2_amt"></span> (<span id="dimension_matter_2_bought"></span>)</p>
@@ -326,7 +326,7 @@
                             </div>
                             <div id="autobuyer_matter_2" class="dimension-autobuyer" style="visibility: hidden"><input id="autobuyer_matter_2_toggle" type="checkbox" onclick="me.autobuyers['matter_2'].update_params()"></div>
                         </div>
-                        <div id="dimension_matter_3" class="dimension">
+                        <div id="dimension_matter_3" class="dimension" style="display: none">
                             <p class="dimension-name">3rd Matter Dimension</p>
                             <p class="dimension-production">×<span id="dimension_matter_3_prod"></span></p>
                             <p class="dimension-amount"><span id="dimension_matter_3_amt"></span> (<span id="dimension_matter_3_bought"></span>)</p>
@@ -335,7 +335,7 @@
                             </div>
                             <div id="autobuyer_matter_3" class="dimension-autobuyer" style="visibility: hidden"><input id="autobuyer_matter_3_toggle" type="checkbox" onclick="me.autobuyers['matter_3'].update_params()"></div>
                         </div>
-                        <div id="dimension_matter_4" class="dimension">
+                        <div id="dimension_matter_4" class="dimension" style="display: none">
                             <p class="dimension-name">4th Matter Dimension</p>
                             <p class="dimension-production">×<span id="dimension_matter_4_prod"></span></p>
                             <p class="dimension-amount"><span id="dimension_matter_4_amt"></span> (<span id="dimension_matter_4_bought"></span>)</p>
@@ -344,7 +344,7 @@
                             </div>
                             <div id="autobuyer_matter_4" class="dimension-autobuyer" style="visibility: hidden"><input id="autobuyer_matter_4_toggle" type="checkbox" onclick="me.autobuyers['matter_4'].update_params()"></div>
                         </div>
-                        <div id="dimension_matter_5" class="dimension">
+                        <div id="dimension_matter_5" class="dimension" style="display: none">
                             <p class="dimension-name">5th Matter Dimension</p>
                             <p class="dimension-production">×<span id="dimension_matter_5_prod"></span></p>
                             <p class="dimension-amount"><span id="dimension_matter_5_amt"></span> (<span id="dimension_matter_5_bought"></span>)</p>
@@ -353,7 +353,7 @@
                             </div>
                             <div id="autobuyer_matter_5" class="dimension-autobuyer" style="visibility: hidden"><input id="autobuyer_matter_5_toggle" type="checkbox" onclick="me.autobuyers['matter_5'].update_params()"></div>
                         </div>
-                        <div id="dimension_matter_6" class="dimension">
+                        <div id="dimension_matter_6" class="dimension" style="display: none">
                             <p class="dimension-name">6th Matter Dimension</p>
                             <p class="dimension-production">×<span id="dimension_matter_6_prod"></span></p>
                             <p class="dimension-amount"><span id="dimension_matter_6_amt"></span> (<span id="dimension_matter_6_bought"></span>)</p>
@@ -362,7 +362,7 @@
                             </div>
                             <div id="autobuyer_matter_6" class="dimension-autobuyer" style="visibility: hidden"><input id="autobuyer_matter_6_toggle" type="checkbox" onclick="me.autobuyers['matter_6'].update_params()"></div>
                         </div>
-                        <div id="dimension_matter_7" class="dimension">
+                        <div id="dimension_matter_7" class="dimension" style="display: none">
                             <p class="dimension-name">7th Matter Dimension</p>
                             <p class="dimension-production">×<span id="dimension_matter_7_prod"></span></p>
                             <p class="dimension-amount"><span id="dimension_matter_7_amt"></span> (<span id="dimension_matter_7_bought"></span>)</p>
@@ -371,7 +371,7 @@
                             </div>
                             <div id="autobuyer_matter_7" class="dimension-autobuyer" style="visibility: hidden"><input id="autobuyer_matter_7_toggle" type="checkbox" onclick="me.autobuyers['matter_7'].update_params()"></div>
                         </div>
-                        <div id="dimension_matter_8" class="dimension">
+                        <div id="dimension_matter_8" class="dimension" style="display: none">
                             <p class="dimension-name">8th Matter Dimension</p>
                             <p class="dimension-production">×<span id="dimension_matter_8_prod"></span></p>
                             <p class="dimension-amount"><span id="dimension_matter_8_amt"></span> (<span id="dimension_matter_8_bought"></span>)</p>
@@ -380,7 +380,7 @@
                             </div>
                             <div id="autobuyer_matter_8" class="dimension-autobuyer" style="visibility: hidden"><input id="autobuyer_matter_8_toggle" type="checkbox" onclick="me.autobuyers['matter_8'].update_params()"></div>
                         </div>
-                        <div id="dimension_matter_9" class="dimension">
+                        <div id="dimension_matter_9" class="dimension" style="display: none">
                             <p class="dimension-name">9th Matter Dimension</p>
                             <p class="dimension-production">×<span id="dimension_matter_9_prod"></span></p>
                             <p class="dimension-amount"><span id="dimension_matter_9_amt"></span> (<span id="dimension_matter_9_bought"></span>)</p>
@@ -389,7 +389,7 @@
                             </div>
                             <div id="autobuyer_matter_9" class="dimension-autobuyer" style="visibility: hidden"><input id="autobuyer_matter_9_toggle" type="checkbox" onclick="me.autobuyers['matter_9'].update_params()"></div>
                         </div>
-                        <div id="dimension_matter_10" class="dimension">
+                        <div id="dimension_matter_10" class="dimension" style="display: none">
                             <p class="dimension-name">10th Matter Dimension</p>
                             <p class="dimension-production">×<span id="dimension_matter_10_prod"></span></p>
                             <p class="dimension-amount"><span id="dimension_matter_10_amt"></span> (<span id="dimension_matter_10_bought"></span>)</p>
@@ -398,7 +398,7 @@
                             </div>
                             <div id="autobuyer_matter_10" class="dimension-autobuyer" style="visibility: hidden"><input id="autobuyer_matter_10_toggle" type="checkbox" onclick="me.autobuyers['matter_10'].update_params()"></div>
                         </div>
-                        <div id="dimension_matter_11" class="dimension">
+                        <div id="dimension_matter_11" class="dimension" style="display: none">
                             <p class="dimension-name">11th Matter Dimension</p>
                             <p class="dimension-production">×<span id="dimension_matter_11_prod"></span></p>
                             <p class="dimension-amount"><span id="dimension_matter_11_amt"></span> (<span id="dimension_matter_11_bought"></span>)</p>
@@ -407,7 +407,7 @@
                             </div>
                             <div id="autobuyer_matter_11" class="dimension-autobuyer" style="visibility: hidden"><input id="autobuyer_matter_11_toggle" type="checkbox" onclick="me.autobuyers['matter_11'].update_params()"></div>
                         </div>
-                        <div id="dimension_matter_12" class="dimension">
+                        <div id="dimension_matter_12" class="dimension" style="display: none">
                             <p class="dimension-name">12th Matter Dimension</p>
                             <p class="dimension-production">×<span id="dimension_matter_12_prod"></span></p>
                             <p class="dimension-amount"><span id="dimension_matter_12_amt"></span> (<span id="dimension_matter_12_bought"></span>)</p>
