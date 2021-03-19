@@ -120,5 +120,5 @@ function reset_dimensional(force=false, higher_reset=false, autobuyer_induced=fa
 function power_manifolds() {
     // a06_1: unlock Dimensional dimensions
     if (!player.milestones['a06_1'].is_active()) return big(1);
-    return player.manifolds.add(1).log(2).add(1).log(2).div(3).add(1);
+    return player.manifolds.add(1).log(2).add(1).log(2).div(Math.E).add(1);
 }
