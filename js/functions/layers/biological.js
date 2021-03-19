@@ -24,7 +24,7 @@ function biological_hint_next(amt) {
 }
 
 
-function reset_biological(force=false, higher_reset=false, autobuyer_induced=false) {
+function reset_biological(force=false, higher_reset=false, autobuyer_induced=false, count_as_reset_num=1) {
     if (!force && !can_biological()) return;
     if (!force && !autobuyer_induced && player.settings['prestige_confirmation_biological']) {
         let result = confirm("Are you sure you want to perform a Biological reset?\n(This warning can be disabled in Settings)");
@@ -59,9 +59,9 @@ function reset_biological(force=false, higher_reset=false, autobuyer_induced=fal
     //}
 
     cap_resources();
-    reset_atomic(true, true);
+    reset_atomic(true, true, false, 0);
 
-    if (!force) player.atomic_resets += 1;
+    if (!force || higher_reset) player.atomic_resets += count_as_reset_num;
 
     player.atoms = big(0);
     player.collision_knowledge = big(0);
@@ -71,9 +71,9 @@ function reset_biological(force=false, higher_reset=false, autobuyer_induced=fal
         player.collision_knowledge = player.evolutions['b01'].get_secondary_effect();
     }
 
-    if (!force) player.fastest_atomic = Math.min(player.fastest_atomic, player.time_atomic);
+    if (!force) player.fastest_biological = Math.min(player.fastest_biological, player.time_biological);
 
-    player.time_atomic = 0;
+    player.time_biological = 0;
 
     if (!force) game_loop();
 }

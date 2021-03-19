@@ -66,7 +66,7 @@ function neutronic_hint_next(amt) {
 
 
 
-function reset_neutronic(force=false, higher_reset=false, autobuyer_induced=false) {
+function reset_neutronic(force=false, higher_reset=false, autobuyer_induced=false, count_as_reset_num=1) {
     if (!force && !can_neutronic()) return;
     if (!force && !autobuyer_induced && player.settings['prestige_confirmation_neutronic']) {
         let result = confirm("Are you sure you want to perform a Neutronic reset?\n(This warning can be disabled in Settings)");
@@ -129,9 +129,13 @@ function reset_neutronic(force=false, higher_reset=false, autobuyer_induced=fals
         }
     }
 
-    reset_gravitonic(true, true);
+    let reset_multiplier = 1;
+    // evolution b03: multiply resets below Biological
+    if (player.evolutions['b03'].is_active()) reset_multiplier *= player.evolutions['b03'].get_effect().toInt();
 
-    if (!force) player.neutronic_resets += 1;
+    reset_gravitonic(true, true, false, reset_multiplier * count_as_reset_num);
+
+    if (!force || higher_reset) player.neutronic_resets += count_as_reset_num;
 
     player.gravitons = big(0);
     // n01: start with Gravitons

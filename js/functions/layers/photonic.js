@@ -73,7 +73,7 @@ function photonic_hint_next(amt) {
 
 
 
-function reset_photonic(force=false, higher_reset=false, autobuyer_induced=false) {
+function reset_photonic(force=false, higher_reset=false, autobuyer_induced=false, count_as_reset_num=1) {
     if (!force && !can_photonic()) return;
     if (!force && !autobuyer_induced && player.settings['prestige_confirmation_photonic']) {
         let result = confirm("Are you sure you want to perform a Photonic reset?\n(This warning can be disabled in Settings)");
@@ -134,7 +134,7 @@ function reset_photonic(force=false, higher_reset=false, autobuyer_induced=false
     if (!player.upgrades['n24'].is_active()) player.electron_power = big(0);
     if (!player.upgrades['n34'].is_active()) player.boson_power = big(0);
 
-    if (!force) player.photonic_resets += photonic_resets.toInt();
+    if (!force || higher_reset) player.photonic_resets += count_as_reset_num * photonic_resets.toInt();
 
     if (!force) player.fastest_photonic = Math.min(player.fastest_photonic, player.time_photonic);
 

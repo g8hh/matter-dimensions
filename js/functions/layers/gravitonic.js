@@ -96,7 +96,7 @@ function gravitonic_hint_next(amt) {
 
 
 
-function reset_gravitonic(force=false, higher_reset=false, autobuyer_induced=false) {
+function reset_gravitonic(force=false, higher_reset=false, autobuyer_induced=false, count_as_reset_num=1) {
     if (!force && !can_gravitonic()) return;
     if (!force && !autobuyer_induced && player.settings['prestige_confirmation_gravitonic']) {
         let result = confirm("Are you sure you want to perform a Gravitonic reset?\n(This warning can be disabled in Settings)");
@@ -163,13 +163,17 @@ function reset_gravitonic(force=false, higher_reset=false, autobuyer_induced=fal
     player.electron_power = big(0);
     player.boson_power = big(0);
 
-    reset_photonic(true, true);
+    // achievement 57: earn gravitonic resets equal to gravitons
+    if (!force && player.achievements['57'].complete) count_as_reset_num *= earned_gravitons.toInt();
+
+    let reset_multiplier = 1;
+    // evolution b03: multiply resets below Biological
+    if (player.evolutions['b03'].is_active()) reset_multiplier *= player.evolutions['b03'].get_effect().toInt();
+
+    reset_photonic(true, true, false, reset_multiplier * count_as_reset_num);
 
     // achievement 57: earn gravitonic resets equal to gravitons
-    if (!force) {
-        if (!player.achievements['57'].complete) player.gravitonic_resets += 1;
-        else player.gravitonic_resets += earned_gravitons.toInt();
-    }
+    if (!force || higher_reset) player.gravitonic_resets += count_as_reset_num;
 
     player.photons = big(0);
     // g01: start with Photons

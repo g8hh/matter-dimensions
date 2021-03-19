@@ -23,7 +23,7 @@ function vacuumic_hint_next(amt) {
 
 
 
-function reset_vacuumic(force=false, higher_reset=false, autobuyer_induced=false) {
+function reset_vacuumic(force=false, higher_reset=false, autobuyer_induced=false, count_as_reset_num=1) {
     if (!force && !can_vacuumic()) return;
     if (!force && !autobuyer_induced && player.settings['prestige_confirmation_vacuumic']) {
         let result = confirm("Are you sure you want to perform a Vacuumic reset?\n(This warning can be disabled in Settings)");
@@ -103,9 +103,13 @@ function reset_vacuumic(force=false, higher_reset=false, autobuyer_induced=false
         }
     }
 
-    reset_neutronic(true, true);
+    let reset_multiplier = 1;
+    // evolution b03: multiply resets below Biological
+    if (player.evolutions['b03'].is_active()) reset_multiplier *= player.evolutions['b03'].get_effect().toInt();
 
-    if (!force) player.vacuumic_resets += 1;
+    reset_neutronic(true, true, false, reset_multiplier * count_as_reset_num);
+
+    if (!force || higher_reset) player.vacuumic_resets += count_as_reset_num;
 
     player.neutrons = big(0);
     // v11: start with Neutrons

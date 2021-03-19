@@ -4,6 +4,9 @@ functions["evo_b01_cost"] = () => {
 functions["evo_b02_cost"] = () => {
     return big(1);
 }
+functions["evo_b03_cost"] = () => {
+    return big(1);
+}
 
 functions["evo_b01_power"] = (x) => {
     return x.div(3).add(1).log(10).div(3).add(1).log(10).add(1);
@@ -11,8 +14,11 @@ functions["evo_b01_power"] = (x) => {
 functions["evo_b02_power"] = (x) => {
     return x.max(1);
 }
+functions["evo_b03_power"] = (x) => {
+    return x.add(1).log(2).pow(0.5).rounddown();
+}
 
-functions["evo_b01_secondary"] = (x) => {
+functions["evo_b01_secondary"] = () => {
     let base_reward = unlocked_layers();
     if (player.unlocked_photonic) base_reward -= 1;
     if (player.unlocked_gravitonic) base_reward -= 1;
@@ -22,8 +28,11 @@ functions["evo_b01_secondary"] = (x) => {
     if (player.unlocked_atomic) base_reward -= 1;
     return big(2).pow(base_reward - 1);
 }
-functions["evo_b02_secondary"] = (x) => {
+functions["evo_b02_secondary"] = () => {
     return big(10);
+}
+functions["evo_b03_secondary"] = () => {
+    return big(player.photonic_resets).add(1);
 }
 
 functions["evo_b01_buy"] = (amt) => {
