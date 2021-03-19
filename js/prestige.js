@@ -624,7 +624,7 @@ function update_prestige() {
     else document.getElementById("st_autobuyer_toggle").style.display = "none";
 
     // achievement 64: unlock buy max gravitonic upgrades
-    if (player.achievements['64'].complete || player.challenges['g0'].completed) {
+    if (player.achievements['64'].complete || player.upgrades['AUTO1_5'].is_active()) {
         document.getElementById("upgrades_gravitonic_buy_max").style.display = "";
     }
     else {
@@ -669,7 +669,7 @@ function update_prestige() {
     else document.getElementById("power_inflation_neutronic_info").style.display = "none";
 
     // achievement 97: unlock buy max neutronic upgrades
-    if (player.achievements['97'].complete) {
+    if (player.achievements['97'].complete || player.upgrades['AUTO2_5'].is_active()) {
         document.getElementById("upgrades_neutronic_buy_max").style.display = "";
     }
     else {
@@ -685,6 +685,14 @@ function update_prestige() {
     }
     document.getElementById("completed_achievements_count").textContent = format_number(completed_achievements);
     document.getElementById("all_achievements_count").textContent = format_number(all_achievements);
+
+    // achievement 127: unlock buy max dimensional upgrades
+    if (player.achievements['127'].complete) {
+        document.getElementById("upgrades_dimensional_buy_max").style.display = "";
+    }
+    else {
+        document.getElementById("upgrades_dimensional_buy_max").style.display = "none";
+    }
 
     update_unlocked_menus();
     update_unlock_hint();

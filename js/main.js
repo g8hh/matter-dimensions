@@ -313,7 +313,7 @@ class Player {
         this.achievements["124"] = new Achievement("124", "Completionist", "Complete Gravitonic Meta-Challenge", "check_124");
         this.achievements["125"] = new Achievement("125", "Particle Party", "Buy 200 protons, electrons and W-Bosons each", "check_125");
         this.achievements["126"] = new Achievement("126", "This achievement doesn't exist", "Have at least 9.999e9'999 matter", "check_126");
-        this.achievements["127"] = new Achievement("127", "Infinite Problems", "Complete a Vacuumic challenge", "check_127");
+        this.achievements["127"] = new Achievement("127", "Infinite Problems", "Complete a Vacuumic challenge.\nReward: you can max buy Dimensional upgrades", "check_127", "effective");
         this.achievements["128"] = new Achievement("128", "Why did I do this again?", "Be in three Meta-Challenges at once", "check_128");
 
         this.achievements["135"] = new Achievement("135", "Formula Break III", "Get more than 1 Gene from Biological reset.\nReward: base Gene reward from Biological resets is raised to the power of 1.618", "check_135", "effective");
@@ -1095,8 +1095,9 @@ function hotkeydown(event) {
                     me.dimensions[current_menu + "_" + i].buy(me.dimensions[current_menu + "_" + i].binary_search_max()); 
             if (current_menu in current_submenu && current_submenu[current_menu] == "upgrades") {
                 if (current_menu == "photonic" && (me.achievements['62'].complete || me.achievements['72'].complete)) max_buy_upgrades('p');
-                if (current_menu == "gravitonic" && (me.achievements['64'].complete || me.challenges['g0'].completed)) max_buy_upgrades('g');
-                if (current_menu == "neutronic" && (me.achievements['97'].complete)) max_buy_upgrades('n');
+                if (current_menu == "gravitonic" && (me.achievements['64'].complete || me.upgrades['AUTO1_5'].is_active())) max_buy_upgrades('g');
+                if (current_menu == "neutronic" && (me.achievements['97'].complete || me.upgrades['AUTO2_5'].is_active())) max_buy_upgrades('n');
+                if (current_menu == "dimensional" && (me.achievements['127'].complete)) max_buy_upgrades('d');
             }
             break;
         case 'Shift':
