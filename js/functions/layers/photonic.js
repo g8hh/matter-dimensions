@@ -75,73 +75,73 @@ function photonic_hint_next(amt) {
 
 function reset_photonic(force=false, higher_reset=false, autobuyer_induced=false) {
     if (!force && !can_photonic()) return;
-    if (!force && !autobuyer_induced && me.settings['prestige_confirmation_photonic']) {
+    if (!force && !autobuyer_induced && player.settings['prestige_confirmation_photonic']) {
         let result = confirm("Are you sure you want to perform a Photonic reset?\n(This warning can be disabled in Settings)");
         if (!result) return;
     }
 
     var earned_photons = prestige_earn_photons();
-    if (!force && earned_photons.gt(1)) me.achievements['15'].award();
-    if (!force && me.time_photonic < 200) me.achievements['27'].award();
-    if (!force && earned_photons.gt(100)) me.achievements['35'].award();
-    if (!force && earned_photons.gt(1e8)) me.achievements['66'].award();
+    if (!force && earned_photons.gt(1)) player.achievements['15'].award();
+    if (!force && player.time_photonic < 200) player.achievements['27'].award();
+    if (!force && earned_photons.gt(100)) player.achievements['35'].award();
+    if (!force && earned_photons.gt(1e8)) player.achievements['66'].award();
 
     let photonic_resets = big(1);
     // v171: gain more resets based on earned Photons
-    if (me.upgrades['v171'].is_active()) photonic_resets = photonic_resets.mult(me.upgrades['v171'].get_effect());
+    if (player.upgrades['v171'].is_active()) photonic_resets = photonic_resets.mult(player.upgrades['v171'].get_effect());
 
     // Challenge 4: all resources are capped
-    me.photons = me.photons.add(earned_photons).round().min(me.challenge_strength_4);
+    player.photons = player.photons.add(earned_photons).round().min(player.challenge_strength_4);
 
-    if (!force) me.max_photons_at_once = me.max_photons_at_once.max(earned_photons);
+    if (!force) player.max_photons_at_once = player.max_photons_at_once.max(earned_photons);
 
-    me.matter = new BigNumber(1);
-    me.antimatter = new BigNumber(1);
-    me.energy = new BigNumber(0);
-    me.light = new BigNumber(0);
+    player.matter = new BigNumber(1);
+    player.antimatter = new BigNumber(1);
+    player.energy = new BigNumber(0);
+    player.light = new BigNumber(0);
 
     // p54: start with 1e9 matter
-    if (me.upgrades['p54'].enabled) me.matter = me.upgrades['p54'].get_effect();
+    if (player.upgrades['p54'].enabled) player.matter = player.upgrades['p54'].get_effect();
 
-    for (let key of Object.keys(me.dimensions)) {
+    for (let key of Object.keys(player.dimensions)) {
         if (key.includes("matter_")) {
-            me.dimensions[key].reset();
+            player.dimensions[key].reset();
         }
     }
 
-    for (let key of Object.keys(me.dimensions)) {
+    for (let key of Object.keys(player.dimensions)) {
         if (key.includes("photonic_")) {
             // p43: Photonic Dimension amounts are not reset upon Photonic
-            if (me.upgrades['p43'].is_active()) me.dimensions[key].amt = me.dimensions[key].amt.max(me.dimensions[key].amt_bought);
-            else me.dimensions[key].amt = new BigNumber(me.dimensions[key].amt_bought);
+            if (player.upgrades['p43'].is_active()) player.dimensions[key].amt = player.dimensions[key].amt.max(player.dimensions[key].amt_bought);
+            else player.dimensions[key].amt = new BigNumber(player.dimensions[key].amt_bought);
         }
     }
 
     // Photonic Challenge 6: Photonic resets all Photonic upgrades
     // Photonic Meta-Challenge reward: Photonic upgrades are never reset
-    if (!me.challenges['p0'].completed && me.challenges['p6'].inC()) {
-        for (let key of Object.keys(me.upgrades)) {
+    if (!player.challenges['p0'].completed && player.challenges['p6'].inC()) {
+        for (let key of Object.keys(player.upgrades)) {
             if (key.includes("p")) {
-                me.upgrades[key].reset();
+                player.upgrades[key].reset();
             }
         }
     }
 
-    me.upgrades["TICKSPEED"].reset();
+    player.upgrades["TICKSPEED"].reset();
 
     // n14, n24, n34: powers persist through Photonic
-    if (!me.upgrades['n14'].is_active()) me.proton_power = big(0);
-    if (!me.upgrades['n24'].is_active()) me.electron_power = big(0);
-    if (!me.upgrades['n34'].is_active()) me.boson_power = big(0);
+    if (!player.upgrades['n14'].is_active()) player.proton_power = big(0);
+    if (!player.upgrades['n24'].is_active()) player.electron_power = big(0);
+    if (!player.upgrades['n34'].is_active()) player.boson_power = big(0);
 
-    if (!force) me.photonic_resets += photonic_resets.toInt();
+    if (!force) player.photonic_resets += photonic_resets.toInt();
 
-    if (!force) me.fastest_photonic = Math.min(me.fastest_photonic, me.time_photonic);
+    if (!force) player.fastest_photonic = Math.min(player.fastest_photonic, player.time_photonic);
 
-    me.time_passed = 0;
-    me.time_photonic = 0;
+    player.time_passed = 0;
+    player.time_photonic = 0;
 
-    me.time_started = false;
+    player.time_started = false;
 
     if (!force) game_loop();
 }
@@ -156,7 +156,7 @@ function power_light_production() {
     let base_effect = player.light.pow(base_pow).add(1);
 
     // Neutronic Challenge 7: Light effect is square-rooted
-    if (me.challenges['n7'].inC()) base_effect = base_effect.pow(0.5);
+    if (player.challenges['n7'].inC()) base_effect = base_effect.pow(0.5);
 
     return base_effect;
 }

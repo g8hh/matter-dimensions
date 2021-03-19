@@ -68,11 +68,11 @@ function gravitonic_hint_next(amt) {
     if (player.challenges['g7'].completed) need_gravitons = need_gravitons.pow(1 / 1.05);
 
     // n31: free gravitons upon reset
-    if (me.upgrades['n31'].is_active()) need_gravitons = need_gravitons.subtract(me.upgrades['n31'].get_effect());
+    if (player.upgrades['n31'].is_active()) need_gravitons = need_gravitons.subtract(player.upgrades['n31'].get_effect());
     // v83: free gravitons upon reset
-    if (me.upgrades['v83'].is_active()) need_gravitons = need_gravitons.subtract(me.upgrades['v83'].get_effect());
+    if (player.upgrades['v83'].is_active()) need_gravitons = need_gravitons.subtract(player.upgrades['v83'].get_effect());
     // d61: free gravitons upon reset
-    need_gravitons = need_gravitons.subtract(me.upgrades['d61'].get_effect());
+    need_gravitons = need_gravitons.subtract(player.upgrades['d61'].get_effect());
     // green waves get extra Gravitons
     need_gravitons = need_gravitons.subtract(wave_effect('green'));
 
@@ -98,87 +98,87 @@ function gravitonic_hint_next(amt) {
 
 function reset_gravitonic(force=false, higher_reset=false, autobuyer_induced=false) {
     if (!force && !can_gravitonic()) return;
-    if (!force && !autobuyer_induced && me.settings['prestige_confirmation_gravitonic']) {
+    if (!force && !autobuyer_induced && player.settings['prestige_confirmation_gravitonic']) {
         let result = confirm("Are you sure you want to perform a Gravitonic reset?\n(This warning can be disabled in Settings)");
         if (!result) return;
     }
 
     var earned_gravitons = prestige_earn_gravitons();
-    if (!force && me.time_gravitonic - me.time_passed < 1e-9) me.achievements['36'].award();
-    if (!force && me.time_gravitonic < 300) me.achievements['37'].award();
-    if (!force && !earned_gravitons.lt(5)) me.achievements['34'].award();
-    if (!force && earned_gravitons.gt(10)) me.achievements['47'].award();
-    if (!force && earned_gravitons.gt(10000)) me.achievements['116'].award();
+    if (!force && player.time_gravitonic - player.time_passed < 1e-9) player.achievements['36'].award();
+    if (!force && player.time_gravitonic < 300) player.achievements['37'].award();
+    if (!force && !earned_gravitons.lt(5)) player.achievements['34'].award();
+    if (!force && earned_gravitons.gt(10)) player.achievements['47'].award();
+    if (!force && earned_gravitons.gt(10000)) player.achievements['116'].award();
 
     // Challenge 4: all resources are capped
-    me.gravitons = me.gravitons.add(earned_gravitons).round().min(me.challenge_strength_4);
+    player.gravitons = player.gravitons.add(earned_gravitons).round().min(player.challenge_strength_4);
 
-    me.black_holes = new BigNumber(0);
+    player.black_holes = new BigNumber(0);
     
-    if (!force) me.max_gravitons = me.max_gravitons.max(me.gravitons);
-    if (!force) me.max_gravitons_in_nc = me.max_gravitons_in_nc.max(me.gravitons);
+    if (!force) player.max_gravitons = player.max_gravitons.max(player.gravitons);
+    if (!force) player.max_gravitons_in_nc = player.max_gravitons_in_nc.max(player.gravitons);
 
-    for (let key of Object.keys(me.dimensions)) {
+    for (let key of Object.keys(player.dimensions)) {
         if (key.includes("photonic_")) {
-            me.dimensions[key].reset();
+            player.dimensions[key].reset();
         }
     }
 
-    for (let key of Object.keys(me.dimensions)) {
+    for (let key of Object.keys(player.dimensions)) {
         if (key.includes("gravitonic_")) {
-            me.dimensions[key].amt = new BigNumber(me.dimensions[key].amt_bought);
+            player.dimensions[key].amt = new BigNumber(player.dimensions[key].amt_bought);
         }
     }
 
     // Gravitonic Challenge 6: Gravitonic resets all Gravitonic upgrades
     // Gravitonic Meta-Challenge reward: Gravitonic upgrades are never reset
-    if (me.challenges['g6'].inC() && !me.challenges['g0'].completed) {
-        for (let key of Object.keys(me.upgrades)) {
+    if (player.challenges['g6'].inC() && !player.challenges['g0'].completed) {
+        for (let key of Object.keys(player.upgrades)) {
             if (key.includes("g")) {
                 // achievement 55: Gravitonic upgrades that provide automation are never reset
                 // achievement 88: keep all automation upgrades
-                if ((me.achievements['55'].complete || me.achievements['88'].complete) && (key == "g41" || key == "g42")) continue;
-                me.upgrades[key].reset();
+                if ((player.achievements['55'].complete || player.achievements['88'].complete) && (key == "g41" || key == "g42")) continue;
+                player.upgrades[key].reset();
             }
         }
     }
 
     // n05: photonic upgrades are not reset
     // Photonic Meta-Challenge reward: photonic upgrades are never reset
-    if (!me.challenges['p0'].completed && (higher_reset || !me.upgrades['n05'].is_active())) {
-        for (let key of Object.keys(me.upgrades)) {
+    if (!player.challenges['p0'].completed && (higher_reset || !player.upgrades['n05'].is_active())) {
+        for (let key of Object.keys(player.upgrades)) {
             if (key.includes("p")) {
-                me.upgrades[key].reset();
+                player.upgrades[key].reset();
             }
         }
     }
 
-    for (let key of Object.keys(me.challenges)) {
+    for (let key of Object.keys(player.challenges)) {
         if (key.includes("p")) {
-            if (me.challenges[key].in_challenge) me.challenges[key].exit(false);
+            if (player.challenges[key].in_challenge) player.challenges[key].exit(false);
         }
     }
 
-    me.proton_power = big(0);
-    me.electron_power = big(0);
-    me.boson_power = big(0);
+    player.proton_power = big(0);
+    player.electron_power = big(0);
+    player.boson_power = big(0);
 
     reset_photonic(true, true);
 
     // achievement 57: earn gravitonic resets equal to gravitons
     if (!force) {
-        if (!me.achievements['57'].complete) me.gravitonic_resets += 1;
-        else me.gravitonic_resets += earned_gravitons.toInt();
+        if (!player.achievements['57'].complete) player.gravitonic_resets += 1;
+        else player.gravitonic_resets += earned_gravitons.toInt();
     }
 
-    me.photons = big(0);
+    player.photons = big(0);
     // g01: start with Photons
     // Photonic Challenge 8: you cannot gain Photons
-    if (!me.challenges['p8'].inC() && me.upgrades['g01'].is_active()) me.photons = me.upgrades["g01"].get_effect();
+    if (!player.challenges['p8'].inC() && player.upgrades['g01'].is_active()) player.photons = player.upgrades["g01"].get_effect();
 
-    if (!force) me.fastest_gravitonic = Math.min(me.fastest_gravitonic, me.time_gravitonic);
+    if (!force) player.fastest_gravitonic = Math.min(player.fastest_gravitonic, player.time_gravitonic);
 
-    me.time_gravitonic = 0;
+    player.time_gravitonic = 0;
 
     if (!force) game_loop();
 }

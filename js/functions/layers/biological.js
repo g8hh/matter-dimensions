@@ -26,34 +26,34 @@ function biological_hint_next(amt) {
 
 function reset_biological(force=false, higher_reset=false, autobuyer_induced=false) {
     if (!force && !can_biological()) return;
-    if (!force && !autobuyer_induced && me.settings['prestige_confirmation_biological']) {
+    if (!force && !autobuyer_induced && player.settings['prestige_confirmation_biological']) {
         let result = confirm("Are you sure you want to perform a Biological reset?\n(This warning can be disabled in Settings)");
         if (!result) return;
     }
 
     let earned_genes = prestige_earn_genes();
-    if (!force) me.achievements['121'].award();
-    if (!force && earned_genes.gt(1)) me.achievements['135'].award();
+    if (!force) player.achievements['121'].award();
+    if (!force && earned_genes.gt(1)) player.achievements['135'].award();
 
     // Challenge 4: all resources are capped
-    me.genes = me.genes.add(earned_genes).min(me.challenge_strength_4);
+    player.genes = player.genes.add(earned_genes).min(player.challenge_strength_4);
 
-    for (let key of Object.keys(me.upgrades)) {
+    for (let key of Object.keys(player.upgrades)) {
         if (key.includes("a")) {
-            me.upgrades[key].reset();
+            player.upgrades[key].reset();
         }
     }
-    me.upgrades["COLLISION_POINT"].reset();
-    me.collision_points = 0;
-    me.collision_points_in_reaction = 0;
-    me.collision_points_in_synthesis = 0;
-    me.collision_points_in_generation = 0;
+    player.upgrades["COLLISION_POINT"].reset();
+    player.collision_points = 0;
+    player.collision_points_in_reaction = 0;
+    player.collision_points_in_synthesis = 0;
+    player.collision_points_in_generation = 0;
 
     // Automation shop reset
-    //if (!me.upgrades['AUTO4_3'].is_active()) {
-        for (let key of Object.keys(me.upgrades)) {
+    //if (!player.upgrades['AUTO4_3'].is_active()) {
+        for (let key of Object.keys(player.upgrades)) {
             if (key.includes("AUTO4")) {
-                me.upgrades[key].reset();
+                player.upgrades[key].reset();
             }
         }
     //}
@@ -61,19 +61,19 @@ function reset_biological(force=false, higher_reset=false, autobuyer_induced=fal
     cap_resources();
     reset_atomic(true, true);
 
-    if (!force) me.atomic_resets += 1;
+    if (!force) player.atomic_resets += 1;
 
-    me.atoms = big(0);
-    me.collision_knowledge = big(0);
+    player.atoms = big(0);
+    player.collision_knowledge = big(0);
     // evolution b01: start with Atoms and Collision Knowledge
-    if (me.evolutions['b01'].is_active()) {
-        me.atoms = me.evolutions['b01'].get_secondary_effect();
-        me.collision_knowledge = me.evolutions['b01'].get_secondary_effect();
+    if (player.evolutions['b01'].is_active()) {
+        player.atoms = player.evolutions['b01'].get_secondary_effect();
+        player.collision_knowledge = player.evolutions['b01'].get_secondary_effect();
     }
 
-    if (!force) me.fastest_atomic = Math.min(me.fastest_atomic, me.time_atomic);
+    if (!force) player.fastest_atomic = Math.min(player.fastest_atomic, player.time_atomic);
 
-    me.time_atomic = 0;
+    player.time_atomic = 0;
 
     if (!force) game_loop();
 }

@@ -31,7 +31,7 @@ functions["evo_b01_buy"] = (amt) => {
     player.collision_knowledge = player.collision_knowledge.add(player.evolutions['b01'].get_secondary_effect()).round();
     // Challenge 4: all resources are capped
     // a05_2: Atoms and Collision Knowledge are not affected by resource limit
-    if (!me.milestones['a05_2'].is_active()) {
+    if (!player.milestones['a05_2'].is_active()) {
         player.atoms = player.atoms.min(player.challenge_strength_4);
         player.collision_knowledge = player.collision_knowledge.min(player.challenge_strength_4);
     }

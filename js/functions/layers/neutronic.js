@@ -15,9 +15,9 @@ function prestige_earn_neutrons() {
 
     if (!base_neutrons.lt(1)) {
         // Neutronic Challenge 6 reward: gain more Neutrons
-        base_neutrons = base_neutrons.mult(me.challenges['n6'].get_effect());
+        base_neutrons = base_neutrons.mult(player.challenges['n6'].get_effect());
         // d92: gain more Neutrons based on Dimensional resets
-        if (me.upgrades['d92'].is_active()) base_neutrons = base_neutrons.mult(me.upgrades['d92'].get_effect());
+        if (player.upgrades['d92'].is_active()) base_neutrons = base_neutrons.mult(player.upgrades['d92'].get_effect());
         // reactions provide boost to Neutrons
         base_neutrons = base_neutrons.mult(reaction_points_effect_neutrons());
         // Vacuumic Challenge 4 reward: Neutron gain is multiplied by 4
@@ -46,9 +46,9 @@ function neutronic_hint_next(amt) {
     if (player.challenges['v4'].inC()) resource_need = resource_need.pow(4);
 
     // Neutronic Challenge 6 reward: gain more Neutrons
-    resource_need = resource_need.div(me.challenges['n6'].get_effect());
+    resource_need = resource_need.div(player.challenges['n6'].get_effect());
     // d92: gain more Neutrons based on Dimensional resets
-    if (me.upgrades['d92'].is_active()) resource_need = resource_need.div(me.upgrades['d92'].get_effect());
+    if (player.upgrades['d92'].is_active()) resource_need = resource_need.div(player.upgrades['d92'].get_effect());
     // reactions provide boost to Neutrons
     resource_need = resource_need.div(reaction_points_effect_neutrons());
     // Vacuumic Challenge 4 reward: Neutron gain is multiplied by 4
@@ -68,78 +68,78 @@ function neutronic_hint_next(amt) {
 
 function reset_neutronic(force=false, higher_reset=false, autobuyer_induced=false) {
     if (!force && !can_neutronic()) return;
-    if (!force && !autobuyer_induced && me.settings['prestige_confirmation_neutronic']) {
+    if (!force && !autobuyer_induced && player.settings['prestige_confirmation_neutronic']) {
         let result = confirm("Are you sure you want to perform a Neutronic reset?\n(This warning can be disabled in Settings)");
         if (!result) return;
     }
 
     var earned_neutrons = prestige_earn_neutrons();
-    if (!force) me.achievements['32'].award();
-    if (!force && earned_neutrons.gt(1)) me.achievements['45'].award();
-    if (!force && me.time_neutronic < 200) me.achievements['54'].award();
-    if (!force && me.time_neutronic - me.time_passed < 1e-9) me.achievements['55'].award();
+    if (!force) player.achievements['32'].award();
+    if (!force && earned_neutrons.gt(1)) player.achievements['45'].award();
+    if (!force && player.time_neutronic < 200) player.achievements['54'].award();
+    if (!force && player.time_neutronic - player.time_passed < 1e-9) player.achievements['55'].award();
 
     // Challenge 4: all resources are capped
-    me.neutrons = me.neutrons.add(earned_neutrons).round().min(me.challenge_strength_4);
+    player.neutrons = player.neutrons.add(earned_neutrons).round().min(player.challenge_strength_4);
 
     // v194: keep Stars on Neutronic resets
-    if (!me.upgrades['v194'].is_active()) me.stars = new BigNumber(0);
+    if (!player.upgrades['v194'].is_active()) player.stars = new BigNumber(0);
 
-    for (let key of Object.keys(me.dimensions)) {
+    for (let key of Object.keys(player.dimensions)) {
         if (key.includes("gravitonic_")) {
-            me.dimensions[key].reset();
+            player.dimensions[key].reset();
         }
     }
 
-    for (let key of Object.keys(me.dimensions)) {
+    for (let key of Object.keys(player.dimensions)) {
         if (key.includes("neutronic_")) {
-            me.dimensions[key].amt = new BigNumber(me.dimensions[key].amt_bought);
+            player.dimensions[key].amt = new BigNumber(player.dimensions[key].amt_bought);
         }
     }
 
     // Neutronic Challenge 6: Neutronic resets all Neutronic upgrades and particles
-    if (me.challenges['n6'].inC()) {
-        me.dimensions["protons"].reset();
-        me.dimensions["electrons"].reset();
-        me.dimensions["bosons"].reset();
+    if (player.challenges['n6'].inC()) {
+        player.dimensions["protons"].reset();
+        player.dimensions["electrons"].reset();
+        player.dimensions["bosons"].reset();
 
-        for (let key of Object.keys(me.upgrades)) {
+        for (let key of Object.keys(player.upgrades)) {
             if (key.includes("n")) {
-                me.upgrades[key].reset();
+                player.upgrades[key].reset();
             }
         }
     }
 
     // v51: gravitonic upgrades are not reset
     // Gravitonic Meta-Challenge reward: Gravitonic upgrades are never reset
-    if (!me.challenges['g0'].completed && (higher_reset || !me.upgrades['v51'].is_active())) {
-        for (let key of Object.keys(me.upgrades)) {
+    if (!player.challenges['g0'].completed && (higher_reset || !player.upgrades['v51'].is_active())) {
+        for (let key of Object.keys(player.upgrades)) {
             if (key.includes("g")) {
                 // achievement 55: Gravitonic upgrades that provide automation are never reset
                 // achievement 88: keep all automation upgrades
-                if ((me.achievements['55'].complete || me.achievements['88'].complete) && (key == "g41" || key == "g42")) continue;
-                me.upgrades[key].reset();
+                if ((player.achievements['55'].complete || player.achievements['88'].complete) && (key == "g41" || key == "g42")) continue;
+                player.upgrades[key].reset();
             }
         }
     }
 
-    for (let key of Object.keys(me.challenges)) {
+    for (let key of Object.keys(player.challenges)) {
         if (key.includes("g")) {
-            if (me.challenges[key].in_challenge) me.challenges[key].exit(false);
+            if (player.challenges[key].in_challenge) player.challenges[key].exit(false);
         }
     }
 
     reset_gravitonic(true, true);
 
-    if (!force) me.neutronic_resets += 1;
+    if (!force) player.neutronic_resets += 1;
 
-    me.gravitons = big(0);
+    player.gravitons = big(0);
     // n01: start with Gravitons
-    if (me.upgrades['n01'].is_active()) me.gravitons = me.upgrades["n01"].get_effect();
+    if (player.upgrades['n01'].is_active()) player.gravitons = player.upgrades["n01"].get_effect();
 
-    if (!force) me.fastest_neutronic = Math.min(me.fastest_neutronic, me.time_neutronic);
+    if (!force) player.fastest_neutronic = Math.min(player.fastest_neutronic, player.time_neutronic);
 
-    me.time_neutronic = 0;
+    player.time_neutronic = 0;
 
     if (!force) game_loop();
 }
