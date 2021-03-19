@@ -33,6 +33,7 @@ function prestige_earn_photons() {
 function can_photonic() {
     // Photonic Challenge 8: Photonic resets are unavailable
     if (player.challenges['p8'].inC()) return false;
+    if (player.time_passed == 0) return false;
     return player.matter.lt(1e-9) || player.antimatter.lt(1e-9) || !big(1).gt(player.energy);
 }
 function photonic_hint() {
