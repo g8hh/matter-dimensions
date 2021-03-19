@@ -327,6 +327,7 @@ function update_prestige() {
         document.getElementById("prestige_layer_biological_reset").className = "prestige-layer-ascend disabled";
         document.getElementById("prestige_layer_biological_gain").style.display = "none";
         document.getElementById("prestige_layer_biological_hint").style.display = "";
+        document.getElementById("prestige_layer_biological_hint_next").style.display = "none";
         document.getElementById("prestige_layer_biological_hint_amt").textContent = format_number(biological_hint());
     }
     if (player.unlocked_biological) {
