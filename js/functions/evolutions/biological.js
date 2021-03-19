@@ -12,10 +12,10 @@ functions["evo_b01_power"] = (x) => {
     return x.div(3).add(1).log(10).div(3).add(1).log(10).add(1);
 }
 functions["evo_b02_power"] = (x) => {
-    return x.max(1);
+    return x.pow(3).max(1);
 }
 functions["evo_b03_power"] = (x) => {
-    return x.add(1).log(2).pow(0.5).rounddown();
+    return x.mult(2).max(1).log(2).pow(0.5).rounddown();
 }
 
 functions["evo_b01_secondary"] = () => {
