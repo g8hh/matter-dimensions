@@ -61,7 +61,7 @@ function reset_biological(force=false, higher_reset=false, autobuyer_induced=fal
     cap_resources();
     reset_atomic(true, true, false, 0);
 
-    if (!force || higher_reset) player.atomic_resets += count_as_reset_num;
+    if (!force || higher_reset) player.biological_resets += count_as_reset_num;
 
     player.atoms = big(0);
     player.collision_knowledge = big(0);
