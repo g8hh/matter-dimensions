@@ -152,7 +152,7 @@ class Upgrade {
             let upgrade_cost = this.get_cost();
             if (upgrade_cost.lt(1.5) && upgrade_cost.gt(0.5)) currency_name = this.currency_display_name_singular;
 
-            if (this.custom_cost_display_function == "") document.getElementById("upgrade_" + this.id + "_cost").textContent = format_number(upgrade_cost) + currency_name;
+            if (this.custom_cost_display_function == "") document.getElementById("upgrade_" + this.id + "_cost").textContent = format_number(upgrade_cost, true, false, "", true) + currency_name;
             else document.getElementById("upgrade_" + this.id + "_cost").textContent = functions[this.custom_cost_display_function](upgrade_cost) + currency_name;
         }
     }
