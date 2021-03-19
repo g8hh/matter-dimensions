@@ -750,7 +750,7 @@ class Player {
         this.total_realtime = 0;
         this.online_realtime = 0;
 
-        this.version = "v0.6";
+        this.version = "v0.7";
     }
 }
 
@@ -821,6 +821,7 @@ function processTimedelta(corrected_timedelta) {
     player.time_vacuumic += timedelta;
     player.time_dimensional += timedelta;
     player.time_atomic += timedelta;
+    player.time_biological += timedelta;
 
     var antimatter_timedelta = timedelta;
     // achievement 28: +16% to antimatter gen speed
