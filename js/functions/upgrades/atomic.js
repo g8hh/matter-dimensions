@@ -16,6 +16,12 @@ functions["upg_a05_cost"] = (amt) => {
 functions["upg_a06_cost"] = (amt) => {
     return n_Fibonacci(6, amt + 1).max(big(1.16341).pow(big(amt).pow(2))).mult(big(2).pow(15));
 }
+functions["upg_a07_cost"] = (amt) => {
+    return n_Fibonacci(7, amt + 1).max(big(1.04092).pow(big(amt).pow(2))).mult(big(2).pow(21));
+}
+functions["upg_a08_cost"] = (amt) => {
+    return n_Fibonacci(8, amt + 1).max(big(1.13980).pow(big(amt).pow(2))).mult(big(2).pow(28));
+}
 
 
 
@@ -55,6 +61,18 @@ functions["upg_a06_power"] = (amt) => {
 
     return big(2).pow(levels);
 }
+functions["upg_a07_power"] = (amt) => {
+    let levels = big(amt);
+    if ('a07' in free_atom_levels) levels = levels.add(free_atom_levels['a07']);
+
+    return big(levels).add(1).pow(3);
+}
+functions["upg_a08_power"] = (amt) => {
+    let levels = big(amt);
+    if ('a08' in free_atom_levels) levels = levels.add(free_atom_levels['a08']);
+
+    return big(1.06).pow(level);
+}
 
 
 
@@ -74,6 +92,12 @@ functions["upg_a05_unlock"] = () => {
     return true;
 }
 functions["upg_a06_unlock"] = () => {
+    return true;
+}
+functions["upg_a07_unlock"] = () => {
+    return true;
+}
+functions["upg_a08_unlock"] = () => {
     return true;
 }
 
@@ -96,6 +120,12 @@ functions["upg_a05_available"] = () => {
 }
 functions["upg_a06_available"] = () => {
     return highest_unlocked_element(me) >= 6;
+}
+functions["upg_a07_available"] = () => {
+    return highest_unlocked_element(me) >= 7;
+}
+functions["upg_a08_available"] = () => {
+    return highest_unlocked_element(me) >= 8;
 }
 
 

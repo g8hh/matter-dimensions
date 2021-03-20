@@ -3100,7 +3100,7 @@
                                         <b>Level <span id="milestone_a04_2_goal"></span></b>: unlock X-Ray Waves.
                                     </p>
                                     <p id="milestone_a04_3_indicator" class="milestone">
-                                        <b>Level <span id="milestone_a04_3_goal"></span></b>: gain 100% of Waves on reset per second.
+                                        <b>Level <span id="milestone_a04_3_goal"></span></b>: gain <span class="static-number" extra="100"></span>% of Waves on reset per second.
                                     </p>
                                 </div>
                                 <p class="upgrade-atomic-effect-desc">
@@ -3162,6 +3162,48 @@
                                     Effect: ×<span id="upgrade_a06_next_effect"></span></p></p>
                                 </div>
                                 <p class="upgrade-atomic-buy-max-button" onclick="me.upgrades['a06'].buy(me.upgrades['a06'].binary_search_max())">Buy max</p>
+                            </div>
+
+                            <div id="upgrade_a07" class="upgrade">
+                                <p class="upgrade-atomic-title">Nitrogen</p>
+                                <p class="upgrade-atomic-level">Level <span id="upgrade_a07_total_level"></span> (<span id="upgrade_a07_level"></span>)</p>
+                                <p class="upgrade-atomic-symbol">N</p>
+                                <div class="upgrade-atomic-milestones">
+                                    <p id="milestone_a07_1_indicator" class="milestone">
+                                        <b>Level <span id="milestone_a07_1_goal"></span></b>: keep <span class="static-number" extra="1"></span>% of Waves on Dimensional.
+                                    </p>
+                                </div>
+                                <p class="upgrade-atomic-effect-desc">
+                                    Annihilation produces more energy.
+                                    <br>Current: ×<span id="upgrade_a07_current_effect"></span>
+                                </p>
+                                <div class="upgrade-atomic-buy-button" onclick="me.upgrades['a07'].buy()">
+                                    <p>Buy Nitrogen<br>
+                                    <span id="upgrade_a07_next_cost">Cost: <span id="upgrade_a07_cost"></span><br></span>
+                                    Effect: ×<span id="upgrade_a07_next_effect"></span></p></p>
+                                </div>
+                                <p class="upgrade-atomic-buy-max-button" onclick="me.upgrades['a07'].buy(me.upgrades['a07'].binary_search_max())">Buy max</p>
+                            </div>
+
+                            <div id="upgrade_a08" class="upgrade">
+                                <p class="upgrade-atomic-title">Oxygen</p>
+                                <p class="upgrade-atomic-level">Level <span id="upgrade_a08_total_level"></span> (<span id="upgrade_a08_level"></span>)</p>
+                                <p class="upgrade-atomic-symbol">O</p>
+                                <div class="upgrade-atomic-milestones">
+                                    <p id="milestone_a08_1_indicator" class="milestone">
+                                        <b>Level <span id="milestone_a08_1_goal"></span></b>: Temperature is raised to a power of <span id="milestone_a08_1_effect"></span>.
+                                    </p>
+                                </div>
+                                <p class="upgrade-atomic-effect-desc">
+                                    Energy affects Temperature more.
+                                    <br>Current: ×<span id="upgrade_a08_current_effect"></span>
+                                </p>
+                                <div class="upgrade-atomic-buy-button" onclick="me.upgrades['a08'].buy()">
+                                    <p>Buy Oxygen<br>
+                                    <span id="upgrade_a08_next_cost">Cost: <span id="upgrade_a08_cost"></span><br></span>
+                                    Effect: ×<span id="upgrade_a08_next_effect"></span></p></p>
+                                </div>
+                                <p class="upgrade-atomic-buy-max-button" onclick="me.upgrades['a08'].buy(me.upgrades['a08'].binary_search_max())">Buy max</p>
                             </div>
                         </div>
                     </div>
@@ -3277,6 +3319,64 @@
                                     </div>
                                 </label>
 
+                                <p id="mechanic_collider_reactions_section_2" style="align-self: center; font-size: 1.5em">Carbon-nitrogen-oxygen cycle</p>
+
+                                <label id="mechanic_collider_reaction_cr7" class="collider-reaction-formula">
+                                    <input id="mechanic_collider_reaction_checkbox_cr7" type="checkbox" name="selected_reactions" value="cr7">
+                                    <div class="collider-reaction-formula-bg"></div>
+                                    <div class="collider-reaction-formula-block">
+                                        <div class="two-numbers"><p>12</p><p>6</p></div><p>C</p>
+                                        <p style="margin-left: 0.2em; margin-right: 0.2em">+</p>
+                                        <div class="two-numbers"><p>1</p><p>1</p></div><p>H</p>
+                                        <p style="margin-left: 0.2em; margin-right: 0.2em">➔</p>
+                                        <div class="two-numbers"><p>13</p><p>7</p></div><p>N</p>
+                                        <p style="margin-left: 0.2em; margin-right: 0.2em">+</p>
+                                        <p>γ</p>
+                                    </div>
+                                </label>
+
+                                <label id="mechanic_collider_reaction_cr8" class="collider-reaction-formula">
+                                    <input id="mechanic_collider_reaction_checkbox_cr8" type="checkbox" name="selected_reactions" value="cr8">
+                                    <div class="collider-reaction-formula-bg"></div>
+                                    <div class="collider-reaction-formula-block">
+                                        <div class="two-numbers"><p>14</p><p>7</p></div><p>N</p>
+                                        <p style="margin-left: 0.2em; margin-right: 0.2em">+</p>
+                                        <div class="two-numbers"><p>1</p><p>1</p></div><p>H</p>
+                                        <p style="margin-left: 0.2em; margin-right: 0.2em">➔</p>
+                                        <div class="two-numbers"><p>15</p><p>8</p></div><p>O</p>
+                                        <p style="margin-left: 0.2em; margin-right: 0.2em">+</p>
+                                        <p>γ</p>
+                                    </div>
+                                </label>
+
+                                <label id="mechanic_collider_reaction_cr9" class="collider-reaction-formula">
+                                    <input id="mechanic_collider_reaction_checkbox_cr9" type="checkbox" name="selected_reactions" value="cr9">
+                                    <div class="collider-reaction-formula-bg"></div>
+                                    <div class="collider-reaction-formula-block">
+                                        <div class="two-numbers"><p>15</p><p>7</p></div><p>N</p>
+                                        <p style="margin-left: 0.2em; margin-right: 0.2em">+</p>
+                                        <div class="two-numbers"><p>1</p><p>1</p></div><p>H</p>
+                                        <p style="margin-left: 0.2em; margin-right: 0.2em">➔</p>
+                                        <div class="two-numbers"><p>12</p><p>6</p></div><p>C</p>
+                                        <p style="margin-left: 0.2em; margin-right: 0.2em">+</p>
+                                        <div class="two-numbers"><p>4</p><p>2</p></div><p>He</p>
+                                    </div>
+                                </label>
+
+                                <label id="mechanic_collider_reaction_cr11" class="collider-reaction-formula">
+                                    <input id="mechanic_collider_reaction_checkbox_cr11" type="checkbox" name="selected_reactions" value="cr11">
+                                    <div class="collider-reaction-formula-bg"></div>
+                                    <div class="collider-reaction-formula-block">
+                                        <div class="two-numbers"><p>17</p><p>8</p></div><p>O</p>
+                                        <p style="margin-left: 0.2em; margin-right: 0.2em">+</p>
+                                        <div class="two-numbers"><p>1</p><p>1</p></div><p>H</p>
+                                        <p style="margin-left: 0.2em; margin-right: 0.2em">➔</p>
+                                        <div class="two-numbers"><p>14</p><p>7</p></div><p>N</p>
+                                        <p style="margin-left: 0.2em; margin-right: 0.2em">+</p>
+                                        <div class="two-numbers"><p>4</p><p>2</p></div><p>He</p>
+                                    </div>
+                                </label>
+
                                 <p id="mechanic_collider_reactions_section_3" style="align-self: center; font-size: 1.5em">Triple-alpha process</p>
 
                                 <label id="mechanic_collider_reaction_cr13" class="collider-reaction-formula">
@@ -3304,6 +3404,40 @@
                                         <p>γ</p>
                                         <p style="margin-left: 0.2em; margin-right: 0.2em">+</p>
                                         <p>γ</p>
+                                    </div>
+                                </label>
+
+                                <p id="mechanic_collider_reactions_section_4" style="align-self: center; font-size: 1.5em">Alpha process</p>
+
+                                <label id="mechanic_collider_reaction_cr15" class="collider-reaction-formula">
+                                    <input id="mechanic_collider_reaction_checkbox_cr15" type="checkbox" name="selected_reactions" value="cr15">
+                                    <div class="collider-reaction-formula-bg"></div>
+                                    <div class="collider-reaction-formula-block">
+                                        <div class="two-numbers"><p>12</p><p>6</p></div><p>C</p>
+                                        <p style="margin-left: 0.2em; margin-right: 0.2em">+</p>
+                                        <div class="two-numbers"><p>4</p><p>2</p></div><p>He</p>
+                                        <p style="margin-left: 0.2em; margin-right: 0.2em">➔</p>
+                                        <div class="two-numbers"><p>16</p><p>8</p></div><p>O</p>
+                                        <p style="margin-left: 0.2em; margin-right: 0.2em">+</p>
+                                        <p>γ</p>
+                                    </div>
+                                </label>
+
+                                <p id="mechanic_collider_reactions_section_5" style="align-self: center; font-size: 1.5em">Carbon burning</p>
+
+                                <label id="mechanic_collider_reaction_cr29" class="collider-reaction-formula">
+                                    <input id="mechanic_collider_reaction_checkbox_cr29" type="checkbox" name="selected_reactions" value="cr29">
+                                    <div class="collider-reaction-formula-bg"></div>
+                                    <div class="collider-reaction-formula-block">
+                                        <div class="two-numbers"><p>12</p><p>6</p></div><p>C</p>
+                                        <p style="margin-left: 0.2em; margin-right: 0.2em">+</p>
+                                        <div class="two-numbers"><p>12</p><p>6</p></div><p>C</p>
+                                        <p style="margin-left: 0.2em; margin-right: 0.2em">➔</p>
+                                        <div class="two-numbers"><p>16</p><p>8</p></div><p>O</p>
+                                        <p style="margin-left: 0.2em; margin-right: 0.2em">+</p>
+                                        <div class="two-numbers"><p>4</p><p>2</p></div><p>He</p>
+                                        <p style="margin-left: 0.2em; margin-right: 0.2em">+</p>
+                                        <div class="two-numbers"><p>4</p><p>2</p></div><p>He</p>
                                     </div>
                                 </label>
                             </div>
@@ -3460,6 +3594,10 @@
                                         <p>Replication</p>
                                         <p id="mechanic_population_change_b01" class="neutronic-number-gravitonic" style="font-weight: bold"></p>
                                     </div>
+                                    <div id="mechanic_population_line_b05" class="biological-population-growth-line" style="display: none">
+                                        <p>Oxidation</p>
+                                        <p id="mechanic_population_change_b05" class="neutronic-number-gravitonic" style="font-weight: bold"></p>
+                                    </div>
                                     <p style="flex-grow: 1">&nbsp;</p>
                                     <div class="biological-population-growth-line header">
                                         <p>Total</p>
@@ -3520,6 +3658,8 @@
                         <p class="achievement-bonus" style="text-align: left; margin-top: 20px;">A total population of <span class="variable-value large-number" name="population" rounded></span> provides the population power of <span id="mechanic_population_total_power" class="large-number"></span> for the following boosts:</p>
                         <p class="population-boost">×<span id="mechanic_population_power_time" style="font-weight: bold"></span> slower growth of the time-based nerf production nerf</p>
                         <p class="population-boost" upgrade="b02">×<span class="upgrade-effect" style="font-weight: bold"></span> more energy on annihilation</p>
+                        <p class="population-boost" upgrade="b03">+<span class="upgrade-effect" style="font-weight: bold"></span> resets of previous tier on any reset below Biological</p>
+                        <p class="population-boost" upgrade="b04">+<span class="upgrade-effect" style="font-weight: bold"></span> free levels of Generation</p>
                     </div>
 
                     <div id="biological_evolutions" style="display: none;">
@@ -3625,6 +3765,30 @@
                                         <p class="implement-remaining">To 90%: <span class="implement-remaining-time"></span></p>
                                     </div>
                                     <p class="upgrade-id" style="display: none">04</p>
+                                </div>
+
+                                <div id="evolution_b05" class="evolution" onclick="player.evolutions['b05'].buy()">
+                                    <p class="name">Oxidation</p>
+                                    <p class="advantage"></p>
+                                    <p>
+                                        You can unlock elements up to Oxygen
+                                    </p>
+                                    <p>
+                                        Fertility rate is increased<br>
+                                        Current: +<span class="primary-effect"></span><br>
+                                        <span class="primary-effect-prediction-desc">(at 90%: +<span class="primary-effect-prediction"></span>)</span>
+                                    </p>
+                                    <div class="cost-desc">
+                                        <p style="text-align: center">Cost: <span class="cost"></span></p>
+                                        <p>To 90%: <span class="implement-time"></span></p>
+                                    </div>
+                                    <div class="progress-bar-layout"></div>
+                                    <div class="progress-bar"></div>
+                                    <div class="progress-desc">
+                                        <p style="text-align: center"><span class="progress"></span></p>
+                                        <p class="implement-remaining">To 90%: <span class="implement-remaining-time"></span></p>
+                                    </div>
+                                    <p class="upgrade-id" style="display: none">05</p>
                                 </div>
                             </div>
                         </div>

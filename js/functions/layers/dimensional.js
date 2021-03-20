@@ -65,12 +65,16 @@ function reset_dimensional(force=false, higher_reset=false, autobuyer_induced=fa
 
     player.temperature_energy = big(0);
 
-    player.infrared_waves = big(0);
-    player.red_waves = big(0);
-    player.green_waves = big(0);
-    player.blue_waves = big(0);
-    player.ultraviolet_waves = big(0);
-    player.xray_waves = big(0);
+    let wave_multiplier = 0;
+    // a07_1: retain 1% of Waves on Dimensional
+    if (!higher_reset && player.milestones['a07_1'].is_active()) wave_multiplier = 0.01;
+
+    player.infrared_waves = player.infrared_waves.mult(wave_multiplier);
+    player.red_waves = player.red_waves.mult(wave_multiplier);
+    player.green_waves = player.green_waves.mult(wave_multiplier);
+    player.blue_waves = player.blue_waves.mult(wave_multiplier);
+    player.ultraviolet_waves = player.ultraviolet_waves.mult(wave_multiplier);
+    player.xray_waves = player.xray_waves.mult(wave_multiplier);
 
     player.manifolds = big(0);
 

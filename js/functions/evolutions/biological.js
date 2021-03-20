@@ -10,6 +10,9 @@ functions["evo_b03_cost"] = () => {
 functions["evo_b04_cost"] = () => {
     return big(1.3);
 }
+functions["evo_b05_cost"] = () => {
+    return big(1.6);
+}
 
 functions["evo_b01_power"] = (x) => {
     return x.div(3).add(1).log(10).div(3).add(1).log(10).add(1);
@@ -22,6 +25,9 @@ functions["evo_b03_power"] = (x) => {
 }
 functions["evo_b04_power"] = (x) => {
     return x.add(1).log(10).pow(0.5).rounddown();
+}
+functions["evo_b05_power"] = (x) => {
+    return x.add(1).log(10).add(1).log(10).mult(2);
 }
 
 functions["evo_b01_secondary"] = () => {
@@ -41,6 +47,9 @@ functions["evo_b03_secondary"] = () => {
     return big(player.photonic_resets).add(1);
 }
 functions["evo_b04_secondary"] = () => {
+    return big(1);
+}
+functions["evo_b05_secondary"] = () => {
     return big(1);
 }
 

@@ -504,6 +504,8 @@ class Player {
         this.upgrades["a04"] = new Upgrade("a04", -1, "upg_a04_cost", "upg_a04_power", "upg_a04_unlock", "atoms", [" Atom", " Atoms"], "upg_a04_available");
         this.upgrades["a05"] = new Upgrade("a05", -1, "upg_a05_cost", "upg_a05_power", "upg_a05_unlock", "atoms", [" Atom", " Atoms"], "upg_a05_available");
         this.upgrades["a06"] = new Upgrade("a06", -1, "upg_a06_cost", "upg_a06_power", "upg_a06_unlock", "atoms", [" Atom", " Atoms"], "upg_a06_available");
+        this.upgrades["a07"] = new Upgrade("a07", -1, "upg_a07_cost", "upg_a07_power", "upg_a07_unlock", "atoms", [" Atom", " Atoms"], "upg_a07_available");
+        this.upgrades["a08"] = new Upgrade("a08", -1, "upg_a08_cost", "upg_a08_power", "upg_a08_unlock", "atoms", [" Atom", " Atoms"], "upg_a08_available");
 
         this.upgrades["b01"] = new Upgrade("b01", -1, "upg_b01_cost", "upg_b01_power", "upg_b01_unlock", "genes", [" Gene", " Genes"], "upg_b01_available");
         this.upgrades["b02"] = new Upgrade("b02", -1, "upg_b02_cost", "upg_b02_power", "upg_b02_unlock", "genes", [" Gene", " Genes"], "upg_b02_available");
@@ -515,6 +517,7 @@ class Player {
         this.evolutions["b02"] = new Evolution("b02", "evo_b02_cost", "genes", [" Gene", " Genes"], "population", 100, "evo_b02_power", "evo_b02_secondary");
         this.evolutions["b03"] = new Evolution("b03", "evo_b03_cost", "genes", [" Gene", " Genes"], "population", 100, "evo_b03_power", "evo_b03_secondary");
         this.evolutions["b04"] = new Evolution("b04", "evo_b04_cost", "genes", [" Gene", " Genes"], "population", 60, "evo_b04_power", "evo_b04_secondary");
+        this.evolutions["b05"] = new Evolution("b05", "evo_b05_cost", "genes", [" Gene", " Genes"], "population", 10, "evo_b05_power", "evo_b05_secondary");
 
         this.challenges = {};
         this.challenges["p1"] = new Challenge("p1", "Photonic Challenge 1", "photonic", [], "start_p1", "goal_p1", "end_p1");
@@ -750,6 +753,10 @@ class Player {
         this.milestones["a06_1"] = new Milestone("a06_1", "a06_1_availability", "a06_1_activation", "a06_1_effect", "a06_1_goal");
         this.milestones["a06_2"] = new Milestone("a06_2", "a06_2_availability", "a06_2_activation", "a06_2_effect", "a06_2_goal");
 
+        this.milestones["a07_1"] = new Milestone("a07_1", "a07_1_availability", "a07_1_activation", "a07_1_effect", "a07_1_goal");
+
+        this.milestones["a08_1"] = new Milestone("a08_1", "a08_1_availability", "a08_1_activation", "a08_1_effect", "a08_1_goal");
+
         this.settings = JSON.parse(JSON.stringify(default_settings));
 
         this.total_realtime = 0;
@@ -900,6 +907,8 @@ function processTimedelta(corrected_timedelta) {
     if (player.upgrades['d113'].is_active()) energy_generated = energy_generated.mult(player.upgrades["d113"].get_effect());
     // evolution b02: anniilation produces more energy based on Shards
     if (player.evolutions['b02'].is_active()) energy_generated = energy_generated.mult(player.evolutions["b02"].get_effect());
+    // a07: anniilation produces more energy
+    if (player.upgrades['a07'].is_active()) energy_generated = energy_generated.mult(player.upgrades["a07"].get_effect());
     // Photonic Challenge 2: annihilation does not produce energy
     if (player.challenges['p2'].inC()) energy_generated = big(0);
 

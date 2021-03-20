@@ -61,6 +61,14 @@ functions["a06_2_availability"] = () => {
     return true;
 }
 
+functions["a07_1_availability"] = () => {
+    return true;
+}
+
+functions["a08_1_availability"] = () => {
+    return true;
+}
+
 
 
 functions["a01_1_activation"] = () => {
@@ -124,6 +132,14 @@ functions["a06_1_activation"] = () => {
 }
 functions["a06_2_activation"] = () => {
     return get_atom_level('a06').gt(25 - 0.5);
+}
+
+functions["a07_1_activation"] = () => {
+    return get_atom_level('a07').gt(1 - 0.5);
+}
+
+functions["a08_1_activation"] = () => {
+    return get_atom_level('a08').gt(1 - 0.5);
 }
 
 
@@ -207,6 +223,14 @@ functions["a06_2_effect"] = () => {
     return get_atom_level('a06').pow(0.5).add(1);
 }
 
+functions["a07_1_effect"] = () => {
+    return big(1);
+}
+
+functions["a08_1_effect"] = () => {
+    return big(1.1);
+}
+
 
 
 functions["a01_1_goal"] = () => {
@@ -270,4 +294,12 @@ functions["a06_1_goal"] = () => {
 }
 functions["a06_2_goal"] = () => {
     return big(25);
+}
+
+functions["a07_1_goal"] = () => {
+    return big(1);
+}
+
+functions["a08_1_goal"] = () => {
+    return big(1);
 }

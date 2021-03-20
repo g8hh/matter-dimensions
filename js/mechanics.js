@@ -106,8 +106,16 @@ function format_temperature(number, fixed=false) {
 }
 
 function get_temperature() {
+    let base_energy = player.temperature_energy.clone();
+    // a08: energy boosts temperature more
+    if (player.upgrades['a08'].is_active()) base_energy = base_energy.mult(player.upgrades['a08'].get_effect());
+
     let base_temp = player.temperature_energy.pow(0.2).div(1000);
     if (base_temp.gt(273.15)) base_temp = big(273.15).mult(base_temp.div(273.15).log(10).add(1));
+
+    // a08_1: temperature is raised to a power of 1.1
+    if (player.milestones['a08_1'].is_active()) base_temp = base_temp.pow(player.milestones['a08_1'].get_effect());
+
     return base_temp;
 }
 
@@ -272,7 +280,10 @@ function get_atom_level(key) {
 }
 
 function element_unlock_limit() {
-    return 6;
+    let base_limit = 6;
+    // evolution b05: unlock elements up to Oxygen
+    if (player.evolutions['b05'].is_active()) base_limit = 8;
+    return base_limit;
 }
 
 function highest_unlocked_element() {
@@ -343,16 +354,16 @@ const MECHANIC_COLLIDER_REACTION_LIST = {
     'cr4': [['a03', 'a01'], ['a02', 'a02']],
     'cr5': [['a04', 'a01'], ['a05', 'ph']],
     'cr6': [['a04'], ['a02', 'a02']],
-    /*'cr7': [['a06', 'a01'], ['a07', 'ph']], // Carbon-nitrogen-oxygen cycle
+    'cr7': [['a06', 'a01'], ['a07', 'ph']], // Carbon-nitrogen-oxygen cycle
     'cr8': [['a07', 'a01'], ['a08', 'ph']],
     'cr9': [['a07', 'a01'], ['a06', 'a02']],
-    'cr10': [['a08', 'a01'], ['a09', 'ph']],
+    /*'cr10': [['a08', 'a01'], ['a09', 'ph']],*/
     'cr11': [['a08', 'a01'], ['a07', 'a02']],
-    'cr12': [['a09', 'a01'], ['a10', 'ph']],*/
+    /*'cr12': [['a09', 'a01'], ['a10', 'ph']],*/
     'cr13': [['a02', 'a02'], ['a04']], // Triple-alpha process
     'cr14': [['a04', 'a02'], ['a06', 'ph', 'ph']],
-    /*'cr15': [['a06', 'a02'], ['a08', 'ph']], // Alpha process
-    'cr16': [['a08', 'a02'], ['a10', 'ph']],
+    'cr15': [['a06', 'a02'], ['a08', 'ph']], // Alpha process
+    /*'cr16': [['a08', 'a02'], ['a10', 'ph']],
     'cr17': [['a10', 'a02'], ['a12', 'ph']],
     'cr18': [['a12', 'a02'], ['a14', 'ph']],
     'cr19': [['a14', 'a02'], ['a16', 'ph']],
@@ -364,9 +375,9 @@ const MECHANIC_COLLIDER_REACTION_LIST = {
     'cr25': [['a06', 'a06'], ['a10', 'a02']], // Carbon burning
     'cr26': [['a06', 'a06'], ['a11', 'a01']],
     'cr27': [['a06', 'a06'], ['a12', 'n']],
-    'cr28': [['a06', 'a06'], ['a12', 'ph']],
+    'cr28': [['a06', 'a06'], ['a12', 'ph']],*/
     'cr29': [['a06', 'a06'], ['a08', 'a02', 'a02']],
-    'cr30': [['a10', 'a02'], ['a12', 'n']], // Neon burning
+    /*'cr30': [['a10', 'a02'], ['a12', 'n']], // Neon burning
     'cr31': [['a08', 'a08'], ['a14', 'a02']], // Oxygen burning
     'cr32': [['a08', 'a08'], ['a15', 'a01']],
     'cr33': [['a08', 'a08'], ['a16', 'n']],
@@ -480,8 +491,14 @@ function update_collider() {
     }
     if (unlocked_elements < 2) document.getElementById("mechanic_collider_reactions_section_1").style.display = "none";
     else document.getElementById("mechanic_collider_reactions_section_1").style.display = "";
+    if (unlocked_elements < 7) document.getElementById("mechanic_collider_reactions_section_2").style.display = "none";
+    else document.getElementById("mechanic_collider_reactions_section_2").style.display = "";
     if (unlocked_elements < 4) document.getElementById("mechanic_collider_reactions_section_3").style.display = "none";
     else document.getElementById("mechanic_collider_reactions_section_3").style.display = "";
+    if (unlocked_elements < 8) document.getElementById("mechanic_collider_reactions_section_4").style.display = "none";
+    else document.getElementById("mechanic_collider_reactions_section_4").style.display = "";
+    if (unlocked_elements < 8) document.getElementById("mechanic_collider_reactions_section_5").style.display = "none";
+    else document.getElementById("mechanic_collider_reactions_section_5").style.display = "";
 
     document.getElementById("mechanic_collider_reaction_photons").textContent = format_number(reaction_points_effect_photons());
     document.getElementById("mechanic_collider_reaction_neutrons").textContent = format_number(reaction_points_effect_neutrons());
@@ -497,7 +514,7 @@ function update_collider() {
 
 // Population
 
-const FERTILITY_EVOLUTIONS = ["b01"];
+const FERTILITY_EVOLUTIONS = ["b01", "b05"];
 
 function update_population_first() {
 
@@ -582,10 +599,10 @@ function update_population() {
     let boost_descriptions = document.getElementsByClassName("population-boost");
     for (let i = 0; i < boost_descriptions.length; i++) {
         if (boost_descriptions[i].attributes.upgrade !== undefined) {
-            if (player.upgrades[boost_descriptions[i].attributes.upgrade.value].is_active()) boost_descriptions[i].style.display = "";
+            if (player.evolutions[boost_descriptions[i].attributes.upgrade.value].is_active()) boost_descriptions[i].style.display = "";
             else boost_descriptions[i].style.display = "none";
             if (boost_descriptions[i].getElementsByClassName("upgrade-effect").length > 0)
-                boost_descriptions[i].getElementsByClassName("upgrade-effect")[0].textContent = format_number(player.upgrades[boost_descriptions[i].attributes.upgrade.value].get_effect(), true);
+                boost_descriptions[i].getElementsByClassName("upgrade-effect")[0].textContent = format_number(player.evolutions[boost_descriptions[i].attributes.upgrade.value].get_effect(), true);
         }
     }
 }
