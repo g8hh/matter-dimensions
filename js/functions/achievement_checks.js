@@ -428,6 +428,18 @@ functions["check_128"] = () => {
 };
 
 
+functions["check_132"] = () => {
+    return get_atom_level('a08').gt(0.5);
+};
+
+functions["check_133"] = () => {
+    return player.matter.gt("6.9e420") && me.upgrades['v211'].amt == 0;
+};
+
+functions["check_134"] = () => {
+    return false; // external call
+};
+
 functions["check_135"] = () => {
     return false; // external call
 };

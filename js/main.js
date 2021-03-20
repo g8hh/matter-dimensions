@@ -316,6 +316,9 @@ class Player {
         this.achievements["127"] = new Achievement("127", "Infinite Problems", "Complete a Vacuumic challenge.\nReward: you can max buy Dimensional upgrades", "check_127", "effective");
         this.achievements["128"] = new Achievement("128", "Why did I do this again?", "Be in three Meta-Challenges at once", "check_128");
 
+        this.achievements["132"] = new Achievement("132", "Breathe in...", "Get a level of Oxygen", "check_132");
+        this.achievements["133"] = new Achievement("133", "Nice.", "Have at least 6.9e420 matter with unbroken Infinity", "check_133");
+        this.achievements["134"] = new Achievement("134", "Couple of Adjustments", "Perform an Extinction", "check_134");
         this.achievements["135"] = new Achievement("135", "Formula Break III", "Get more than 1 Gene from Biological reset.\nReward: base Gene reward from Biological resets is raised to the power of 1.618", "check_135", "effective");
         this.achievements["138"] = new Achievement("138", "The Hindenburg", "Have 10 free levels from Generation", "check_138");
 
