@@ -431,3 +431,7 @@ functions["check_128"] = () => {
 functions["check_135"] = () => {
     return false; // external call
 };
+
+functions["check_138"] = () => {
+    return generation_points_effect().gt(9.9);
+};
