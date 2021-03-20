@@ -66,7 +66,7 @@ class Evolution {
     }
 
     get_based_value() {
-        if (this.based_on instanceof Dimension) return this.based_on.clone();
+        if (this.based_on instanceof Dimension) return this.based_on.amt.clone();
         else return player[this.based_on].clone();
     }
 
@@ -145,7 +145,7 @@ class Evolution {
             if (element.getElementsByClassName("primary-effect").length > 0)
             element.getElementsByClassName("primary-effect")[0].textContent = format_number(this.get_effect(), true);
             if (element.getElementsByClassName("primary-effect-prediction").length > 0)
-            element.getElementsByClassName("primary-effect-prediction")[0].textContent = format_number(this.get_effect(0.9, true), true);
+            element.getElementsByClassName("primary-effect-prediction")[0].textContent = format_number(this.get_effect(sigmoid_rev(big(0.9)), true), true);
             if (element.getElementsByClassName("secondary-effect").length > 0)
             element.getElementsByClassName("secondary-effect")[0].textContent = format_number(this.get_secondary_effect());
 

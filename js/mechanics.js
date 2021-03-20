@@ -278,7 +278,12 @@ function element_unlock_limit() {
 function highest_unlocked_element() {
     let base_limit = 1;
     let max_limit = element_unlock_limit();
-    return Math.min(base_limit + me.collision_points_in_synthesis, max_limit);
+
+    let element_effect = base_limit + me.collision_points_in_synthesis;
+    // evolution b04: get free level of Synthesis
+    if (player.evolutions['b04'].is_active()) element_effect += 1;
+
+    return Math.min(element_effect, max_limit);
 }
 
 function next_ck_hint(amt) {
@@ -316,7 +321,11 @@ function reaction_points_effect_neutrons() {
 }
 
 function generation_points_effect() {
-    return big(player.collision_points_in_generation);
+    let base_effect = big(player.collision_points_in_generation);
+    // evolution b04: get free levels of Generation
+    if (player.evolutions['b04'].is_active()) base_effect = base_effect.add(player.evolutions['b04'].get_effect());
+
+    return base_effect;
 }
 
 const MECHANIC_COLLIDER_ELEMENT_NAMES = ["Hydrogen", "Helium", 
