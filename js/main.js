@@ -494,6 +494,9 @@ class Player {
         this.upgrades["d112"] = new Upgrade("d112", 1, "upg_d112_cost", "upg_d112_power", "upg_d112_unlock", "shards", [" Shard", " Shards"], "upg_d112_available");
         this.upgrades["d113"] = new Upgrade("d113", 1, "upg_d113_cost", "upg_d113_power", "upg_d113_unlock", "shards", [" Shard", " Shards"], "upg_d113_available");
         this.upgrades["d114"] = new Upgrade("d114", 1, "upg_d114_cost", "upg_d114_power", "upg_d114_unlock", "shards", [" Shard", " Shards"], "upg_d114_available");
+        this.upgrades["d121"] = new Upgrade("d121", 1, "upg_d121_cost", "upg_d121_power", "upg_d121_unlock", "shards", [" Shard", " Shards"], "upg_d121_available");
+        this.upgrades["d122"] = new Upgrade("d122", 1, "upg_d122_cost", "upg_d122_power", "upg_d122_unlock", "shards", [" Shard", " Shards"], "upg_d122_available");
+        this.upgrades["d123"] = new Upgrade("d123", 1, "upg_d123_cost", "upg_d123_power", "upg_d123_unlock", "shards", [" Shard", " Shards"], "upg_d123_available");
 
         this.upgrades["a01"] = new Upgrade("a01", -1, "upg_a01_cost", "upg_a01_power", "upg_a01_unlock", "atoms", [" Atom", " Atoms"], "upg_a01_available", "upg_a01_buy");
         this.upgrades["a02"] = new Upgrade("a02", -1, "upg_a02_cost", "upg_a02_power", "upg_a02_unlock", "atoms", [" Atom", " Atoms"], "upg_a02_available");

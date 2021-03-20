@@ -69,6 +69,8 @@ functions['vacuumic_1_pow'] = (amt_bought, amt) => {
 
     // Dimensional Dimensions boost respective dimensions
     base_pow = base_pow.mult(power_manifolds().pow(player.dimensions['dimensional_1'].amt_bought));
+    // d121: Inflation boosts all Vacuumic Dimensions
+    if (player.upgrades['d121'].is_active()) base_pow = base_pow.mult(player.upgrades['d121'].get_effect());
 
     return base_pow;
 };
@@ -83,6 +85,8 @@ functions['vacuumic_2_pow'] = (amt_bought, amt) => {
     if (player.challenges['v2'].completed) base_pow = base_pow.mult(2);
     // Dimensional Dimensions boost respective dimensions
     base_pow = base_pow.mult(power_manifolds().pow(player.dimensions['dimensional_2'].amt_bought));
+    // d121: Inflation boosts all Vacuumic Dimensions
+    if (player.upgrades['d121'].is_active()) base_pow = base_pow.mult(player.upgrades['d121'].get_effect());
 
     return base_pow;
 };
@@ -95,6 +99,8 @@ functions['vacuumic_3_pow'] = (amt_bought, amt) => {
 
     // Dimensional Dimensions boost respective dimensions
     base_pow = base_pow.mult(power_manifolds().pow(player.dimensions['dimensional_3'].amt_bought));
+    // d121: Inflation boosts all Vacuumic Dimensions
+    if (player.upgrades['d121'].is_active()) base_pow = base_pow.mult(player.upgrades['d121'].get_effect());
 
     // Vacuumic Challenge 3: 3rd dimensions do not produce anything
     if (player.challenges['v3'].inC()) base_pow = big(0);
@@ -112,6 +118,8 @@ functions['vacuumic_4_pow'] = (amt_bought, amt) => {
     if (player.challenges['v2'].completed) base_pow = base_pow.mult(2);
     // Dimensional Dimensions boost respective dimensions
     base_pow = base_pow.mult(power_manifolds().pow(player.dimensions['dimensional_4'].amt_bought));
+    // d121: Inflation boosts all Vacuumic Dimensions
+    if (player.upgrades['d121'].is_active()) base_pow = base_pow.mult(player.upgrades['d121'].get_effect());
 
     return base_pow;
 };
@@ -124,6 +132,8 @@ functions['vacuumic_5_pow'] = (amt_bought, amt) => {
 
     // Dimensional Dimensions boost respective dimensions
     base_pow = base_pow.mult(power_manifolds().pow(player.dimensions['dimensional_5'].amt_bought));
+    // d121: Inflation boosts all Vacuumic Dimensions
+    if (player.upgrades['d121'].is_active()) base_pow = base_pow.mult(player.upgrades['d121'].get_effect());
 
     return base_pow;
 };
@@ -138,6 +148,8 @@ functions['vacuumic_6_pow'] = (amt_bought, amt) => {
     if (player.challenges['v2'].completed) base_pow = base_pow.mult(2);
     // Dimensional Dimensions boost respective dimensions
     base_pow = base_pow.mult(power_manifolds().pow(player.dimensions['dimensional_6'].amt_bought));
+    // d121: Inflation boosts all Vacuumic Dimensions
+    if (player.upgrades['d121'].is_active()) base_pow = base_pow.mult(player.upgrades['d121'].get_effect());
 
     return base_pow;
 };
@@ -150,6 +162,8 @@ functions['vacuumic_7_pow'] = (amt_bought, amt) => {
 
     // Dimensional Dimensions boost respective dimensions
     base_pow = base_pow.mult(power_manifolds().pow(player.dimensions['dimensional_7'].amt_bought));
+    // d121: Inflation boosts all Vacuumic Dimensions
+    if (player.upgrades['d121'].is_active()) base_pow = base_pow.mult(player.upgrades['d121'].get_effect());
 
     return base_pow;
 };
@@ -164,6 +178,8 @@ functions['vacuumic_8_pow'] = (amt_bought, amt) => {
     if (player.challenges['v2'].completed) base_pow = base_pow.mult(2);
     // Dimensional Dimensions boost respective dimensions
     base_pow = base_pow.mult(power_manifolds().pow(player.dimensions['dimensional_8'].amt_bought));
+    // d121: Inflation boosts all Vacuumic Dimensions
+    if (player.upgrades['d121'].is_active()) base_pow = base_pow.mult(player.upgrades['d121'].get_effect());
 
     return base_pow;
 };
@@ -176,6 +192,8 @@ functions['vacuumic_9_pow'] = (amt_bought, amt) => {
 
     // Dimensional Dimensions boost respective dimensions
     base_pow = base_pow.mult(power_manifolds().pow(player.dimensions['dimensional_9'].amt_bought));
+    // d121: Inflation boosts all Vacuumic Dimensions
+    if (player.upgrades['d121'].is_active()) base_pow = base_pow.mult(player.upgrades['d121'].get_effect());
 
     return base_pow;
 };
@@ -190,6 +208,8 @@ functions['vacuumic_10_pow'] = (amt_bought, amt) => {
     if (player.challenges['v2'].completed) base_pow = base_pow.mult(2);
     // Dimensional Dimensions boost respective dimensions
     base_pow = base_pow.mult(power_manifolds().pow(player.dimensions['dimensional_10'].amt_bought));
+    // d121: Inflation boosts all Vacuumic Dimensions
+    if (player.upgrades['d121'].is_active()) base_pow = base_pow.mult(player.upgrades['d121'].get_effect());
 
     return base_pow;
 };
@@ -202,6 +222,8 @@ functions['vacuumic_11_pow'] = (amt_bought, amt) => {
 
     // Dimensional Dimensions boost respective dimensions
     base_pow = base_pow.mult(power_manifolds().pow(player.dimensions['dimensional_11'].amt_bought));
+    // d121: Inflation boosts all Vacuumic Dimensions
+    if (player.upgrades['d121'].is_active()) base_pow = base_pow.mult(player.upgrades['d121'].get_effect());
 
     return base_pow;
 };
@@ -216,6 +238,8 @@ functions['vacuumic_12_pow'] = (amt_bought, amt) => {
     if (player.challenges['v2'].completed) base_pow = base_pow.mult(2);
     // Dimensional Dimensions boost respective dimensions
     base_pow = base_pow.mult(power_manifolds().pow(player.dimensions['dimensional_12'].amt_bought));
+    // d121: Inflation boosts all Vacuumic Dimensions
+    if (player.upgrades['d121'].is_active()) base_pow = base_pow.mult(player.upgrades['d121'].get_effect());
 
     return base_pow;
 };

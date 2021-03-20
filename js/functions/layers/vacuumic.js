@@ -45,10 +45,6 @@ function reset_vacuumic(force=false, higher_reset=false, autobuyer_induced=false
     player.stars = big(0);
     player.inflation = big(0);
 
-    player.dimensions["protons"].reset();
-    player.dimensions["electrons"].reset();
-    player.dimensions["bosons"].reset();
-
     for (let key of Object.keys(player.dimensions)) {
         if (key.includes("neutronic_")) {
             player.dimensions[key].reset();
@@ -82,9 +78,16 @@ function reset_vacuumic(force=false, higher_reset=false, autobuyer_induced=false
         }
     }
 
-    for (let key of Object.keys(player.upgrades)) {
-        if (key.includes("n") && !key.includes("n0")) {
-            player.upgrades[key].reset();
+    // d122: neutronic particles and their upgrades are not reset
+    if (higher_reset || !player.upgrades['d122'].is_active()) {
+        player.dimensions["protons"].reset();
+        player.dimensions["electrons"].reset();
+        player.dimensions["bosons"].reset();
+
+        for (let key of Object.keys(player.upgrades)) {
+            if (key.includes("n") && !key.includes("n0")) {
+                player.upgrades[key].reset();
+            }
         }
     }
 
@@ -143,5 +146,9 @@ function power_inflation_neutronic() {
     let base_pow = player.inflation.add(1).pow(0.075);
     // Vacuumic Challenge 5 reward: those three boosts are ^1.5
     if (player.challenges['v5'].completed) base_pow = base_pow.pow(1.5);
+    return base_pow;
+}
+function power_inflation_vacuumic() {
+    let base_pow = player.inflation.add(1).log(10).pow(3).add(1);
     return base_pow;
 }

@@ -669,6 +669,16 @@ function update_prestige() {
     }
     else document.getElementById("power_inflation_neutronic_info").style.display = "none";
 
+    // inflation boosts all Vacuumic Dimension
+    if (me.upgrades['d121'].is_active()) {
+        document.getElementById("power_inflation_vacuumic_info").style.display = "";
+        elements = document.getElementsByClassName("power_inflation_vacuumic");
+        for (var i = 0; i < elements.length; i++) {
+            elements.item(i).textContent = format_number(me.upgrades['d121'].get_effect());
+        }
+    }
+    else document.getElementById("power_inflation_vacuumic_info").style.display = "none";
+
     // achievement 97: unlock buy max neutronic upgrades
     if (player.achievements['97'].complete || player.upgrades['AUTO2_5'].is_active()) {
         document.getElementById("upgrades_neutronic_buy_max").style.display = "";

@@ -64,6 +64,15 @@ functions["upg_d113_cost"] = (amt) => {
 functions["upg_d114_cost"] = (amt) => {
     return big(125);
 }
+functions["upg_d121_cost"] = (amt) => {
+    return big(59049);
+}
+functions["upg_d122_cost"] = (amt) => {
+    return big(59049);
+}
+functions["upg_d123_cost"] = (amt) => {
+    return big(59049);
+}
 
 
 
@@ -144,6 +153,15 @@ functions["upg_d114_power"] = (amt) => {
 
     return big(1).add(vc_completed);
 }
+functions["upg_d121_power"] = (amt) => {
+    return power_inflation_vacuumic();
+}
+functions["upg_d122_power"] = (amt) => {
+    return big(1);
+}
+functions["upg_d123_power"] = (amt) => {
+    return big(1);
+}
 
 
 
@@ -211,6 +229,15 @@ functions["upg_d113_unlock"] = () => {
     return me.upgrades['d81'].amt > 0;
 }
 functions["upg_d114_unlock"] = () => {
+    return me.upgrades['d81'].amt > 0;
+}
+functions["upg_d121_unlock"] = () => {
+    return me.upgrades['d81'].amt > 0;
+}
+functions["upg_d122_unlock"] = () => {
+    return me.upgrades['d81'].amt > 0;
+}
+functions["upg_d123_unlock"] = () => {
     return me.upgrades['d81'].amt > 0;
 }
 
@@ -282,6 +309,15 @@ functions["upg_d113_available"] = () => {
     return me.upgrades['d81'].amt > 0;
 }
 functions["upg_d114_available"] = () => {
+    return me.upgrades['d81'].amt > 0;
+}
+functions["upg_d121_available"] = () => {
+    return me.upgrades['d81'].amt > 0;
+}
+functions["upg_d122_available"] = () => {
+    return me.upgrades['d81'].amt > 0;
+}
+functions["upg_d123_available"] = () => {
     return me.upgrades['d81'].amt > 0;
 }
 

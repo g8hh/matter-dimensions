@@ -4,8 +4,17 @@ function prestige_earn_shards() {
     let base_income = big(0);
 
     for (let key of Object.keys(player.dimensions)) {
-        if (key.includes("matter_") && player.dimensions[key].level >= 3) {
-            let income_per_dim = big(0.1);
+        // d123: all dimensions count for Shard gain
+        if ((key.includes("matter_") || player.upgrades['d123'].is_active()) && player.dimensions[key].level >= 3) {
+            // modify when adding new dimensions
+            let reset_level = 0;
+            if (key.includes("photonic_")) reset_level = 1;
+            if (key.includes("gravitonic_")) reset_level = 2;
+            if (key.includes("neutronic_")) reset_level = 3;
+            if (key.includes("vacuumic_")) reset_level = 4;
+            if (key.includes("dimensional_")) reset_level = 5;
+
+            let income_per_dim = big(0.1).mult(big(2).pow(reset_level));
             // d52: higher level dimensions give more shards
             income_per_dim = income_per_dim.mult(player.upgrades['d52'].get_effect().pow(player.dimensions[key].level - 3));
 
