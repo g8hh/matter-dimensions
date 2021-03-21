@@ -86,6 +86,8 @@ functions['electrons_pow'] = (amt_bought, amt) => {
     if (me.milestones['temperature_3'].is_active()) base_pow = base_pow.mult(me.milestones['temperature_3'].get_effect());
     // n16: Proton Power boosts Electron Power gain
     if (me.upgrades['n16'].is_active()) base_pow = base_pow.mult(me.upgrades['n16'].get_effect());
+    // evolution b06: particles produce more power
+    if (player.evolutions['b06'].is_active()) base_pow = base_pow.mult(player.evolutions['b06'].get_effect());
 
     // Challenge 2: all production greater than X is raised to power of Y
     if (base_pow.gt(me.challenge_addinfo_2)) {
@@ -118,6 +120,8 @@ functions['bosons_pow'] = (amt_bought, amt) => {
     if (me.milestones['temperature_3'].is_active()) base_pow = base_pow.mult(me.milestones['temperature_3'].get_effect());
     // n26: Electron Power boosts Boson Power gain
     if (me.upgrades['n26'].is_active()) base_pow = base_pow.mult(me.upgrades['n26'].get_effect());
+    // evolution b06: particles produce more power
+    if (player.evolutions['b06'].is_active()) base_pow = base_pow.mult(player.evolutions['b06'].get_effect());
 
     // Challenge 2: all production greater than X is raised to power of Y
     if (base_pow.gt(me.challenge_addinfo_2)) {
