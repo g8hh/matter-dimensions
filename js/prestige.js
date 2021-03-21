@@ -705,6 +705,16 @@ function update_prestige() {
         document.getElementById("upgrades_dimensional_buy_max").style.display = "none";
     }
 
+    // evolution b06: unlock Extinctions
+    if (player.evolutions['b06'].is_active()) {
+        document.getElementById("perform_extinction_button").style.display = "";
+        document.getElementById("perform_extinction_setting").style.display = "";
+    }
+    else {
+        document.getElementById("perform_extinction_button").style.display = "none";
+        document.getElementById("perform_extinction_setting").style.display = "none";
+    }
+
     update_unlocked_menus();
     update_unlock_hint();
     update_hotkey_visibility();

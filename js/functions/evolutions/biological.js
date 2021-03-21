@@ -13,6 +13,9 @@ functions["evo_b04_cost"] = () => {
 functions["evo_b05_cost"] = () => {
     return big(1.6);
 }
+functions["evo_b06_cost"] = () => {
+    return big(1.9);
+}
 
 functions["evo_b01_power"] = (x) => {
     return x.div(3).add(1).log(10).div(3).add(1).log(10).add(1);
@@ -28,6 +31,9 @@ functions["evo_b04_power"] = (x) => {
 }
 functions["evo_b05_power"] = (x) => {
     return x.add(1).log(10).add(1).log(10).mult(2);
+}
+functions["evo_b06_power"] = (x) => {
+    return x.add(1).log(2).add(1);
 }
 
 functions["evo_b01_secondary"] = () => {
@@ -50,6 +56,9 @@ functions["evo_b04_secondary"] = () => {
     return big(1);
 }
 functions["evo_b05_secondary"] = () => {
+    return big(1);
+}
+functions["evo_b06_secondary"] = () => {
     return big(1);
 }
 

@@ -3666,7 +3666,7 @@
                                 <p id="upgrade_b04_next_cost">Cost: <span id="upgrade_b04_cost"></span></p>
                                 <p class="upgrade-id" style="display: none">04</p>
                             </div>
-                            <div class="upgrade" style="grid-row: 3; grid-column: 2 / 4; display: none" onclick="perform_extinction()">
+                            <div id="perform_extinction_button" class="upgrade" style="grid-row: 3; grid-column: 2 / 4; display: none" onclick="perform_extinction()">
                                 <p><b>EXTINCTION</b><br>
                                 Reset your population back to 1, but increase the population power based on sacrificed population.<br>
                                 Current: ×<span id="mechanic_population_extinction_current"></span><br>
@@ -3678,6 +3678,7 @@
                         <p class="population-boost" upgrade="b02">×<span class="upgrade-effect" style="font-weight: bold"></span> more energy on annihilation</p>
                         <p class="population-boost" upgrade="b03">+<span class="upgrade-effect" style="font-weight: bold"></span> resets of previous tier on any reset below Biological</p>
                         <p class="population-boost" upgrade="b04">+<span class="upgrade-effect" style="font-weight: bold"></span> free levels of Generation</p>
+                        <p class="population-boost" upgrade="b06">×<span class="upgrade-effect" style="font-weight: bold"></span> more power produced by Neutronic particles</p>
                     </div>
 
                     <div id="biological_evolutions" style="display: none;">
@@ -3807,6 +3808,30 @@
                                         <p class="implement-remaining">To 90%: <span class="implement-remaining-time"></span></p>
                                     </div>
                                     <p class="upgrade-id" style="display: none">05</p>
+                                </div>
+
+                                <div id="evolution_b06" class="evolution" onclick="player.evolutions['b06'].buy()">
+                                    <p class="name">Mitochondria</p>
+                                    <p class="advantage"></p>
+                                    <p>
+                                        Unlock Extinctions (on Population tab)
+                                    </p>
+                                    <p>
+                                        Neutronic particles produce more power<br>
+                                        Current: ×<span class="primary-effect"></span><br>
+                                        <span class="primary-effect-prediction-desc">(at 90%: ×<span class="primary-effect-prediction"></span>)</span>
+                                    </p>
+                                    <div class="cost-desc">
+                                        <p style="text-align: center">Cost: <span class="cost"></span></p>
+                                        <p>To 90%: <span class="implement-time"></span></p>
+                                    </div>
+                                    <div class="progress-bar-layout"></div>
+                                    <div class="progress-bar"></div>
+                                    <div class="progress-desc">
+                                        <p style="text-align: center"><span class="progress"></span></p>
+                                        <p class="implement-remaining">To 90%: <span class="implement-remaining-time"></span></p>
+                                    </div>
+                                    <p class="upgrade-id" style="display: none">06</p>
                                 </div>
                             </div>
                         </div>
@@ -4169,6 +4194,9 @@
                         <div class="achievement" id="achievement_136" style="grid-row: 13; grid-column: 6">
                             <p id="achievement_136_name"></p>
                         </div>
+                        <div class="achievement" id="achievement_137" style="grid-row: 13; grid-column: 7">
+                            <p id="achievement_137_name"></p>
+                        </div>
                         <div class="achievement" id="achievement_138" style="grid-row: 13; grid-column: 8">
                             <p id="achievement_138_name"></p>
                         </div>
@@ -4230,7 +4258,7 @@
                             <label class="settings-block-selector-checkbox display-none-until-dimensional"><input type="checkbox" name="prestige_confirmation_dimensional"><p>on Dimensional reset</p></label>
                             <label class="settings-block-selector-checkbox display-none-until-atomic"><input type="checkbox" name="prestige_confirmation_atomic"><p>on Atomic reset</p></label>
                             <label class="settings-block-selector-checkbox display-none-until-biological"><input type="checkbox" name="prestige_confirmation_biological"><p>on Biological reset</p></label>
-                            <label class="settings-block-selector-checkbox" style="margin-left: 1em; font-size: 0.8em; display: none"><input type="checkbox" name="prestige_confirmation_extinction"><p>on Extinction</p></label>
+                            <label id="perform_extinction_setting" class="settings-block-selector-checkbox" style="margin-left: 1em; font-size: 0.8em; display: none"><input type="checkbox" name="prestige_confirmation_extinction"><p>on Extinction</p></label>
                         </div>
                     </div>
 

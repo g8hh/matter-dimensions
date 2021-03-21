@@ -448,6 +448,15 @@ functions["check_136"] = () => {
     return get_temperature(me).gt(5800);
 };
 
+functions["check_137"] = () => {
+    for (let key of Object.keys(player.upgrades)) {
+        if (key.includes('a') && get_atom_level(key).gt(999.5)) {
+            return true;
+        }
+    }
+    return false;
+};
+
 functions["check_138"] = () => {
     return generation_points_effect().gt(9.9);
 };

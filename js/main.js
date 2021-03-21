@@ -321,6 +321,7 @@ class Player {
         this.achievements["134"] = new Achievement("134", "Couple of Adjustments", "Perform an Extinction", "check_134");
         this.achievements["135"] = new Achievement("135", "Formula Break III", "Get more than 1 Gene from Biological reset.\nReward: base Gene reward from Biological resets is raised to the power of 1.618", "check_135", "effective");
         this.achievements["136"] = new Achievement("136", "Sun Vacation", "Reach 5800 K of Temperature", "check_136");
+        this.achievements["137"] = new Achievement("137", "...breathe out", "Have an element with the total level of at least 1000", "check_137");
         this.achievements["138"] = new Achievement("138", "The Hindenburg", "Have 10 free levels from Generation", "check_138");
 
         this.upgrades = {};
@@ -522,6 +523,7 @@ class Player {
         this.evolutions["b03"] = new Evolution("b03", "evo_b03_cost", "genes", [" Gene", " Genes"], "population", 100, "evo_b03_power", "evo_b03_secondary");
         this.evolutions["b04"] = new Evolution("b04", "evo_b04_cost", "genes", [" Gene", " Genes"], "population", 60, "evo_b04_power", "evo_b04_secondary");
         this.evolutions["b05"] = new Evolution("b05", "evo_b05_cost", "genes", [" Gene", " Genes"], "population", 10, "evo_b05_power", "evo_b05_secondary");
+        this.evolutions["b06"] = new Evolution("b06", "evo_b06_cost", "genes", [" Gene", " Genes"], "population", 25, "evo_b06_power", "evo_b06_secondary");
 
         this.challenges = {};
         this.challenges["p1"] = new Challenge("p1", "Photonic Challenge 1", "photonic", [], "start_p1", "goal_p1", "end_p1");
