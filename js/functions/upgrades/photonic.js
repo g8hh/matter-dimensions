@@ -379,6 +379,8 @@ functions["upg_p21_power"] = (amt) => {
     let base_amt = big(amt);
     // n25: repeatable Photonic upgrades are more powerful
     if (me.upgrades['n25'].is_active()) base_amt = base_amt.mult(me.upgrades['n25'].get_effect());
+    // a07_2: upgrade 21 is 20% more powerful
+    if (me.milestones['a07_2'].is_active()) base_amt = base_amt.mult(1.2);
     // Vacuumic Challenge 7 reward: get a free level of all Photonic repeatable upgrades
     if (me.challenges['v7'].completed) base_amt = base_amt.add(0.7);
 

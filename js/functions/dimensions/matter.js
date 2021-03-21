@@ -6,6 +6,10 @@ functions['matter_1_cost'] = (amt_bought) => {
     if (player.milestones['a02_4'].is_active()) base -= 1;
     // a03_4: base is decreased by 1
     if (player.milestones['a03_4'].is_active()) base -= 1;
+    // a04_4: base is decreased by 1
+    if (player.milestones['a04_4'].is_active()) base -= 1;
+    // a05_3: base is decreased by 1
+    if (player.milestones['a05_3'].is_active()) base -= 1;
 
     var base_cost = big(base).pow(big(amt_bought).mult(amt_bought+1).div(2));
     return base_cost;
@@ -18,6 +22,10 @@ functions['matter_2_cost'] = (amt_bought) => {
     if (player.milestones['a02_4'].is_active()) base -= 1;
     // a03_4: base is decreased by 1
     if (player.milestones['a03_4'].is_active()) base -= 1;
+    // a04_4: base is decreased by 1
+    if (player.milestones['a04_4'].is_active()) base -= 1;
+    // a05_3: base is decreased by 1
+    if (player.milestones['a05_3'].is_active()) base -= 1;
 
     var base_cost = big(base).pow(big(amt_bought).mult(amt_bought+3).div(2).add(1));
     return base_cost;
@@ -30,6 +38,10 @@ functions['matter_3_cost'] = (amt_bought) => {
     if (player.milestones['a02_4'].is_active()) base -= 1;
     // a03_4: base is decreased by 1
     if (player.milestones['a03_4'].is_active()) base -= 1;
+    // a04_4: base is decreased by 1
+    if (player.milestones['a04_4'].is_active()) base -= 1;
+    // a05_3: base is decreased by 1
+    if (player.milestones['a05_3'].is_active()) base -= 1;
 
     var base_cost = big(base).pow(big(amt_bought).mult(amt_bought+5).div(2).add(2));
     return base_cost;
@@ -42,6 +54,10 @@ functions['matter_4_cost'] = (amt_bought) => {
     if (player.milestones['a02_4'].is_active()) base -= 1;
     // a03_4: base is decreased by 1
     if (player.milestones['a03_4'].is_active()) base -= 1;
+    // a04_4: base is decreased by 1
+    if (player.milestones['a04_4'].is_active()) base -= 1;
+    // a05_3: base is decreased by 1
+    if (player.milestones['a05_3'].is_active()) base -= 1;
 
     var base_cost = big(base).pow(big(amt_bought).mult(amt_bought+7).div(2).add(4));
     return base_cost;
@@ -54,6 +70,10 @@ functions['matter_5_cost'] = (amt_bought) => {
     if (player.milestones['a02_4'].is_active()) base -= 1;
     // a03_4: base is decreased by 1
     if (player.milestones['a03_4'].is_active()) base -= 1;
+    // a04_4: base is decreased by 1
+    if (player.milestones['a04_4'].is_active()) base -= 1;
+    // a05_3: base is decreased by 1
+    if (player.milestones['a05_3'].is_active()) base -= 1;
 
     var base_cost = big(base).pow(big(amt_bought).mult(amt_bought+9).div(2).add(8));
     return base_cost;
@@ -66,6 +86,10 @@ functions['matter_6_cost'] = (amt_bought) => {
     if (player.milestones['a02_4'].is_active()) base -= 1;
     // a03_4: base is decreased by 1
     if (player.milestones['a03_4'].is_active()) base -= 1;
+    // a04_4: base is decreased by 1
+    if (player.milestones['a04_4'].is_active()) base -= 1;
+    // a05_3: base is decreased by 1
+    if (player.milestones['a05_3'].is_active()) base -= 1;
 
     var base_cost = big(base).pow(big(amt_bought).mult(amt_bought+11).div(2).add(16));
     return base_cost;
@@ -78,6 +102,10 @@ functions['matter_7_cost'] = (amt_bought) => {
     if (player.milestones['a02_4'].is_active()) base -= 1;
     // a03_4: base is decreased by 1
     if (player.milestones['a03_4'].is_active()) base -= 1;
+    // a04_4: base is decreased by 1
+    if (player.milestones['a04_4'].is_active()) base -= 1;
+    // a05_3: base is decreased by 1
+    if (player.milestones['a05_3'].is_active()) base -= 1;
 
     var base_cost = big(base).pow(big(amt_bought).mult(amt_bought+13).div(2).add(32));
     return base_cost;
@@ -90,6 +118,10 @@ functions['matter_8_cost'] = (amt_bought) => {
     if (player.milestones['a02_4'].is_active()) base -= 1;
     // a03_4: base is decreased by 1
     if (player.milestones['a03_4'].is_active()) base -= 1;
+    // a04_4: base is decreased by 1
+    if (player.milestones['a04_4'].is_active()) base -= 1;
+    // a05_3: base is decreased by 1
+    if (player.milestones['a05_3'].is_active()) base -= 1;
 
     var base_cost = big(base).pow(big(amt_bought).mult(amt_bought+15).div(2).add(64));
     return base_cost;
@@ -102,6 +134,10 @@ functions['matter_9_cost'] = (amt_bought) => {
     if (player.milestones['a02_4'].is_active()) base -= 1;
     // a03_4: base is decreased by 1
     if (player.milestones['a03_4'].is_active()) base -= 1;
+    // a04_4: base is decreased by 1
+    if (player.milestones['a04_4'].is_active()) base -= 1;
+    // a05_3: base is decreased by 1
+    if (player.milestones['a05_3'].is_active()) base -= 1;
 
     var base_cost = big(base).pow(big(amt_bought).mult(amt_bought+17).div(2).add(128));
     return base_cost;
@@ -114,6 +150,10 @@ functions['matter_10_cost'] = (amt_bought) => {
     if (player.milestones['a02_4'].is_active()) base -= 1;
     // a03_4: base is decreased by 1
     if (player.milestones['a03_4'].is_active()) base -= 1;
+    // a04_4: base is decreased by 1
+    if (player.milestones['a04_4'].is_active()) base -= 1;
+    // a05_3: base is decreased by 1
+    if (player.milestones['a05_3'].is_active()) base -= 1;
 
     var base_cost = big(base).pow(big(amt_bought).mult(amt_bought+19).div(2).add(256));
     return base_cost;
@@ -126,6 +166,10 @@ functions['matter_11_cost'] = (amt_bought) => {
     if (player.milestones['a02_4'].is_active()) base -= 1;
     // a03_4: base is decreased by 1
     if (player.milestones['a03_4'].is_active()) base -= 1;
+    // a04_4: base is decreased by 1
+    if (player.milestones['a04_4'].is_active()) base -= 1;
+    // a05_3: base is decreased by 1
+    if (player.milestones['a05_3'].is_active()) base -= 1;
 
     var base_cost = big(base).pow(big(amt_bought).mult(amt_bought+21).div(2).add(512));
     return base_cost;
@@ -138,6 +182,10 @@ functions['matter_12_cost'] = (amt_bought) => {
     if (player.milestones['a02_4'].is_active()) base -= 1;
     // a03_4: base is decreased by 1
     if (player.milestones['a03_4'].is_active()) base -= 1;
+    // a04_4: base is decreased by 1
+    if (player.milestones['a04_4'].is_active()) base -= 1;
+    // a05_3: base is decreased by 1
+    if (player.milestones['a05_3'].is_active()) base -= 1;
 
     var base_cost = big(base).pow(big(amt_bought).mult(amt_bought+23).div(2).add(1024));
     return base_cost;

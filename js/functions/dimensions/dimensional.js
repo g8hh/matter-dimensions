@@ -38,6 +38,8 @@ functions['dimensional_12_cost'] = (amt_bought) => {
 
 functions['dimensional_1_pow'] = (amt_bought, amt) => {
     let base_exp = big(2);
+    // a06_3: multiplier per Dimensional Dimension is increased
+    if (player.milestones['a06_3'].is_active()) base_exp = player.milestones['a06_3'].get_effect();
 
     let base_pow = base_exp.pow(amt_bought);
     // a06: boost to all Dimensional Dimensions
@@ -47,6 +49,8 @@ functions['dimensional_1_pow'] = (amt_bought, amt) => {
 };
 functions['dimensional_2_pow'] = (amt_bought, amt) => {
     let base_exp = big(2);
+    // a06_3: multiplier per Dimensional Dimension is increased
+    if (player.milestones['a06_3'].is_active()) base_exp = player.milestones['a06_3'].get_effect();
 
     let base_pow = base_exp.pow(amt_bought);
     // a06: boost to all Dimensional Dimensions
@@ -56,6 +60,8 @@ functions['dimensional_2_pow'] = (amt_bought, amt) => {
 };
 functions['dimensional_3_pow'] = (amt_bought, amt) => {
     let base_exp = big(2);
+    // a06_3: multiplier per Dimensional Dimension is increased
+    if (player.milestones['a06_3'].is_active()) base_exp = player.milestones['a06_3'].get_effect();
 
     let base_pow = base_exp.pow(amt_bought);
     // a06: boost to all Dimensional Dimensions
@@ -65,6 +71,8 @@ functions['dimensional_3_pow'] = (amt_bought, amt) => {
 };
 functions['dimensional_4_pow'] = (amt_bought, amt) => {
     let base_exp = big(2);
+    // a06_3: multiplier per Dimensional Dimension is increased
+    if (player.milestones['a06_3'].is_active()) base_exp = player.milestones['a06_3'].get_effect();
 
     let base_pow = base_exp.pow(amt_bought);
     // a06: boost to all Dimensional Dimensions
@@ -74,6 +82,8 @@ functions['dimensional_4_pow'] = (amt_bought, amt) => {
 };
 functions['dimensional_5_pow'] = (amt_bought, amt) => {
     let base_exp = big(2);
+    // a06_3: multiplier per Dimensional Dimension is increased
+    if (player.milestones['a06_3'].is_active()) base_exp = player.milestones['a06_3'].get_effect();
 
     let base_pow = base_exp.pow(amt_bought);
     // a06: boost to all Dimensional Dimensions
@@ -83,6 +93,8 @@ functions['dimensional_5_pow'] = (amt_bought, amt) => {
 };
 functions['dimensional_6_pow'] = (amt_bought, amt) => {
     let base_exp = big(2);
+    // a06_3: multiplier per Dimensional Dimension is increased
+    if (player.milestones['a06_3'].is_active()) base_exp = player.milestones['a06_3'].get_effect();
 
     let base_pow = base_exp.pow(amt_bought);
     // a06: boost to all Dimensional Dimensions
@@ -92,6 +104,8 @@ functions['dimensional_6_pow'] = (amt_bought, amt) => {
 };
 functions['dimensional_7_pow'] = (amt_bought, amt) => {
     let base_exp = big(2);
+    // a06_3: multiplier per Dimensional Dimension is increased
+    if (player.milestones['a06_3'].is_active()) base_exp = player.milestones['a06_3'].get_effect();
 
     let base_pow = base_exp.pow(amt_bought);
     // a06: boost to all Dimensional Dimensions
@@ -101,6 +115,8 @@ functions['dimensional_7_pow'] = (amt_bought, amt) => {
 };
 functions['dimensional_8_pow'] = (amt_bought, amt) => {
     let base_exp = big(2);
+    // a06_3: multiplier per Dimensional Dimension is increased
+    if (player.milestones['a06_3'].is_active()) base_exp = player.milestones['a06_3'].get_effect();
 
     let base_pow = base_exp.pow(amt_bought);
     // a06: boost to all Dimensional Dimensions
@@ -110,6 +126,8 @@ functions['dimensional_8_pow'] = (amt_bought, amt) => {
 };
 functions['dimensional_9_pow'] = (amt_bought, amt) => {
     let base_exp = big(2);
+    // a06_3: multiplier per Dimensional Dimension is increased
+    if (player.milestones['a06_3'].is_active()) base_exp = player.milestones['a06_3'].get_effect();
 
     let base_pow = base_exp.pow(amt_bought);
     // a06: boost to all Dimensional Dimensions
@@ -119,6 +137,8 @@ functions['dimensional_9_pow'] = (amt_bought, amt) => {
 };
 functions['dimensional_10_pow'] = (amt_bought, amt) => {
     let base_exp = big(2);
+    // a06_3: multiplier per Dimensional Dimension is increased
+    if (player.milestones['a06_3'].is_active()) base_exp = player.milestones['a06_3'].get_effect();
 
     let base_pow = base_exp.pow(amt_bought);
     // a06: boost to all Dimensional Dimensions
@@ -128,6 +148,8 @@ functions['dimensional_10_pow'] = (amt_bought, amt) => {
 };
 functions['dimensional_11_pow'] = (amt_bought, amt) => {
     let base_exp = big(2);
+    // a06_3: multiplier per Dimensional Dimension is increased
+    if (player.milestones['a06_3'].is_active()) base_exp = player.milestones['a06_3'].get_effect();
 
     let base_pow = base_exp.pow(amt_bought);
     // a06: boost to all Dimensional Dimensions
@@ -137,6 +159,8 @@ functions['dimensional_11_pow'] = (amt_bought, amt) => {
 };
 functions['dimensional_12_pow'] = (amt_bought, amt) => {
     let base_exp = big(2);
+    // a06_3: multiplier per Dimensional Dimension is increased
+    if (player.milestones['a06_3'].is_active()) base_exp = player.milestones['a06_3'].get_effect();
 
     let base_pow = base_exp.pow(amt_bought);
     // a06: boost to all Dimensional Dimensions

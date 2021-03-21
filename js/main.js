@@ -752,14 +752,18 @@ class Player {
         this.milestones["a04_1"] = new Milestone("a04_1", "a04_1_availability", "a04_1_activation", "a04_1_effect", "a04_1_goal");
         this.milestones["a04_2"] = new Milestone("a04_2", "a04_2_availability", "a04_2_activation", "a04_2_effect", "a04_2_goal");
         this.milestones["a04_3"] = new Milestone("a04_3", "a04_3_availability", "a04_3_activation", "a04_3_effect", "a04_3_goal");
+        this.milestones["a04_4"] = new Milestone("a04_4", "a04_4_availability", "a04_4_activation", "a04_4_effect", "a04_4_goal");
 
         this.milestones["a05_1"] = new Milestone("a05_1", "a05_1_availability", "a05_1_activation", "a05_1_effect", "a05_1_goal");
         this.milestones["a05_2"] = new Milestone("a05_2", "a05_2_availability", "a05_2_activation", "a05_2_effect", "a05_2_goal");
+        this.milestones["a05_3"] = new Milestone("a05_3", "a05_3_availability", "a05_3_activation", "a05_3_effect", "a05_3_goal");
 
         this.milestones["a06_1"] = new Milestone("a06_1", "a06_1_availability", "a06_1_activation", "a06_1_effect", "a06_1_goal");
         this.milestones["a06_2"] = new Milestone("a06_2", "a06_2_availability", "a06_2_activation", "a06_2_effect", "a06_2_goal");
+        this.milestones["a06_3"] = new Milestone("a06_3", "a06_3_availability", "a06_3_activation", "a06_3_effect", "a06_3_goal");
 
         this.milestones["a07_1"] = new Milestone("a07_1", "a07_1_availability", "a07_1_activation", "a07_1_effect", "a07_1_goal");
+        this.milestones["a07_2"] = new Milestone("a07_2", "a07_2_availability", "a07_2_activation", "a07_2_effect", "a07_2_goal");
 
         this.milestones["a08_1"] = new Milestone("a08_1", "a08_1_availability", "a08_1_activation", "a08_1_effect", "a08_1_goal");
 

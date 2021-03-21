@@ -46,11 +46,17 @@ functions["a04_2_availability"] = () => {
 functions["a04_3_availability"] = () => {
     return true;
 }
+functions["a04_4_availability"] = () => {
+    return true;
+}
 
 functions["a05_1_availability"] = () => {
     return true;
 }
 functions["a05_2_availability"] = () => {
+    return true;
+}
+functions["a05_3_availability"] = () => {
     return true;
 }
 
@@ -60,8 +66,14 @@ functions["a06_1_availability"] = () => {
 functions["a06_2_availability"] = () => {
     return true;
 }
+functions["a06_3_availability"] = () => {
+    return true;
+}
 
 functions["a07_1_availability"] = () => {
+    return true;
+}
+functions["a07_2_availability"] = () => {
     return true;
 }
 
@@ -119,12 +131,18 @@ functions["a04_2_activation"] = () => {
 functions["a04_3_activation"] = () => {
     return get_atom_level('a04').gt(144 - 0.5);
 }
+functions["a04_4_activation"] = () => {
+    return get_atom_level('a04').gt(1728 - 0.5);
+}
 
 functions["a05_1_activation"] = () => {
     return get_atom_level('a05').gt(1 - 0.5);
 }
 functions["a05_2_activation"] = () => {
     return get_atom_level('a05').gt(10 - 0.5);
+}
+functions["a05_3_activation"] = () => {
+    return get_atom_level('a05').gt(100 - 0.5);
 }
 
 functions["a06_1_activation"] = () => {
@@ -133,9 +151,15 @@ functions["a06_1_activation"] = () => {
 functions["a06_2_activation"] = () => {
     return get_atom_level('a06').gt(25 - 0.5);
 }
+functions["a06_3_activation"] = () => {
+    return get_atom_level('a06').gt(625 - 0.5);
+}
 
 functions["a07_1_activation"] = () => {
     return get_atom_level('a07').gt(1 - 0.5);
+}
+functions["a07_2_activation"] = () => {
+    return get_atom_level('a07').gt(14 - 0.5);
 }
 
 functions["a08_1_activation"] = () => {
@@ -208,11 +232,17 @@ functions["a04_2_effect"] = () => {
 functions["a04_3_effect"] = () => {
     return big(1);
 }
+functions["a04_4_effect"] = () => {
+    return big(1);
+}
 
 functions["a05_1_effect"] = () => {
     return big(1);
 }
 functions["a05_2_effect"] = () => {
+    return big(1);
+}
+functions["a05_3_effect"] = () => {
     return big(1);
 }
 
@@ -222,8 +252,14 @@ functions["a06_1_effect"] = () => {
 functions["a06_2_effect"] = () => {
     return get_atom_level('a06').pow(0.5).add(1);
 }
+functions["a06_3_effect"] = () => {
+    return get_atom_level('a06').pow(8).max(2);
+}
 
 functions["a07_1_effect"] = () => {
+    return big(1);
+}
+functions["a07_2_effect"] = () => {
     return big(1);
 }
 
@@ -281,12 +317,18 @@ functions["a04_2_goal"] = () => {
 functions["a04_3_goal"] = () => {
     return big(144);
 }
+functions["a04_4_goal"] = () => {
+    return big(1728);
+}
 
 functions["a05_1_goal"] = () => {
     return big(1);
 }
 functions["a05_2_goal"] = () => {
     return big(10);
+}
+functions["a05_3_goal"] = () => {
+    return big(100);
 }
 
 functions["a06_1_goal"] = () => {
@@ -295,9 +337,15 @@ functions["a06_1_goal"] = () => {
 functions["a06_2_goal"] = () => {
     return big(25);
 }
+functions["a06_3_goal"] = () => {
+    return big(625);
+}
 
 functions["a07_1_goal"] = () => {
     return big(1);
+}
+functions["a07_2_goal"] = () => {
+    return big(14);
 }
 
 functions["a08_1_goal"] = () => {
