@@ -132,7 +132,7 @@ functions["upg_a08_available"] = () => {
 
 functions["upg_a01_buy"] = (amt) => {
     if (amt == 0) return;
-    if (amt == me.upgrades['a01'].amt && free_atom_levels['a01'] == 0) {
+    if (amt == me.upgrades['a01'].amt && free_atom_levels['a01'].lt(0.5)) {
         // Challenge 4: all resources are capped
         me.shards = me.shards.add(me.milestones["a01_1"].get_effect()).round().min(me.challenge_strength_4);
     }
