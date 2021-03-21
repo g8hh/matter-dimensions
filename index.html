@@ -308,6 +308,9 @@
                             </div>
                             <p>Tickspeed: <span id="upgrade_TICKSPEED_current_effect"></span>/s</p>
                         </div>
+                        <div class="autobuyer-toggle-wrapper">
+                            <div class="setting-button autobuyer-toggle" layer="matter" onclick="toggle_autobuyers(this.attributes.layer.value)" style="display: none"><p>Toggle all</p></div>
+                        </div>
                         <div id="dimension_matter_1" class="dimension">
                             <p class="dimension-name">1st Matter Dimension</p>
                             <p class="dimension-production">×<span id="dimension_matter_1_prod"></span></p>
@@ -429,6 +432,9 @@
                         <p class="achievement-bonus" style="text-align: left;">You have <span id="resource_light" class="large-number"></span> Light, which gives you the following bonuses:</span></p>
                         <p>×<span class="power_light_production" style="font-weight: bold;"></span> to the production of <span id="light_boosts_which_dimension"></span>
                         <span id="power_light_time_info"><br>×<span class="power_light_time" style="font-weight: bold;"></span> to time speed</span></p>
+                        <div class="autobuyer-toggle-wrapper">
+                            <div class="setting-button autobuyer-toggle" layer="photonic" onclick="toggle_autobuyers(this.attributes.layer.value)"><p>Toggle all</p></div>
+                        </div>
                         <div id="dimension_photonic_1" class="dimension">
                             <p class="dimension-name">1st Photonic Dimension</p>
                             <p class="dimension-production">×<span id="dimension_photonic_1_prod"></span></p>
@@ -872,6 +878,9 @@
                         <p>×<span class="power_black_holes_tickspeed" style="font-weight: bold;"></span> to the Tickspeed Upgrade power
                         <span id="power_black_holes_gravitons_info"><br>+<span class="power_black_holes_gravitons" style="font-weight: bold;"></span> Gravitons upon reset</span>
                         <span id="power_black_holes_resource_limit_info"><br>×<span class="power_black_holes_resource_limit" style="font-weight: bold;"></span> to resource limit</span></p>
+                        <div class="autobuyer-toggle-wrapper">
+                            <div class="setting-button autobuyer-toggle" layer="gravitonic" onclick="toggle_autobuyers(this.attributes.layer.value)"><p>Toggle all</p></div>
+                        </div>
                         <div id="dimension_gravitonic_1" class="dimension">
                             <p class="dimension-name">1st Gravitonic Dimension</p>
                             <p class="dimension-production">×<span id="dimension_gravitonic_1_prod"></span></p>
@@ -1293,6 +1302,9 @@
                         <br>^<span class="power_stars_light_effect" style="font-weight: bold;"></span> to the Light effect on Matter Dimensions
                         <span id="power_stars_photonic_dim_info"><br>×<span class="power_stars_photonic_dim" style="font-weight: bold;"></span> to 1st Photonic Dimension</span>
                         <span id="power_stars_black_holes_info"><br>+<span class="power_stars_black_holes" style="font-weight: bold;"></span> Black Holes every second</span></p>
+                        <div class="autobuyer-toggle-wrapper">
+                            <div class="setting-button autobuyer-toggle" layer="neutronic" onclick="toggle_autobuyers(this.attributes.layer.value)"><p>Toggle all</p></div>
+                        </div>
                         <div id="dimension_neutronic_1" class="dimension">
                             <p class="dimension-name">1st Neutronic Dimension</p>
                             <p class="dimension-production">×<span id="dimension_neutronic_1_prod"></span></p>
@@ -1776,6 +1788,9 @@
                         <span id="power_inflation_gravitonic_info"><br>×<span class="power_inflation_gravitonic" style="font-weight: bold;"></span> to 1st, 2nd and 3rd Gravitonic Dimensions</span>
                         <span id="power_inflation_neutronic_info"><br>×<span class="power_inflation_neutronic" style="font-weight: bold;"></span> to 1st, 2nd, 3rd and 4th Neutronic Dimensions</span>
                         <span id="power_inflation_vacuumic_info"><br>×<span class="power_inflation_vacuumic" style="font-weight: bold;"></span> to all Vacuumic Dimensions</span></p>
+                        <div class="autobuyer-toggle-wrapper">
+                            <div class="setting-button autobuyer-toggle" layer="vacuumic" onclick="toggle_autobuyers(this.attributes.layer.value)"><p>Toggle all</p></div>
+                        </div>
                         <div id="dimension_vacuumic_1" class="dimension">
                             <p class="dimension-name">1st Vacuumic Dimension</p>
                             <p class="dimension-production">×<span id="dimension_vacuumic_1_prod"></span></p>
@@ -2680,6 +2695,9 @@
                         <p class="achievement-bonus" style="text-align: left;">You have <span id="resource_manifolds" class="large-number"></span> Manifolds.</p>
                         <p>They give ×<span class="power_manifolds" style="font-weight: bold;"></span> base power to boosts from bought Dimensional Dimensions.</p>
                         <p style="margin-bottom: 10px">Dimensional Dimensions boost all previous dimensions.</p>
+                        <div class="autobuyer-toggle-wrapper">
+                            <div class="setting-button autobuyer-toggle" layer="dimensional" onclick="toggle_autobuyers(this.attributes.layer.value)"><p>Toggle all</p></div>
+                        </div>
                         <div id="dimension_dimensional_1">
                             <div class="dimension">
                                 <p class="dimension-name">1st Dimensional Dimension</p>

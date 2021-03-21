@@ -983,3 +983,14 @@ input {
     background-color: var(--color-300);
     padding: 5px;
 }
+
+.autobuyer-toggle-wrapper {
+    display: flex; 
+    flex-direction: row; 
+    justify-content: flex-end; 
+    margin-bottom: 10px;
+}
+.autobuyer-toggle {
+    padding-left: 10px; 
+    padding-right: 10px;
+}

@@ -708,6 +708,7 @@ function update_prestige() {
     update_unlocked_menus();
     update_unlock_hint();
     update_hotkey_visibility();
+    update_autobuyer_toggles();
     process_visibility_classes();
 }
 
@@ -1209,5 +1210,13 @@ function max_buy_upgrades(level) {
                 }
             }
         }
+    }
+}
+
+function update_autobuyer_toggles() {
+    let elements = document.getElementsByClassName('autobuyer-toggle');
+    for (let i = 0; i < elements.length; i++) {
+        if (functions[player.autobuyers[elements.item(i).attributes.layer.value + "_1"].availability_function]()) elements.item(i).style.display = "";
+        else elements.item(i).style.display = "none";
     }
 }

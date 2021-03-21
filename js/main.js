@@ -1255,3 +1255,22 @@ function destroy_achievement_popup(achid) {
         element.remove();
     }
 }
+
+// Autobuyer toggles
+
+function toggle_autobuyers(layer) {
+    let toggled_on = false;
+    for (let key of Object.keys(player.autobuyers)) {
+        if (key.includes(layer + "_") && player.autobuyers[key].visible) {
+            if (player.autobuyers[key].enabled) toggled_on = true;
+        }
+    }
+
+    for (let key of Object.keys(player.autobuyers)) {
+        if (key.includes(layer + "_") && player.autobuyers[key].visible) {
+            if (toggled_on) player.autobuyers[key].enabled = false;
+            else player.autobuyers[key].enabled = true;
+            player.autobuyers[key].screen_update_first()
+        }
+    }
+}
