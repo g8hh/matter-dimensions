@@ -444,6 +444,10 @@ functions["check_135"] = () => {
     return false; // external call
 };
 
+functions["check_136"] = () => {
+    return get_temperature(me).gt(5800);
+};
+
 functions["check_138"] = () => {
     return generation_points_effect().gt(9.9);
 };
