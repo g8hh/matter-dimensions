@@ -458,8 +458,8 @@ function update_prestige() {
     else document.getElementById("power_stars_black_holes_info").style.display = "none";
 
     // v211: BREAK INFINITY
-    if (player.upgrades['v211'].is_active()) document.getElementById("challenge_strength_4").style.display = "none";
-    else document.getElementById("challenge_strength_4").style.display = "";
+    if (player.upgrades['v211'].is_active()) document.getElementById("challenge_strength_4").style.visibility = "hidden";
+    else document.getElementById("challenge_strength_4").style.visibility = "";
 
     // Gravitonic unlocks
     if (!player.challenges['p1'].completed) document.getElementById("pc1_unlock_upgrade").style.display = "";

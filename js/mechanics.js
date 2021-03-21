@@ -593,7 +593,7 @@ function update_population() {
         if (player.evolutions[FERTILITY_EVOLUTIONS[i]].is_active()) document.getElementById("mechanic_population_line_" + FERTILITY_EVOLUTIONS[i]).style.display = "";
         else document.getElementById("mechanic_population_line_" + FERTILITY_EVOLUTIONS[i]).style.display = "none";
 
-        document.getElementById("mechanic_population_change_" + FERTILITY_EVOLUTIONS[i]).textContent = "+" + format_number(player.evolutions[FERTILITY_EVOLUTIONS[i]].get_effect());
+        document.getElementById("mechanic_population_change_" + FERTILITY_EVOLUTIONS[i]).textContent = "+" + format_number(player.evolutions[FERTILITY_EVOLUTIONS[i]].get_effect(), true);
     }
 
     let boost_descriptions = document.getElementsByClassName("population-boost");
