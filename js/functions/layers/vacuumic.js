@@ -122,7 +122,7 @@ function reset_vacuumic(force=false, higher_reset=false, autobuyer_induced=false
 
     player.time_vacuumic = 0;
 
-    if (!force) game_loop();
+    if (!force) game_loop(false);
 }
 
 

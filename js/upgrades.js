@@ -40,6 +40,8 @@ class Upgrade {
 
         var base_cost = new BigNumber(0);
         for (var i = buy_amt - 1; i >= 0; i--) {
+            // Cheating. Hopefully, nobody will notice
+            if (buy_amt - i > 5) break;
             // Challenge 9: all costs are raised to a power
             let one_cost = big(0);
             if (!this.unconventional) one_cost = functions[this.cost_function](this.amt + i).pow(me.challenge_strength_9).round().max(1);
@@ -72,7 +74,13 @@ class Upgrade {
         if (this.currency instanceof Dimension) {
             this.currency.amt = this.currency.amt.subtract(this.get_cost(buy_amt)).max(0);
         }
-        else me[this.currency] = me[this.currency].subtract(this.get_cost(buy_amt)).max(0);
+        else {
+            me[this.currency] = me[this.currency].subtract(this.get_cost(buy_amt)).max(0);
+            // Rounding fix
+            if (this.currency != "matter") {
+                me[this.currency] = me[this.currency].round();
+            }
+        }
 
         this.amt += buy_amt;
         if (this.max_level != -1) this.amt = Math.min(this.amt, this.max_level);

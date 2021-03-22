@@ -16,7 +16,10 @@ class BigNumber {
 
     constructFromInt(number) {
         this.sign = true;
-        if (number < 0) this.sign = false;
+        if (number < 0) {
+            this.sign = false;
+            number = -number;
+        }
 
         if (Math.abs(number) == 0) {
             this.mantissa = 1;
@@ -99,10 +102,10 @@ class BigNumber {
     add(number) {
         if (!(number instanceof BigNumber)) number = new BigNumber(number);
 
-        if (this.exp > number.exp + 1) return this;
-        if (number.exp > this.exp + 1) return number;
-        if (this.exp == -Infinity) return number;
-        if (number.exp == -Infinity) return this;
+        if (this.exp > number.exp + 1) return this.clone();
+        if (number.exp > this.exp + 1) return number.clone();
+        if (this.exp == -Infinity) return number.clone();
+        if (number.exp == -Infinity) return this.clone();
 
         var result = new BigNumber();
         result.sign = true;
@@ -228,17 +231,17 @@ class BigNumber {
     }
 
     roundup() {
-        if (this.exp > 0) return this;
+        if (this.exp > 0) return this.clone();
         else return big(Math.ceil(this.toInt()));
     }
 
     rounddown() {
-        if (this.exp > 0) return this;
+        if (this.exp > 0) return this.clone();
         else return big(Math.floor(this.toInt()));
     }
 
     round() {
-        if (this.exp > 0) return this;
+        if (this.exp > 0) return this.clone();
         else return big(Math.round(this.toInt()));
     }
 

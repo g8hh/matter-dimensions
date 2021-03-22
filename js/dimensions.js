@@ -79,13 +79,15 @@ class Dimension {
     get_cost(buy_amt = 1) {
         var base_cost = new BigNumber(0);
         for (var i = buy_amt - 1; i >= 0; i--) {
+            // Cheating. Hopefully, nobody will notice
+            if (buy_amt - i > 5) break;
             // Challenge 9: all costs are raised to a power
             var one_cost = functions[this.cost_function](this.amt_bought + i).pow(me.challenge_strength_9).round().max(1);
-            if (base_cost.gt(one_cost.mult(1e200))) break;
+            if (base_cost.gt(one_cost.mult(1e20))) break;
             base_cost = base_cost.add(one_cost);
         }
 
-        return base_cost;
+        return base_cost.round();
     }
 
     can_buy(buy_amt = 1) {
@@ -116,6 +118,8 @@ class Dimension {
     }
 
     binary_search_max() {
+        if (!this.can_buy()) return 0;
+
         var r = 1;
         var iter = 0;
         while (this.can_buy(r) && iter < 100) {
@@ -123,7 +127,7 @@ class Dimension {
             iter += 1;
         }
         var l = 0;
-        for (var i = 0; i < iter; i++) {
+        for (var i = 0; i < iter && l + 1 < r; i++) {
             if (this.can_buy(Math.round((r + l) / 2))) l = Math.round((r + l) / 2);
             else r = Math.round((r + l) / 2);
         }

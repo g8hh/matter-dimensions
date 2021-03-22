@@ -81,7 +81,7 @@ function reset_biological(force=false, higher_reset=false, autobuyer_induced=fal
 
     player.time_biological = 0;
 
-    if (!force) game_loop();
+    if (!force) game_loop(false);
 }
 
 

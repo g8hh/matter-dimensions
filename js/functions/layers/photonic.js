@@ -144,7 +144,7 @@ function reset_photonic(force=false, higher_reset=false, autobuyer_induced=false
 
     player.time_started = false;
 
-    if (!force) game_loop();
+    if (!force) game_loop(false);
 }
 
 

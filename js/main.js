@@ -1011,8 +1011,10 @@ function processTimedelta(corrected_timedelta) {
 
 var timedelta_carry = 0;
 
-function game_loop() {
+function game_loop(do_screen_update = true) {
     if (document.readyState == "loading") return;
+
+    reset_this_tick = false;
 
     if (last_local_storage_save == -1) load_from_local_storage();
     if (Date.now() - last_local_storage_save > 1000) save_to_local_storage();
@@ -1037,9 +1039,11 @@ function game_loop() {
 
     for (let i = 0; i < time_loop_repeats; i+=1) processTimedelta(50);
 
-    screen_update();
-    for (let key of Object.keys(current_submenu)) {
-        change_submenu(key, current_submenu[key]);
+    if (do_screen_update) { 
+        screen_update();
+        for (let key of Object.keys(current_submenu)) {
+            change_submenu(key, current_submenu[key]);
+        }
     }
 }
 

@@ -189,6 +189,7 @@ function load_button_click() {
 function load_window_close() {
     let backup = create_save();
     var data = document.getElementById("load_textarea").value;
+    data = data.replace(/[^A-Za-z0-9+/=]/g, '');
     try {
         switch (data.substring(0, 2)) {
             case "r0":

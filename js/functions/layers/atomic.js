@@ -102,5 +102,5 @@ function reset_atomic(force=false, higher_reset=false, autobuyer_induced=false, 
 
     player.time_atomic = 0;
 
-    if (!force) game_loop();
+    if (!force) game_loop(false);
 }

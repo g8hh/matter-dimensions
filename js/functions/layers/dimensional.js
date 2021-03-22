@@ -131,7 +131,7 @@ function reset_dimensional(force=false, higher_reset=false, autobuyer_induced=fa
 
     player.time_dimensional = 0;
 
-    if (!force) game_loop();
+    if (!force) game_loop(false);
 }
 
 function power_manifolds() {
