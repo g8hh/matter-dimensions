@@ -1131,6 +1131,7 @@ function hotkeydown(event) {
                 if (current_menu == "gravitonic" && (me.achievements['64'].complete || me.upgrades['AUTO1_5'].is_active())) max_buy_upgrades('g');
                 if (current_menu == "neutronic" && (me.achievements['97'].complete || me.upgrades['AUTO2_5'].is_active())) max_buy_upgrades('n');
                 if (current_menu == "dimensional" && (me.achievements['127'].complete)) max_buy_upgrades('d');
+                if (current_menu == "atomic" && (me.achievements['147'].complete)) max_buy_upgrades('a');
             }
             break;
         case 'Shift':

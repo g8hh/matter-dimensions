@@ -721,6 +721,14 @@ function update_prestige() {
         document.getElementById("perform_extinction_setting").style.display = "none";
     }
 
+    // achievement 147: unlock buy max atomic upgrades
+    if (player.achievements['147'].complete) {
+        document.getElementById("upgrades_atomic_buy_max").style.display = "";
+    }
+    else {
+        document.getElementById("upgrades_atomic_buy_max").style.display = "none";
+    }
+
     update_unlocked_menus();
     update_unlock_hint();
     update_hotkey_visibility();
