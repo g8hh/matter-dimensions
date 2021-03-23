@@ -316,6 +316,7 @@ class Player {
         this.achievements["127"] = new Achievement("127", "Infinite Problems", "Complete a Vacuumic challenge.\nReward: you can max buy Dimensional upgrades", "check_127", "effective");
         this.achievements["128"] = new Achievement("128", "Why did I do this again?", "Be in three Meta-Challenges at once", "check_128");
 
+        this.achievements["131"] = new Achievement("131", "Genetic Investment", "Purchase any repeatable Biological upgrade", "check_131");
         this.achievements["132"] = new Achievement("132", "Breathe in...", "Get a level of Oxygen", "check_132");
         this.achievements["133"] = new Achievement("133", "Nice.", "Have at least 6.9e420 matter with unbroken Infinity", "check_133");
         this.achievements["134"] = new Achievement("134", "Couple of Adjustments", "Perform an Extinction", "check_134");
@@ -323,6 +324,8 @@ class Player {
         this.achievements["136"] = new Achievement("136", "Sun Vacation", "Reach 5800 K of Temperature", "check_136");
         this.achievements["137"] = new Achievement("137", "...breathe out", "Have an element with the total level of at least 1000", "check_137");
         this.achievements["138"] = new Achievement("138", "The Hindenburg", "Have 10 free levels from Generation", "check_138");
+
+        this.achievements["147"] = new Achievement("147", "Double Trouble", "Complete two regular Neutronic challenges five times.\nReward: you can max buy Atomic upgrades", "check_147", "effective");
 
         this.upgrades = {};
         this.upgrades["INERTIA_1"] = new Upgrade("INERTIA_1", -1, "upg_INERTIA_1_cost", "upg_INERTIA_1_power", "upg_INERTIA_1_unlock", "inertia", " of Inertia", "upg_INERTIA_1_available", "", "upg_INERTIA_1_cost_display_function", true);

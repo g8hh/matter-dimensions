@@ -428,6 +428,10 @@ functions["check_128"] = () => {
 };
 
 
+functions["check_131"] = () => {
+    return me.upgrades["b01"].amt > 0 || me.upgrades["b02"].amt > 0 || me.upgrades["b03"].amt > 0 || me.upgrades["b04"].amt > 0;
+};
+
 functions["check_132"] = () => {
     return get_atom_level('a08').gt(0.5);
 };
@@ -459,4 +463,13 @@ functions["check_137"] = () => {
 
 functions["check_138"] = () => {
     return generation_points_effect().gt(9.9);
+};
+
+
+functions["check_147"] = () => {
+    let completed_challenges = 0;
+    for (let key of Object.keys(me.challenges)) {
+        if (key.includes('n') && me.challenges[key].completions >= 5) completed_challenges++;
+    }
+    return completed_challenges >= 2;
 };
