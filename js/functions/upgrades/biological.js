@@ -20,10 +20,10 @@ functions["upg_b02_power"] = (amt) => {
     return big(1.3).pow(amt);
 }
 functions["upg_b03_power"] = (amt) => {
-    return big(1.2).pow(amt);
+    return big(1.1).pow(amt);
 }
 functions["upg_b04_power"] = (amt) => {
-    return big(1.1).pow(amt);
+    return big(1.2).pow(amt);
 }
 
 
