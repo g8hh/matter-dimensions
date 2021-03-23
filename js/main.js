@@ -356,6 +356,7 @@ class Player {
 
         this.upgrades["AUTO4_1"] = new Upgrade("AUTO4_1", 1, "upg_AUTO4_1_cost", "upg_automation_power", "upg_automation_atomic_unlock", "atoms", [" Atom", " Atoms"], "upg_automation_atomic_unlock");
         this.upgrades["AUTO4_2"] = new Upgrade("AUTO4_2", 1, "upg_AUTO4_2_cost", "upg_automation_power", "upg_automation_atomic_unlock", "atoms", [" Atom", " Atoms"], "upg_automation_atomic_unlock");
+        this.upgrades["AUTO4_3"] = new Upgrade("AUTO4_3", 1, "upg_AUTO4_3_cost", "upg_automation_power", "upg_automation_biological_unlock", "genes", [" Gene", " Genes"], "upg_automation_biological_unlock");
 
         this.upgrades["p11"] = new Upgrade("p11", -1, "upg_p11_cost", "upg_p11_power", "upg_p11_unlock", "photons", [" Photon", " Photons"], "upg_p11_available");
         this.upgrades["p12"] = new Upgrade("p12", -1, "upg_p12_cost", "upg_p12_power", "upg_p12_unlock", "photons", [" Photon", " Photons"], "upg_p12_available");

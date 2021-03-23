@@ -56,13 +56,13 @@ function reset_biological(force=false, higher_reset=false, autobuyer_induced=fal
     player.collision_points_in_generation = 0;
 
     // Automation shop reset
-    //if (!player.upgrades['AUTO4_3'].is_active()) {
+    if (!player.upgrades['AUTO4_3'].is_active()) {
         for (let key of Object.keys(player.upgrades)) {
             if (key.includes("AUTO4")) {
                 player.upgrades[key].reset();
             }
         }
-    //}
+    }
 
     update_collider();
     reset_atomic(true, true, false, 0);

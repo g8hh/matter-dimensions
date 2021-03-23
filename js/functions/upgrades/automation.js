@@ -43,6 +43,9 @@ functions["upg_AUTO4_1_cost"] = (amt) => {
 functions["upg_AUTO4_2_cost"] = (amt) => {
     return big(144);
 }
+functions["upg_AUTO4_3_cost"] = (amt) => {
+    return big(3);
+}
 
 functions["upg_automation_power"] = (amt) => {
     return big(1);

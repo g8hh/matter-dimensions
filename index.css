@@ -628,7 +628,7 @@ input {
 
 .automation-shop-layout {
     display: grid;
-    grid-template-rows: repeat(4, 1fr);
+    grid-template-rows: repeat(5, 1fr);
     grid-template-columns: 2fr repeat(5, 3fr);
     gap: 5px;
     padding-top: 10px;
