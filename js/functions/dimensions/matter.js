@@ -211,6 +211,8 @@ functions['matter_1_pow'] = (amt_bought, amt) => {
     if (player.upgrades['n11'].is_active()) base_pow = base_pow.mult(player.upgrades['n11'].get_effect());
     // n13: bonus to all Matter Dimensions
     if (player.upgrades['n13'].is_active()) base_pow = base_pow.mult(player.upgrades['n13'].get_effect());
+    // v11: x100 bonus to all Matter Dimensions
+    if (player.upgrades['v11'].is_active()) base_pow = base_pow.mult(100);
     // v111: x1e6 power to all Matter Dimensions
     base_pow = base_pow.mult(player.upgrades['v111'].get_effect());
     // v161: bonus to all Matter Dimensions
@@ -248,6 +250,8 @@ functions['matter_2_pow'] = (amt_bought, amt) => {
     if (player.upgrades['n11'].is_active()) base_pow = base_pow.mult(player.upgrades['n11'].get_effect());
     // n13: bonus to all Matter Dimensions
     if (player.upgrades['n13'].is_active()) base_pow = base_pow.mult(player.upgrades['n13'].get_effect());
+    // v11: x100 bonus to all Matter Dimensions
+    if (player.upgrades['v11'].is_active()) base_pow = base_pow.mult(100);
     // v111: x1e6 power to all Matter Dimensions
     base_pow = base_pow.mult(player.upgrades['v111'].get_effect());
     // achievement 76: x666 power to prime-numbered Matter Dimensions
@@ -285,6 +289,8 @@ functions['matter_3_pow'] = (amt_bought, amt) => {
     if (player.upgrades['n11'].is_active()) base_pow = base_pow.mult(player.upgrades['n11'].get_effect());
     // n13: bonus to all Matter Dimensions
     if (player.upgrades['n13'].is_active()) base_pow = base_pow.mult(player.upgrades['n13'].get_effect());
+    // v11: x100 bonus to all Matter Dimensions
+    if (player.upgrades['v11'].is_active()) base_pow = base_pow.mult(100);
     // v111: x1e6 power to all Matter Dimensions
     base_pow = base_pow.mult(player.upgrades['v111'].get_effect());
     // achievement 76: x666 power to prime-numbered Matter Dimensions
@@ -326,6 +332,8 @@ functions['matter_4_pow'] = (amt_bought, amt) => {
     if (player.upgrades['n11'].is_active()) base_pow = base_pow.mult(player.upgrades['n11'].get_effect());
     // n13: bonus to all Matter Dimensions
     if (player.upgrades['n13'].is_active()) base_pow = base_pow.mult(player.upgrades['n13'].get_effect());
+    // v11: x100 bonus to all Matter Dimensions
+    if (player.upgrades['v11'].is_active()) base_pow = base_pow.mult(100);
     // v111: x1e6 power to all Matter Dimensions
     base_pow = base_pow.mult(player.upgrades['v111'].get_effect());
     // v161: bonus to all Matter Dimensions
@@ -362,6 +370,8 @@ functions['matter_5_pow'] = (amt_bought, amt) => {
     if (player.upgrades['n11'].is_active()) base_pow = base_pow.mult(player.upgrades['n11'].get_effect());
     // n13: bonus to all Matter Dimensions
     if (player.upgrades['n13'].is_active()) base_pow = base_pow.mult(player.upgrades['n13'].get_effect());
+    // v11: x100 bonus to all Matter Dimensions
+    if (player.upgrades['v11'].is_active()) base_pow = base_pow.mult(100);
     // v111: x1e6 power to all Matter Dimensions
     base_pow = base_pow.mult(player.upgrades['v111'].get_effect());
     // achievement 76: x666 power to prime-numbered Matter Dimensions
@@ -397,6 +407,8 @@ functions['matter_6_pow'] = (amt_bought, amt) => {
     if (player.upgrades['n11'].is_active()) base_pow = base_pow.mult(player.upgrades['n11'].get_effect());
     // n13: bonus to all Matter Dimensions
     if (player.upgrades['n13'].is_active()) base_pow = base_pow.mult(player.upgrades['n13'].get_effect());
+    // v11: x100 bonus to all Matter Dimensions
+    if (player.upgrades['v11'].is_active()) base_pow = base_pow.mult(100);
     // v111: x1e6 power to all Matter Dimensions
     base_pow = base_pow.mult(player.upgrades['v111'].get_effect());
     // v161: bonus to all Matter Dimensions
@@ -432,6 +444,8 @@ functions['matter_7_pow'] = (amt_bought, amt) => {
     if (player.upgrades['n11'].is_active()) base_pow = base_pow.mult(player.upgrades['n11'].get_effect());
     // n13: bonus to all Matter Dimensions
     if (player.upgrades['n13'].is_active()) base_pow = base_pow.mult(player.upgrades['n13'].get_effect());
+    // v11: x100 bonus to all Matter Dimensions
+    if (player.upgrades['v11'].is_active()) base_pow = base_pow.mult(100);
     // v111: x1e6 power to all Matter Dimensions
     base_pow = base_pow.mult(player.upgrades['v111'].get_effect());
     // achievement 76: x666 power to prime-numbered Matter Dimensions
@@ -467,6 +481,8 @@ functions['matter_8_pow'] = (amt_bought, amt) => {
     if (player.upgrades['n11'].is_active()) base_pow = base_pow.mult(player.upgrades['n11'].get_effect());
     // n13: bonus to all Matter Dimensions
     if (player.upgrades['n13'].is_active()) base_pow = base_pow.mult(player.upgrades['n13'].get_effect());
+    // v11: x100 bonus to all Matter Dimensions
+    if (player.upgrades['v11'].is_active()) base_pow = base_pow.mult(100);
     // v111: x1e6 power to all Matter Dimensions
     base_pow = base_pow.mult(player.upgrades['v111'].get_effect());
     // v161: bonus to all Matter Dimensions
@@ -502,6 +518,8 @@ functions['matter_9_pow'] = (amt_bought, amt) => {
     if (player.upgrades['n11'].is_active()) base_pow = base_pow.mult(player.upgrades['n11'].get_effect());
     // n13: bonus to all Matter Dimensions
     if (player.upgrades['n13'].is_active()) base_pow = base_pow.mult(player.upgrades['n13'].get_effect());
+    // v11: x100 bonus to all Matter Dimensions
+    if (player.upgrades['v11'].is_active()) base_pow = base_pow.mult(100);
     // v111: x1e6 power to all Matter Dimensions
     base_pow = base_pow.mult(player.upgrades['v111'].get_effect());
     // v161: bonus to all Matter Dimensions
@@ -535,6 +553,8 @@ functions['matter_10_pow'] = (amt_bought, amt) => {
     if (player.upgrades['n11'].is_active()) base_pow = base_pow.mult(player.upgrades['n11'].get_effect());
     // n13: bonus to all Matter Dimensions
     if (player.upgrades['n13'].is_active()) base_pow = base_pow.mult(player.upgrades['n13'].get_effect());
+    // v11: x100 bonus to all Matter Dimensions
+    if (player.upgrades['v11'].is_active()) base_pow = base_pow.mult(100);
     // v111: x1e6 power to all Matter Dimensions
     base_pow = base_pow.mult(player.upgrades['v111'].get_effect());
     // v161: bonus to all Matter Dimensions
@@ -570,6 +590,8 @@ functions['matter_11_pow'] = (amt_bought, amt) => {
     if (player.upgrades['n11'].is_active()) base_pow = base_pow.mult(player.upgrades['n11'].get_effect());
     // n13: bonus to all Matter Dimensions
     if (player.upgrades['n13'].is_active()) base_pow = base_pow.mult(player.upgrades['n13'].get_effect());
+    // v11: x100 bonus to all Matter Dimensions
+    if (player.upgrades['v11'].is_active()) base_pow = base_pow.mult(100);
     // v111: x1e6 power to all Matter Dimensions
     base_pow = base_pow.mult(player.upgrades['v111'].get_effect());
     // achievement 76: x666 power to prime-numbered Matter Dimensions
@@ -605,6 +627,8 @@ functions['matter_12_pow'] = (amt_bought, amt) => {
     if (player.upgrades['n11'].is_active()) base_pow = base_pow.mult(player.upgrades['n11'].get_effect());
     // n13: bonus to all Matter Dimensions
     if (player.upgrades['n13'].is_active()) base_pow = base_pow.mult(player.upgrades['n13'].get_effect());
+    // v11: x100 bonus to all Matter Dimensions
+    if (player.upgrades['v11'].is_active()) base_pow = base_pow.mult(100);
     // v111: x1e6 power to all Matter Dimensions
     base_pow = base_pow.mult(player.upgrades['v111'].get_effect());
     // v161: bonus to all Matter Dimensions

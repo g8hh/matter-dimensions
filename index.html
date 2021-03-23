@@ -1992,7 +1992,7 @@
 
 
 
-                            <div class="upgrade" style="grid-row: 1 / 4; grid-column: 13 / 16" onclick="respec_vacuumic_tree(me)">
+                            <div class="upgrade" style="grid-row: 1 / 4; grid-column: 13 / 16; margin-left: 15px;" onclick="respec_vacuumic_tree(me)">
                                 <p>Reset this upgrade tree and this Vacuumic</p>
                                 <p>Gain <span id="respec_space_theorems"></span> Space Theorems</p>
                             </div>
@@ -2015,19 +2015,20 @@
                             </div>
                             <div id="autobuyer_v03" style="grid-row: 22; grid-column: 3; justify-self: flex-end; align-self: center; margin-right: 15px;"><input id="autobuyer_v03_toggle" type="checkbox" onclick="me.autobuyers['v03'].update_params()"></div>
 
-                            <div id="st_autobuyer_toggle" style="grid-row: 7 / 10; grid-column: 13 / 16">
+                            <div id="st_autobuyer_toggle" style="grid-row: 7 / 10; grid-column: 13 / 16; margin-left: 15px;">
                                 <p style="text-align: center;">Space Theorem tree autobuyer is <b id="st_autobuyer_toggle_status"></b>.</p>
                                 <p>&nbsp;</p>
                                 <div style="display: flex; flex-direction: row; justify-content: center"><div class="setting-button" onclick="me.activated_st_autobuyers = !me.activated_st_autobuyers" style="width: 100%"><p id="st_autobuyer_button_text"></p></div></div>
                             </div>
 
-                            <div id="upgrade_v11" class="upgrade" style="grid-row: 1 / 4; grid-column: 7 / 10" onclick="me.upgrades['v11'].buy()">
+                            <div id="upgrade_v11" class="upgrade" style="grid-row: 1 / 4; grid-column: 5 / 12" onclick="me.upgrades['v11'].buy()">
                                 <p>Gain Neutrons on Vacuumic and upon buying this upgrade (based on unlocked layers)
-                                <br>Current: <span id="upgrade_v11_next_effect"></span></p>
+                                <br>Current: <span id="upgrade_v11_next_effect"></span>
+                                <br>Also, ×<span class="static-number" extra="100"></span> to all Matter Dimensions</p>
                                 <p id="upgrade_v11_next_cost">Cost: <span id="upgrade_v11_cost"></span></p>
                                 <p class="upgrade-id" style="display: none">11</p>
                             </div>
-                            <div id="autobuyer_VTREE_v11" style="grid-row: 4; grid-column: 9; justify-self: flex-end; align-self: center;"><input id="autobuyer_VTREE_v11_toggle" type="checkbox" onclick="me.autobuyers['VTREE_v11'].update_params()"></div>
+                            <div id="autobuyer_VTREE_v11" style="grid-row: 4; grid-column: 11; justify-self: flex-end; align-self: center;"><input id="autobuyer_VTREE_v11_toggle" type="checkbox" onclick="me.autobuyers['VTREE_v11'].update_params()"></div>
 
                             <div id="upgrade_v21" class="upgrade" style="grid-row: 7 / 10; grid-column: 7 / 10" onclick="me.upgrades['v21'].buy()">
                                 <p>You can have <span class="static-number" extra="1e10" finite></span> times more resources</p>
