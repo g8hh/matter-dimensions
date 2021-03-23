@@ -128,7 +128,7 @@
                     </div>
                     <div style="flex-grow: 1"></div>
                     <div style="display: flex; flex-direction: column; margin: 0px;">
-                        <p>Version 0.7.0.1</p>
+                        <p>Version 0.7.0.2</p>
                         <a href="https://discord.gg/FggGbWW8QV" target="_blank" style="text-decoration: none; margin-top: 5px"><div class="setting-button"><p>Discord</p></div></a>
                     </div>
                 </div>
@@ -146,6 +146,7 @@
                     <p>All production above <span id="resource_challenge_addinfo_2"></span> is x^<span id="resource_challenge_strength_2"></span></p>
                     <p>Each dimension is <span id="resource_challenge_strength_3"></span>× slower than the previous one</p>
                     <p id="challenge_strength_4">There can be at most <span id="resource_challenge_strength_4"></span> of any resource</p>
+                    <p id="challenge_broken_4" style="display: none">Your resource potential is infinite</p>
                     <p>There are only <span id="resource_challenge_strength_6"></span> dimensions of each kind</p>
                     <p>All production is divided by <span id="resource_challenge_strength_5"></span> (based on current matter)</p>
                     <p>All production is divided by <span id="resource_challenge_strength_7"></span> (based on time since last reset)</p>
@@ -3687,7 +3688,7 @@
                             </div>
                         </div>
                         <p class="achievement-bonus" style="text-align: left; margin-top: 20px;">A total population of <span class="variable-value large-number" name="population" rounded></span> provides the population power of <span id="mechanic_population_total_power" class="large-number"></span> for the following boosts:</p>
-                        <p class="population-boost">×<span id="mechanic_population_power_time" style="font-weight: bold"></span> slower growth of the time-based nerf production nerf</p>
+                        <p class="population-boost">×<span id="mechanic_population_power_time" style="font-weight: bold"></span> slower growth of the time-based production nerf</p>
                         <p class="population-boost" upgrade="b02">×<span class="upgrade-effect" style="font-weight: bold"></span> more energy on annihilation</p>
                         <p class="population-boost" upgrade="b03">+<span class="upgrade-effect" style="font-weight: bold"></span> resets of previous tier on any reset below Biological</p>
                         <p class="population-boost" upgrade="b04">+<span class="upgrade-effect" style="font-weight: bold"></span> free levels of Generation</p>

@@ -250,7 +250,7 @@ class Player {
         this.achievements["54"] = new Achievement("54", "Wanna see me speed Neutronic?", "Neutronic in less than 200 milliseconds", "check_54");
         this.achievements["55"] = new Achievement("55", "Skipping Layers", "Neutronic without Photonic or Gravitonic resets.\nReward: Gravitonic upgrades that provide automation are never reset", "check_55", "effective");
         this.achievements["56"] = new Achievement("56", "Millionaire", "Have a million of 1st Matter Dimensions", "check_56");
-        this.achievements["57"] = new Achievement("57", "99% Downtime", "Gravitonic 100 times.\nReward: upon Gravitonic reset, gain a Gravitonic reset per each Graviton earned", "check_57", "effective");
+        this.achievements["57"] = new Achievement("57", "99% Downtime", "Gravitonic 100 times.\nReward: upon Gravitonic reset, gain a Gravitonic reset per each Graviton earned, up to 1e10", "check_57", "effective");
         this.achievements["58"] = new Achievement("58", "Inflation Era", "Produce over 100 space per second", "check_58");
 
         this.achievements["61"] = new Achievement("61", "I'm So Meta", "Buy 10 4th Matter Dimensions.\nReward: gain an extra Shard on Dimensional resets", "check_61", "effective");

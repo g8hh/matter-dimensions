@@ -164,7 +164,7 @@ function reset_gravitonic(force=false, higher_reset=false, autobuyer_induced=fal
     player.boson_power = big(0);
 
     // achievement 57: earn gravitonic resets equal to gravitons
-    if (!force && player.achievements['57'].complete) count_as_reset_num *= earned_gravitons.toInt();
+    if (!force && player.achievements['57'].complete) count_as_reset_num *= earned_gravitons.min(1e10).toInt();
 
     let reset_multiplier = 1;
     // evolution b03: multiply resets below Biological
