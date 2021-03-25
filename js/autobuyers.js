@@ -135,7 +135,7 @@ class Autobuyer {
             try {
                 this.param = decodeURIComponent(escape(data[4]));
             }
-            catch {
+            catch (e) {
                 this.param = data[4];
             }
         }

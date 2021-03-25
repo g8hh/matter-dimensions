@@ -202,7 +202,7 @@ function load_window_close() {
                 break;
         }
     }
-    catch {
+    catch (e) {
         load_save(backup);
     }
     onload_tick();
@@ -224,7 +224,7 @@ function load_from_local_storage() {
         try {
             load_save(JSON.parse(localStorage.getItem("save")));
         }
-        catch {
+        catch (e) {
             load_save(backup);
         }
         onload_tick();
