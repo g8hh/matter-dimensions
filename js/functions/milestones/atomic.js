@@ -90,7 +90,7 @@ functions["a01_2_activation"] = () => {
     return get_atom_level('a01').gt(2 - 0.5);
 }
 functions["a01_3_activation"] = () => {
-    return get_atom_level('a01').gt(12 - 0.5) || me.unlocked_st_autobuyers;
+    return get_atom_level('a01').gt(12 - 0.5) || player.unlocked_st_autobuyers;
 }
 functions["a01_4_activation"] = () => {
     return get_atom_level('a01').gt(121 - 0.5);
@@ -123,7 +123,7 @@ functions["a03_4_activation"] = () => {
 }
 
 functions["a04_1_activation"] = () => {
-    return get_atom_level('a04').gt(1 - 0.5) || me.unlocked_wave_autobuyers;
+    return get_atom_level('a04').gt(1 - 0.5) || player.unlocked_wave_autobuyers;
 }
 functions["a04_2_activation"] = () => {
     return get_atom_level('a04').gt(12 - 0.5);
@@ -169,12 +169,12 @@ functions["a08_1_activation"] = () => {
 
 
 functions["a01_1_effect"] = () => {
-    let base_reward = unlocked_layers(me);
-    if (me.unlocked_photonic) base_reward -= 1;
-    if (me.unlocked_gravitonic) base_reward -= 1;
-    if (me.unlocked_neutronic) base_reward -= 1;
-    if (me.unlocked_vacuumic) base_reward -= 1;
-    if (me.unlocked_dimensional) base_reward -= 1;
+    let base_reward = unlocked_layers();
+    if (player.unlocked_photonic) base_reward -= 1;
+    if (player.unlocked_gravitonic) base_reward -= 1;
+    if (player.unlocked_neutronic) base_reward -= 1;
+    if (player.unlocked_vacuumic) base_reward -= 1;
+    if (player.unlocked_dimensional) base_reward -= 1;
     return big(2).pow(base_reward - 1);
 }
 functions["a01_2_effect"] = () => {
@@ -193,16 +193,16 @@ functions["a02_1_effect"] = () => {
 functions["a02_2_effect"] = () => {
     let dimensional_resets = 0;
     // d21: unlock new Dimension
-    if (me.upgrades['d21'].is_active()) dimensional_resets += 1;
+    if (player.upgrades['d21'].is_active()) dimensional_resets += 1;
     // d41: unlock new Dimension
-    if (me.upgrades['d41'].is_active()) dimensional_resets += 1;
+    if (player.upgrades['d41'].is_active()) dimensional_resets += 1;
     // d81: unlock new Dimension
-    if (me.upgrades['d81'].is_active()) dimensional_resets += 1;
+    if (player.upgrades['d81'].is_active()) dimensional_resets += 1;
 
     return big(6).mult(dimensional_resets);
 }
 functions["a02_3_effect"] = () => {
-    return me.upgrades['TICKSPEED'].get_effect().add(1).log(10).max(1);
+    return player.upgrades['TICKSPEED'].get_effect().add(1).log(10).max(1);
 }
 functions["a02_4_effect"] = () => {
     return big(1);
