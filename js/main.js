@@ -55,6 +55,7 @@ class Player {
         this.experienced_dilation = false;
         this.unlocked_st_autobuyers = false;
         this.unlocked_wave_autobuyers = false;
+        this.uncapped_atoms = false;
 
         this.activated_st_autobuyers = true;
 

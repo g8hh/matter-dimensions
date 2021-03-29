@@ -139,7 +139,7 @@ functions["a05_1_activation"] = () => {
     return get_atom_level('a05').gt(1 - 0.5);
 }
 functions["a05_2_activation"] = () => {
-    return get_atom_level('a05').gt(10 - 0.5);
+    return get_atom_level('a05').gt(10 - 0.5) || player.uncapped_atoms;
 }
 functions["a05_3_activation"] = () => {
     return get_atom_level('a05').gt(100 - 0.5);

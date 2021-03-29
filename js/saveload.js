@@ -1,5 +1,5 @@
 var SAVE_NORMAL_VARS = ["unlocked_photonic", "unlocked_gravitonic", "unlocked_neutronic", "unlocked_vacuumic", "unlocked_dimensional", "unlocked_atomic", "unlocked_biological",
-                        "experienced_dilation", "unlocked_st_autobuyers", "unlocked_wave_autobuyers", 
+                        "experienced_dilation", "unlocked_st_autobuyers", "unlocked_wave_autobuyers", "uncapped_atoms", 
                         "activated_st_autobuyers",               
                         "time_passed", "overall_time", "best_time_speed", "last_update_ts",
                         "inertia_multiplier", "inertia_enabled", "heating_enabled", "heating_smart_distribution",

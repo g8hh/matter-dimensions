@@ -729,6 +729,9 @@ function update_prestige() {
         document.getElementById("upgrades_atomic_buy_max").style.display = "none";
     }
 
+    // Uncapped atoms
+    if (player.milestones['a05_2'].is_active()) player.uncapped_atoms = true;
+
     update_unlocked_menus();
     update_unlock_hint();
     update_hotkey_visibility();
