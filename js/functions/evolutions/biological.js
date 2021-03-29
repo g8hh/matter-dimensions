@@ -16,6 +16,9 @@ functions["evo_b05_cost"] = () => {
 functions["evo_b06_cost"] = () => {
     return big(1.9);
 }
+functions["evo_b07_cost"] = () => {
+    return big(4);
+}
 
 functions["evo_b01_power"] = (x) => {
     return x.div(3).add(1).log(10).div(3).add(1).log(10).add(1);
@@ -34,6 +37,9 @@ functions["evo_b05_power"] = (x) => {
 }
 functions["evo_b06_power"] = (x) => {
     return x.add(1).log(2).add(1);
+}
+functions["evo_b07_power"] = (x) => {
+    return x.max(1).log(10).pow(0.5).div(x.max(1).log(10).pow(0.5).add(40)).mult(1024).div(308.25).add(1);
 }
 
 functions["evo_b01_secondary"] = () => {
@@ -59,6 +65,9 @@ functions["evo_b05_secondary"] = () => {
     return big(1);
 }
 functions["evo_b06_secondary"] = () => {
+    return big(1);
+}
+functions["evo_b07_secondary"] = () => {
     return big(1);
 }
 

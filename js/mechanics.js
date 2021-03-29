@@ -293,6 +293,8 @@ function highest_unlocked_element() {
     let element_effect = base_limit + me.collision_points_in_synthesis;
     // evolution b04: get free level of Synthesis
     if (player.evolutions['b04'].is_active()) element_effect += 1;
+    // evolution b07: get free level of Synthesis
+    if (player.evolutions['b07'].is_active()) element_effect += 1;
 
     return Math.min(element_effect, max_limit);
 }

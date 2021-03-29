@@ -529,6 +529,7 @@ class Player {
         this.evolutions["b04"] = new Evolution("b04", "evo_b04_cost", "genes", [" Gene", " Genes"], "population", 60, "evo_b04_power", "evo_b04_secondary");
         this.evolutions["b05"] = new Evolution("b05", "evo_b05_cost", "genes", [" Gene", " Genes"], "population", 10, "evo_b05_power", "evo_b05_secondary");
         this.evolutions["b06"] = new Evolution("b06", "evo_b06_cost", "genes", [" Gene", " Genes"], "population", 25, "evo_b06_power", "evo_b06_secondary");
+        this.evolutions["b07"] = new Evolution("b07", "evo_b07_cost", "genes", [" Gene", " Genes"], "population", 20, "evo_b07_power", "evo_b07_secondary");
 
         this.challenges = {};
         this.challenges["p1"] = new Challenge("p1", "Photonic Challenge 1", "photonic", [], "start_p1", "goal_p1", "end_p1");

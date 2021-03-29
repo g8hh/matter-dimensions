@@ -5,6 +5,9 @@ function prestige_earn_atoms() {
 
     let base_income = player.matter.pow(1/1024).div(2);
 
+    // evolution b07: raise Atom gain to a power
+    if (player.evolutions['b07'].is_active()) base_income = base_income.pow(player.evolutions['b07'].get_effect());
+
     // a01_2: increase Atom gain
     if (player.milestones['a01_2'].is_active()) base_income = base_income.mult(player.milestones['a01_2'].get_effect());
     // achievement 121: double gain
@@ -37,6 +40,11 @@ function atomic_hint_next(amt) {
 
     // a01_2: increase Atom gain
     if (player.milestones['a01_2'].is_active()) resource_need = resource_need.div(player.milestones['a01_2'].get_effect());
+    // achievement 121: double gain
+    if (player.achievements['121'].complete) resource_need = resource_need.div(2);
+
+    // evolution b07: raise Atom gain to a power
+    if (player.evolutions['b07'].is_active()) resource_need = resource_need.pow(big(1).div(player.evolutions['b07'].get_effect()));
 
     return resource_need.mult(2).max(2).pow(1024);
 }
