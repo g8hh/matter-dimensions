@@ -473,3 +473,7 @@ functions["check_147"] = () => {
     }
     return completed_challenges >= 2;
 };
+
+functions["check_148"] = () => {
+    return me.space_theorems.add(space_theorems_invested(me)).gt(49.5);
+};

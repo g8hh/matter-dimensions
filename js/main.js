@@ -327,6 +327,7 @@ class Player {
         this.achievements["138"] = new Achievement("138", "The Hindenburg", "Have 10 free levels from Generation", "check_138");
 
         this.achievements["147"] = new Achievement("147", "Double Trouble", "Complete two regular Neutronic challenges five times.\nReward: you can max buy Atomic upgrades", "check_147", "effective");
+        this.achievements["148"] = new Achievement("148", "SpaceL", "Have 50 Space Theorems in total", "check_148");
 
         this.upgrades = {};
         this.upgrades["INERTIA_1"] = new Upgrade("INERTIA_1", -1, "upg_INERTIA_1_cost", "upg_INERTIA_1_power", "upg_INERTIA_1_unlock", "inertia", " of Inertia", "upg_INERTIA_1_available", "", "upg_INERTIA_1_cost_display_function", true);
