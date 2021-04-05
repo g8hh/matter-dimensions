@@ -104,36 +104,36 @@ functions["upg_a08_unlock"] = () => {
 
 
 functions["upg_a01_available"] = () => {
-    return highest_unlocked_element(me) >= 1;
+    return highest_unlocked_element() >= 1;
 }
 functions["upg_a02_available"] = () => {
-    return highest_unlocked_element(me) >= 2;
+    return highest_unlocked_element() >= 2;
 }
 functions["upg_a03_available"] = () => {
-    return highest_unlocked_element(me) >= 3;
+    return highest_unlocked_element() >= 3;
 }
 functions["upg_a04_available"] = () => {
-    return highest_unlocked_element(me) >= 4;
+    return highest_unlocked_element() >= 4;
 }
 functions["upg_a05_available"] = () => {
-    return highest_unlocked_element(me) >= 5;
+    return highest_unlocked_element() >= 5;
 }
 functions["upg_a06_available"] = () => {
-    return highest_unlocked_element(me) >= 6;
+    return highest_unlocked_element() >= 6;
 }
 functions["upg_a07_available"] = () => {
-    return highest_unlocked_element(me) >= 7;
+    return highest_unlocked_element() >= 7;
 }
 functions["upg_a08_available"] = () => {
-    return highest_unlocked_element(me) >= 8;
+    return highest_unlocked_element() >= 8;
 }
 
 
 
 functions["upg_a01_buy"] = (amt) => {
     if (amt == 0) return;
-    if (amt == me.upgrades['a01'].amt && free_atom_levels['a01'].lt(0.5)) {
+    if (amt == player.upgrades['a01'].amt && free_atom_levels['a01'].lt(0.5)) {
         // Challenge 4: all resources are capped
-        me.shards = me.shards.add(me.milestones["a01_1"].get_effect()).round().min(me.challenge_strength_4);
+        player.shards = player.shards.add(player.milestones["a01_1"].get_effect()).round().min(player.challenge_strength_4);
     }
 }

@@ -52,17 +52,17 @@ functions["upg_automation_power"] = (amt) => {
 }
 
 functions["upg_automation_neutronic_unlock"] = () => {
-    return me.unlocked_neutronic;
+    return player.unlocked_neutronic;
 }
 functions["upg_automation_vacuumic_unlock"] = () => {
-    return me.unlocked_vacuumic;
+    return player.unlocked_vacuumic;
 }
 functions["upg_automation_dimensional_unlock"] = () => {
-    return me.unlocked_dimensional;
+    return player.unlocked_dimensional;
 }
 functions["upg_automation_atomic_unlock"] = () => {
-    return me.unlocked_atomic;
+    return player.unlocked_atomic;
 }
 functions["upg_automation_biological_unlock"] = () => {
-    return me.unlocked_biological;
+    return player.unlocked_biological;
 }
