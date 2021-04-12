@@ -1,0 +1,996 @@
+:root {
+    font-size: 13.6px;
+}
+
+body {
+    margin: 0px;
+    background-color: var(--color-100);
+
+    --color-100: #1B262C;
+    --color-200: #203D4E;
+    --color-300: #275877;
+    --color-400: #2C6C97;
+    --color-500: #3483B8;
+    --color-600: #639CB8;
+    --color-700: #8CB9D8;
+    --color-800: #C1D9EA;
+    --color-900: #F7FAFC;
+
+    --font-family: 'larabiefont_rg', 'Courier New', Courier, monospace;
+}
+
+.theme-blue {
+    --color-100: #1B262C;
+    --color-200: #203D4E;
+    --color-300: #275877;
+    --color-400: #2C6C97;
+    --color-500: #3483B8;
+    --color-600: #639CB8;
+    --color-700: #8CB9D8;
+    --color-800: #C1D9EA;
+    --color-900: #F7FAFC;
+}
+.theme-yellow {
+    --color-100: #2C261B;
+    --color-200: #4E3D20;
+    --color-300: #775827;
+    --color-400: #976C2C;
+    --color-500: #B88334;
+    --color-600: #B89C63;
+    --color-700: #D8B98C;
+    --color-800: #EAD9C1;
+    --color-900: #FCFAF7;
+}
+
+.font-larabiefont {
+    --font-family: 'larabiefont_rg', 'Courier New', Courier, monospace;
+}
+.font-lucida_console {
+    --font-family: 'Lucida Console', 'Courier New', Courier, monospace;
+}
+.font-courier_new {
+    --font-family: 'Courier New', Courier, monospace;
+}
+.font-recursive {
+    --font-family: 'Recursive', 'Courier New', Courier, monospace;
+}
+
+p, textarea {
+    margin: 0px;
+    color: var(--color-900);
+    font-family: var(--font-family);
+}
+
+textarea {
+    font-size: 0.75rem;
+}
+
+input {
+    font-family: var(--font-family);
+}
+
+.layout-wrapper {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+    min-height: 100vh;
+    align-items: stretch;
+}
+
+.settings-menu, .prestige-menu {
+    width: 180px;
+    flex-grow: 0;
+    flex-shrink: 0;
+    background-color: var(--color-200);
+    padding: 10px;
+}
+
+.settings-menu-wrapper, .prestige-menu {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.settings-menu-wrapper {
+    width: inherit;
+    position: sticky;
+    top: 10px;
+    height: calc(100vh - 20px);
+}
+
+.settings-menu-wrapper > div, .prestige-menu > div, .settings-submenu > div {
+    margin-bottom: 10px;
+}
+
+.settings-submenu {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.main-section {
+    flex-grow: 1;
+
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    align-items: stretch;
+    position: relative;
+}
+
+.resource-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.header {
+    font-size: 1.5em;
+}
+.small-header {
+    font-size: 1.25em;
+    text-align: center;
+    margin: 10px;
+}
+
+.large-number {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.layer-info, .achievement-info {
+    width: auto;
+    padding: 10px;
+}
+
+.dimension-list {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.dimension {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.dimension-name {
+    flex-basis: 35%;
+    font-size: 1.2em;
+}
+
+.dimension-production {
+    flex-basis: 15%;
+    font-size: 1.2em;
+}
+
+.dimension-amount {
+    flex-basis: 25%;
+    font-size: 1.2em;
+}
+
+.dimension-cost, .setting-button, .prestige-layer-ascend {
+    cursor: pointer;
+    background-color: var(--color-500);
+    padding: 0.2em;
+    border-radius: 0.2em;
+    user-select: none;
+}
+.dimension-cost {
+    flex-basis: 14em;
+}
+.dimension-cost:hover, .setting-button:hover, .prestige-layer-ascend:hover {
+    background-color: var(--color-600);
+}
+.dimension-cost.disabled, .setting-button.disabled, .prestige-layer-ascend.disabled {
+    background-color: var(--color-300);
+    cursor: auto;
+}
+.dimension-cost p, .setting-button p, .prestige-layer-ascend p {
+    text-align: center;
+}
+.prestige-layer-ascend {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 2.5em;
+}
+
+.overlay-window-holder {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+
+    background-color: #00000080;
+}
+.overlay-window {
+    position: fixed;
+    left: 15%;
+    right: 15%;
+    top: 15%;
+    bottom: 15%;
+
+    padding: 10px;
+    background-color: var(--color-200);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+.overlay-textarea {
+    flex-grow: 1;
+    background-color: var(--color-100);
+    width: 95%;
+    resize: none;
+}
+.overlay-button {
+    padding-left: 5em;
+    padding-right: 5em;
+}
+
+.prestige-layer, .divider {
+    width: 100%;
+    border-bottom: 3px solid var(--color-100);
+}
+.prestige-layer {
+    padding-top: 5px;
+    padding-bottom: 5px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 5px;
+}
+.prestige-layer p {
+    text-align: center;
+}
+.small-number {
+    font-size: 0.75em;
+}
+.prestige-layer-name {
+    font-size: 0.75em;
+    font-weight: bold;
+}
+.prestige-layer-desc {
+    font-size: 0.75em;
+}
+
+.achievement-list {
+    width: 100%;
+
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(14, 1fr);
+    grid-gap: 10px;
+}
+.achievement-list div::before {
+    content: "";
+    padding-bottom: 100%;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.achievement {
+    position: relative;
+    border-radius: 10%;
+    background-color: #00000080;
+}
+.achievement p {
+    position: absolute;
+    bottom: 0.5rem;
+    left: 0.5rem;
+    right: 0.5rem;
+
+    text-align: center;
+    user-select: none;
+}
+.achievement:hover::after {
+    content: attr(data-desc);
+    position: absolute;
+    left: 20%; top: 20%; right: -20%;
+    z-index: 1;
+    background-color: var(--color-700);
+    font-family: var(--font-family);
+    font-size: 0.75rem;
+    padding: 5px 10px;
+    user-select: none;
+    white-space: pre-line;
+}
+.achievement-bonus {
+    text-align: center;
+    margin: 10px;
+}
+.achievement.complete {
+    background-color: #00FF0080;
+}
+.achievement.effective {
+    background-color: #00002280;
+}
+.achievement.effective.complete {
+    background-color: #00FFFF80;
+}
+
+.upgrade-list-photonic {
+    display: grid;
+    grid-gap: 5px;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+}
+.upgrade-list-gravitonic {
+    display: grid;
+    grid-gap: 5px;
+    grid-template-columns: 5px 5px repeat(4, 1fr) 5px 5px repeat(4, 1fr) 5px 5px;
+    grid-template-rows: repeat(8, 1fr) 5px repeat(6, 1fr) 5px 5px;
+}
+.upgrade-list-neutronic {
+    display: grid;
+    grid-gap: 5px;
+    grid-template-columns: 0 repeat(2, 1fr) 0 0 repeat(2, 1fr) 0 0 repeat(2, 1fr) 0;
+    grid-template-rows: repeat(3, 1fr) 0 auto repeat(7, 1fr) 0;
+}
+.upgrade-list-vacuumic {
+    display: grid;
+    grid-gap: 0px;
+    grid-template-columns: 1fr repeat(7, 5px 1fr);
+    grid-template-rows: repeat(21, 1fr 5px 1fr 1.5em 5px 1.5em);
+}
+.upgrade-list-dimensional {
+    display: grid;
+    grid-gap: 5px;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(18, 1fr);
+}
+
+.upgrade {
+    cursor: pointer;
+    background-color: var(--color-400);
+    padding: 5px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    user-select: none;
+    position: relative;
+}
+.upgrade:hover {
+    background-color: var(--color-500);
+}
+.upgrade.disabled {
+    background-color: var(--color-200);
+    cursor: auto;
+}
+.upgrade.complete {
+    background-color: #008000;
+    cursor: auto;
+}
+/*.upgrade.partial {
+    background-color: #806400;
+}
+.upgrade.partial:hover {
+    background-color: #A08000;
+}*/
+.upgrade p {
+    text-align: center;
+}
+.upgrade .upgrade-id {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background-color: var(--color-300);
+    padding: 5px;
+}
+
+.frame-deco-gravitonic {
+    border: 5px var(--color-200) solid;
+}
+.neutronic-block-matter {
+    background-color: #80000040;
+}
+.neutronic-block-photonic {
+    background-color: #80800040;
+}
+.neutronic-block-gravitonic {
+    background-color: #00800040;
+}
+.neutronic-number-matter {
+    color: #C00000;
+}
+.neutronic-number-photonic {
+    color: #C0C000;
+}
+.neutronic-number-gravitonic {
+    color: #00C000;
+}
+.vacuumic-tree-line {
+    background-color: var(--color-200);
+}
+.vacuumic-tree-line.active {
+    background-color: #008000;
+}
+.vacuumic-tree-line.possible {
+    background-color: #806400;
+}
+
+.challenge-page {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    grid-auto-rows: 1fr;
+    gap: 10px;
+}
+.challenge-card {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 3fr 1fr;
+    min-height: 6em;
+    grid-gap: 5px;
+}
+.challenge-name, .challenge-desc {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: var(--color-200);
+    padding: 5px;
+}
+.challenge-name p {
+    text-align: center;
+    font-size: 1.5em;
+}
+.challenge-status, .challenge-button {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 5px;
+}
+.challenge-status p {
+    text-align: center;
+}
+.challenge-card.in-progress .challenge-name, .challenge-card.in-progress .challenge-desc {
+    background-color: #806400;
+}
+.challenge-card.complete .challenge-name, .challenge-card.complete .challenge-desc {
+    background-color: #008000;
+}
+
+.statistics-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5px;
+    padding-top: 1.5em;
+}
+
+.tickspeed-wrapper {
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.tickspeed-wrapper .upgrade {
+    padding: 0.2em;
+    border-radius: 0.2em;
+    min-width: 12em;
+    margin-top: 3px;
+    background-color: var(--color-500);
+}
+.tickspeed-wrapper .upgrade:hover {
+    background-color: var(--color-600);
+}
+.tickspeed-wrapper .upgrade.disabled {
+    background-color: var(--color-300);
+}
+
+.button-row {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    justify-content: center;
+    align-items: center;
+}
+.button-row input[type="text"] {
+    width: 0;
+    flex-grow: 1;
+}
+
+.inertia-slider {
+    font-size: 1.2rem;
+    padding: 5px;
+}
+
+.gravitonic-replacement-upgrade {
+    background-color: var(--color-200);
+    padding: 5px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+.settings-page-layout {
+    display: grid;
+    grid-auto-rows: auto;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 5px;
+    padding-top: 10px;
+}
+.settings-page-block {
+    background-color: var(--color-200);
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+}
+.settings-page-block > p, .settings-page-block > div {
+    margin-bottom: 5px;
+}
+.settings-page-block-name {
+    font-size: 1.5em;
+    text-align: center;
+}
+.settings-page-block .setting-button {
+    min-width: 40%;
+    align-self: center;
+}
+.red-button {
+    background-color: #800000;
+}
+.red-button:hover {
+    background-color: #C00000;
+}
+.settings-block-selector-option {
+    padding-left: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: 0.9em;
+    user-select: none;
+}
+.settings-block-selector-option input {
+    margin: 0px;
+    margin-right: 10px;
+}
+.settings-block-selector-checkbox {
+    padding-left: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: 0.9em;
+    user-select: none;
+}
+.settings-block-selector-checkbox input {
+    margin: 0px;
+    margin-right: 10px;
+}
+
+.subsection-header {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    padding-left: 10%;
+}
+
+.temperature-milestones, .temperature-resets {
+    display: grid;
+    grid-template-columns: 100%;
+    grid-auto-rows: 1fr;
+    gap: 10px;
+    padding-top: 10px;
+}
+.temperature-milestone {
+    display: grid;
+    grid-template-columns: 20% 80%;
+    gap: 5px;
+}
+.temperature-milestone-goal {
+    grid-row: 1;
+    grid-column: 1;
+    font-size: 2em;
+    align-self: center;
+    text-align: center;
+    padding: 5px;
+}
+.temperature-milestone-desc {
+    grid-row: 1;
+    grid-column: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 5px;
+    gap: 5px;
+}
+.temperature-reset {
+    display: grid;
+    grid-template-columns: 20% 25% 55%;
+    gap: 5px;
+    align-items: center;
+}
+.temperature-reset-name {
+    font-size: 1.5em;
+}
+
+.milestone {
+    background-color: var(--color-200);
+}
+.milestone.complete {
+    background-color: #008000;
+}
+
+.automation-shop-layout {
+    display: grid;
+    grid-template-rows: repeat(5, 1fr);
+    grid-template-columns: 2fr repeat(5, 3fr);
+    gap: 5px;
+    padding-top: 10px;
+}
+.automation-shop-reset-layer {
+    font-size: 1em;
+    font-weight: bold;
+    text-align: center;
+    align-self: center;
+}
+
+.vacuumic-next-costs-desc {
+    background-color: var(--color-200); 
+    
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center;
+}
+.vacuumic-next-costs {
+    align-self: center;
+    font-size: 0.8em;
+}
+
+.upgrade-list-atomic {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: 1fr;
+    gap: 5px;
+}
+.upgrade-list-atomic .upgrade {
+    display: grid;
+    grid-template-columns: 20% 60% 20%;
+    grid-template-rows: 2em 2fr 3fr 2em;
+    background-color: inherit;
+    cursor: auto;
+}
+.upgrade .upgrade-atomic-title, .upgrade .upgrade-atomic-level {
+    font-size: 1.5em;
+    background-color: var(--color-300);
+    padding-left: 5px;
+    padding-right: 5px;
+    text-align: left;
+}
+.upgrade-atomic-title {
+    grid-row: 1; 
+    grid-column: 1;
+}
+.upgrade-atomic-level {
+    grid-row: 1; 
+    grid-column: 2;
+}
+.upgrade-atomic-symbol {
+    font-size: 6em;
+    grid-row: 2 / 5; 
+    grid-column: 1;
+    justify-self: center; 
+    align-self: center;
+}
+.upgrade-atomic-milestones {
+    background-color: var(--color-200);
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    grid-row: 2 / 5; 
+    grid-column: 2;
+}
+.upgrade-atomic-milestones .milestone {
+    background-color: inherit;
+    opacity: 0.75;
+    text-align: left;
+}
+.upgrade-atomic-milestones .milestone.complete {
+    opacity: 1;
+}
+.upgrade-atomic-effect-desc {
+    grid-column: 3; 
+    grid-row: 1 / 3; 
+    justify-self: center; 
+    align-self: center; 
+    padding: 5px;
+}
+.upgrade .upgrade-atomic-buy-button {
+    margin: 5px;
+
+    cursor: pointer;
+    background-color: var(--color-400);
+    padding: 5px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    grid-column: 3; 
+    grid-row: 3;
+}
+.upgrade .upgrade-atomic-buy-button:hover, .upgrade .upgrade-atomic-buy-max-button:hover {
+    background-color: var(--color-500);
+}
+.upgrade.disabled .upgrade-atomic-buy-button {
+    background-color: var(--color-200);
+    cursor: auto;
+}
+.upgrade .upgrade-atomic-buy-max-button {
+    margin-left: 5px;
+    margin-right: 5px;
+
+    cursor: pointer;
+    background-color: var(--color-400);
+    padding: 5px;
+
+    grid-column: 3; 
+    grid-row: 4;
+}
+
+.collider-category-table {
+    display: grid;
+    grid-template-rows: repeat(4, auto);
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    padding: 5px;
+}
+.collider-category-switcher {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+.collider-category-distributed-points {
+    font-size: 2em;
+    min-width: 20%;
+    text-align: center;
+}
+.collider-periodic-table {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    gap: 5px;
+    align-self: flex-start;
+}
+.collider-periodic-table-element {
+    background-color: var(--color-200);
+    text-align: center;
+}
+.collider-periodic-table-element-name {
+    background-color: var(--color-300);
+    padding: 5px;
+}
+.collider-periodic-table-element-level {
+    font-size: 0.8em;
+    padding: 5px;
+}
+.collider-reaction-table {
+    display: grid;
+    grid-auto-rows: 1fr;
+    grid-template-columns: 1fr;
+    gap: 5px;
+    align-self: flex-start;
+}
+.collider-reaction-formula {
+    display: grid;
+    grid-template-columns: 15% 80% 5%;
+    grid-template-rows: 1fr;
+    gap: 5px;
+    user-select: none;
+}
+.collider-reaction-formula input {
+    grid-row: 1;
+    grid-column: 1;
+    justify-self: center;
+    align-self: center;
+}
+.collider-reaction-formula .collider-reaction-formula-block {
+    grid-row: 1;
+    grid-column: 2;
+    align-self: center;
+    padding: 5px;
+    display: flex;
+    flex-direction: row;
+    gap: 3px;
+    font-size: 1.25em;
+}
+.collider-reaction-formula-bg {
+    grid-row: 1;
+    grid-column: 2;
+    background-color: var(--color-200);
+}
+.collider-reaction-formula.active .collider-reaction-formula-bg {
+    background-color: #008000;
+}
+.two-numbers {
+    font-size: 0.5em;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2em;
+    align-items: flex-end;
+}
+
+.changelog-page {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+.version-name {
+    font-weight: bold;
+}
+.version-desc {
+    font-size: 0.8em;
+    padding-left: 4rem;
+}
+.version-block-major .version-name  {
+    font-size: 1.5em;
+}
+.version-block, .version-block-major, .version-block-layer {
+    padding: 5px;
+}
+.version-block-layer {
+    background-color: var(--color-200);
+}
+.version-block-layer .version-name {
+    font-size: 1.5em;
+}
+
+.hotkey-page {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+#achievement_track {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    left: 70%;
+
+    display: flex;
+    flex-direction: column-reverse;
+}
+#achievement_track > p {
+    margin-bottom: 5px;
+    background-color: #008000;
+    cursor: pointer;
+    padding: 10px;
+    font-size: 1.1em;
+    text-align: center;
+}
+
+.biological-population-table {
+    display: grid;
+    gap: 5px;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-columns: 3fr 2fr 2fr;
+}
+
+.biological-population-growth-table {
+    display: grid;
+    gap: 5px;
+    grid-template-rows: 1fr auto;
+    grid-template-columns: 1fr 1fr;
+}
+
+.biological-population-growth-block {
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+}
+
+.biological-population-growth-line {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.population-boost {
+    padding-left: 5%;
+}
+
+.upgrade-list-biological {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.evolution {
+    cursor: pointer;
+    display: grid;
+    grid-template-rows: 2fr 4fr 4fr 3fr;
+    gap: 5px;
+    margin: 10px;
+    padding: 5px;
+    width: 300px;
+    height: 250px;
+    background-color: var(--color-300);
+
+    user-select: none;
+    position: relative;
+}
+.evolution:hover {
+    background-color: var(--color-500);
+}
+.evolution.disabled {
+    background-color: var(--color-200);
+    cursor: auto;
+}
+.evolution.complete {
+    background-color: #006000;
+    cursor: auto;
+}
+.evolution .name {
+    font-size: 1.5em;
+    grid-row: 1;
+    grid-column: 1;
+    align-self: center;
+}
+.evolution .advantage {
+    grid-row: 1;
+    grid-column: 1;
+    align-self: flex-start;
+    justify-self: flex-end;
+}
+.evolution .cost-desc, .evolution .progress-desc {
+    grid-row: 4;
+    grid-column: 1;
+    align-self: center;
+}
+.evolution .progress-desc {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+.evolution .progress-bar {
+    grid-row: 4;
+    grid-column: 1;
+    justify-self: flex-start;
+    background-color: #008000;
+}
+.evolution .progress-bar-layout {
+    grid-row: 4;
+    grid-column: 1;
+    background-color: var(--color-200);
+}
+.evolution .upgrade-id {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background-color: var(--color-300);
+    padding: 5px;
+}
+
+.autobuyer-toggle-wrapper {
+    display: flex; 
+    flex-direction: row; 
+    justify-content: flex-end; 
+    margin-bottom: 10px;
+}
+.autobuyer-toggle {
+    padding-left: 10px; 
+    padding-right: 10px;
+}
