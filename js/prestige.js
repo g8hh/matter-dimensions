@@ -779,6 +779,7 @@ function update_unlocked_menus() {
     document.getElementById("menu_button_dimensional").style.display = "none";
     document.getElementById("menu_button_dimensional_dimensions").style.display = "none";
     document.getElementById("menu_button_dimensional_upgrades").style.display = "none";
+    document.getElementById("menu_button_dimensional_challenges").style.display = "none";
     document.getElementById("menu_button_atomic").style.display = "none";
     document.getElementById("menu_button_atomic_upgrades").style.display = "none";
     document.getElementById("menu_button_atomic_collider").style.display = "none";
@@ -893,6 +894,12 @@ function update_unlocked_menus() {
     if (me.milestones['a06_1'].is_active()) {
         document.getElementById("menu_button_dimensional").style.display = "";
         document.getElementById("menu_button_dimensional_dimensions").style.display = "";
+    }
+
+    // Dimensional challenges
+    if (me.evolutions['b08'].is_active()) {
+        document.getElementById("menu_button_dimensional").style.display = "";
+        document.getElementById("menu_button_dimensional_challenges").style.display = "";
     }
 }
 

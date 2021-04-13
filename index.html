@@ -33,6 +33,7 @@
         <script src="js/functions/challenges/gravitonic.js?rev=22"></script>
         <script src="js/functions/challenges/neutronic.js?rev=22"></script>
         <script src="js/functions/challenges/vacuumic.js?rev=22"></script>
+        <script src="js/functions/challenges/dimensional.js?rev=22"></script>
         <script src="js/functions/milestones/temperature.js?rev=22"></script>
         <script src="js/functions/milestones/atomic.js?rev=22"></script>
         <script src="js/functions/achievement_checks.js?rev=22"></script>
@@ -110,6 +111,7 @@
                     <div id="submenu_dimensional" class="settings-submenu" style="display: none">
                         <div class="setting-button" id="menu_button_dimensional_dimensions" onclick="change_submenu('dimensional', 'dimensions')" style="display: none"><p>Dimensions</p></div>
                         <div class="setting-button disabled" id="menu_button_dimensional_upgrades" onclick="change_submenu('dimensional', 'upgrades')" style="display: none"><p>Upgrades</p></div>
+                        <div class="setting-button" id="menu_button_dimensional_challenges" onclick="change_submenu('dimensional', 'challenges')" style="display: none"><p>Challenges</p></div>
                     </div>
                     <div id="submenu_atomic" class="settings-submenu" style="display: none">
                         <div class="setting-button disabled" id="menu_button_atomic_upgrades" onclick="change_submenu('atomic', 'upgrades')" style="display: none"><p>Upgrades</p></div>
@@ -3013,6 +3015,155 @@
                             </div>
                         </div>
                     </div>
+
+                    <div id="dimensional_challenges" class="challenge-page" style="display: none;">
+                        <p>You need to get a certain amount of Shards in order to complete Dimensional challenges.<br>
+                        Instead of making the game harder, Dimensional challenges provide a positive effect. If you complete the challenge, this effect becomes permanent.<br>
+                        You automatically leave your Dimensional challenges on Atomic or higher resets.</p>
+                        <div class="challenge-card" id="challenge_d1">
+                            <div class="challenge-name" style="grid-row: 1 / 3; grid-column: 1">
+                                <p id="challenge_d1_name"></p>
+                            </div>
+                            <div class="challenge-desc" style="grid-row: 1 / 3; grid-column: 2">
+                                <p><span style="font-weight: bold;">Effect:</span> Gain <span class="static-number" extra="10"></span>× more Shards on Dimensional resets.</p>
+                                <p><span style="font-weight: bold;">Goal:</span> <span class="static-number" extra="1e12"></span> Shards.</p>
+                            </div>
+                            <div class="challenge-status" style="grid-row: 1; grid-column: 3">
+                                <p id="challenge_d1_status"></p>
+                            </div>
+                            <div class="challenge-button" style="grid-row: 2; grid-column: 3">
+                                <div class="setting-button" id="challenge_d1_button" onclick="me.challenges['d1'].click()"><p id="challenge_d1_button_text"></p></div>
+                            </div>
+                        </div>
+    
+                        <div class="challenge-card" id="challenge_d2">
+                            <div class="challenge-name" style="grid-row: 1 / 3; grid-column: 1">
+                                <p id="challenge_d2_name"></p>
+                            </div>
+                            <div class="challenge-desc" style="grid-row: 1 / 3; grid-column: 2">
+                                <p><span style="font-weight: bold;">Effect:</span> ???</p>
+                                <p><span style="font-weight: bold;">Goal:</span> ???</p>
+                            </div>
+                            <div class="challenge-status" style="grid-row: 1; grid-column: 3">
+                                <p id="challenge_d2_status"></p>
+                            </div>
+                            <div class="challenge-button" style="grid-row: 2; grid-column: 3">
+                                <div class="setting-button" id="challenge_d2_button" onclick="me.challenges['d2'].click()"><p id="challenge_d2_button_text"></p></div>
+                            </div>
+                        </div>
+
+                        <div class="challenge-card" id="challenge_d3">
+                            <div class="challenge-name" style="grid-row: 1 / 3; grid-column: 1">
+                                <p id="challenge_d3_name"></p>
+                            </div>
+                            <div class="challenge-desc" style="grid-row: 1 / 3; grid-column: 2">
+                                <p><span style="font-weight: bold;">Effect:</span> ???</p>
+                                <p><span style="font-weight: bold;">Goal:</span> ???</p>
+                            </div>
+                            <div class="challenge-status" style="grid-row: 1; grid-column: 3">
+                                <p id="challenge_d3_status"></p>
+                            </div>
+                            <div class="challenge-button" style="grid-row: 2; grid-column: 3">
+                                <div class="setting-button" id="challenge_d3_button" onclick="me.challenges['d3'].click()"><p id="challenge_d3_button_text"></p></div>
+                            </div>
+                        </div>
+
+                        <div class="challenge-card" id="challenge_d4">
+                            <div class="challenge-name" style="grid-row: 1 / 3; grid-column: 1">
+                                <p id="challenge_d4_name"></p>
+                            </div>
+                            <div class="challenge-desc" style="grid-row: 1 / 3; grid-column: 2">
+                                <p><span style="font-weight: bold;">Effect:</span> ???</p>
+                                <p><span style="font-weight: bold;">Goal:</span> ???</p>
+                            </div>
+                            <div class="challenge-status" style="grid-row: 1; grid-column: 3">
+                                <p id="challenge_d4_status"></p>
+                            </div>
+                            <div class="challenge-button" style="grid-row: 2; grid-column: 3">
+                                <div class="setting-button" id="challenge_d4_button" onclick="me.challenges['d4'].click()"><p id="challenge_d4_button_text"></p></div>
+                            </div>
+                        </div>
+
+                        <div class="challenge-card" id="challenge_d5">
+                            <div class="challenge-name" style="grid-row: 1 / 3; grid-column: 1">
+                                <p id="challenge_d5_name"></p>
+                            </div>
+                            <div class="challenge-desc" style="grid-row: 1 / 3; grid-column: 2">
+                                <p><span style="font-weight: bold;">Effect:</span> ???</p>
+                                <p><span style="font-weight: bold;">Goal:</span> ???</p>
+                            </div>
+                            <div class="challenge-status" style="grid-row: 1; grid-column: 3">
+                                <p id="challenge_d5_status"></p>
+                            </div>
+                            <div class="challenge-button" style="grid-row: 2; grid-column: 3">
+                                <div class="setting-button" id="challenge_d5_button" onclick="me.challenges['d5'].click()"><p id="challenge_d5_button_text"></p></div>
+                            </div>
+                        </div>
+
+                        <div class="challenge-card" id="challenge_d6">
+                            <div class="challenge-name" style="grid-row: 1 / 3; grid-column: 1">
+                                <p id="challenge_d6_name"></p>
+                            </div>
+                            <div class="challenge-desc" style="grid-row: 1 / 3; grid-column: 2">
+                                <p><span style="font-weight: bold;">Effect:</span> ???</p>
+                                <p><span style="font-weight: bold;">Goal:</span> ???</p>
+                            </div>
+                            <div class="challenge-status" style="grid-row: 1; grid-column: 3">
+                                <p id="challenge_d6_status"></p>
+                            </div>
+                            <div class="challenge-button" style="grid-row: 2; grid-column: 3">
+                                <div class="setting-button" id="challenge_d6_button" onclick="me.challenges['d6'].click()"><p id="challenge_d6_button_text"></p></div>
+                            </div>
+                        </div>
+
+                        <div class="challenge-card" id="challenge_d7">
+                            <div class="challenge-name" style="grid-row: 1 / 3; grid-column: 1">
+                                <p id="challenge_d7_name"></p>
+                            </div>
+                            <div class="challenge-desc" style="grid-row: 1 / 3; grid-column: 2">
+                                <p><span style="font-weight: bold;">Effect:</span> ???</p>
+                                <p><span style="font-weight: bold;">Goal:</span> ???</p>
+                            </div>
+                            <div class="challenge-status" style="grid-row: 1; grid-column: 3">
+                                <p id="challenge_d7_status"></p>
+                            </div>
+                            <div class="challenge-button" style="grid-row: 2; grid-column: 3">
+                                <div class="setting-button" id="challenge_d7_button" onclick="me.challenges['d7'].click()"><p id="challenge_d7_button_text"></p></div>
+                            </div>
+                        </div>
+
+                        <div class="challenge-card" id="challenge_d8">
+                            <div class="challenge-name" style="grid-row: 1 / 3; grid-column: 1">
+                                <p id="challenge_d8_name"></p>
+                            </div>
+                            <div class="challenge-desc" style="grid-row: 1 / 3; grid-column: 2">
+                                <p><span style="font-weight: bold;">Effect:</span> ???</p>
+                                <p><span style="font-weight: bold;">Goal:</span> ???</p>
+                            </div>
+                            <div class="challenge-status" style="grid-row: 1; grid-column: 3">
+                                <p id="challenge_d8_status"></p>
+                            </div>
+                            <div class="challenge-button" style="grid-row: 2; grid-column: 3">
+                                <div class="setting-button" id="challenge_d8_button" onclick="me.challenges['d8'].click()"><p id="challenge_d8_button_text"></p></div>
+                            </div>
+                        </div>
+
+                        <div class="challenge-card" id="challenge_d0">
+                            <div class="challenge-name" style="grid-row: 1 / 3; grid-column: 1">
+                                <p id="challenge_d0_name"></p>
+                            </div>
+                            <div class="challenge-desc" style="grid-row: 1 / 3; grid-column: 2">
+                                <p><span style="font-weight: bold;">Challenge:</span> All Dimensional Challenge effects are disabled.</p>
+                                <p><span style="font-weight: bold;">Goal:</span> ???</p>
+                            </div>
+                            <div class="challenge-status" style="grid-row: 1; grid-column: 3">
+                                <p id="challenge_d0_status"></p>
+                            </div>
+                            <div class="challenge-button" style="grid-row: 2; grid-column: 3">
+                                <div class="setting-button" id="challenge_d0_button" onclick="me.challenges['d0'].click()"><p id="challenge_d0_button_text"></p></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="layer-info" id="section_atomic" style="display: none">
@@ -3707,6 +3858,7 @@
                         <p class="population-boost" upgrade="b04">+<span class="upgrade-effect" style="font-weight: bold"></span> free levels of Generation</p>
                         <p class="population-boost" upgrade="b06">×<span class="upgrade-effect" style="font-weight: bold"></span> more power produced by Neutronic particles</p>
                         <p class="population-boost" upgrade="b07">^<span class="upgrade-effect" style="font-weight: bold"></span> more Atoms on Atomic resets</p>
+                        <p class="population-boost" upgrade="b08">×<span class="upgrade-effect" style="font-weight: bold"></span> more Shards on Dimensional resets</p>
                     </div>
 
                     <div id="biological_evolutions" style="display: none;">
@@ -3884,6 +4036,30 @@
                                         <p class="implement-remaining">To 90%: <span class="implement-remaining-time"></span></p>
                                     </div>
                                     <p class="upgrade-id" style="display: none">07</p>
+                                </div>
+
+                                <div id="evolution_b08" class="evolution" onclick="player.evolutions['b08'].buy()">
+                                    <p class="name">Chitin</p>
+                                    <p class="advantage"></p>
+                                    <p>
+                                        Unlock Dimensional Challenges
+                                    </p>
+                                    <p>
+                                        Gain more Shards on Dimensional resets<br>
+                                        Current: ×<span class="primary-effect"></span><br>
+                                        <span class="primary-effect-prediction-desc">(at 90%: ×<span class="primary-effect-prediction"></span>)</span>
+                                    </p>
+                                    <div class="cost-desc">
+                                        <p style="text-align: center">Cost: <span class="cost"></span></p>
+                                        <p>To 90%: <span class="implement-time"></span></p>
+                                    </div>
+                                    <div class="progress-bar-layout"></div>
+                                    <div class="progress-bar"></div>
+                                    <div class="progress-desc">
+                                        <p style="text-align: center"><span class="progress"></span></p>
+                                        <p class="implement-remaining">To 90%: <span class="implement-remaining-time"></span></p>
+                                    </div>
+                                    <p class="upgrade-id" style="display: none">08</p>
                                 </div>
                             </div>
                         </div>
