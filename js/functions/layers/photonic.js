@@ -77,7 +77,7 @@ function photonic_hint_next(amt) {
 function reset_photonic(force=false, higher_reset=false, autobuyer_induced=false, count_as_reset_num=1) {
     if (!force && !can_photonic()) return;
     if (!force && !autobuyer_induced && player.settings['prestige_confirmation_photonic']) {
-        let result = confirm("Are you sure you want to perform a Photonic reset?\n(This warning can be disabled in Settings)");
+        let result = confirm("你确定要进行光子重置吗?\n(此警告可以在设置中禁用)");
         if (!result) return;
     }
 

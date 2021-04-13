@@ -99,7 +99,7 @@ function gravitonic_hint_next(amt) {
 function reset_gravitonic(force=false, higher_reset=false, autobuyer_induced=false, count_as_reset_num=1) {
     if (!force && !can_gravitonic()) return;
     if (!force && !autobuyer_induced && player.settings['prestige_confirmation_gravitonic']) {
-        let result = confirm("Are you sure you want to perform a Gravitonic reset?\n(This warning can be disabled in Settings)");
+        let result = confirm("你确定要进行重力重置吗?\n(此警告可以在设置中禁用)");
         if (!result) return;
     }
 

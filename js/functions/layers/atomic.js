@@ -54,7 +54,7 @@ function atomic_hint_next(amt) {
 function reset_atomic(force=false, higher_reset=false, autobuyer_induced=false, count_as_reset_num=1) {
     if (!force && !can_atomic()) return;
     if (!force && !autobuyer_induced && player.settings['prestige_confirmation_atomic']) {
-        let result = confirm("Are you sure you want to perform an Atomic reset?\n(This warning can be disabled in Settings)");
+        let result = confirm("您确定要执行原子重置吗？\n（可以在“设置”中禁用此警告）");
         if (!result) return;
     }
 

@@ -26,7 +26,7 @@ function vacuumic_hint_next(amt) {
 function reset_vacuumic(force=false, higher_reset=false, autobuyer_induced=false, count_as_reset_num=1) {
     if (!force && !can_vacuumic()) return;
     if (!force && !autobuyer_induced && player.settings['prestige_confirmation_vacuumic']) {
-        let result = confirm("Are you sure you want to perform a Vacuumic reset?\n(This warning can be disabled in Settings)");
+        let result = confirm("您确定要执行真空重置吗?\n(此警告可以在设置中禁用)");
         if (!result) return;
     }
 

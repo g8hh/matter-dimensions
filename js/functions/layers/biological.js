@@ -33,7 +33,7 @@ function biological_hint_next(amt) {
 function reset_biological(force=false, higher_reset=false, autobuyer_induced=false, count_as_reset_num=1) {
     if (!force && !can_biological()) return;
     if (!force && !autobuyer_induced && player.settings['prestige_confirmation_biological']) {
-        let result = confirm("Are you sure you want to perform a Biological reset?\n(This warning can be disabled in Settings)");
+        let result = confirm("你确定要进行生物重置吗?\n(此警告可以在设置中禁用)");
         if (!result) return;
     }
 
@@ -87,7 +87,7 @@ function reset_biological(force=false, higher_reset=false, autobuyer_induced=fal
 
 
 function perform_extinction() {
-    let result = confirm("Are you sure you want to perform an Extinction?\n(This warning can be disabled in Settings)");
+    let result = confirm("你确定要执行灭绝吗?\n(此警告可以在设置中禁用)");
     if (!result) return;
 
     player.achievements['134'].award();

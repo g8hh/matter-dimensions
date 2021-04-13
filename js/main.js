@@ -1174,7 +1174,7 @@ function hard_reset() {
 }
 
 function hard_reset_confirm() {
-    let result = confirm("Are you sure you want to perform a Hard Reset? All data will be lost!");
+    let result = confirm("您确定要执行硬重置吗？ 所有数据将丢失！");
     if (result) hard_reset();
 }
 
