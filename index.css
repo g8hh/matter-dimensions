@@ -41,6 +41,17 @@ body {
     --color-800: #EAD9C1;
     --color-900: #FCFAF7;
 }
+.theme-red {
+    --color-100: #2C1D1B;
+    --color-200: #4E2220;
+    --color-300: #772927;
+    --color-400: #972E2C;
+    --color-500: #B83634;
+    --color-600: #B86A63;
+    --color-700: #D88D8C;
+    --color-800: #EAC1C1;
+    --color-900: #FCF7F7;
+}
 
 .font-larabiefont {
     --font-family: 'larabiefont_rg', 'Courier New', Courier, monospace;
