@@ -173,7 +173,7 @@ function update_prestige() {
         document.getElementById("statistics_fastest_gravitonic").style.display = "none";
     }
 
-    document.getElementById("matter_needed_to_retain_gravitons").textContent = format_number(gravitonic_hint_next(-1));
+    document.getElementById("matter_needed_to_retain_gravitons").textContent = format_number(prestige_earn_gravitons_base());
 
     if (can_neutronic()) {
         document.getElementById("prestige_layer_neutronic_reset").className = "prestige-layer-ascend";

@@ -1,4 +1,4 @@
-function prestige_earn_gravitons() {
+function prestige_earn_gravitons_base() {
     if (!player.matter.gt(1)) return big(0);
 
     var base = big(10);
@@ -42,8 +42,13 @@ function prestige_earn_gravitons() {
     // Vacuumic Challenge 4: graviton gain is divided by 4
     if (player.challenges['v4'].inC()) base_gravitons = base_gravitons.mult(0.25);
 
-    return base_gravitons.subtract(player.gravitons).rounddown().max(0);
+    return base_gravitons.rounddown().max(0);
 }
+
+function prestige_earn_gravitons() {
+    return prestige_earn_gravitons_base().subtract(player.gravitons).rounddown().max(0);
+}
+
 function can_gravitonic() {
     return prestige_earn_gravitons().gt(0);
 }
