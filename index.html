@@ -4292,6 +4292,7 @@
                         <label class="settings-block-selector-checkbox"><input type="checkbox" name="no_resource_limit"><p>Display numbers above the resource limit normally</p></label>
                         <label class="settings-block-selector-checkbox"><input type="checkbox" name="show_ids"><p>Show upgrade IDs</p></label>
                         <label class="settings-block-selector-checkbox"><input type="checkbox" name="show_all_changelog"><p>Show full changelog (might include spoilers)</p></label>
+                        <label class="settings-block-selector-checkbox"><input type="checkbox" name="separate_scroll_right"><p>Scroll the right column separately</p></label>
                     </div>
 
                     <div class="settings-page-block" style="grid-row: 2 / 4; grid-column: 1">
@@ -4593,82 +4594,84 @@
                         </div>
                     </div>
                 </div>
-
             </div>
+
             <div class="prestige-menu">
-                <div id="prestige_layer_photonic" class="prestige-layer" style="display: none">
-                    <p class="header">Photonic</p>
-                    <p>You have<br><span class="prestige_currency_photonic" style="font-weight: bold"></span> Photons</span></p>
-                    <div id="prestige_layer_photonic_reset" class="prestige-layer-ascend" onclick="reset_photonic()">
-                        <p class="prestige-layer-name">Collect energy</p>
-                        <p id="prestige_layer_photonic_gain" class="prestige-layer-desc">Gain <span class="prestige_currency_photonic_gain" style="font-weight: bold"></span> Photons</p>
-                        <p id="prestige_layer_photonic_hint" class="prestige-layer-desc">You need <span id="prestige_layer_photonic_hint_amt"></span> energy</p>
-                        <p id="prestige_layer_photonic_hint_next" class="prestige-layer-desc">Next at <span id="prestige_layer_photonic_hint_next_amt"></span> energy</p>
+                <div class="prestige-menu-wrapper">
+                    <div id="prestige_layer_photonic" class="prestige-layer" style="display: none">
+                        <p class="header">Photonic</p>
+                        <p>You have<br><span class="prestige_currency_photonic" style="font-weight: bold"></span> Photons</span></p>
+                        <div id="prestige_layer_photonic_reset" class="prestige-layer-ascend" onclick="reset_photonic()">
+                            <p class="prestige-layer-name">Collect energy</p>
+                            <p id="prestige_layer_photonic_gain" class="prestige-layer-desc">Gain <span class="prestige_currency_photonic_gain" style="font-weight: bold"></span> Photons</p>
+                            <p id="prestige_layer_photonic_hint" class="prestige-layer-desc">You need <span id="prestige_layer_photonic_hint_amt"></span> energy</p>
+                            <p id="prestige_layer_photonic_hint_next" class="prestige-layer-desc">Next at <span id="prestige_layer_photonic_hint_next_amt"></span> energy</p>
+                        </div>
+                        <div id="autobuyer_photonic" class="button-row" style="display: none"><input id="autobuyer_photonic_toggle" type="checkbox" onclick="me.autobuyers['photonic'].update_params()"><input id="autobuyer_photonic_param" type="text" onchange="me.autobuyers['photonic'].update_params()" style="font-size: 0.9rem;"></div>
                     </div>
-                    <div id="autobuyer_photonic" class="button-row" style="display: none"><input id="autobuyer_photonic_toggle" type="checkbox" onclick="me.autobuyers['photonic'].update_params()"><input id="autobuyer_photonic_param" type="text" onchange="me.autobuyers['photonic'].update_params()" style="font-size: 0.9rem;"></div>
-                </div>
-                <div id="prestige_layer_gravitonic" class="prestige-layer" style="display: none">
-                    <p class="header">Gravitonic</p>
-                    <p>You have<br><span class="prestige_currency_gravitonic" style="font-weight: bold"></span> Gravitons</span></p>
-                    <div id="prestige_layer_gravitonic_reset" class="prestige-layer-ascend" onclick="reset_gravitonic()">
-                        <p class="prestige-layer-name">Condense matter</p>
-                        <p id="prestige_layer_gravitonic_gain" class="prestige-layer-desc">Gain <span class="prestige_currency_gravitonic_gain" style="font-weight: bold"></span> Gravitons</p>
-                        <p id="prestige_layer_gravitonic_hint" class="prestige-layer-desc">You need <span id="prestige_layer_gravitonic_hint_amt"></span> matter</p>
-                        <p id="prestige_layer_gravitonic_hint_next" class="prestige-layer-desc">Next at <span id="prestige_layer_gravitonic_hint_next_amt"></span> matter</p>
+                    <div id="prestige_layer_gravitonic" class="prestige-layer" style="display: none">
+                        <p class="header">Gravitonic</p>
+                        <p>You have<br><span class="prestige_currency_gravitonic" style="font-weight: bold"></span> Gravitons</span></p>
+                        <div id="prestige_layer_gravitonic_reset" class="prestige-layer-ascend" onclick="reset_gravitonic()">
+                            <p class="prestige-layer-name">Condense matter</p>
+                            <p id="prestige_layer_gravitonic_gain" class="prestige-layer-desc">Gain <span class="prestige_currency_gravitonic_gain" style="font-weight: bold"></span> Gravitons</p>
+                            <p id="prestige_layer_gravitonic_hint" class="prestige-layer-desc">You need <span id="prestige_layer_gravitonic_hint_amt"></span> matter</p>
+                            <p id="prestige_layer_gravitonic_hint_next" class="prestige-layer-desc">Next at <span id="prestige_layer_gravitonic_hint_next_amt"></span> matter</p>
+                        </div>
+                        <div id="autobuyer_gravitonic" class="button-row" style="display: none"><input id="autobuyer_gravitonic_toggle" type="checkbox" onclick="me.autobuyers['gravitonic'].update_params()"><input id="autobuyer_gravitonic_param" type="text" onchange="me.autobuyers['gravitonic'].update_params()" style="font-size: 0.9rem;"></div>
                     </div>
-                    <div id="autobuyer_gravitonic" class="button-row" style="display: none"><input id="autobuyer_gravitonic_toggle" type="checkbox" onclick="me.autobuyers['gravitonic'].update_params()"><input id="autobuyer_gravitonic_param" type="text" onchange="me.autobuyers['gravitonic'].update_params()" style="font-size: 0.9rem;"></div>
-                </div>
-                <div id="prestige_layer_neutronic" class="prestige-layer" style="display: none">
-                    <p class="header">Neutronic</p>
-                    <p>You have<br><span class="prestige_currency_neutronic" style="font-weight: bold"></span> Neutrons</span></p>
-                    <div id="prestige_layer_neutronic_reset" class="prestige-layer-ascend" onclick="reset_neutronic()">
-                        <p class="prestige-layer-name">Compress dimensions</p>
-                        <p id="prestige_layer_neutronic_gain" class="prestige-layer-desc">Gain <span class="prestige_currency_neutronic_gain" style="font-weight: bold"></span> Neutrons</p>
-                        <p id="prestige_layer_neutronic_hint" class="prestige-layer-desc">You need <span id="prestige_layer_neutronic_hint_amt"></span> 1st M. Dims</p>
-                        <p id="prestige_layer_neutronic_hint_next" class="prestige-layer-desc">Next at <span id="prestige_layer_neutronic_hint_next_amt"></span> 1st M. Dims</p>
+                    <div id="prestige_layer_neutronic" class="prestige-layer" style="display: none">
+                        <p class="header">Neutronic</p>
+                        <p>You have<br><span class="prestige_currency_neutronic" style="font-weight: bold"></span> Neutrons</span></p>
+                        <div id="prestige_layer_neutronic_reset" class="prestige-layer-ascend" onclick="reset_neutronic()">
+                            <p class="prestige-layer-name">Compress dimensions</p>
+                            <p id="prestige_layer_neutronic_gain" class="prestige-layer-desc">Gain <span class="prestige_currency_neutronic_gain" style="font-weight: bold"></span> Neutrons</p>
+                            <p id="prestige_layer_neutronic_hint" class="prestige-layer-desc">You need <span id="prestige_layer_neutronic_hint_amt"></span> 1st M. Dims</p>
+                            <p id="prestige_layer_neutronic_hint_next" class="prestige-layer-desc">Next at <span id="prestige_layer_neutronic_hint_next_amt"></span> 1st M. Dims</p>
+                        </div>
+                        <div id="autobuyer_neutronic" class="button-row" style="display: none"><input id="autobuyer_neutronic_toggle" type="checkbox" onclick="me.autobuyers['neutronic'].update_params()"><input id="autobuyer_neutronic_param" type="text" onchange="me.autobuyers['neutronic'].update_params()" style="font-size: 0.9rem;"></div>
                     </div>
-                    <div id="autobuyer_neutronic" class="button-row" style="display: none"><input id="autobuyer_neutronic_toggle" type="checkbox" onclick="me.autobuyers['neutronic'].update_params()"><input id="autobuyer_neutronic_param" type="text" onchange="me.autobuyers['neutronic'].update_params()" style="font-size: 0.9rem;"></div>
-                </div>
-                <div id="prestige_layer_vacuumic" class="prestige-layer" style="display: none">
-                    <p class="header">Vacuumic</p>
-                    <p>You have<br><span class="prestige_currency_vacuumic" style="font-weight: bold"></span> Vacuum Energy</span></p>
-                    <div id="prestige_layer_vacuumic_reset" class="prestige-layer-ascend" onclick="reset_vacuumic()">
-                        <p class="prestige-layer-name">Collapse space</p>
-                        <p id="prestige_layer_vacuumic_gain" class="prestige-layer-desc">Gain <span class="prestige_currency_vacuumic_gain" style="font-weight: bold"></span> Vacuum Energy</p>
-                        <p id="prestige_layer_vacuumic_hint" class="prestige-layer-desc">Reach <span id="prestige_layer_vacuumic_hint_amt"></span> matter</p>
-                        <p id="prestige_layer_vacuumic_hint_next" class="prestige-layer-desc">Next at <span id="prestige_layer_vacuumic_hint_next_amt"></span> space</p>
+                    <div id="prestige_layer_vacuumic" class="prestige-layer" style="display: none">
+                        <p class="header">Vacuumic</p>
+                        <p>You have<br><span class="prestige_currency_vacuumic" style="font-weight: bold"></span> Vacuum Energy</span></p>
+                        <div id="prestige_layer_vacuumic_reset" class="prestige-layer-ascend" onclick="reset_vacuumic()">
+                            <p class="prestige-layer-name">Collapse space</p>
+                            <p id="prestige_layer_vacuumic_gain" class="prestige-layer-desc">Gain <span class="prestige_currency_vacuumic_gain" style="font-weight: bold"></span> Vacuum Energy</p>
+                            <p id="prestige_layer_vacuumic_hint" class="prestige-layer-desc">Reach <span id="prestige_layer_vacuumic_hint_amt"></span> matter</p>
+                            <p id="prestige_layer_vacuumic_hint_next" class="prestige-layer-desc">Next at <span id="prestige_layer_vacuumic_hint_next_amt"></span> space</p>
+                        </div>
+                        <div id="autobuyer_vacuumic" class="button-row" style="display: none"><input id="autobuyer_vacuumic_toggle" type="checkbox" onclick="me.autobuyers['vacuumic'].update_params()"><input id="autobuyer_vacuumic_param" type="text" onchange="me.autobuyers['vacuumic'].update_params()" style="font-size: 0.9rem;"></div>
                     </div>
-                    <div id="autobuyer_vacuumic" class="button-row" style="display: none"><input id="autobuyer_vacuumic_toggle" type="checkbox" onclick="me.autobuyers['vacuumic'].update_params()"><input id="autobuyer_vacuumic_param" type="text" onchange="me.autobuyers['vacuumic'].update_params()" style="font-size: 0.9rem;"></div>
-                </div>
-                <div id="prestige_layer_dimensional" class="prestige-layer" style="display: none">
-                    <p class="header">Dimensional</p>
-                    <p>You have<br><span class="prestige_currency_dimensional" style="font-weight: bold"></span> Shards</span></p>
-                    <div id="prestige_layer_dimensional_reset" class="prestige-layer-ascend" onclick="reset_dimensional()">
-                        <p class="prestige-layer-name">Coil dimensions</p>
-                        <p id="prestige_layer_dimensional_gain" class="prestige-layer-desc">Gain <span class="prestige_currency_dimensional_gain" style="font-weight: bold"></span> Shards</p>
-                        <p id="prestige_layer_dimensional_hint" class="prestige-layer-desc">Buy <span id="prestige_layer_dimensional_hint_amt"></span> 4th M. Dims</p>
+                    <div id="prestige_layer_dimensional" class="prestige-layer" style="display: none">
+                        <p class="header">Dimensional</p>
+                        <p>You have<br><span class="prestige_currency_dimensional" style="font-weight: bold"></span> Shards</span></p>
+                        <div id="prestige_layer_dimensional_reset" class="prestige-layer-ascend" onclick="reset_dimensional()">
+                            <p class="prestige-layer-name">Coil dimensions</p>
+                            <p id="prestige_layer_dimensional_gain" class="prestige-layer-desc">Gain <span class="prestige_currency_dimensional_gain" style="font-weight: bold"></span> Shards</p>
+                            <p id="prestige_layer_dimensional_hint" class="prestige-layer-desc">Buy <span id="prestige_layer_dimensional_hint_amt"></span> 4th M. Dims</p>
+                        </div>
+                        <div id="autobuyer_dimensional" class="button-row" style="display: none"><input id="autobuyer_dimensional_toggle" type="checkbox" onclick="me.autobuyers['dimensional'].update_params()"><input id="autobuyer_dimensional_param" type="text" onchange="me.autobuyers['dimensional'].update_params()" style="font-size: 0.9rem;"></div>
                     </div>
-                    <div id="autobuyer_dimensional" class="button-row" style="display: none"><input id="autobuyer_dimensional_toggle" type="checkbox" onclick="me.autobuyers['dimensional'].update_params()"><input id="autobuyer_dimensional_param" type="text" onchange="me.autobuyers['dimensional'].update_params()" style="font-size: 0.9rem;"></div>
-                </div>
-                <div id="prestige_layer_atomic" class="prestige-layer" style="display: none">
-                    <p class="header">Atomic</p>
-                    <p>You have<br><span class="prestige_currency_atomic" style="font-weight: bold"></span> Atoms</span></p>
-                    <div id="prestige_layer_atomic_reset" class="prestige-layer-ascend" onclick="reset_atomic()">
-                        <p class="prestige-layer-name">Collide matter</p>
-                        <p id="prestige_layer_atomic_gain" class="prestige-layer-desc">Gain <span class="prestige_currency_atomic_gain" style="font-weight: bold"></span> Atoms<span id="prestige_layer_atomic_gain_ck"> and <span class="prestige_currency_atomic_gain_ck" style="font-weight: bold"></span> CK</span></p>
-                        <p id="prestige_layer_atomic_hint_prebreak" class="prestige-layer-desc">Break Infinity</p>
-                        <p id="prestige_layer_atomic_hint_postbreak" class="prestige-layer-desc">Reach <span id="prestige_layer_atomic_hint_amt"></span> matter</p>
-                        <p id="prestige_layer_atomic_hint_next" class="prestige-layer-desc">Next at <span id="prestige_layer_atomic_hint_next_amt"></span> matter</p>
+                    <div id="prestige_layer_atomic" class="prestige-layer" style="display: none">
+                        <p class="header">Atomic</p>
+                        <p>You have<br><span class="prestige_currency_atomic" style="font-weight: bold"></span> Atoms</span></p>
+                        <div id="prestige_layer_atomic_reset" class="prestige-layer-ascend" onclick="reset_atomic()">
+                            <p class="prestige-layer-name">Collide matter</p>
+                            <p id="prestige_layer_atomic_gain" class="prestige-layer-desc">Gain <span class="prestige_currency_atomic_gain" style="font-weight: bold"></span> Atoms<span id="prestige_layer_atomic_gain_ck"> and <span class="prestige_currency_atomic_gain_ck" style="font-weight: bold"></span> CK</span></p>
+                            <p id="prestige_layer_atomic_hint_prebreak" class="prestige-layer-desc">Break Infinity</p>
+                            <p id="prestige_layer_atomic_hint_postbreak" class="prestige-layer-desc">Reach <span id="prestige_layer_atomic_hint_amt"></span> matter</p>
+                            <p id="prestige_layer_atomic_hint_next" class="prestige-layer-desc">Next at <span id="prestige_layer_atomic_hint_next_amt"></span> matter</p>
+                        </div>
                     </div>
-                </div>
-                <div id="prestige_layer_biological" class="prestige-layer" style="display: none">
-                    <p class="header">Biological</p>
-                    <p>You have<br><span class="prestige_currency_biological" style="font-weight: bold"></span> Genes</span></p>
-                    <div id="prestige_layer_biological_reset" class="prestige-layer-ascend" onclick="reset_biological()">
-                        <p class="prestige-layer-name">Combine atoms</p>
-                        <p id="prestige_layer_biological_gain" class="prestige-layer-desc">Gain <span class="prestige_currency_biological_gain" style="font-weight: bold"></span> Genes</p>
-                        <p id="prestige_layer_biological_hint" class="prestige-layer-desc">Reach <span id="prestige_layer_biological_hint_amt"></span> atoms</p>
-                        <p id="prestige_layer_biological_hint_next" class="prestige-layer-desc">Next at <span id="prestige_layer_biological_hint_next_amt"></span> atoms</p>
+                    <div id="prestige_layer_biological" class="prestige-layer" style="display: none">
+                        <p class="header">Biological</p>
+                        <p>You have<br><span class="prestige_currency_biological" style="font-weight: bold"></span> Genes</span></p>
+                        <div id="prestige_layer_biological_reset" class="prestige-layer-ascend" onclick="reset_biological()">
+                            <p class="prestige-layer-name">Combine atoms</p>
+                            <p id="prestige_layer_biological_gain" class="prestige-layer-desc">Gain <span class="prestige_currency_biological_gain" style="font-weight: bold"></span> Genes</p>
+                            <p id="prestige_layer_biological_hint" class="prestige-layer-desc">Reach <span id="prestige_layer_biological_hint_amt"></span> atoms</p>
+                            <p id="prestige_layer_biological_hint_next" class="prestige-layer-desc">Next at <span id="prestige_layer_biological_hint_next_amt"></span> atoms</p>
+                        </div>
                     </div>
                 </div>
             </div>

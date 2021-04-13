@@ -803,6 +803,7 @@ var default_settings = {
     "no_resource_limit": false,
     "show_ids": false,
     "show_all_changelog": false,
+    "separate_scroll_right": false,
 };
 
 var player = new Player();

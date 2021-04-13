@@ -97,7 +97,7 @@ input {
     padding: 10px;
 }
 
-.settings-menu-wrapper, .prestige-menu {
+.settings-menu-wrapper, .prestige-menu-wrapper {
     display: flex;
     flex-direction: column;
     align-items: stretch;
@@ -110,7 +110,7 @@ input {
     height: calc(100vh - 20px);
 }
 
-.settings-menu-wrapper > div, .prestige-menu > div, .settings-submenu > div {
+.settings-menu-wrapper > div, .prestige-menu-wrapper > div, .settings-submenu > div {
     margin-bottom: 10px;
 }
 
@@ -1004,4 +1004,18 @@ input {
 .autobuyer-toggle {
     padding-left: 10px; 
     padding-right: 10px;
+}
+
+.prestige-menu.scrollable .prestige-menu-wrapper {
+    width: inherit;
+    position: sticky;
+    top: 10px;
+    height: calc(100vh - 20px);
+    position: sticky;
+    overflow-y: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+.prestige-menu.scrollable .prestige-menu-wrapper::-webkit-scrollbar {
+    display: none;
 }
