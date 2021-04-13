@@ -326,6 +326,7 @@ class Player {
         this.achievements["137"] = new Achievement("137", "...breathe out", "Have an element with the total level of at least 1000", "check_137");
         this.achievements["138"] = new Achievement("138", "The Hindenburg", "Have 10 free levels from Generation", "check_138");
 
+        this.achievements["145"] = new Achievement("145", "One Death", "Reach a mortality rate of 2.5", "check_145");
         this.achievements["147"] = new Achievement("147", "Double Trouble", "Complete two regular Neutronic challenges five times.\nReward: you can max buy Atomic upgrades", "check_147", "effective");
         this.achievements["148"] = new Achievement("148", "SpaceL", "Have 50 Space Theorems in total", "check_148");
 
