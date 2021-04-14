@@ -13,3 +13,7 @@ functions["challenge_reset_neutronic"] = () => {
 functions["challenge_reset_vacuumic"] = () => {
     reset_dimensional(true);
 };
+
+functions["challenge_reset_dimensional"] = () => {
+    reset_atomic(true);
+};

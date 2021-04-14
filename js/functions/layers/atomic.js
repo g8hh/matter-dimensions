@@ -93,6 +93,12 @@ function reset_atomic(force=false, higher_reset=false, autobuyer_induced=false, 
         }
     }
 
+    for (let key of Object.keys(player.challenges)) {
+        if (key.includes("d")) {
+            if (player.challenges[key].in_challenge) player.challenges[key].exit(false);
+        }
+    }
+
     let reset_multiplier = 1;
     // evolution b03: multiply resets below Biological
     if (player.evolutions['b03'].is_active()) reset_multiplier *= player.evolutions['b03'].get_effect().toInt();
