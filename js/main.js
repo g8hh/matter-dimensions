@@ -576,7 +576,7 @@ class Player {
         this.challenges["v0"] = new Challenge("v0", "Vacuumic Meta-Challenge", "vacuumic", ['v1','v2','v3','v4','v5','v6','v7','v8'], "start_v0", "goal_v0", "end_v0");
 
         this.challenges["d1"] = new Challenge("d1", "Dimensional Challenge 1", "dimensional", [], "start_d1", "goal_d1", "end_d1");
-        this.challenges["d2"] = new Challenge("d2", "Dimensional Challenge 2", "dimensional", [], "start_d2", "goal_d2", "end_d2");
+        this.challenges["d2"] = new Challenge("d2", "Dimensional Challenge 2", "dimensional", [], "start_d2", "goal_d2", "end_d2", 1, "", "effect_d2");
         this.challenges["d3"] = new Challenge("d3", "Dimensional Challenge 3", "dimensional", [], "start_d3", "goal_d3", "end_d3");
         this.challenges["d4"] = new Challenge("d4", "Dimensional Challenge 4", "dimensional", [], "start_d4", "goal_d4", "end_d4");
         this.challenges["d5"] = new Challenge("d5", "Dimensional Challenge 5", "dimensional", [], "start_d5", "goal_d5", "end_d5");

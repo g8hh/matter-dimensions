@@ -85,3 +85,7 @@ functions["end_d8"] = () => {
 functions["end_d0"] = () => {
     return; // External effect
 };
+
+functions["effect_d2"] = (c) => {
+    return big(1).max(player.time_dimensional / 1000);
+};

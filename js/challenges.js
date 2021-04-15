@@ -101,10 +101,10 @@ class Challenge {
         document.getElementById("challenge_" + this.id + "_button_text").textContent = btn_text;
         document.getElementById("challenge_" + this.id).className = color;
         document.getElementById("challenge_" + this.id + "_name").textContent = this.name;
+        if (document.getElementById("challenge_" + this.id + "_current_effect") !== null) document.getElementById("challenge_" + this.id + "_current_effect").textContent = format_number(this.get_effect());
         if (this.goal_function != "") document.getElementById("challenge_" + this.id + "_goal").textContent = format_number(this.goal());
         if (this.max_completions > 1) {
             document.getElementById("challenge_" + this.id + "_name").textContent += "x" + Math.min(this.max_completions, this.completions + 1);
-            document.getElementById("challenge_" + this.id + "_current_effect").textContent = format_number(this.get_effect());
             document.getElementById("challenge_" + this.id + "_next_effect").textContent = format_number(this.get_effect(Math.min(this.max_completions, this.completions + 1)));
             if (this.completions == this.max_completions) document.getElementById("challenge_" + this.id + "_next").style.display = "none";
             else document.getElementById("challenge_" + this.id + "_next").style.display = "";
