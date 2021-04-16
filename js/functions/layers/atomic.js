@@ -79,6 +79,8 @@ function reset_atomic(force=false, higher_reset=false, autobuyer_induced=false, 
     for (let key of Object.keys(player.upgrades)) {
         // achievement 88: keep all automation upgrades
         if (player.achievements['88'].complete && (key == "d72")) continue;
+        // challenge d6: Atomic does not reset Dimensional upgrades
+        if (!player.challenges['d0'].inC() && (player.challenges['d6'].inC() || player.challenges['d6'].completed) && !higher_reset) continue;
         if (key.includes("d")) {
             player.upgrades[key].reset();
         }

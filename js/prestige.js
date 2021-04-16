@@ -1179,12 +1179,16 @@ function cap_resources() {
     player.neutrons = player.neutrons.min(player.challenge_strength_4);
     // achievement 108: Vacuum Energy is not affected by resource limit
     if (!player.achievements['108'].complete) player.vacuum_energy = player.vacuum_energy.min(player.challenge_strength_4);
-    player.shards = player.shards.min(player.challenge_strength_4);
+    // challenge d4: Shards are not affected by resource limit
+    if (!(!player.challenges['d0'].inC() && (player.challenges['d4'].inC() || player.challenges['d4'].completed))) {
+        player.shards = player.shards.min(player.challenge_strength_4);
+    }
     // a05_2: Atoms and Collision Knowledge are not affected by resource limit
     if (!player.milestones['a05_2'].is_active()) {
         player.atoms = player.atoms.min(player.challenge_strength_4);
         player.collision_knowledge = player.collision_knowledge.min(player.challenge_strength_4);
     }
+    player.genes = player.genes.min(player.challenge_strength_4);
 
     // Vacuumic Challenge 5: the resource limit for Light, Black Holes, Stars and Inflation is 1e5. 
     if (!player.challenges['v5'].inC()) {

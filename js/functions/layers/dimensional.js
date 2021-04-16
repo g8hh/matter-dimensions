@@ -71,7 +71,11 @@ function reset_dimensional(force=false, higher_reset=false, autobuyer_induced=fa
     if (!force && player.time_dimensional - player.time_passed < 1e-9) player.achievements['106'].award();
 
     // Challenge 4: all resources are capped
-    player.shards = player.shards.add(earned_shards).round().min(player.challenge_strength_4);
+    player.shards = player.shards.add(earned_shards).round();
+    // challenge d4: Shards are not affected by resource limit
+    if (!(!player.challenges['d0'].inC() && (player.challenges['d4'].inC() || player.challenges['d4'].completed))) {
+        player.shards = player.shards.min(player.challenge_strength_4);
+    }
 
     player.temperature_energy = big(0);
 
