@@ -1255,8 +1255,8 @@ function max_buy_upgrades(level) {
             // AUTO1_4: instantly gain Grations upon reset
             // just QoL
             if (level == 'g' && player.upgrades['AUTO1_4'].is_active() && player.upgrades['AUTO1_4'].enabled) {
-                if (can_gravitonic(me)) {
-                    let gravitons_gained = prestige_earn_gravitons(me);
+                if (can_gravitonic()) {
+                    let gravitons_gained = prestige_earn_gravitons();
                     // Challenge 4: all resources are capped
                     player.gravitons = player.gravitons.add(gravitons_gained).round().min(player.challenge_strength_4);
 

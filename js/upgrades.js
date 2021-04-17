@@ -61,7 +61,7 @@ class Upgrade {
         if (this.currency instanceof Dimension) {
             return !(this.currency.amt.lt(this.get_cost(buy_amt)));
         }
-        else return !(me[this.currency].lt(this.get_cost(buy_amt)));
+        else return !(player[this.currency].lt(this.get_cost(buy_amt)));
     }
 
     buy(buy_amt = 1) {
@@ -75,10 +75,10 @@ class Upgrade {
             this.currency.amt = this.currency.amt.subtract(this.get_cost(buy_amt)).max(0);
         }
         else {
-            me[this.currency] = me[this.currency].subtract(this.get_cost(buy_amt)).max(0);
+            player[this.currency] = player[this.currency].subtract(this.get_cost(buy_amt)).max(0);
             // Rounding fix
             if (this.currency != "matter") {
-                me[this.currency] = me[this.currency].round();
+                player[this.currency] = player[this.currency].round();
             }
         }
 
@@ -86,7 +86,7 @@ class Upgrade {
         if (this.max_level != -1) this.amt = Math.min(this.amt, this.max_level);
         if (this.custom_buy_function != "") functions[this.custom_buy_function](buy_amt);
 
-        update_challenges_power(me);
+        update_challenges_power();
     }
 
     binary_search_max() {

@@ -600,7 +600,7 @@ functions["upg_v164_power"] = (amt) => {
     return big(player.vacuumic_resets).pow(0.35).add(1);
 }
 functions["upg_v171_power"] = (amt) => {
-    return prestige_earn_photons(me).add(1).log(10).mult(2).add(1).rounddown();
+    return prestige_earn_photons().add(1).log(10).mult(2).add(1).rounddown();
 }
 functions["upg_v172_power"] = (amt) => {
     let gc_completed = 0;

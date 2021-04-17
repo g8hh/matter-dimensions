@@ -73,7 +73,7 @@ class Dimension {
         if (this.produces instanceof Dimension) {
             this.produces.amt = this.produces.amt.add(this.get_production_total(production_timedelta)).min(player.challenge_strength_4);
         }
-        else me[this.produces] = me[this.produces].add(this.get_production_total(production_timedelta)).min(player.challenge_strength_4);
+        else player[this.produces] = player[this.produces].add(this.get_production_total(production_timedelta)).min(player.challenge_strength_4);
     }
 
     get_cost(buy_amt = 1) {
@@ -96,7 +96,7 @@ class Dimension {
         if (this.currency instanceof Dimension) {
             return !(this.currency.amt.lt(this.get_cost(buy_amt)));
         }
-        else return !(me[this.currency].lt(this.get_cost(buy_amt)));
+        else return !(player[this.currency].lt(this.get_cost(buy_amt)));
     }
 
     buy(buy_amt = 1) {
@@ -106,10 +106,10 @@ class Dimension {
             this.currency.amt = this.currency.amt.subtract(this.get_cost(buy_amt)).max(0);
         }
         else {
-            me[this.currency] = me[this.currency].subtract(this.get_cost(buy_amt)).max(0);
+            player[this.currency] = player[this.currency].subtract(this.get_cost(buy_amt)).max(0);
             // Rounding fix
             if (this.currency != "matter") {
-                me[this.currency] = me[this.currency].round();
+                player[this.currency] = player[this.currency].round();
             }
         }
         // Challenge 4: all resources are capped
