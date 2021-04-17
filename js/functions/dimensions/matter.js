@@ -251,6 +251,8 @@ functions['matter_1_pow'] = (amt_bought, amt) => {
     base_pow = base_pow.mult(player.upgrades['p51'].get_effect().pow(player.dimensions['photonic_1'].amt_bought));
     // Dimensional Dimensions boost respective dimensions
     base_pow = base_pow.mult(power_manifolds().pow(player.dimensions['dimensional_1'].amt_bought));
+    // evolution b09: boost all Matter Dimensions based on current matter
+    if (player.evolutions['b09'].is_active()) base_pow = base_pow.mult(player.evolutions['b09'].get_secondary_effect());
 
     // challenge d5: raise Matter Dim multipliers to a power
     if (!player.challenges['d0'].inC() && (player.challenges['d5'].inC() || player.challenges['d5'].completed)) base_pow = base_pow.pow(1.5);
@@ -297,6 +299,8 @@ functions['matter_2_pow'] = (amt_bought, amt) => {
     if (player.challenges['v2'].completed) base_pow = base_pow.mult(2);
     // Dimensional Dimensions boost respective dimensions
     base_pow = base_pow.mult(power_manifolds().pow(player.dimensions['dimensional_2'].amt_bought));
+    // evolution b09: boost all Matter Dimensions based on current matter
+    if (player.evolutions['b09'].is_active()) base_pow = base_pow.mult(player.evolutions['b09'].get_secondary_effect());
 
     // challenge d5: raise Matter Dim multipliers to a power
     if (!player.challenges['d0'].inC() && (player.challenges['d5'].inC() || player.challenges['d5'].completed)) base_pow = base_pow.pow(1.5);
@@ -335,6 +339,8 @@ functions['matter_3_pow'] = (amt_bought, amt) => {
     base_pow = base_pow.mult(player.upgrades['p51'].get_effect().pow(player.dimensions['photonic_3'].amt_bought));
     // Dimensional Dimensions boost respective dimensions
     base_pow = base_pow.mult(power_manifolds().pow(player.dimensions['dimensional_3'].amt_bought));
+    // evolution b09: boost all Matter Dimensions based on current matter
+    if (player.evolutions['b09'].is_active()) base_pow = base_pow.mult(player.evolutions['b09'].get_secondary_effect());
 
     // challenge d5: raise Matter Dim multipliers to a power
     if (!player.challenges['d0'].inC() && (player.challenges['d5'].inC() || player.challenges['d5'].completed)) base_pow = base_pow.pow(1.5);
@@ -381,6 +387,8 @@ functions['matter_4_pow'] = (amt_bought, amt) => {
     if (player.challenges['v2'].completed) base_pow = base_pow.mult(2);
     // Dimensional Dimensions boost respective dimensions
     base_pow = base_pow.mult(power_manifolds().pow(player.dimensions['dimensional_4'].amt_bought));
+    // evolution b09: boost all Matter Dimensions based on current matter
+    if (player.evolutions['b09'].is_active()) base_pow = base_pow.mult(player.evolutions['b09'].get_secondary_effect());
 
     // challenge d5: raise Matter Dim multipliers to a power
     if (!player.challenges['d0'].inC() && (player.challenges['d5'].inC() || player.challenges['d5'].completed)) base_pow = base_pow.pow(1.5);
@@ -424,6 +432,8 @@ functions['matter_5_pow'] = (amt_bought, amt) => {
     base_pow = base_pow.mult(player.upgrades['p51'].get_effect().pow(player.dimensions['photonic_5'].amt_bought));
     // Dimensional Dimensions boost respective dimensions
     base_pow = base_pow.mult(power_manifolds().pow(player.dimensions['dimensional_5'].amt_bought));
+    // evolution b09: boost all Matter Dimensions based on current matter
+    if (player.evolutions['b09'].is_active()) base_pow = base_pow.mult(player.evolutions['b09'].get_secondary_effect());
 
     // challenge d5: raise Matter Dim multipliers to a power
     if (!player.challenges['d0'].inC() && (player.challenges['d5'].inC() || player.challenges['d5'].completed)) base_pow = base_pow.pow(1.5);
@@ -464,6 +474,8 @@ functions['matter_6_pow'] = (amt_bought, amt) => {
     if (player.challenges['v2'].completed) base_pow = base_pow.mult(2);
     // Dimensional Dimensions boost respective dimensions
     base_pow = base_pow.mult(power_manifolds().pow(player.dimensions['dimensional_6'].amt_bought));
+    // evolution b09: boost all Matter Dimensions based on current matter
+    if (player.evolutions['b09'].is_active()) base_pow = base_pow.mult(player.evolutions['b09'].get_secondary_effect());
 
     // challenge d5: raise Matter Dim multipliers to a power
     if (!player.challenges['d0'].inC() && (player.challenges['d5'].inC() || player.challenges['d5'].completed)) base_pow = base_pow.pow(1.5);
@@ -504,6 +516,8 @@ functions['matter_7_pow'] = (amt_bought, amt) => {
     base_pow = base_pow.mult(player.upgrades['p51'].get_effect().pow(player.dimensions['photonic_7'].amt_bought));
     // Dimensional Dimensions boost respective dimensions
     base_pow = base_pow.mult(power_manifolds().pow(player.dimensions['dimensional_7'].amt_bought));
+    // evolution b09: boost all Matter Dimensions based on current matter
+    if (player.evolutions['b09'].is_active()) base_pow = base_pow.mult(player.evolutions['b09'].get_secondary_effect());
 
     // challenge d5: raise Matter Dim multipliers to a power
     if (!player.challenges['d0'].inC() && (player.challenges['d5'].inC() || player.challenges['d5'].completed)) base_pow = base_pow.pow(1.5);
@@ -544,6 +558,8 @@ functions['matter_8_pow'] = (amt_bought, amt) => {
     if (player.challenges['v2'].completed) base_pow = base_pow.mult(2);
     // Dimensional Dimensions boost respective dimensions
     base_pow = base_pow.mult(power_manifolds().pow(player.dimensions['dimensional_8'].amt_bought));
+    // evolution b09: boost all Matter Dimensions based on current matter
+    if (player.evolutions['b09'].is_active()) base_pow = base_pow.mult(player.evolutions['b09'].get_secondary_effect());
 
     // challenge d5: raise Matter Dim multipliers to a power
     if (!player.challenges['d0'].inC() && (player.challenges['d5'].inC() || player.challenges['d5'].completed)) base_pow = base_pow.pow(1.5);
@@ -582,6 +598,8 @@ functions['matter_9_pow'] = (amt_bought, amt) => {
     base_pow = base_pow.mult(player.upgrades['p51'].get_effect().pow(player.dimensions['photonic_9'].amt_bought));
     // Dimensional Dimensions boost respective dimensions
     base_pow = base_pow.mult(power_manifolds().pow(player.dimensions['dimensional_9'].amt_bought));
+    // evolution b09: boost all Matter Dimensions based on current matter
+    if (player.evolutions['b09'].is_active()) base_pow = base_pow.mult(player.evolutions['b09'].get_secondary_effect());
 
     // challenge d5: raise Matter Dim multipliers to a power
     if (!player.challenges['d0'].inC() && (player.challenges['d5'].inC() || player.challenges['d5'].completed)) base_pow = base_pow.pow(1.5);
@@ -622,6 +640,8 @@ functions['matter_10_pow'] = (amt_bought, amt) => {
     if (player.challenges['v2'].completed) base_pow = base_pow.mult(2);
     // Dimensional Dimensions boost respective dimensions
     base_pow = base_pow.mult(power_manifolds().pow(player.dimensions['dimensional_10'].amt_bought));
+    // evolution b09: boost all Matter Dimensions based on current matter
+    if (player.evolutions['b09'].is_active()) base_pow = base_pow.mult(player.evolutions['b09'].get_secondary_effect());
 
     // challenge d5: raise Matter Dim multipliers to a power
     if (!player.challenges['d0'].inC() && (player.challenges['d5'].inC() || player.challenges['d5'].completed)) base_pow = base_pow.pow(1.5);
@@ -662,6 +682,8 @@ functions['matter_11_pow'] = (amt_bought, amt) => {
     base_pow = base_pow.mult(player.upgrades['p51'].get_effect().pow(player.dimensions['photonic_11'].amt_bought));
     // Dimensional Dimensions boost respective dimensions
     base_pow = base_pow.mult(power_manifolds().pow(player.dimensions['dimensional_11'].amt_bought));
+    // evolution b09: boost all Matter Dimensions based on current matter
+    if (player.evolutions['b09'].is_active()) base_pow = base_pow.mult(player.evolutions['b09'].get_secondary_effect());
 
     // challenge d5: raise Matter Dim multipliers to a power
     if (!player.challenges['d0'].inC() && (player.challenges['d5'].inC() || player.challenges['d5'].completed)) base_pow = base_pow.pow(1.5);
@@ -702,6 +724,8 @@ functions['matter_12_pow'] = (amt_bought, amt) => {
     if (player.challenges['v2'].completed) base_pow = base_pow.mult(2);
     // Dimensional Dimensions boost respective dimensions
     base_pow = base_pow.mult(power_manifolds().pow(player.dimensions['dimensional_12'].amt_bought));
+    // evolution b09: boost all Matter Dimensions based on current matter
+    if (player.evolutions['b09'].is_active()) base_pow = base_pow.mult(player.evolutions['b09'].get_secondary_effect());
 
     // challenge d5: raise Matter Dim multipliers to a power
     if (!player.challenges['d0'].inC() && (player.challenges['d5'].inC() || player.challenges['d5'].completed)) base_pow = base_pow.pow(1.5);

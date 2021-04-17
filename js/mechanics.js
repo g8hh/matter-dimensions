@@ -516,7 +516,7 @@ function update_collider() {
 
 // Population
 
-const FERTILITY_EVOLUTIONS = ["b01", "b05"];
+const FERTILITY_EVOLUTIONS = ["b01", "b05", "b09"];
 
 function update_population_first() {
 
