@@ -466,6 +466,13 @@ functions["check_138"] = () => {
 };
 
 
+functions["check_144"] = () => {
+    for (let key of Object.keys(player.challenges)) {
+        if (key.includes('d') && player.challenges[key].completed) return true;
+    }
+    return false;
+};
+
 functions["check_145"] = () => {
     return !mortality_rate().lt(2.5);
 };
