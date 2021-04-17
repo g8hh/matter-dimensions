@@ -89,3 +89,6 @@ functions["end_d0"] = () => {
 functions["effect_d2"] = (c) => {
     return big(1).max(player.time_dimensional / 1000);
 };
+functions["effect_d7"] = (c) => {
+    return player.upgrades["TICKSPEED"].get_effect().add(1).log(10).max(1);
+};

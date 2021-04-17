@@ -42,6 +42,8 @@ function update_challenges_power() {
     player.challenge_strength_4 = player.challenge_strength_4.mult(me.upgrades['v143'].get_effect());
     // v183: you can store more resources based on Black Holes
     if (me.upgrades['v183'].is_active()) player.challenge_strength_4 = player.challenge_strength_4.mult(me.upgrades['v183'].get_effect());
+    // challenge d8: you can store 1e18 times more resources
+    if (!player.challenges['d0'].inC() && (player.challenges['d8'].inC() || player.challenges['d8'].completed)) player.challenge_strength_4 = player.challenge_strength_4.mult(1e18);
     // v211: BREAK INFINITY
     if (me.upgrades['v211'].is_active()) player.challenge_strength_4 = me.upgrades['v211'].get_effect();
 

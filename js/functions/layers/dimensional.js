@@ -44,7 +44,7 @@ function prestige_earn_shards() {
     if (player.evolutions['b07'].is_active()) base_income = base_income.mult(player.evolutions['b07'].get_effect());
     // challenge d1: gain 10x more Shards
     if (!player.challenges['d0'].inC() && (player.challenges['d1'].inC() || player.challenges['d1'].completed)) base_income = base_income.mult(10);
-    // challenge d2: gain =more Shards
+    // challenge d2: gain more Shards
     if (!player.challenges['d0'].inC() && (player.challenges['d2'].inC() || player.challenges['d2'].completed)) base_income = base_income.mult(player.challenges['d2'].get_effect());
 
     return base_income.rounddown().max(1);

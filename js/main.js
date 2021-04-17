@@ -581,7 +581,7 @@ class Player {
         this.challenges["d4"] = new Challenge("d4", "Dimensional Challenge 4", "dimensional", [], "start_d4", "goal_d4", "end_d4");
         this.challenges["d5"] = new Challenge("d5", "Dimensional Challenge 5", "dimensional", [], "start_d5", "goal_d5", "end_d5");
         this.challenges["d6"] = new Challenge("d6", "Dimensional Challenge 6", "dimensional", [], "start_d6", "goal_d6", "end_d6");
-        this.challenges["d7"] = new Challenge("d7", "Dimensional Challenge 7", "dimensional", [], "start_d7", "goal_d7", "end_d7");
+        this.challenges["d7"] = new Challenge("d7", "Dimensional Challenge 7", "dimensional", [], "start_d7", "goal_d7", "end_d7", 1, "", "effect_d7");
         this.challenges["d8"] = new Challenge("d8", "Dimensional Challenge 8", "dimensional", [], "start_d8", "goal_d8", "end_d8");
         this.challenges["d0"] = new Challenge("d0", "Dimensional Meta-Challenge", "dimensional", ['d1','d2','d3','d4','d5','d6','d7','d8'], "start_d0", "goal_d0", "end_d0");
 
