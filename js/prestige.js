@@ -621,6 +621,7 @@ function update_prestige() {
     if (me.milestones['a01_3'].is_active()) me.unlocked_st_autobuyers = true;
     if (me.unlocked_st_autobuyers) {
         document.getElementById("st_autobuyer_toggle").style.display = "";
+        document.getElementsByClassName("unlock-on-st-autobuyers")[0].style.display = "";
         if (me.activated_st_autobuyers) {
             document.getElementById("st_autobuyer_toggle_status").textContent = "enabled";
             document.getElementById("st_autobuyer_button_text").textContent = "Disable";
@@ -630,7 +631,10 @@ function update_prestige() {
             document.getElementById("st_autobuyer_button_text").textContent = "Enable";
         }
     }
-    else document.getElementById("st_autobuyer_toggle").style.display = "none";
+    else {
+        document.getElementById("st_autobuyer_toggle").style.display = "none";
+        document.getElementsByClassName("unlock-on-st-autobuyers")[0].style.display = "none";
+    }
 
     // achievement 64: unlock buy max gravitonic upgrades
     if (player.achievements['64'].complete || player.upgrades['AUTO1_5'].is_active()) {
@@ -737,6 +741,13 @@ function update_prestige() {
     // Scrollable prestige menu
     if (player.settings["separate_scroll_right"]) document.getElementsByClassName('prestige-menu')[0].classList.add('scrollable');
     else document.getElementsByClassName('prestige-menu')[0].classList.remove('scrollable');
+
+    // ST presets
+    for (let element of document.getElementsByClassName("unlock-on-st-presets")) {
+        if (player.upgrades['AUTO3_5'].is_active()) element.style.display = "";
+        else element.style.display = "none";
+    }
+    for (let i = 0; i < 3; i++) render_st_preset(i);
 
     update_unlocked_menus();
     update_unlock_hint();
@@ -1160,7 +1171,7 @@ function respec_vacuumic_tree() {
         }
     }
 
-    if (player.unlocked_st_autobuyers) player.activated_st_autobuyers = false;
+    if (player.unlocked_st_autobuyers && player.settings["auto_disable_vtree_autobuyer"]) player.activated_st_autobuyers = false;
 
     reset_vacuumic(true);
 }

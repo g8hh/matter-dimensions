@@ -10,6 +10,7 @@ var SAVE_NORMAL_VARS = ["unlocked_photonic", "unlocked_gravitonic", "unlocked_ne
                         "photons_carry", "neutrons_carry",
                         "collision_points", "collision_points_in_reaction", "collision_points_in_synthesis", "collision_points_in_generation", "active_reactions",
                         "total_realtime", "online_realtime",
+                        "st_presets",
                         "version", "settings"];
 var SAVE_BIGNUM_VARS = ["matter", "antimatter", "energy", "temperature_energy", "collision_knowledge", "population", "population_sacrificed",
                         "photons", "gravitons", "neutrons", "vacuum_energy", "shards", "atoms", "genes",
@@ -137,6 +138,11 @@ function load_save(data) {
         player.upgrades['AUTO1_5'].currency = "shards";
         player.upgrades['AUTO1_5'].currency_display_name_singular = " Shard";
         player.upgrades['AUTO1_5'].currency_display_name_plural = " Shards";
+    }
+    if (player.version == "v0.7") {
+        // v0.7.1: Dimensional Challenges update
+        player.version = "v0.7.1";
+        player.st_presets = [[], [], []];
     }
 }
 

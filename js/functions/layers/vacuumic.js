@@ -106,6 +106,8 @@ function reset_vacuumic(force=false, higher_reset=false, autobuyer_induced=false
         }
     }
 
+    if (higher_reset && player.unlocked_st_autobuyers && player.settings["enable_vtree_autobuyer_on_higher_reset"]) player.activated_st_autobuyers = true;
+
     let reset_multiplier = 1;
     // evolution b03: multiply resets below Biological
     if (player.evolutions['b03'].is_active()) reset_multiplier *= player.evolutions['b03'].get_effect().toInt();

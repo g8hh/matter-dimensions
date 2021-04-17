@@ -16,6 +16,8 @@ body {
     --color-800: #C1D9EA;
     --color-900: #F7FAFC;
 
+    --color-bought: #008000;
+
     --font-family: 'larabiefont_rg', 'Courier New', Courier, monospace;
 }
 
@@ -379,7 +381,7 @@ input {
     cursor: auto;
 }
 .upgrade.complete {
-    background-color: #008000;
+    background-color: var(--color-bought);
     cursor: auto;
 }
 /*.upgrade.partial {
@@ -424,7 +426,7 @@ input {
     background-color: var(--color-200);
 }
 .vacuumic-tree-line.active {
-    background-color: #008000;
+    background-color: var(--color-bought);
 }
 .vacuumic-tree-line.possible {
     background-color: #806400;
@@ -468,7 +470,7 @@ input {
     background-color: #806400;
 }
 .challenge-card.complete .challenge-name, .challenge-card.complete .challenge-desc {
-    background-color: #008000;
+    background-color: var(--color-bought);
 }
 
 .statistics-page {
@@ -634,7 +636,7 @@ input {
     background-color: var(--color-200);
 }
 .milestone.complete {
-    background-color: #008000;
+    background-color: var(--color-bought);
 }
 
 .automation-shop-layout {
@@ -829,7 +831,7 @@ input {
     background-color: var(--color-200);
 }
 .collider-reaction-formula.active .collider-reaction-formula-bg {
-    background-color: #008000;
+    background-color: var(--color-bought);
 }
 .two-numbers {
     font-size: 0.5em;
@@ -885,7 +887,7 @@ input {
 }
 #achievement_track > p {
     margin-bottom: 5px;
-    background-color: #008000;
+    background-color: var(--color-bought);
     cursor: pointer;
     padding: 10px;
     font-size: 1.1em;
@@ -980,7 +982,7 @@ input {
     grid-row: 4;
     grid-column: 1;
     justify-self: flex-start;
-    background-color: #008000;
+    background-color: var(--color-bought);
 }
 .evolution .progress-bar-layout {
     grid-row: 4;

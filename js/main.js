@@ -357,6 +357,7 @@ class Player {
         this.upgrades["AUTO3_1"] = new Upgrade("AUTO3_1", 1, "upg_AUTO3_1_cost", "upg_automation_power", "upg_automation_dimensional_unlock", "shards", [" Shard", " Shards"], "upg_automation_dimensional_unlock");
         this.upgrades["AUTO3_2"] = new Upgrade("AUTO3_2", 1, "upg_AUTO3_2_cost", "upg_automation_power", "upg_automation_dimensional_unlock", "shards", [" Shard", " Shards"], "upg_automation_dimensional_unlock");
         this.upgrades["AUTO3_3"] = new Upgrade("AUTO3_3", 1, "upg_AUTO3_3_cost", "upg_automation_power", "upg_automation_atomic_unlock", "atoms", [" Atom", " Atoms"], "upg_automation_atomic_unlock");
+        this.upgrades["AUTO3_5"] = new Upgrade("AUTO3_5", 1, "upg_AUTO3_5_cost", "upg_automation_power", "upg_automation_biological_unlock", "genes", [" Gene", " Genes"], "upg_automation_biological_unlock");
 
         this.upgrades["AUTO4_1"] = new Upgrade("AUTO4_1", 1, "upg_AUTO4_1_cost", "upg_automation_power", "upg_automation_atomic_unlock", "atoms", [" Atom", " Atoms"], "upg_automation_atomic_unlock");
         this.upgrades["AUTO4_2"] = new Upgrade("AUTO4_2", 1, "upg_AUTO4_2_cost", "upg_automation_power", "upg_automation_atomic_unlock", "atoms", [" Atom", " Atoms"], "upg_automation_atomic_unlock");
@@ -782,6 +783,7 @@ class Player {
         this.milestones["a06_1"] = new Milestone("a06_1", "a06_1_availability", "a06_1_activation", "a06_1_effect", "a06_1_goal");
         this.milestones["a06_2"] = new Milestone("a06_2", "a06_2_availability", "a06_2_activation", "a06_2_effect", "a06_2_goal");
         this.milestones["a06_3"] = new Milestone("a06_3", "a06_3_availability", "a06_3_activation", "a06_3_effect", "a06_3_goal");
+        this.milestones["a06_4"] = new Milestone("a06_4", "a06_4_availability", "a06_4_activation", "a06_4_effect", "a06_4_goal");
 
         this.milestones["a07_1"] = new Milestone("a07_1", "a07_1_availability", "a07_1_activation", "a07_1_effect", "a07_1_goal");
         this.milestones["a07_2"] = new Milestone("a07_2", "a07_2_availability", "a07_2_activation", "a07_2_effect", "a07_2_goal");
@@ -793,7 +795,9 @@ class Player {
         this.total_realtime = 0;
         this.online_realtime = 0;
 
-        this.version = "v0.7";
+        this.st_presets = [[], [], []];
+
+        this.version = "v0.7.1";
     }
 }
 
@@ -818,6 +822,10 @@ var default_settings = {
     "show_ids": false,
     "show_all_changelog": false,
     "separate_scroll_right": false,
+
+    "auto_disable_vtree_autobuyer": true,
+    "enable_vtree_autobuyer_on_higher_reset": false,
+    "enable_vtree_autobuyer_on_preset_load": true,
 };
 
 var player = new Player();

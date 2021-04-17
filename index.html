@@ -40,6 +40,7 @@
         <script src="js/functions/challenge_resets.js?rev=22"></script>
         <script src="js/functions/autobuyer_availability.js?rev=22"></script>
         <script src="js/functions/vacuumic_tree_display.js?rev=22"></script>
+        <script src="js/functions/vacuumic_tree_presets.js?rev=22"></script>
         <script src="js/functions/number_display.js?rev=22"></script>
         <script src="js/bignum.js?rev=22"></script>
         <script src="js/nerfs.js?rev=22"></script>
@@ -56,9 +57,12 @@
         <script src="js/other.js?rev=22"></script>
         <script src="js/saveload.js?rev=22"></script>
         <script src="js/main.js?rev=22"></script>
+
         <link rel="stylesheet" type="text/css" href="fonts/Larabiefont/stylesheet.css">
         <link href="https://fonts.googleapis.com/css2?family=Recursive:wght,MONO@400..700,1&display=swap" rel="stylesheet">
+
         <link rel="stylesheet" type="text/css" href="index.css?rev=22">
+        <link rel="stylesheet" type="text/css" href="css/st_presets.css?rev=22">
         <link rel="stylesheet" type="text/css" href="mobile.css?rev=22">
         <link rel='shortcut icon' type='image/x-icon' href='favicon.ico'>
     </head>
@@ -130,7 +134,7 @@
                     </div>
                     <div style="flex-grow: 1"></div>
                     <div style="display: flex; flex-direction: column; margin: 0px;">
-                        <p>Version 0.7.0.2</p>
+                        <p>Version 0.7.1</p>
                         <a href="https://discord.gg/FggGbWW8QV" target="_blank" style="text-decoration: none; margin-top: 5px"><div class="setting-button"><p>Discord</p></div></a>
                     </div>
                 </div>
@@ -232,6 +236,10 @@
                         <div id="upgrade_AUTO3_3" class="upgrade" style="grid-row: 3; grid-column: 4" onclick="me.upgrades['AUTO3_3'].buy()">
                             <p>This row is never reset</p>
                             <p id="upgrade_AUTO3_3_next_cost">Cost: <span id="upgrade_AUTO3_3_cost"></span></p>
+                        </div>
+                        <div id="upgrade_AUTO3_5" class="upgrade" style="grid-row: 3; grid-column: 5" onclick="me.upgrades['AUTO3_5'].buy()">
+                            <p>Unlock preset slots for Space Theorem tree autobuyers</p>
+                            <p id="upgrade_AUTO3_5_next_cost">Cost: <span id="upgrade_AUTO3_5_cost"></span></p>
                         </div>
 
                         <p id="automation_shop_biological" class="automation-shop-reset-layer" style="grid-row: 4; grid-column: 1"></p>
@@ -2389,6 +2397,179 @@
                                 <p id="vacuumic_next_costs_with_ntr_1" class="vacuumic-next-costs" style="grid-row: 4; grid-column: 2; padding-left: 5px; padding-right: 5px;"></p>
                                 <p id="vacuumic_next_costs_with_ntr_2" class="vacuumic-next-costs" style="grid-row: 4; grid-column: 3; padding-left: 5px; padding-right: 5px;"></p>
                             </div>
+
+
+
+
+                            <div class="unlock-on-st-presets" style="grid-row: 13 / 28; grid-column: 13 / 16; margin-left: 15px; display: flex; flex-direction: column;">
+                                <p style="font-size: 1.5em; text-align: center; margin-bottom: 10px">Presets</p>
+                                <div style="flex-grow: 1; display: grid; grid-template-rows: 1fr auto auto; grid-template-columns: repeat(3, 1fr); row-gap: 5px; column-gap: 10px">
+                                    <div id="st_preset_preview_0" class="st-preset-preview" style="grid-column: 1; grid-row: 1">
+                                        <div class="v11"></div>
+                                        <div class="v21"></div>
+                                        <div class="v31"></div>
+                                        <div class="v32"></div>
+                                        <div class="v41"></div>
+                                        <div class="v42"></div>
+                                        <div class="v51"></div>
+                                        <div class="v61"></div>
+                                        <div class="v71"></div>
+                                        <div class="v72"></div>
+                                        <div class="v81"></div>
+                                        <div class="v82"></div>
+                                        <div class="v83"></div>
+                                        <div class="v91"></div>
+                                        <div class="v92"></div>
+                                        <div class="v93"></div>
+                                        <div class="v101"></div>
+                                        <div class="v102"></div>
+                                        <div class="v103"></div>
+                                        <div class="v111"></div>
+                                        <div class="v112"></div>
+                                        <div class="v121"></div>
+                                        <div class="v122"></div>
+                                        <div class="v131"></div>
+                                        <div class="v141"></div>
+                                        <div class="v142"></div>
+                                        <div class="v143"></div>
+                                        <div class="v151"></div>
+                                        <div class="v161"></div>
+                                        <div class="v162"></div>
+                                        <div class="v163"></div>
+                                        <div class="v164"></div>
+                                        <div class="v171"></div>
+                                        <div class="v172"></div>
+                                        <div class="v173"></div>
+                                        <div class="v174"></div>
+                                        <div class="v181"></div>
+                                        <div class="v182"></div>
+                                        <div class="v183"></div>
+                                        <div class="v184"></div>
+                                        <div class="v191"></div>
+                                        <div class="v192"></div>
+                                        <div class="v193"></div>
+                                        <div class="v194"></div>
+                                        <div class="v201"></div>
+                                        <div class="v211"></div>
+                                    </div>
+                                    <div class="setting-button" style="grid-column: 1; grid-row: 2" onclick="save_st_preset(0)">
+                                        <p>Save</p>
+                                    </div>
+                                    <div class="setting-button" style="grid-column: 1; grid-row: 3" onclick="load_st_preset(0)">
+                                        <p>Load</p>
+                                    </div>
+
+                                    <div id="st_preset_preview_1" class="st-preset-preview" style="grid-column: 2; grid-row: 1">
+                                        <div class="v11"></div>
+                                        <div class="v21"></div>
+                                        <div class="v31"></div>
+                                        <div class="v32"></div>
+                                        <div class="v41"></div>
+                                        <div class="v42"></div>
+                                        <div class="v51"></div>
+                                        <div class="v61"></div>
+                                        <div class="v71"></div>
+                                        <div class="v72"></div>
+                                        <div class="v81"></div>
+                                        <div class="v82"></div>
+                                        <div class="v83"></div>
+                                        <div class="v91"></div>
+                                        <div class="v92"></div>
+                                        <div class="v93"></div>
+                                        <div class="v101"></div>
+                                        <div class="v102"></div>
+                                        <div class="v103"></div>
+                                        <div class="v111"></div>
+                                        <div class="v112"></div>
+                                        <div class="v121"></div>
+                                        <div class="v122"></div>
+                                        <div class="v131"></div>
+                                        <div class="v141"></div>
+                                        <div class="v142"></div>
+                                        <div class="v143"></div>
+                                        <div class="v151"></div>
+                                        <div class="v161"></div>
+                                        <div class="v162"></div>
+                                        <div class="v163"></div>
+                                        <div class="v164"></div>
+                                        <div class="v171"></div>
+                                        <div class="v172"></div>
+                                        <div class="v173"></div>
+                                        <div class="v174"></div>
+                                        <div class="v181"></div>
+                                        <div class="v182"></div>
+                                        <div class="v183"></div>
+                                        <div class="v184"></div>
+                                        <div class="v191"></div>
+                                        <div class="v192"></div>
+                                        <div class="v193"></div>
+                                        <div class="v194"></div>
+                                        <div class="v201"></div>
+                                        <div class="v211"></div>
+                                    </div>
+                                    <div class="setting-button" style="grid-column: 2; grid-row: 2" onclick="save_st_preset(1)">
+                                        <p>Save</p>
+                                    </div>
+                                    <div class="setting-button" style="grid-column: 2; grid-row: 3" onclick="load_st_preset(1)">
+                                        <p>Load</p>
+                                    </div>
+
+                                    <div id="st_preset_preview_2" class="st-preset-preview" style="grid-column: 3; grid-row: 1">
+                                        <div class="v11"></div>
+                                        <div class="v21"></div>
+                                        <div class="v31"></div>
+                                        <div class="v32"></div>
+                                        <div class="v41"></div>
+                                        <div class="v42"></div>
+                                        <div class="v51"></div>
+                                        <div class="v61"></div>
+                                        <div class="v71"></div>
+                                        <div class="v72"></div>
+                                        <div class="v81"></div>
+                                        <div class="v82"></div>
+                                        <div class="v83"></div>
+                                        <div class="v91"></div>
+                                        <div class="v92"></div>
+                                        <div class="v93"></div>
+                                        <div class="v101"></div>
+                                        <div class="v102"></div>
+                                        <div class="v103"></div>
+                                        <div class="v111"></div>
+                                        <div class="v112"></div>
+                                        <div class="v121"></div>
+                                        <div class="v122"></div>
+                                        <div class="v131"></div>
+                                        <div class="v141"></div>
+                                        <div class="v142"></div>
+                                        <div class="v143"></div>
+                                        <div class="v151"></div>
+                                        <div class="v161"></div>
+                                        <div class="v162"></div>
+                                        <div class="v163"></div>
+                                        <div class="v164"></div>
+                                        <div class="v171"></div>
+                                        <div class="v172"></div>
+                                        <div class="v173"></div>
+                                        <div class="v174"></div>
+                                        <div class="v181"></div>
+                                        <div class="v182"></div>
+                                        <div class="v183"></div>
+                                        <div class="v184"></div>
+                                        <div class="v191"></div>
+                                        <div class="v192"></div>
+                                        <div class="v193"></div>
+                                        <div class="v194"></div>
+                                        <div class="v201"></div>
+                                        <div class="v211"></div>
+                                    </div>
+                                    <div class="setting-button" style="grid-column: 3; grid-row: 2" onclick="save_st_preset(2)">
+                                        <p>Save</p>
+                                    </div>
+                                    <div class="setting-button" style="grid-column: 3; grid-row: 3" onclick="load_st_preset(2)">
+                                        <p>Load</p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
@@ -3343,6 +3524,9 @@
                                     <p id="milestone_a06_3_indicator" class="milestone">
                                         <b>Level <span id="milestone_a06_3_goal"></span></b>: increase multiplier per Dimensional Dimension based on Carbon levels.
                                         <br>Current: ×<span id="milestone_a06_3_effect"></span>
+                                    </p>
+                                    <p id="milestone_a06_4_indicator" class="milestone">
+                                        <b>Level <span id="milestone_a06_4_goal"></span></b>: Matter Dimension cost base is reduced by <span class="static-number" extra="1"></span>.
                                     </p>
                                 </div>
                                 <p class="upgrade-atomic-effect-desc">
@@ -4507,7 +4691,7 @@
                         </div>
                     </div>
 
-                    <div class="settings-page-block" style="grid-row: 4; grid-column: 1">
+                    <div class="settings-page-block" style="grid-row: 4 / 6; grid-column: 1">
                         <p class="settings-page-block-name">Aesthetics</p>
                         <div>
                             <p>Theme:</p>
@@ -4521,6 +4705,16 @@
                             <label class="settings-block-selector-option"><input type="radio" name="font" value="lucida_console"><p>Lucida Console</p></label>
                             <label class="settings-block-selector-option"><input type="radio" name="font" value="courier_new"><p>Courier New</p></label>
                             <label class="settings-block-selector-option"><input type="radio" name="font" value="recursive"><p>Recursive</p></label>
+                        </div>
+                    </div>
+
+                    <div class="settings-page-block" style="grid-row: 5; grid-column: 2">
+                        <p class="settings-page-block-name">Quality of Life</p>
+                        <div class="unlock-on-st-autobuyers">
+                            <p>Space Theorem tree autobuyers:</p>
+                            <label class="settings-block-selector-checkbox"><input type="checkbox" name="auto_disable_vtree_autobuyer"><p>Disable autobuyers on manual upgrade tree reset</p></label>
+                            <label class="settings-block-selector-checkbox"><input type="checkbox" name="enable_vtree_autobuyer_on_higher_reset"><p>Enable autobuyers on higher resets</p></label>
+                            <label class="settings-block-selector-checkbox unlock-on-st-presets"><input type="checkbox" name="enable_vtree_autobuyer_on_preset_load"><p>Reset upgrade tree and enable autobuyers on preset load</p></label>
                         </div>
                     </div>
                 </div>

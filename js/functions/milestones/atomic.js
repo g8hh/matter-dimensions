@@ -69,6 +69,9 @@ functions["a06_2_availability"] = () => {
 functions["a06_3_availability"] = () => {
     return true;
 }
+functions["a06_4_availability"] = () => {
+    return true;
+}
 
 functions["a07_1_availability"] = () => {
     return true;
@@ -153,6 +156,9 @@ functions["a06_2_activation"] = () => {
 }
 functions["a06_3_activation"] = () => {
     return get_atom_level('a06').gt(625 - 0.5);
+}
+functions["a06_4_activation"] = () => {
+    return get_atom_level('a06').gt(3125 - 0.5);
 }
 
 functions["a07_1_activation"] = () => {
@@ -255,6 +261,9 @@ functions["a06_2_effect"] = () => {
 functions["a06_3_effect"] = () => {
     return get_atom_level('a06').pow(8).max(2);
 }
+functions["a06_4_effect"] = () => {
+    return big(1);
+}
 
 functions["a07_1_effect"] = () => {
     return big(1);
@@ -339,6 +348,9 @@ functions["a06_2_goal"] = () => {
 }
 functions["a06_3_goal"] = () => {
     return big(625);
+}
+functions["a06_4_goal"] = () => {
+    return big(3125);
 }
 
 functions["a07_1_goal"] = () => {
