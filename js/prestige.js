@@ -346,18 +346,18 @@ function update_prestige() {
     }
 
     // light boosts which dimension
-    if (!me.upgrades['g23'].is_active()) document.getElementById("light_boosts_which_dimension").textContent = "1st Matter Dimension";
+    if (!player.upgrades['g23'].is_active()) document.getElementById("light_boosts_which_dimension").textContent = "1st Matter Dimension";
     else document.getElementById("light_boosts_which_dimension").textContent = "1st and 2nd Matter Dimensions";
 
     // light boosts time
-    if (me.challenges['p4'].inC()) {
+    if (player.challenges['p4'].inC()) {
         document.getElementById("power_light_time_info").style.display = "";
         elements = document.getElementsByClassName("power_light_time");
         for (var i = 0; i < elements.length; i++) {
             elements.item(i).textContent = format_number(power_light_time().pow(-1));
         }
     }
-    else if (me.upgrades['g24'].is_active()) {
+    else if (player.upgrades['g24'].is_active()) {
         document.getElementById("power_light_time_info").style.display = "";
         elements = document.getElementsByClassName("power_light_time");
         for (var i = 0; i < elements.length; i++) {
@@ -367,11 +367,11 @@ function update_prestige() {
     else document.getElementById("power_light_time_info").style.display = "none";
 
     // black holes give gravitons
-    if (me.upgrades['v83'].is_active()) {
+    if (player.upgrades['v83'].is_active()) {
         document.getElementById("power_black_holes_gravitons_info").style.display = "";
         elements = document.getElementsByClassName("power_black_holes_gravitons");
         for (var i = 0; i < elements.length; i++) {
-            elements.item(i).textContent = format_number(me.upgrades['v83'].get_effect());
+            elements.item(i).textContent = format_number(player.upgrades['v83'].get_effect());
         }
     }
     else document.getElementById("power_black_holes_gravitons_info").style.display = "none";
@@ -406,15 +406,15 @@ function update_prestige() {
     }
 
     // gravitonic challenges that remove blocks
-    if (me.challenges['g0'].inC()) document.getElementById("block_gravitonic_0").style.display = "none";
+    if (player.challenges['g0'].inC()) document.getElementById("block_gravitonic_0").style.display = "none";
     else document.getElementById("block_gravitonic_0").style.display = "";
-    if (me.challenges['g1'].inC()) document.getElementById("block_gravitonic_1").style.display = "none";
+    if (player.challenges['g1'].inC()) document.getElementById("block_gravitonic_1").style.display = "none";
     else document.getElementById("block_gravitonic_1").style.display = "";
-    if (me.challenges['g2'].inC()) document.getElementById("block_gravitonic_2").style.display = "none";
+    if (player.challenges['g2'].inC()) document.getElementById("block_gravitonic_2").style.display = "none";
     else document.getElementById("block_gravitonic_2").style.display = "";
-    if (me.challenges['g3'].inC()) document.getElementById("block_gravitonic_3").style.display = "none";
+    if (player.challenges['g3'].inC()) document.getElementById("block_gravitonic_3").style.display = "none";
     else document.getElementById("block_gravitonic_3").style.display = "";
-    if (me.challenges['g4'].inC()) document.getElementById("block_gravitonic_4").style.display = "none";
+    if (player.challenges['g4'].inC()) document.getElementById("block_gravitonic_4").style.display = "none";
     else document.getElementById("block_gravitonic_4").style.display = "";
 
     // achievement 62: unlock buy max photonic upgrades
@@ -426,35 +426,35 @@ function update_prestige() {
     }
 
     // tickspeed compound type
-    if (me.challenges['n3'].inC()) document.getElementById("tickspeed_compound_type").textContent = "+";
+    if (player.challenges['n3'].inC()) document.getElementById("tickspeed_compound_type").textContent = "+";
     else document.getElementById("tickspeed_compound_type").textContent = "×";
 
     // black holes boost resource limit
-    if (me.upgrades['v183'].is_active()) {
+    if (player.upgrades['v183'].is_active()) {
         document.getElementById("power_black_holes_resource_limit_info").style.display = "";
         elements = document.getElementsByClassName("power_black_holes_resource_limit");
         for (var i = 0; i < elements.length; i++) {
-            elements.item(i).textContent = format_number(me.upgrades['v183'].get_effect());
+            elements.item(i).textContent = format_number(player.upgrades['v183'].get_effect());
         }
     }
     else document.getElementById("power_black_holes_resource_limit_info").style.display = "none";
 
     // stars boost 1st Photonic Dimension
-    if (me.upgrades['v192'].is_active()) {
+    if (player.upgrades['v192'].is_active()) {
         document.getElementById("power_stars_photonic_dim_info").style.display = "";
         elements = document.getElementsByClassName("power_stars_photonic_dim");
         for (var i = 0; i < elements.length; i++) {
-            elements.item(i).textContent = format_number(me.upgrades['v192'].get_effect());
+            elements.item(i).textContent = format_number(player.upgrades['v192'].get_effect());
         }
     }
     else document.getElementById("power_stars_photonic_dim_info").style.display = "none";
 
     // stars produce black holes
-    if (me.upgrades['v193'].is_active()) {
+    if (player.upgrades['v193'].is_active()) {
         document.getElementById("power_stars_black_holes_info").style.display = "";
         elements = document.getElementsByClassName("power_stars_black_holes");
         for (var i = 0; i < elements.length; i++) {
-            elements.item(i).textContent = format_number(me.upgrades['v193'].get_effect());
+            elements.item(i).textContent = format_number(player.upgrades['v193'].get_effect());
         }
     }
     else document.getElementById("power_stars_black_holes_info").style.display = "none";
@@ -608,21 +608,21 @@ function update_prestige() {
     else document.getElementById("challenge_strength_11").style.display = "";
     
     // inflation boosts 1st and 2nd Photonic Dimension
-    if (me.upgrades['d101'].is_active()) {
+    if (player.upgrades['d101'].is_active()) {
         document.getElementById("power_inflation_photonic_info").style.display = "";
         elements = document.getElementsByClassName("power_inflation_photonic");
         for (var i = 0; i < elements.length; i++) {
-            elements.item(i).textContent = format_number(me.upgrades['d101'].get_effect());
+            elements.item(i).textContent = format_number(player.upgrades['d101'].get_effect());
         }
     }
     else document.getElementById("power_inflation_photonic_info").style.display = "none";
 
     // ST autobuyers
-    if (me.milestones['a01_3'].is_active()) me.unlocked_st_autobuyers = true;
-    if (me.unlocked_st_autobuyers) {
+    if (player.milestones['a01_3'].is_active()) player.unlocked_st_autobuyers = true;
+    if (player.unlocked_st_autobuyers) {
         document.getElementById("st_autobuyer_toggle").style.display = "";
         document.getElementsByClassName("unlock-on-st-autobuyers")[0].style.display = "";
-        if (me.activated_st_autobuyers) {
+        if (player.activated_st_autobuyers) {
             document.getElementById("st_autobuyer_toggle_status").textContent = "enabled";
             document.getElementById("st_autobuyer_button_text").textContent = "Disable";
         }
@@ -645,10 +645,10 @@ function update_prestige() {
     }
 
     // Wave autobuyers
-    if (me.milestones['a04_1'].is_active()) me.unlocked_wave_autobuyers = true;
+    if (player.milestones['a04_1'].is_active()) player.unlocked_wave_autobuyers = true;
 
     // Show IDs
-    if (me.settings['show_ids']) {
+    if (player.settings['show_ids']) {
         let elements = document.getElementsByClassName('upgrade-id');
         for (let i = 0; i < elements.length; i++) {
             elements.item(i).style.display = '';
@@ -662,31 +662,31 @@ function update_prestige() {
     }
 
     // inflation boosts first three Gravitonic Dimension
-    if (me.upgrades['d111'].is_active()) {
+    if (player.upgrades['d111'].is_active()) {
         document.getElementById("power_inflation_gravitonic_info").style.display = "";
         elements = document.getElementsByClassName("power_inflation_gravitonic");
         for (var i = 0; i < elements.length; i++) {
-            elements.item(i).textContent = format_number(me.upgrades['d111'].get_effect());
+            elements.item(i).textContent = format_number(player.upgrades['d111'].get_effect());
         }
     }
     else document.getElementById("power_inflation_gravitonic_info").style.display = "none";
 
     // inflation boosts first four Neutronic Dimension
-    if (me.upgrades['d112'].is_active()) {
+    if (player.upgrades['d112'].is_active()) {
         document.getElementById("power_inflation_neutronic_info").style.display = "";
         elements = document.getElementsByClassName("power_inflation_neutronic");
         for (var i = 0; i < elements.length; i++) {
-            elements.item(i).textContent = format_number(me.upgrades['d112'].get_effect());
+            elements.item(i).textContent = format_number(player.upgrades['d112'].get_effect());
         }
     }
     else document.getElementById("power_inflation_neutronic_info").style.display = "none";
 
     // inflation boosts all Vacuumic Dimension
-    if (me.upgrades['d121'].is_active()) {
+    if (player.upgrades['d121'].is_active()) {
         document.getElementById("power_inflation_vacuumic_info").style.display = "";
         elements = document.getElementsByClassName("power_inflation_vacuumic");
         for (var i = 0; i < elements.length; i++) {
-            elements.item(i).textContent = format_number(me.upgrades['d121'].get_effect());
+            elements.item(i).textContent = format_number(player.upgrades['d121'].get_effect());
         }
     }
     else document.getElementById("power_inflation_vacuumic_info").style.display = "none";
@@ -842,73 +842,73 @@ function update_unlocked_menus() {
     }
 
     // Photonic dimensions
-    if (me.upgrades['g20'].is_active()) {
+    if (player.upgrades['g20'].is_active()) {
         document.getElementById("menu_button_photonic").style.display = "";
         document.getElementById("menu_button_photonic_dimensions").style.display = "";
     }
 
     // Photonic challenges
-    if (me.upgrades['g40'].is_active()) {
+    if (player.upgrades['g40'].is_active()) {
         document.getElementById("menu_button_photonic").style.display = "";
         document.getElementById("menu_button_photonic_challenges").style.display = "";
     }
 
     // Gravitonic dimensions and challenges
-    if (me.upgrades['n33'].is_active()) {
+    if (player.upgrades['n33'].is_active()) {
         document.getElementById("menu_button_gravitonic").style.display = "";
         document.getElementById("menu_button_gravitonic_dimensions").style.display = "";
         document.getElementById("menu_button_gravitonic_challenges").style.display = "";
     }
 
     // Neutronic dimensions
-    if (me.upgrades['v142'].is_active()) {
+    if (player.upgrades['v142'].is_active()) {
         document.getElementById("menu_button_neutronic").style.display = "";
         document.getElementById("menu_button_neutronic_dimensions").style.display = "";
     }
 
     // Neutronic challenges
-    if (me.upgrades['v141'].is_active()) {
+    if (player.upgrades['v141'].is_active()) {
         document.getElementById("menu_button_neutronic").style.display = "";
         document.getElementById("menu_button_neutronic_challenges").style.display = "";
     }
 
     // Vacuumic dimensions
-    if (me.upgrades['d71'].is_active()) {
+    if (player.upgrades['d71'].is_active()) {
         document.getElementById("menu_button_vacuumic").style.display = "";
         document.getElementById("menu_button_vacuumic_dimensions").style.display = "";
     }
 
     // Temperature
-    if (me.upgrades['d91'].is_active()) {
+    if (player.upgrades['d91'].is_active()) {
         document.getElementById("menu_button_vacuumic").style.display = "";
         document.getElementById("menu_button_vacuumic_temperature").style.display = "";
     }
 
     // Automation Shop
-    if (me.achievements['32'].complete) {
+    if (player.achievements['32'].complete) {
         document.getElementById("menu_button_automation").style.display = "";
     }
 
     // Collider
-    if (me.achievements['93'].complete) {
+    if (player.achievements['93'].complete) {
         document.getElementById("menu_button_atomic").style.display = "";
         document.getElementById("menu_button_atomic_collider").style.display = "";
     }
 
     // Vacuumic challenges
-    if (me.upgrades['d114'].is_active()) {
+    if (player.upgrades['d114'].is_active()) {
         document.getElementById("menu_button_vacuumic").style.display = "";
         document.getElementById("menu_button_vacuumic_challenges").style.display = "";
     }
 
     // Dimensional dimensions
-    if (me.milestones['a06_1'].is_active()) {
+    if (player.milestones['a06_1'].is_active()) {
         document.getElementById("menu_button_dimensional").style.display = "";
         document.getElementById("menu_button_dimensional_dimensions").style.display = "";
     }
 
     // Dimensional challenges
-    if (me.evolutions['b08'].is_active()) {
+    if (player.evolutions['b08'].is_active()) {
         document.getElementById("menu_button_dimensional").style.display = "";
         document.getElementById("menu_button_dimensional_challenges").style.display = "";
     }
@@ -1121,14 +1121,14 @@ function get_tickspeed_power() {
 
     let tickspeed_effectiveness = big(1);
     // Neutronic Challenge 3 reward: Tickspeed Upgrades are more effective
-    tickspeed_effectiveness = tickspeed_effectiveness.mult(me.challenges['n3'].get_effect());
+    tickspeed_effectiveness = tickspeed_effectiveness.mult(player.challenges['n3'].get_effect());
     // a02_1: Tickspeed Upgrades are 10% more effective
-    if (me.milestones['a02_1'].is_active()) tickspeed_effectiveness = tickspeed_effectiveness.mult(me.milestones['a02_1'].get_effect());
+    if (player.milestones['a02_1'].is_active()) tickspeed_effectiveness = tickspeed_effectiveness.mult(player.milestones['a02_1'].get_effect());
     // x-ray waves boost tickspeed efficiency
-    if (me.milestones['a04_2'].is_active()) tickspeed_effectiveness = tickspeed_effectiveness.mult(wave_effect('xray').div(100).add(1));
+    if (player.milestones['a04_2'].is_active()) tickspeed_effectiveness = tickspeed_effectiveness.mult(wave_effect('xray').div(100).add(1));
 
     // Neutronic Challenge 3: Tickspeed Upgrade effect is additive
-    if (me.challenges['n3'].inC()) base_pow = base_pow.mult(tickspeed_effectiveness);
+    if (player.challenges['n3'].inC()) base_pow = base_pow.mult(tickspeed_effectiveness);
     else base_pow = base_pow.pow(tickspeed_effectiveness);
 
     return base_pow;
@@ -1142,31 +1142,31 @@ function space_theorems_invested() {
         }
     }
 
-    space_theorems = space_theorems.subtract(me.space_theorems);
+    space_theorems = space_theorems.subtract(player.space_theorems);
 
     return space_theorems;
 }
 function respec_vacuumic_tree() {
-    if (me.settings['prestige_confirmation_vacuumic_tree']) {
+    if (player.settings['prestige_confirmation_vacuumic_tree']) {
         let default_limit = big(1e10);
         // achievement 42: you can store 2 times more resources
         if (player.achievements['42'].complete) default_limit = default_limit.mult(2);
         // achievement 91: you can store 1e10 times more resources
         if (player.achievements['91'].complete) default_limit = default_limit.mult(1e10);
 
-        if (player.vacuum_energy.gt(default_limit) && !me.achievements['108'].complete) {
+        if (player.vacuum_energy.gt(default_limit) && !player.achievements['108'].complete) {
             let result = confirm("Are you sure you want to reset Space Theorem tree? You will lose Vacuum Energy due to the reduced resource limit!\n(This warning can be disabled in Settings)");
             if (!result) return;
         }
     }
 
     // Challenge 4: all resources are capped
-    player.space_theorems = player.space_theorems.add(space_theorems_invested()).round().min(me.challenge_strength_4);
+    player.space_theorems = player.space_theorems.add(space_theorems_invested()).round().min(player.challenge_strength_4);
 
     for (let key of Object.keys(player.upgrades)) {
         if (key.includes("v") && !key.includes("v0")) {
             // achievement 88: keep all automation upgrades
-            if (me.achievements['88'].complete && (key == "v71" || key == "v72")) continue;
+            if (player.achievements['88'].complete && (key == "v71" || key == "v72")) continue;
             player.upgrades[key].reset();
         }
     }
@@ -1228,8 +1228,8 @@ function cap_resources() {
     player.blue_waves = player.blue_waves.min(player.challenge_strength_4);
     player.ultraviolet_waves = player.ultraviolet_waves.min(player.challenge_strength_4);
 
-    for (let key of Object.keys(me.dimensions)) {
-        me.dimensions[key].amt = me.dimensions[key].amt.min(player.challenge_strength_4);
+    for (let key of Object.keys(player.dimensions)) {
+        player.dimensions[key].amt = player.dimensions[key].amt.min(player.challenge_strength_4);
     }
 }
 function get_space_production() {
@@ -1248,20 +1248,20 @@ function get_space_production() {
 }
 
 function max_buy_upgrades(level) {
-    for (let key of Object.keys(me.upgrades)) {
+    for (let key of Object.keys(player.upgrades)) {
         if (key.includes(level)) {
-            me.upgrades[key].buy(me.upgrades[key].binary_search_max());
+            player.upgrades[key].buy(player.upgrades[key].binary_search_max());
 
             // AUTO1_4: instantly gain Grations upon reset
             // just QoL
-            if (level == 'g' && me.upgrades['AUTO1_4'].is_active() && me.upgrades['AUTO1_4'].enabled) {
+            if (level == 'g' && player.upgrades['AUTO1_4'].is_active() && player.upgrades['AUTO1_4'].enabled) {
                 if (can_gravitonic(me)) {
                     let gravitons_gained = prestige_earn_gravitons(me);
                     // Challenge 4: all resources are capped
-                    me.gravitons = me.gravitons.add(gravitons_gained).round().min(me.challenge_strength_4);
+                    player.gravitons = player.gravitons.add(gravitons_gained).round().min(player.challenge_strength_4);
 
-                    me.max_gravitons = me.max_gravitons.max(me.gravitons);
-                    me.max_gravitons_in_nc = me.max_gravitons_in_nc.max(me.gravitons);
+                    player.max_gravitons = player.max_gravitons.max(player.gravitons);
+                    player.max_gravitons_in_nc = player.max_gravitons_in_nc.max(player.gravitons);
                 }
             }
         }

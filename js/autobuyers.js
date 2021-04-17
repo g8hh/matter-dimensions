@@ -17,7 +17,7 @@ class Autobuyer {
         if (!functions[this.availability_function]()) return;
         if (!this.enabled) return;
 
-        if (this.id.includes('VTREE') && !me.activated_st_autobuyers) return;
+        if (this.id.includes('VTREE') && !player.activated_st_autobuyers) return;
 
         if (typeof this.obj === 'string' || this.obj instanceof String) {
             if (this.obj == "photonic_upgrades") max_buy_upgrades('p');
@@ -25,7 +25,7 @@ class Autobuyer {
             if (this.obj == "neutronic_upgrades") max_buy_upgrades('n');
         }
 
-        if (me.time_passed == 0 && (typeof this.obj === 'string' || this.obj instanceof String)) return;
+        if (player.time_passed == 0 && (typeof this.obj === 'string' || this.obj instanceof String)) return;
 
         if (this.obj instanceof Dimension || this.obj instanceof Upgrade) {
             this.obj.buy(this.obj.binary_search_max());
@@ -118,10 +118,10 @@ class Autobuyer {
 
     load_save(data) {     
         if (data[0][0] == 0) {
-            this.obj = me.dimensions[data[0][1]];
+            this.obj = player.dimensions[data[0][1]];
         }
         if (data[0][0] == 1) {
-            this.obj = me.upgrades[data[0][1]];
+            this.obj = player.upgrades[data[0][1]];
         }
         if (data[0][0] == 2) {
             this.obj = data[0][1];

@@ -33,7 +33,7 @@ function inertia_eta() {
 }
 
 function switch_inertia_status() {
-    me.inertia_enabled = !me.inertia_enabled;
+    player.inertia_enabled = !player.inertia_enabled;
     update_inertia(me);
 }
 
@@ -90,14 +90,14 @@ function format_temperature(number, fixed=false) {
     res.copy(number);
 
     let degrees = "";
-    if (me.settings['temperature_display'] == 'K') {
+    if (player.settings['temperature_display'] == 'K') {
         degrees = " K";
     }
-    if (me.settings['temperature_display'] == 'C') {
+    if (player.settings['temperature_display'] == 'C') {
         degrees = " °C";
         res = res.add(-273.15);
     }
-    if (me.settings['temperature_display'] == 'F') {
+    if (player.settings['temperature_display'] == 'F') {
         degrees = " °F";
         res = res.add(-273.15).mult(9 / 5).add(32);
     }
@@ -128,7 +128,7 @@ function get_new_temperature() {
 function wave_gain(type) {
     let wave_mult = big(1);
     // a04: gain more waves
-    wave_mult = wave_mult.mult(me.upgrades['a04'].get_effect());
+    wave_mult = wave_mult.mult(player.upgrades['a04'].get_effect());
     switch (type) {
         case 'infrared': return get_temperature().div(2.73).pow(5).mult(wave_mult).rounddown();
         case 'red': return get_temperature().div(4.222).pow(4).mult(wave_mult).rounddown();
@@ -158,7 +158,7 @@ function temperature_reset_hint_next(type) {
     let resources_needed = wave_gain(type).add(1);
     let wave_mult = big(1);
     // a04: gain more waves
-    wave_mult = wave_mult.mult(me.upgrades['a04'].get_effect());
+    wave_mult = wave_mult.mult(player.upgrades['a04'].get_effect());
 
     resources_needed = resources_needed.div(wave_mult).max(1);
 
@@ -177,30 +177,30 @@ function reset_temperature(type) {
 
     let waves_gained = wave_gain(type);
     switch (type) {
-        case 'infrared': me.infrared_waves = me.infrared_waves.add(waves_gained).min(me.challenge_strength_4); break;
-        case 'red': me.red_waves = me.red_waves.add(waves_gained).min(me.challenge_strength_4); break;
-        case 'green': me.green_waves = me.green_waves.add(waves_gained).min(me.challenge_strength_4); break;
-        case 'blue': me.blue_waves = me.blue_waves.add(waves_gained).min(me.challenge_strength_4); break;
-        case 'ultraviolet': me.ultraviolet_waves = me.ultraviolet_waves.add(waves_gained).min(me.challenge_strength_4); break;
-        case 'xray': me.xray_waves = me.xray_waves.add(waves_gained).min(me.challenge_strength_4); break;
+        case 'infrared': player.infrared_waves = player.infrared_waves.add(waves_gained).min(player.challenge_strength_4); break;
+        case 'red': player.red_waves = player.red_waves.add(waves_gained).min(player.challenge_strength_4); break;
+        case 'green': player.green_waves = player.green_waves.add(waves_gained).min(player.challenge_strength_4); break;
+        case 'blue': player.blue_waves = player.blue_waves.add(waves_gained).min(player.challenge_strength_4); break;
+        case 'ultraviolet': player.ultraviolet_waves = player.ultraviolet_waves.add(waves_gained).min(player.challenge_strength_4); break;
+        case 'xray': player.xray_waves = player.xray_waves.add(waves_gained).min(player.challenge_strength_4); break;
     }
 
-    me.temperature_energy = big(0);
+    player.temperature_energy = big(0);
 }
 
 function wave_effect(type) {
     switch (type) {
-        case 'infrared': return me.infrared_waves.min(me.infrared_waves.pow(0.5).mult(1e2)).min(me.infrared_waves.pow(0.2).mult(1e5)).min(me.infrared_waves.pow(0.04).mult(1e13)).add(1);
-        case 'red': return me.red_waves.add(1).pow(2);
-        case 'green': return me.green_waves.add(1).log(10).pow(2);
-        case 'blue': return me.space.pow(me.blue_waves.add(1).log(10).pow(0.5).mult(0.05)).max(1);
-        case 'ultraviolet': return me.ultraviolet_waves.add(1).log(10).pow(0.5).mult(0.03).add(1);
-        case 'xray': return me.xray_waves.add(1).log(10).pow(0.5).mult(5);
+        case 'infrared': return player.infrared_waves.min(player.infrared_waves.pow(0.5).mult(1e2)).min(player.infrared_waves.pow(0.2).mult(1e5)).min(player.infrared_waves.pow(0.04).mult(1e13)).add(1);
+        case 'red': return player.red_waves.add(1).pow(2);
+        case 'green': return player.green_waves.add(1).log(10).pow(2);
+        case 'blue': return player.space.pow(player.blue_waves.add(1).log(10).pow(0.5).mult(0.05)).max(1);
+        case 'ultraviolet': return player.ultraviolet_waves.add(1).log(10).pow(0.5).mult(0.03).add(1);
+        case 'xray': return player.xray_waves.add(1).log(10).pow(0.5).mult(5);
     }
 }
 
 function switch_heating_status() {
-    me.heating_enabled = !me.heating_enabled;
+    player.heating_enabled = !player.heating_enabled;
     update_temperature();
 }
 
@@ -275,8 +275,8 @@ function update_collider_first() {
 
 function get_atom_level(key) {
     if (!(key in free_atom_levels)) free_atom_levels[key] = big(0);
-    if (!functions[me.upgrades[key].availability_function]()) return big(0);
-    return big(me.upgrades[key].amt).add(free_atom_levels[key]);
+    if (!functions[player.upgrades[key].availability_function]()) return big(0);
+    return big(player.upgrades[key].amt).add(free_atom_levels[key]);
 }
 
 function element_unlock_limit() {
@@ -290,7 +290,7 @@ function highest_unlocked_element() {
     let base_limit = 1;
     let max_limit = element_unlock_limit();
 
-    let element_effect = base_limit + me.collision_points_in_synthesis;
+    let element_effect = base_limit + player.collision_points_in_synthesis;
     // evolution b04: get free level of Synthesis
     if (player.evolutions['b04'].is_active()) element_effect += 1;
     // evolution b07: get free level of Synthesis
@@ -303,7 +303,7 @@ function next_ck_hint(amt) {
     let resource_need = big(amt).add(1);
 
     // a03_1: increase CK gain
-    if (me.milestones['a03_1'].is_active()) resource_need = resource_need.div(me.milestones['a03_1'].get_effect());
+    if (player.milestones['a03_1'].is_active()) resource_need = resource_need.div(player.milestones['a03_1'].get_effect());
 
     return resource_need.mult(2).max(2).pow(1024);
 }
@@ -315,15 +315,15 @@ function change_collision_categories(id, amt) {
         else amt = Infinity;
     }
 
-    amt = Math.min(amt, me.collision_points);
-    if (id == 1) amt = Math.max(amt, -me.collision_points_in_reaction);
-    if (id == 2) amt = Math.max(amt, -me.collision_points_in_synthesis);
-    if (id == 3) amt = Math.max(amt, -me.collision_points_in_generation);
+    amt = Math.min(amt, player.collision_points);
+    if (id == 1) amt = Math.max(amt, -player.collision_points_in_reaction);
+    if (id == 2) amt = Math.max(amt, -player.collision_points_in_synthesis);
+    if (id == 3) amt = Math.max(amt, -player.collision_points_in_generation);
 
-    me.collision_points -= amt;
-    if (id == 1) me.collision_points_in_reaction += amt;
-    if (id == 2) me.collision_points_in_synthesis += amt;
-    if (id == 3) me.collision_points_in_generation += amt;
+    player.collision_points -= amt;
+    if (id == 1) player.collision_points_in_reaction += amt;
+    if (id == 2) player.collision_points_in_synthesis += amt;
+    if (id == 3) player.collision_points_in_generation += amt;
 }
 
 function reaction_points_effect_photons() {
@@ -422,7 +422,7 @@ function update_collider() {
         document.getElementById("mechanic_collider_next_ck_hint").style.display = "none";
     }
 
-    if (me.collision_points == 0) {
+    if (player.collision_points == 0) {
         document.getElementById("mechanic_collider_reaction_inc").className = "upgrade disabled";
         document.getElementById("mechanic_collider_synthesis_inc").className = "upgrade disabled";
         document.getElementById("mechanic_collider_generation_inc").className = "upgrade disabled";
@@ -432,11 +432,11 @@ function update_collider() {
         document.getElementById("mechanic_collider_synthesis_inc").className = "upgrade";
         document.getElementById("mechanic_collider_generation_inc").className = "upgrade";
     }
-    if (me.collision_points_in_reaction == 0) document.getElementById("mechanic_collider_reaction_dec").className = "upgrade disabled";
+    if (player.collision_points_in_reaction == 0) document.getElementById("mechanic_collider_reaction_dec").className = "upgrade disabled";
     else document.getElementById("mechanic_collider_reaction_dec").className = "upgrade";
-    if (me.collision_points_in_synthesis == 0) document.getElementById("mechanic_collider_synthesis_dec").className = "upgrade disabled";
+    if (player.collision_points_in_synthesis == 0) document.getElementById("mechanic_collider_synthesis_dec").className = "upgrade disabled";
     else document.getElementById("mechanic_collider_synthesis_dec").className = "upgrade";
-    if (me.collision_points_in_generation == 0) document.getElementById("mechanic_collider_generation_dec").className = "upgrade disabled";
+    if (player.collision_points_in_generation == 0) document.getElementById("mechanic_collider_generation_dec").className = "upgrade disabled";
     else document.getElementById("mechanic_collider_generation_dec").className = "upgrade";
 
     document.getElementById("mechanic_collider_synthesis_limit").textContent = format_element(element_unlock_limit());
@@ -507,7 +507,7 @@ function update_collider() {
 
     for (let key of Object.keys(player.upgrades)) {
         if (key.includes('a')) {
-            if (!functions[me.upgrades[key].availability_function]()) free_atom_levels[key] = big(0);
+            if (!functions[player.upgrades[key].availability_function]()) free_atom_levels[key] = big(0);
             document.getElementById("mechanic_collider_" + key + "_level").textContent = format_number(get_atom_level(key));
             document.getElementById("upgrade_" + key + "_total_level").textContent = format_number(get_atom_level(key));
         }

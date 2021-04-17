@@ -19,19 +19,19 @@ class Dimension {
 
         if (!this.unconventional) {
             // Achievement bonus
-            base_production = base_production.mult(me.achievement_multiplier);
+            base_production = base_production.mult(player.achievement_multiplier);
             // Challenge 2: all production greater than X is raised to power of Y
-            if (base_production.gt(me.challenge_addinfo_2)) {
-                base_production = me.challenge_addinfo_2.mult(base_production.div(me.challenge_addinfo_2).pow(me.challenge_strength_2));
+            if (base_production.gt(player.challenge_addinfo_2)) {
+                base_production = player.challenge_addinfo_2.mult(base_production.div(player.challenge_addinfo_2).pow(player.challenge_strength_2));
             }
             // Challenge 5: all production is divided
-            base_production = base_production.div(me.challenge_strength_5);
+            base_production = base_production.div(player.challenge_strength_5);
             // Challenge 7: all production is divided
-            base_production = base_production.div(me.challenge_strength_7);
+            base_production = base_production.div(player.challenge_strength_7);
             // Challenge 11: dilation hurts extremely high multipliers
             if (base_production.gt(big(2).pow(1024))) {
-                me.experienced_dilation = true;
-                base_production = big(big(2).pow(1024)).pow(base_production.log(big(2).pow(1024)).pow(me.challenge_strength_11));
+                player.experienced_dilation = true;
+                base_production = big(big(2).pow(1024)).pow(base_production.log(big(2).pow(1024)).pow(player.challenge_strength_11));
             }
         }
 
@@ -43,9 +43,9 @@ class Dimension {
 
         if (!this.unconventional) {
             // Challenge 3: each dimension is slower than the previous one
-            base_production = base_production.div(big(me.challenge_strength_3).pow(this.level));
+            base_production = base_production.div(big(player.challenge_strength_3).pow(this.level));
             // Challenge 10: diminishing returns of dimensions
-            base_production = base_production.mult(this.amt.pow(me.challenge_strength_10));
+            base_production = base_production.mult(this.amt.pow(player.challenge_strength_10));
         }
         else base_production = base_production.mult(this.amt);
 
@@ -58,22 +58,22 @@ class Dimension {
 
         if (!this.unconventional) {
             // Challenge 8: dimensions collapse
-            this.amt = this.amt.mult(big(1 - 1 / me.challenge_strength_8).pow(big(timedelta).div(1000)));
+            this.amt = this.amt.mult(big(1 - 1 / player.challenge_strength_8).pow(big(timedelta).div(1000)));
         }
 
         let production_timedelta = big(timedelta);
         // Tickspeed effects on Matter Dimensions
-        if (this.id.includes("matter_")) production_timedelta = production_timedelta.mult(me.upgrades['TICKSPEED'].get_effect());
+        if (this.id.includes("matter_")) production_timedelta = production_timedelta.mult(player.upgrades['TICKSPEED'].get_effect());
         // v102: Tickspeed effects on Photonic Dimensions
-        if (me.upgrades['v102'].is_active() && this.id.includes("photonic_")) production_timedelta = production_timedelta.mult(me.upgrades['v102'].get_effect());
+        if (player.upgrades['v102'].is_active() && this.id.includes("photonic_")) production_timedelta = production_timedelta.mult(player.upgrades['v102'].get_effect());
         // a02_3: Tickspeed effects on Neutronic Dimensions
-        if (me.milestones['a02_3'].is_active() && this.id.includes("neutronic_")) production_timedelta = production_timedelta.mult(me.milestones['a02_3'].get_effect());
+        if (player.milestones['a02_3'].is_active() && this.id.includes("neutronic_")) production_timedelta = production_timedelta.mult(player.milestones['a02_3'].get_effect());
 
         // Challenge 4: all resources are capped
         if (this.produces instanceof Dimension) {
-            this.produces.amt = this.produces.amt.add(this.get_production_total(production_timedelta)).min(me.challenge_strength_4);
+            this.produces.amt = this.produces.amt.add(this.get_production_total(production_timedelta)).min(player.challenge_strength_4);
         }
-        else me[this.produces] = me[this.produces].add(this.get_production_total(production_timedelta)).min(me.challenge_strength_4);
+        else me[this.produces] = me[this.produces].add(this.get_production_total(production_timedelta)).min(player.challenge_strength_4);
     }
 
     get_cost(buy_amt = 1) {
@@ -82,7 +82,7 @@ class Dimension {
             // Cheating. Hopefully, nobody will notice
             if (buy_amt - i > 5) break;
             // Challenge 9: all costs are raised to a power
-            var one_cost = functions[this.cost_function](this.amt_bought + i).pow(me.challenge_strength_9).round().max(1);
+            var one_cost = functions[this.cost_function](this.amt_bought + i).pow(player.challenge_strength_9).round().max(1);
             if (base_cost.gt(one_cost.mult(1e20))) break;
             base_cost = base_cost.add(one_cost);
         }
@@ -113,7 +113,7 @@ class Dimension {
             }
         }
         // Challenge 4: all resources are capped
-        this.amt = this.amt.add(buy_amt).min(me.challenge_strength_4);
+        this.amt = this.amt.add(buy_amt).min(player.challenge_strength_4);
         this.amt_bought += buy_amt;
     }
 
@@ -198,7 +198,7 @@ class Dimension {
         this.unlock_function = data[3];
 
         if (data[4][0] == 0) {
-            this.currency = me.dimensions[data[4][1]];
+            this.currency = player.dimensions[data[4][1]];
         }
         else {
             this.currency = data[4][1];
@@ -206,7 +206,7 @@ class Dimension {
         this.currency_display_name = data[5];
 
         if (data[6][0] == 0) {
-            this.produces = me.dimensions[data[6][1]];
+            this.produces = player.dimensions[data[6][1]];
         }
         else {
             this.produces = data[6][1];

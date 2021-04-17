@@ -840,12 +840,12 @@ function processTimedelta(corrected_timedelta) {
 
     // Inertia gain, pt.2
     let inertial_timedelta = corrected_timedelta;
-    if (me.time_started) inertial_timedelta *= me.upgrades['INERTIA_5'].get_effect().toInt() / 100; // Online gains
+    if (player.time_started) inertial_timedelta *= player.upgrades['INERTIA_5'].get_effect().toInt() / 100; // Online gains
 
-    me.inertia = me.inertia.add(inertia_gain_speed(me).mult(inertial_timedelta)).min(me.upgrades['INERTIA_1'].get_effect());
+    player.inertia = player.inertia.add(inertia_gain_speed().mult(inertial_timedelta)).min(player.upgrades['INERTIA_1'].get_effect());
 
     // Photonic Challenge 8: you really cannot gain Photons
-    if (player.challenges['p8'].inC()) me.photons = big(0);
+    if (player.challenges['p8'].inC()) player.photons = big(0);
 
     let timedelta = corrected_timedelta;
     if (!player.time_started) timedelta = 0;
@@ -954,7 +954,7 @@ function processTimedelta(corrected_timedelta) {
     if (player.challenges['p2'].inC()) energy_generated = big(0);
 
     // if heating enabled, don't gain any energy
-    if (me.upgrades['d91'].is_active() && player.heating_enabled) {
+    if (player.upgrades['d91'].is_active() && player.heating_enabled) {
         if (player.heating_smart_distribution) { // Smart distribution: 50/50
             player.temperature_energy = player.temperature_energy.add(energy_generated.div(2));
             player.energy = player.energy.add(energy_generated.div(2)).min(player.challenge_strength_4);
@@ -967,7 +967,7 @@ function processTimedelta(corrected_timedelta) {
 
     player.space = player.space.add(get_space_production().mult(timedelta / 1000));
     // achievement 108: Space is not affected by resource limit
-    if (!me.achievements['108'].complete) player.space = player.space.min(player.challenge_strength_4);
+    if (!player.achievements['108'].complete) player.space = player.space.min(player.challenge_strength_4);
 
     for (let key of Object.keys(player.achievements)) {
         player.achievements[key].update();
@@ -1028,7 +1028,7 @@ function processTimedelta(corrected_timedelta) {
     player.max_matter = player.max_matter.max(player.matter);
 
     // v193: Stars produce Black Holes
-    if (me.upgrades['d91'].is_active() && player.upgrades['v193'].is_active()) {
+    if (player.upgrades['d91'].is_active() && player.upgrades['v193'].is_active()) {
         // Challenge 4: all resources are capped
         player.black_holes = player.black_holes.add(player.upgrades['v193'].get_effect().mult(timedelta / 1000)).min(player.challenge_strength_4);
     }
@@ -1050,19 +1050,19 @@ function game_loop(do_screen_update = true) {
     if (last_local_storage_save == -1) load_from_local_storage();
     if (Date.now() - last_local_storage_save > 1000) save_to_local_storage();
 
-    let timedelta = Date.now() - me.last_update_ts;
+    let timedelta = Date.now() - player.last_update_ts;
     let corrected_timedelta = Math.min(Math.max(0, timedelta + timedelta_carry), 1000);
 
-    me.total_realtime += timedelta;
-    me.online_realtime += Math.min(Math.max(0, timedelta), 1000);
+    player.total_realtime += timedelta;
+    player.online_realtime += Math.min(Math.max(0, timedelta), 1000);
 
     // Inertia gain, pt. 1
     let inertial_timedelta = Math.max(0, timedelta - 1000); // Offline
 
-    me.inertia = me.inertia.add(inertia_gain_speed().mult(inertial_timedelta)).min(me.upgrades['INERTIA_1'].get_effect());
+    player.inertia = player.inertia.add(inertia_gain_speed().mult(inertial_timedelta)).min(player.upgrades['INERTIA_1'].get_effect());
 
 
-    me.last_update_ts = Date.now();
+    player.last_update_ts = Date.now();
 
     // Crazy antimatter growth fix: repeat time loop a lot of times
     let time_loop_repeats = Math.max(1, Math.floor(corrected_timedelta / 50));
@@ -1103,67 +1103,67 @@ function hotkeydown(event) {
         case 'd': reset_dimensional(); break;
         case 'a': reset_atomic(); break;
         case 'b': reset_biological(); break;
-        case 'P': if (me.unlocked_photonic) change_menu('photonic'); break;
-        case 'G': if (me.unlocked_gravitonic) change_menu('gravitonic'); break;
-        case 'N': if (me.unlocked_neutronic) change_menu('neutronic'); break;
-        case 'V': if (me.unlocked_vacuumic) change_menu('vacuumic'); break;
-        case 'D': if (me.unlocked_dimensional) change_menu('dimensional'); break;
-        case 'A': if (me.unlocked_atomic) change_menu('atomic'); break;
-        case 'B': if (me.unlocked_biological) change_menu('biological'); break;
+        case 'P': if (player.unlocked_photonic) change_menu('photonic'); break;
+        case 'G': if (player.unlocked_gravitonic) change_menu('gravitonic'); break;
+        case 'N': if (player.unlocked_neutronic) change_menu('neutronic'); break;
+        case 'V': if (player.unlocked_vacuumic) change_menu('vacuumic'); break;
+        case 'D': if (player.unlocked_dimensional) change_menu('dimensional'); break;
+        case 'A': if (player.unlocked_atomic) change_menu('atomic'); break;
+        case 'B': if (player.unlocked_biological) change_menu('biological'); break;
         case '1': 
             if (current_menu in current_submenu && current_submenu[current_menu] == "dimensions") 
-                me.dimensions[current_menu + "_1"].buy(me.dimensions[current_menu + "_1"].binary_search_max()); 
+                player.dimensions[current_menu + "_1"].buy(player.dimensions[current_menu + "_1"].binary_search_max()); 
             break;
         case '2': 
             if (current_menu in current_submenu && current_submenu[current_menu] == "dimensions") 
-                me.dimensions[current_menu + "_2"].buy(me.dimensions[current_menu + "_2"].binary_search_max()); 
+                player.dimensions[current_menu + "_2"].buy(player.dimensions[current_menu + "_2"].binary_search_max()); 
             break;
         case '3': 
             if (current_menu in current_submenu && current_submenu[current_menu] == "dimensions") 
-                me.dimensions[current_menu + "_3"].buy(me.dimensions[current_menu + "_3"].binary_search_max()); 
+                player.dimensions[current_menu + "_3"].buy(player.dimensions[current_menu + "_3"].binary_search_max()); 
             break;
         case '4': 
             if (current_menu in current_submenu && current_submenu[current_menu] == "dimensions") 
-                me.dimensions[current_menu + "_4"].buy(me.dimensions[current_menu + "_4"].binary_search_max()); 
+                player.dimensions[current_menu + "_4"].buy(player.dimensions[current_menu + "_4"].binary_search_max()); 
             break;
         case '5': 
             if (current_menu in current_submenu && current_submenu[current_menu] == "dimensions") 
-                me.dimensions[current_menu + "_5"].buy(me.dimensions[current_menu + "_5"].binary_search_max()); 
+                player.dimensions[current_menu + "_5"].buy(player.dimensions[current_menu + "_5"].binary_search_max()); 
             break;
         case '6': 
             if (current_menu in current_submenu && current_submenu[current_menu] == "dimensions") 
-                me.dimensions[current_menu + "_6"].buy(me.dimensions[current_menu + "_6"].binary_search_max()); 
+                player.dimensions[current_menu + "_6"].buy(player.dimensions[current_menu + "_6"].binary_search_max()); 
             break;
         case '7': 
             if (current_menu in current_submenu && current_submenu[current_menu] == "dimensions") 
-                me.dimensions[current_menu + "_7"].buy(me.dimensions[current_menu + "_7"].binary_search_max()); 
+                player.dimensions[current_menu + "_7"].buy(player.dimensions[current_menu + "_7"].binary_search_max()); 
             break;
         case '8': 
             if (current_menu in current_submenu && current_submenu[current_menu] == "dimensions") 
-                me.dimensions[current_menu + "_8"].buy(me.dimensions[current_menu + "_8"].binary_search_max()); 
+                player.dimensions[current_menu + "_8"].buy(player.dimensions[current_menu + "_8"].binary_search_max()); 
             break;
         case '9': 
             if (current_menu in current_submenu && current_submenu[current_menu] == "dimensions") 
-                me.dimensions[current_menu + "_9"].buy(me.dimensions[current_menu + "_9"].binary_search_max()); 
+                player.dimensions[current_menu + "_9"].buy(player.dimensions[current_menu + "_9"].binary_search_max()); 
             break;
         case '0': 
             if (current_menu in current_submenu && current_submenu[current_menu] == "dimensions") 
-                me.dimensions[current_menu + "_10"].buy(me.dimensions[current_menu + "_10"].binary_search_max()); 
+                player.dimensions[current_menu + "_10"].buy(player.dimensions[current_menu + "_10"].binary_search_max()); 
             break;
         case 'm':
             if (current_menu in current_submenu && current_submenu[current_menu] == "dimensions") 
                 for (let i = 1; i <= 12; i++)
-                    me.dimensions[current_menu + "_" + i].buy(me.dimensions[current_menu + "_" + i].binary_search_max()); 
+                    player.dimensions[current_menu + "_" + i].buy(player.dimensions[current_menu + "_" + i].binary_search_max()); 
             if (current_menu in current_submenu && current_submenu[current_menu] == "upgrades") {
-                if (current_menu == "photonic" && (me.achievements['62'].complete || me.achievements['72'].complete)) max_buy_upgrades('p');
-                if (current_menu == "gravitonic" && (me.achievements['64'].complete || me.upgrades['AUTO1_5'].is_active())) max_buy_upgrades('g');
-                if (current_menu == "neutronic" && (me.achievements['97'].complete || me.upgrades['AUTO2_5'].is_active())) max_buy_upgrades('n');
-                if (current_menu == "dimensional" && (me.achievements['127'].complete)) max_buy_upgrades('d');
-                if (current_menu == "atomic" && (me.achievements['147'].complete)) max_buy_upgrades('a');
+                if (current_menu == "photonic" && (player.achievements['62'].complete || player.achievements['72'].complete)) max_buy_upgrades('p');
+                if (current_menu == "gravitonic" && (player.achievements['64'].complete || player.upgrades['AUTO1_5'].is_active())) max_buy_upgrades('g');
+                if (current_menu == "neutronic" && (player.achievements['97'].complete || player.upgrades['AUTO2_5'].is_active())) max_buy_upgrades('n');
+                if (current_menu == "dimensional" && (player.achievements['127'].complete)) max_buy_upgrades('d');
+                if (current_menu == "atomic" && (player.achievements['147'].complete)) max_buy_upgrades('a');
             }
             break;
         case 'Shift':
-            me.settings['show_ids'] = true;
+            player.settings['show_ids'] = true;
             radio_set_setting('show_ids', true);
             break;
         case 'Control': pressed_buttons['ctrl'] = true; break;
@@ -1175,7 +1175,7 @@ function hotkeydown(event) {
 function hotkeyup(event) {
     switch (key_transform(event)) {
         case 'Shift':
-            me.settings['show_ids'] = false;
+            player.settings['show_ids'] = false;
             radio_set_setting('show_ids', false);
             break;
         case 'Control': pressed_buttons['ctrl'] = false; break;

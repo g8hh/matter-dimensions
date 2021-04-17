@@ -44,7 +44,7 @@ class Upgrade {
             if (buy_amt - i > 5) break;
             // Challenge 9: all costs are raised to a power
             let one_cost = big(0);
-            if (!this.unconventional) one_cost = functions[this.cost_function](this.amt + i).pow(me.challenge_strength_9).round().max(1);
+            if (!this.unconventional) one_cost = functions[this.cost_function](this.amt + i).pow(player.challenge_strength_9).round().max(1);
             else one_cost = functions[this.cost_function](this.amt + i).round();
             if (base_cost.gt(one_cost.mult(1e20))) break; 
             base_cost = base_cost.add(one_cost);
@@ -205,7 +205,7 @@ class Upgrade {
         //this.unlock_function = data[3];
 
         if (data[4][0] == 0) {
-            this.currency = me.dimensions[data[4][1]];
+            this.currency = player.dimensions[data[4][1]];
         }
         else {
             this.currency = data[4][1];
