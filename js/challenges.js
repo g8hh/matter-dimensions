@@ -65,7 +65,7 @@ class Challenge {
         if (this.in_challenge) this.exit();
         else this.start();
 
-        screen_update(me);
+        screen_update();
     }
 
     update() {
