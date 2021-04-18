@@ -32,10 +32,10 @@ functions["goal_d1"] = () => {
     return !player.shards.lt(1e12);
 };
 functions["goal_d2"] = () => {
-    return false;
+    return !player.shards.lt(1e18);
 };
 functions["goal_d3"] = () => {
-    return false;
+    return !player.shards.lt(1e20);
 };
 functions["goal_d4"] = () => {
     return false;
