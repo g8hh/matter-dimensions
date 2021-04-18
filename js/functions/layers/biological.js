@@ -87,8 +87,10 @@ function reset_biological(force=false, higher_reset=false, autobuyer_induced=fal
 
 
 function perform_extinction() {
-    let result = confirm("Are you sure you want to perform an Extinction?\n(This warning can be disabled in Settings)");
-    if (!result) return;
+    if (player.settings['prestige_confirmation_extinction']) {
+        let result = confirm("Are you sure you want to perform an Extinction?\n(This warning can be disabled in Settings)");
+        if (!result) return;
+    }
 
     player.achievements['134'].award();
 
