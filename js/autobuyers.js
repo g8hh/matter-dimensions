@@ -34,11 +34,11 @@ class Autobuyer {
         if (typeof this.obj === 'string' || this.obj instanceof String) {
             if (this.buy_type == "amt") {
                 var pp_amt = big(0);
-                if (this.obj == "photonic") pp_amt = prestige_earn_photons(me);
-                if (this.obj == "gravitonic") pp_amt = prestige_earn_gravitons(me);
-                if (this.obj == "neutronic") pp_amt = prestige_earn_neutrons(me);
-                if (this.obj == "vacuumic") pp_amt = prestige_earn_vacuum_energy(me);
-                if (this.obj == "dimensional") pp_amt = prestige_earn_shards(me);
+                if (this.obj == "photonic") pp_amt = prestige_earn_photons();
+                if (this.obj == "gravitonic") pp_amt = prestige_earn_gravitons();
+                if (this.obj == "neutronic") pp_amt = prestige_earn_neutrons();
+                if (this.obj == "vacuumic") pp_amt = prestige_earn_vacuum_energy();
+                if (this.obj == "dimensional") pp_amt = prestige_earn_shards();
                 if (this.obj.includes("temperature")) pp_amt = wave_gain(this.obj.substr("temperature".length + 1));
 
                 if (!pp_amt.lt(this.param)) {
