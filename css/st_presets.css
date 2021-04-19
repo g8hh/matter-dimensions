@@ -1,3 +1,11 @@
+.st-presets {
+    grid-row: 13 / 28; 
+    grid-column: 13 / 16; 
+    margin-left: 15px; 
+    display: flex; 
+    flex-direction: column;
+}
+
 .st-preset-preview {
     display: grid;
     grid-template-rows: repeat(21, 1fr);
