@@ -73,6 +73,15 @@ functions["upg_d122_cost"] = (amt) => {
 functions["upg_d123_cost"] = (amt) => {
     return big(59049);
 }
+functions["upg_d131_cost"] = (amt) => {
+    return big(3).pow(big(amt).mult(amt+1).mult(4).add(13));
+}
+functions["upg_d132_cost"] = (amt) => {
+    return big(3).pow(big(amt).mult(amt+1).mult(4).add(13));
+}
+functions["upg_d141_cost"] = (amt) => {
+    return big(1e8);
+}
 
 
 
@@ -97,10 +106,18 @@ functions["upg_d41_power"] = (amt) => {
     return big(1);
 }
 functions["upg_d51_power"] = (amt) => {
-    return big(1.01).pow(amt);
+    let base_amt = big(amt);
+    // d131: d51 is more powerful
+    if (player.upgrades['d131'].is_active()) base_amt = base_amt.mult(player.upgrades['d131'].get_effect());
+
+    return big(1.01).pow(base_amt);
 }
 functions["upg_d52_power"] = (amt) => {
-    return big(amt).add(1);
+    let base_amt = big(amt);
+    // d132: d52 is more powerful
+    if (player.upgrades['d132'].is_active()) base_amt = base_amt.mult(player.upgrades['d132'].get_effect());
+
+    return big(base_amt).add(1);
 }
 functions["upg_d61_power"] = (amt) => {
     return big(amt).mult(big(amt).add(1)).div(2);
@@ -160,6 +177,15 @@ functions["upg_d122_power"] = (amt) => {
     return big(1);
 }
 functions["upg_d123_power"] = (amt) => {
+    return big(1);
+}
+functions["upg_d131_power"] = (amt) => {
+    return big(amt).div(2).add(1);
+}
+functions["upg_d132_power"] = (amt) => {
+    return big(amt).div(2).add(1);
+}
+functions["upg_d141_power"] = (amt) => {
     return big(1);
 }
 
@@ -240,6 +266,15 @@ functions["upg_d122_unlock"] = () => {
 functions["upg_d123_unlock"] = () => {
     return player.upgrades['d81'].amt > 0;
 }
+functions["upg_d131_unlock"] = () => {
+    return player.upgrades['d81'].amt > 0;
+}
+functions["upg_d132_unlock"] = () => {
+    return player.upgrades['d81'].amt > 0;
+}
+functions["upg_d141_unlock"] = () => {
+    return player.upgrades['d81'].amt > 0;
+}
 
 
 
@@ -318,6 +353,15 @@ functions["upg_d122_available"] = () => {
     return player.upgrades['d81'].amt > 0;
 }
 functions["upg_d123_available"] = () => {
+    return player.upgrades['d81'].amt > 0;
+}
+functions["upg_d131_available"] = () => {
+    return player.upgrades['d81'].amt > 0;
+}
+functions["upg_d132_available"] = () => {
+    return player.upgrades['d81'].amt > 0;
+}
+functions["upg_d141_available"] = () => {
     return player.upgrades['d81'].amt > 0;
 }
 

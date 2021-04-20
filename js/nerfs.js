@@ -60,6 +60,8 @@ function update_challenges_power() {
     if (player.upgrades['d41'].is_active()) player.challenge_strength_6 += 1;
     // d81: unlock new Dimension
     if (player.upgrades['d81'].is_active()) player.challenge_strength_6 += 1;
+    // d141: unlock new Dimension
+    if (player.upgrades['d141'].is_active()) player.challenge_strength_6 += 1;
 
     let adj_time_passed = player.time_passed;
     // population slows down time
