@@ -31,21 +31,6 @@ function update_prestige() {
     }
 
 
-    elements = document.getElementsByClassName("power_black_holes_tickspeed");
-    for (var i = 0; i < elements.length; i++) {
-        elements.item(i).textContent = format_number(power_black_holes_tickspeed());
-    }
-
-    elements = document.getElementsByClassName("power_stars_tickspeed");
-    for (var i = 0; i < elements.length; i++) {
-        elements.item(i).textContent = format_number(power_stars_tickspeed());
-    }
-
-    elements = document.getElementsByClassName("power_stars_light_effect");
-    for (var i = 0; i < elements.length; i++) {
-        elements.item(i).textContent = format_number(power_stars_light_effect());
-    }
-
     elements = document.getElementsByClassName("power_inflation_matter");
     for (var i = 0; i < elements.length; i++) {
         elements.item(i).textContent = format_number(power_inflation_matter());
@@ -340,16 +325,6 @@ function update_prestige() {
         document.getElementById("statistics_fastest_biological").style.display = "none";
     }
 
-    // black holes give gravitons
-    if (player.upgrades['v83'].is_active()) {
-        document.getElementById("power_black_holes_gravitons_info").style.display = "";
-        elements = document.getElementsByClassName("power_black_holes_gravitons");
-        for (var i = 0; i < elements.length; i++) {
-            elements.item(i).textContent = format_number(player.upgrades['v83'].get_effect());
-        }
-    }
-    else document.getElementById("power_black_holes_gravitons_info").style.display = "none";
-
     // particle powers
     if (!player.upgrades['n04'].is_active()) document.getElementById("power_block_proton").style.visibility = "hidden";
     else document.getElementById("power_block_proton").style.visibility = "";
@@ -402,36 +377,6 @@ function update_prestige() {
     // tickspeed compound type
     if (player.challenges['n3'].inC()) document.getElementById("tickspeed_compound_type").textContent = "+";
     else document.getElementById("tickspeed_compound_type").textContent = "×";
-
-    // black holes boost resource limit
-    if (player.upgrades['v183'].is_active()) {
-        document.getElementById("power_black_holes_resource_limit_info").style.display = "";
-        elements = document.getElementsByClassName("power_black_holes_resource_limit");
-        for (var i = 0; i < elements.length; i++) {
-            elements.item(i).textContent = format_number(player.upgrades['v183'].get_effect());
-        }
-    }
-    else document.getElementById("power_black_holes_resource_limit_info").style.display = "none";
-
-    // stars boost 1st Photonic Dimension
-    if (player.upgrades['v192'].is_active()) {
-        document.getElementById("power_stars_photonic_dim_info").style.display = "";
-        elements = document.getElementsByClassName("power_stars_photonic_dim");
-        for (var i = 0; i < elements.length; i++) {
-            elements.item(i).textContent = format_number(player.upgrades['v192'].get_effect());
-        }
-    }
-    else document.getElementById("power_stars_photonic_dim_info").style.display = "none";
-
-    // stars produce black holes
-    if (player.upgrades['v193'].is_active()) {
-        document.getElementById("power_stars_black_holes_info").style.display = "";
-        elements = document.getElementsByClassName("power_stars_black_holes");
-        for (var i = 0; i < elements.length; i++) {
-            elements.item(i).textContent = format_number(player.upgrades['v193'].get_effect());
-        }
-    }
-    else document.getElementById("power_stars_black_holes_info").style.display = "none";
 
     // v211: BREAK INFINITY
     if (player.upgrades['v211'].is_active()) {
@@ -723,7 +668,11 @@ function update_prestige() {
     }
     for (let i = 0; i < 3; i++) render_st_preset(i);
 
-    screen_update_photonic_dimensions();
+    if (document.getElementById("photonic_dimensions").style.display != "none") screen_update_photonic_dimensions();
+
+    if (document.getElementById("gravitonic_dimensions").style.display != "none") screen_update_gravitonic_dimensions();
+
+    if (document.getElementById("neutronic_dimensions").style.display != "none") screen_update_neutronic_dimensions();
 
     update_unlocked_menus();
     update_unlock_hint();

@@ -42,7 +42,9 @@
         <script src="js/functions/vacuumic_tree_display.js?rev=23"></script>
         <script src="js/functions/vacuumic_tree_presets.js?rev=23"></script>
         <script src="js/functions/number_display.js?rev=23"></script>
-        <script src="js/render/photonic_dimensions.js?rev=23"></script>
+        <script src="js/render/photonic/dimensions.js?rev=23"></script>
+        <script src="js/render/gravitonic/dimensions.js?rev=23"></script>
+        <script src="js/render/neutronic/dimensions.js?rev=23"></script>
         <script src="js/bignum.js?rev=23"></script>
         <script src="js/nerfs.js?rev=23"></script>
         <script src="js/prestige.js?rev=23"></script>
@@ -71,67 +73,67 @@
         <div class="layout-wrapper">
             <div class="settings-menu">
                 <div class="settings-menu-wrapper">
-                    <div class="setting-button" id="menu_button_statistics" onclick="change_menu('statistics')"><p>Statistics</p></div>
-                    <div class="setting-button" id="menu_button_achievements" onclick="change_menu('achievements')"><p>Achievements</p></div>
-                    <div class="setting-button" id="menu_button_settings" onclick="change_menu('settings')"><p>Settings</p></div>
-                    <div class="setting-button" id="menu_button_information" onclick="change_menu('information')"><p>Information</p></div>
+                    <div class="setting-button" id="menu_button_statistics" onclick="change_menu('statistics'); screen_update()"><p>Statistics</p></div>
+                    <div class="setting-button" id="menu_button_achievements" onclick="change_menu('achievements'); screen_update()"><p>Achievements</p></div>
+                    <div class="setting-button" id="menu_button_settings" onclick="change_menu('settings'); screen_update()"><p>Settings</p></div>
+                    <div class="setting-button" id="menu_button_information" onclick="change_menu('information'); screen_update()"><p>Information</p></div>
                     <div class="divider"></div>
-                    <div class="setting-button" id="menu_button_automation" onclick="change_menu('automation')" style="display: none"><p>Automation Shop</p></div>
-                    <div class="setting-button" id="menu_button_inertia" onclick="change_menu('inertia')"><p>Inertia</p></div>
-                    <div class="setting-button disabled" id="menu_button_matter" onclick="change_menu('matter')"><p>Matter</p></div>
-                    <div class="setting-button" id="menu_button_photonic" onclick="change_menu('photonic')" style="display: none"><p>Photonic</p></div>
-                    <div class="setting-button" id="menu_button_gravitonic" onclick="change_menu('gravitonic')" style="display: none"><p>Gravitonic</p></div>
-                    <div class="setting-button" id="menu_button_neutronic" onclick="change_menu('neutronic')" style="display: none"><p>Neutronic</p></div>
-                    <div class="setting-button" id="menu_button_vacuumic" onclick="change_menu('vacuumic')" style="display: none"><p>Vacuumic</p></div>
-                    <div class="setting-button" id="menu_button_dimensional" onclick="change_menu('dimensional')" style="display: none"><p>Dimensional</p></div>
-                    <div class="setting-button" id="menu_button_atomic" onclick="change_menu('atomic')" style="display: none"><p>Atomic</p></div>
-                    <div class="setting-button" id="menu_button_biological" onclick="change_menu('biological')" style="display: none"><p>Biological</p></div>
+                    <div class="setting-button" id="menu_button_automation" onclick="change_menu('automation'); screen_update()" style="display: none"><p>Automation Shop</p></div>
+                    <div class="setting-button" id="menu_button_inertia" onclick="change_menu('inertia'); screen_update()"><p>Inertia</p></div>
+                    <div class="setting-button disabled" id="menu_button_matter" onclick="change_menu('matter'); screen_update()"><p>Matter</p></div>
+                    <div class="setting-button" id="menu_button_photonic" onclick="change_menu('photonic'); screen_update()" style="display: none"><p>Photonic</p></div>
+                    <div class="setting-button" id="menu_button_gravitonic" onclick="change_menu('gravitonic'); screen_update()" style="display: none"><p>Gravitonic</p></div>
+                    <div class="setting-button" id="menu_button_neutronic" onclick="change_menu('neutronic'); screen_update()" style="display: none"><p>Neutronic</p></div>
+                    <div class="setting-button" id="menu_button_vacuumic" onclick="change_menu('vacuumic'); screen_update()" style="display: none"><p>Vacuumic</p></div>
+                    <div class="setting-button" id="menu_button_dimensional" onclick="change_menu('dimensional'); screen_update()" style="display: none"><p>Dimensional</p></div>
+                    <div class="setting-button" id="menu_button_atomic" onclick="change_menu('atomic'); screen_update()" style="display: none"><p>Atomic</p></div>
+                    <div class="setting-button" id="menu_button_biological" onclick="change_menu('biological'); screen_update()" style="display: none"><p>Biological</p></div>
                     <div class="divider"></div>
                     <div id="submenu_automation" class="settings-submenu" style="display: none"></div>
                     <div id="submenu_inertia" class="settings-submenu" style="display: none"></div>
                     <div id="submenu_matter" class="settings-submenu">
-                        <div class="setting-button disabled" id="menu_button_matter_dimensions" onclick="change_submenu('matter', 'dimensions')"><p>Dimensions</p></div>
+                        <div class="setting-button disabled" id="menu_button_matter_dimensions" onclick="change_submenu('matter', 'dimensions'); screen_update()"><p>Dimensions</p></div>
                     </div>
                     <div id="submenu_photonic" class="settings-submenu" style="display: none">
-                        <div class="setting-button" id="menu_button_photonic_dimensions" onclick="change_submenu('photonic', 'dimensions')" style="display: none"><p>Dimensions</p></div>
-                        <div class="setting-button disabled" id="menu_button_photonic_upgrades" onclick="change_submenu('photonic', 'upgrades')" style="display: none"><p>Upgrades</p></div>
-                        <div class="setting-button" id="menu_button_photonic_challenges" onclick="change_submenu('photonic', 'challenges')" style="display: none"><p>Challenges</p></div>
+                        <div class="setting-button" id="menu_button_photonic_dimensions" onclick="change_submenu('photonic', 'dimensions'); screen_update()" style="display: none"><p>Dimensions</p></div>
+                        <div class="setting-button disabled" id="menu_button_photonic_upgrades" onclick="change_submenu('photonic', 'upgrades'); screen_update()" style="display: none"><p>Upgrades</p></div>
+                        <div class="setting-button" id="menu_button_photonic_challenges" onclick="change_submenu('photonic', 'challenges'); screen_update()" style="display: none"><p>Challenges</p></div>
                     </div>
                     <div id="submenu_gravitonic" class="settings-submenu" style="display: none">
-                        <div class="setting-button" id="menu_button_gravitonic_dimensions" onclick="change_submenu('gravitonic', 'dimensions')" style="display: none"><p>Dimensions</p></div>
-                        <div class="setting-button disabled" id="menu_button_gravitonic_upgrades" onclick="change_submenu('gravitonic', 'upgrades')" style="display: none"><p>Upgrades</p></div>
-                        <div class="setting-button" id="menu_button_gravitonic_challenges" onclick="change_submenu('gravitonic', 'challenges')" style="display: none"><p>Challenges</p></div>
+                        <div class="setting-button" id="menu_button_gravitonic_dimensions" onclick="change_submenu('gravitonic', 'dimensions'); screen_update()" style="display: none"><p>Dimensions</p></div>
+                        <div class="setting-button disabled" id="menu_button_gravitonic_upgrades" onclick="change_submenu('gravitonic', 'upgrades'); screen_update()" style="display: none"><p>Upgrades</p></div>
+                        <div class="setting-button" id="menu_button_gravitonic_challenges" onclick="change_submenu('gravitonic', 'challenges'); screen_update()" style="display: none"><p>Challenges</p></div>
                     </div>
                     <div id="submenu_neutronic" class="settings-submenu" style="display: none">
-                        <div class="setting-button" id="menu_button_neutronic_dimensions" onclick="change_submenu('neutronic', 'dimensions')" style="display: none"><p>Dimensions</p></div>
-                        <div class="setting-button disabled" id="menu_button_neutronic_upgrades" onclick="change_submenu('neutronic', 'upgrades')" style="display: none"><p>Upgrades</p></div>
-                        <div class="setting-button" id="menu_button_neutronic_challenges" onclick="change_submenu('neutronic', 'challenges')" style="display: none"><p>Challenges</p></div>
+                        <div class="setting-button" id="menu_button_neutronic_dimensions" onclick="change_submenu('neutronic', 'dimensions'); screen_update()" style="display: none"><p>Dimensions</p></div>
+                        <div class="setting-button disabled" id="menu_button_neutronic_upgrades" onclick="change_submenu('neutronic', 'upgrades'); screen_update()" style="display: none"><p>Upgrades</p></div>
+                        <div class="setting-button" id="menu_button_neutronic_challenges" onclick="change_submenu('neutronic', 'challenges'); screen_update()" style="display: none"><p>Challenges</p></div>
                     </div>
                     <div id="submenu_vacuumic" class="settings-submenu" style="display: none">
-                        <div class="setting-button" id="menu_button_vacuumic_dimensions" onclick="change_submenu('vacuumic', 'dimensions')" style="display: none"><p>Dimensions</p></div>
-                        <div class="setting-button disabled" id="menu_button_vacuumic_upgrades" onclick="change_submenu('vacuumic', 'upgrades')" style="display: none"><p>Upgrades</p></div>
-                        <div class="setting-button" id="menu_button_vacuumic_challenges" onclick="change_submenu('vacuumic', 'challenges')" style="display: none"><p>Challenges</p></div>
-                        <div class="setting-button" id="menu_button_vacuumic_temperature" onclick="change_submenu('vacuumic', 'temperature')" style="display: none"><p>Temperature</p></div>
+                        <div class="setting-button" id="menu_button_vacuumic_dimensions" onclick="change_submenu('vacuumic', 'dimensions'); screen_update()" style="display: none"><p>Dimensions</p></div>
+                        <div class="setting-button disabled" id="menu_button_vacuumic_upgrades" onclick="change_submenu('vacuumic', 'upgrades'); screen_update()" style="display: none"><p>Upgrades</p></div>
+                        <div class="setting-button" id="menu_button_vacuumic_challenges" onclick="change_submenu('vacuumic', 'challenges'); screen_update()" style="display: none"><p>Challenges</p></div>
+                        <div class="setting-button" id="menu_button_vacuumic_temperature" onclick="change_submenu('vacuumic', 'temperature'); screen_update()" style="display: none"><p>Temperature</p></div>
                     </div>
                     <div id="submenu_dimensional" class="settings-submenu" style="display: none">
-                        <div class="setting-button" id="menu_button_dimensional_dimensions" onclick="change_submenu('dimensional', 'dimensions')" style="display: none"><p>Dimensions</p></div>
-                        <div class="setting-button disabled" id="menu_button_dimensional_upgrades" onclick="change_submenu('dimensional', 'upgrades')" style="display: none"><p>Upgrades</p></div>
-                        <div class="setting-button" id="menu_button_dimensional_challenges" onclick="change_submenu('dimensional', 'challenges')" style="display: none"><p>Challenges</p></div>
+                        <div class="setting-button" id="menu_button_dimensional_dimensions" onclick="change_submenu('dimensional', 'dimensions'); screen_update()" style="display: none"><p>Dimensions</p></div>
+                        <div class="setting-button disabled" id="menu_button_dimensional_upgrades" onclick="change_submenu('dimensional', 'upgrades'); screen_update()" style="display: none"><p>Upgrades</p></div>
+                        <div class="setting-button" id="menu_button_dimensional_challenges" onclick="change_submenu('dimensional', 'challenges'); screen_update()" style="display: none"><p>Challenges</p></div>
                     </div>
                     <div id="submenu_atomic" class="settings-submenu" style="display: none">
-                        <div class="setting-button disabled" id="menu_button_atomic_upgrades" onclick="change_submenu('atomic', 'upgrades')" style="display: none"><p>Upgrades</p></div>
-                        <div class="setting-button" id="menu_button_atomic_collider" onclick="change_submenu('atomic', 'collider')" style="display: none"><p>Collider</p></div>
+                        <div class="setting-button disabled" id="menu_button_atomic_upgrades" onclick="change_submenu('atomic', 'upgrades'); screen_update()" style="display: none"><p>Upgrades</p></div>
+                        <div class="setting-button" id="menu_button_atomic_collider" onclick="change_submenu('atomic', 'collider'); screen_update()" style="display: none"><p>Collider</p></div>
                     </div>
                     <div id="submenu_biological" class="settings-submenu" style="display: none">
-                        <div class="setting-button disabled" id="menu_button_biological_population" onclick="change_submenu('biological', 'population')" style="display: none"><p>Population</p></div>
-                        <div class="setting-button" id="menu_button_biological_evolutions" onclick="change_submenu('biological', 'evolutions')" style="display: none"><p>Evolutions</p></div>
+                        <div class="setting-button disabled" id="menu_button_biological_population" onclick="change_submenu('biological', 'population'); screen_update()" style="display: none"><p>Population</p></div>
+                        <div class="setting-button" id="menu_button_biological_evolutions" onclick="change_submenu('biological', 'evolutions'); screen_update()" style="display: none"><p>Evolutions</p></div>
                     </div>
                     <div id="submenu_statistics" class="settings-submenu" style="display: none"></div>
                     <div id="submenu_achievements" class="settings-submenu" style="display: none"></div>
                     <div id="submenu_settings" class="settings-submenu" style="display: none"></div>
                     <div id="submenu_information" class="settings-submenu" style="display: none">
-                        <div class="setting-button disabled" id="menu_button_information_hotkeys" onclick="change_submenu('information', 'hotkeys')"><p>Hotkeys</p></div>
-                        <div class="setting-button" id="menu_button_information_changelog" onclick="change_submenu('information', 'changelog')"><p>Changelog</p></div>
+                        <div class="setting-button disabled" id="menu_button_information_hotkeys" onclick="change_submenu('information', 'hotkeys'); screen_update()"><p>Hotkeys</p></div>
+                        <div class="setting-button" id="menu_button_information_changelog" onclick="change_submenu('information', 'changelog'); screen_update()"><p>Changelog</p></div>
                     </div>
                     <div style="flex-grow: 1"></div>
                     <div style="display: flex; flex-direction: column; margin: 0px;">
