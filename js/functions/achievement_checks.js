@@ -466,6 +466,14 @@ functions["check_138"] = () => {
 };
 
 
+functions["check_141"] = () => {
+    return player.dimensions["matter_8"].amt_bought > 0;
+};
+
+functions["check_142"] = () => {
+    return !player.population.lt(1e6);
+};
+
 functions["check_144"] = () => {
     for (let key of Object.keys(player.challenges)) {
         if (key.includes('d') && player.challenges[key].completed) return true;

@@ -326,6 +326,8 @@ class Player {
         this.achievements["137"] = new Achievement("137", "...breathe out", "Have an element with the total level of at least 1000", "check_137");
         this.achievements["138"] = new Achievement("138", "The Hindenburg", "Have 10 free levels from Generation", "check_138");
 
+        this.achievements["141"] = new Achievement("141", "90 degrees from infinity", "Buy 8th Matter Dimension", "check_141");
+        this.achievements["142"] = new Achievement("142", "Light the City!", "Have at least 1 million of population", "check_142");
         this.achievements["144"] = new Achievement("144", "Buffed", "Complete a Dimensional challenge", "check_144");
         this.achievements["145"] = new Achievement("145", "One Death", "Reach a mortality rate of 2.5", "check_145");
         this.achievements["147"] = new Achievement("147", "Double Trouble", "Complete two regular Neutronic challenges five times.\nReward: you can max buy Atomic upgrades", "check_147", "effective");
