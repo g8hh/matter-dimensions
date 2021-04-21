@@ -4705,7 +4705,7 @@
                                 <p style="text-align: left; flex-grow: 1"><span class="static-number" extra="50"></span>ms</p>
                                 <p style="text-align: right; flex-grow: 1"><span class="static-number" extra="1000"></span>ms</p>
                             </div>
-                            <input type="range" name="update_rate" min="50" max="1000" value="50" step="10" style="width: 100%" onchange="change_update_rate(+this.value, false)">
+                            <input type="range" name="update_rate" min="50" max="1000" value="50" step="10" style="width: 100%" onchange="change_update_rate()">
                         </div>
                         <p>This setting affects how often the game updates the screen. It has no effect on the speed of the actual game.</p>
                         <p>The game is performing a screen update every <span id="settings_val_update_rate"></span> milliseconds (or <span id="settings_val_update_per_sec"></span> updates/second).</p>

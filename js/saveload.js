@@ -252,5 +252,5 @@ function onload_tick() {
     update_challenges_power();
     update_mechanics_first();
     //player.last_update_ts = Date.now();
-    game_loop();
+    change_update_rate();
 }

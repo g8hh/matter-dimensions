@@ -1085,19 +1085,19 @@ function game_loop(do_screen_update = true) {
     }
 }
 
-var game_interval_rate = player.settings.update_rate;
+var game_interval_rate = 50;
 var game_interval = setInterval(game_loop, game_interval_rate);
 
-function change_update_rate(value, update_setting = true) {
-    document.getElementById("settings_val_update_rate").textContent = value;
-    document.getElementById("settings_val_update_per_sec").textContent = (1000 / value).toPrecision(3);
+function change_update_rate() {
+    let rate = radio_get_setting("update_rate");
 
-    if (update_setting) radio_set_setting("update_rate", value);
+    document.getElementById("settings_val_update_rate").textContent = rate;
+    document.getElementById("settings_val_update_per_sec").textContent = (1000 / rate).toPrecision(3);
 
-    if (value == game_interval_rate) return;
+    if (rate === game_interval_rate) return;
 
-    clearInterval(game_interval);
-    game_interval_rate = value;
+    if (game_interval !== null) clearInterval(game_interval);
+    game_interval_rate = rate;
     game_interval = setInterval(game_loop, game_interval_rate);
 
     // call it once now, because setInterval will wait a bit and we just canceled the previous one
