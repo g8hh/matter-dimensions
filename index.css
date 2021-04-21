@@ -584,6 +584,14 @@ input {
     margin: 0px;
     margin-right: 10px;
 }
+.settings-block-selector-slider {
+    font-size: 0.9em;
+    user-select: none;
+}
+.settings-page-block .desc {
+    font-size: 0.9em;
+    margin-bottom: 0px;
+}
 
 .subsection-header {
     font-size: 1.5em;
