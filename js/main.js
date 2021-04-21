@@ -814,6 +814,8 @@ var default_settings = {
     "theme": "blue",
     "font": "larabiefont",
 
+    "update_rate": 50,
+
     "prestige_confirmation_photonic": true,
     "prestige_confirmation_gravitonic": true,
     "prestige_confirmation_neutronic": true,
@@ -1083,7 +1085,24 @@ function game_loop(do_screen_update = true) {
     }
 }
 
-setInterval(game_loop, 50);
+var game_interval_rate = player.settings.update_rate;
+var game_interval = setInterval(game_loop, game_interval_rate);
+
+function change_update_rate(value, update_setting = true) {
+    document.getElementById("settings_val_update_rate").textContent = value;
+    document.getElementById("settings_val_update_per_sec").textContent = (1000 / value).toPrecision(3);
+
+    if (update_setting) radio_set_setting("update_rate", value);
+
+    if (value == game_interval_rate) return;
+
+    clearInterval(game_interval);
+    game_interval_rate = value;
+    game_interval = setInterval(game_loop, game_interval_rate);
+
+    // call it once now, because setInterval will wait a bit and we just canceled the previous one
+    game_loop();
+}
 
 var pressed_buttons = {
     'ctrl': false,
@@ -1266,6 +1285,9 @@ function radio_get_setting(name) {
         if (elements[i].type == "checkbox") {
             return elements[i].checked;
         }
+        if (elements[i].type == "range") {
+            return +elements[i].value;
+        }
     }
 }
 
@@ -1277,6 +1299,9 @@ function radio_set_setting(name, value) {
         }
         if (elements[i].type == "checkbox") {
             elements[i].checked = value;
+        }
+        if (elements[i].type == "range") {
+            elements[i].value = value;
         }
     }
 }
