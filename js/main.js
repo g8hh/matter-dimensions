@@ -1127,13 +1127,13 @@ function hotkeydown(event) {
         case 'd': reset_dimensional(); break;
         case 'a': reset_atomic(); break;
         case 'b': reset_biological(); break;
-        case 'P': if (player.unlocked_photonic) change_menu('photonic'); break;
-        case 'G': if (player.unlocked_gravitonic) change_menu('gravitonic'); break;
-        case 'N': if (player.unlocked_neutronic) change_menu('neutronic'); break;
-        case 'V': if (player.unlocked_vacuumic) change_menu('vacuumic'); break;
-        case 'D': if (player.unlocked_dimensional) change_menu('dimensional'); break;
-        case 'A': if (player.unlocked_atomic) change_menu('atomic'); break;
-        case 'B': if (player.unlocked_biological) change_menu('biological'); break;
+        case 'P': if (player.unlocked_photonic) { change_menu('photonic'); screen_update(); } break;
+        case 'G': if (player.unlocked_gravitonic) { change_menu('gravitonic'); screen_update(); } break;
+        case 'N': if (player.unlocked_neutronic) { change_menu('neutronic'); screen_update(); } break;
+        case 'V': if (player.unlocked_vacuumic) { change_menu('vacuumic'); screen_update(); } break;
+        case 'D': if (player.unlocked_dimensional) { change_menu('dimensional'); screen_update(); } break;
+        case 'A': if (player.unlocked_atomic) { change_menu('atomic'); screen_update(); } break;
+        case 'B': if (player.unlocked_biological) { change_menu('biological'); screen_update(); } break;
         case '1': 
             if (current_menu in current_submenu && current_submenu[current_menu] == "dimensions") 
                 player.dimensions[current_menu + "_1"].buy(player.dimensions[current_menu + "_1"].binary_search_max()); 
