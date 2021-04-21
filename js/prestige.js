@@ -30,21 +30,6 @@ function update_prestige() {
         elements.item(i).textContent = format_number(player['genes']);
     }
 
-
-    elements = document.getElementsByClassName("power_inflation_matter");
-    for (var i = 0; i < elements.length; i++) {
-        elements.item(i).textContent = format_number(power_inflation_matter());
-    }
-
-    let manifold_power = power_manifolds();
-    elements = document.getElementsByClassName("power_manifolds");
-    for (var i = 0; i < elements.length; i++) {
-        elements.item(i).textContent = format_number(manifold_power);
-    }
-    for (let i = 1; i <= player.challenge_strength_6; i++) {
-        document.getElementById("dimensional_boost_" + i).textContent = format_number(manifold_power.pow(player.dimensions["dimensional_" + i].amt_bought));
-    }
-
     let photons_earned = prestige_earn_photons();
     elements = document.getElementsByClassName("prestige_currency_photonic_gain");
     for (let i = 0; i < elements.length; i++) {
@@ -325,14 +310,6 @@ function update_prestige() {
         document.getElementById("statistics_fastest_biological").style.display = "none";
     }
 
-    // particle powers
-    if (!player.upgrades['n04'].is_active()) document.getElementById("power_block_proton").style.visibility = "hidden";
-    else document.getElementById("power_block_proton").style.visibility = "";
-    if (!player.upgrades['n05'].is_active()) document.getElementById("power_block_electron").style.visibility = "hidden";
-    else document.getElementById("power_block_electron").style.visibility = "";
-    if (!player.upgrades['n06'].is_active()) document.getElementById("power_block_boson").style.visibility = "hidden";
-    else document.getElementById("power_block_boson").style.visibility = "";
-
     // tickspeed
     if (!functions[player.upgrades['TICKSPEED'].availability_function]()) document.getElementById("tickspeed_wrapper").style.display = "none";
     else document.getElementById("tickspeed_wrapper").style.display = "";
@@ -341,18 +318,6 @@ function update_prestige() {
     // vacuumic tree
     document.getElementById("respec_space_theorems").textContent = format_number(space_theorems_invested());
     update_vacuumic_tree();
-
-    // achievement 52: unlock buy max neutronic particles
-    if (player.achievements['52'].complete) {
-        document.getElementById("dimension_protons_buy_max").style.display = "";
-        document.getElementById("dimension_electrons_buy_max").style.display = "";
-        document.getElementById("dimension_bosons_buy_max").style.display = "";
-    }
-    else {
-        document.getElementById("dimension_protons_buy_max").style.display = "none";
-        document.getElementById("dimension_electrons_buy_max").style.display = "none";
-        document.getElementById("dimension_bosons_buy_max").style.display = "none";
-    }
 
     // gravitonic challenges that remove blocks
     if (player.challenges['g0'].inC()) document.getElementById("block_gravitonic_0").style.display = "none";
@@ -526,16 +491,6 @@ function update_prestige() {
     if (!player.experienced_dilation) document.getElementById("challenge_strength_11").style.display = "none";
     else document.getElementById("challenge_strength_11").style.display = "";
     
-    // inflation boosts 1st and 2nd Photonic Dimension
-    if (player.upgrades['d101'].is_active()) {
-        document.getElementById("power_inflation_photonic_info").style.display = "";
-        elements = document.getElementsByClassName("power_inflation_photonic");
-        for (var i = 0; i < elements.length; i++) {
-            elements.item(i).textContent = format_number(player.upgrades['d101'].get_effect());
-        }
-    }
-    else document.getElementById("power_inflation_photonic_info").style.display = "none";
-
     // ST autobuyers
     if (player.milestones['a01_3'].is_active()) player.unlocked_st_autobuyers = true;
     if (player.unlocked_st_autobuyers) {
@@ -578,44 +533,6 @@ function update_prestige() {
         for (let i = 0; i < elements.length; i++) {
             elements.item(i).style.display = 'none';
         }
-    }
-
-    // inflation boosts first three Gravitonic Dimension
-    if (player.upgrades['d111'].is_active()) {
-        document.getElementById("power_inflation_gravitonic_info").style.display = "";
-        elements = document.getElementsByClassName("power_inflation_gravitonic");
-        for (var i = 0; i < elements.length; i++) {
-            elements.item(i).textContent = format_number(player.upgrades['d111'].get_effect());
-        }
-    }
-    else document.getElementById("power_inflation_gravitonic_info").style.display = "none";
-
-    // inflation boosts first four Neutronic Dimension
-    if (player.upgrades['d112'].is_active()) {
-        document.getElementById("power_inflation_neutronic_info").style.display = "";
-        elements = document.getElementsByClassName("power_inflation_neutronic");
-        for (var i = 0; i < elements.length; i++) {
-            elements.item(i).textContent = format_number(player.upgrades['d112'].get_effect());
-        }
-    }
-    else document.getElementById("power_inflation_neutronic_info").style.display = "none";
-
-    // inflation boosts all Vacuumic Dimension
-    if (player.upgrades['d121'].is_active()) {
-        document.getElementById("power_inflation_vacuumic_info").style.display = "";
-        elements = document.getElementsByClassName("power_inflation_vacuumic");
-        for (var i = 0; i < elements.length; i++) {
-            elements.item(i).textContent = format_number(player.upgrades['d121'].get_effect());
-        }
-    }
-    else document.getElementById("power_inflation_vacuumic_info").style.display = "none";
-
-    // achievement 97: unlock buy max neutronic upgrades
-    if (player.achievements['97'].complete || player.upgrades['AUTO2_5'].is_active()) {
-        document.getElementById("upgrades_neutronic_buy_max").style.display = "";
-    }
-    else {
-        document.getElementById("upgrades_neutronic_buy_max").style.display = "none";
     }
 
     // completed and all achievements
@@ -672,7 +589,12 @@ function update_prestige() {
 
     if (document.getElementById("gravitonic_dimensions").style.display != "none") screen_update_gravitonic_dimensions();
 
+    if (document.getElementById("neutronic_upgrades").style.display != "none") screen_update_neutronic_upgrades();
     if (document.getElementById("neutronic_dimensions").style.display != "none") screen_update_neutronic_dimensions();
+
+    if (document.getElementById("vacuumic_dimensions").style.display != "none") screen_update_vacuumic_dimensions();
+
+    if (document.getElementById("dimensional_dimensions").style.display != "none") screen_update_dimensional_dimensions();
 
     update_unlocked_menus();
     update_unlock_hint();
