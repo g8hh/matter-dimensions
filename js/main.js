@@ -1111,6 +1111,12 @@ var pressed_buttons = {
 
 function key_transform(keyevent) {
     let keystr = keyevent.key;
+    // CapsLock fix
+    if (keystr.length == 1) {
+        let is_lowercase = keystr.toLowerCase() == keystr;
+        if (is_lowercase && keyevent.shiftKey) keystr = keystr.toUpperCase();
+        if (!is_lowercase && !keyevent.shiftKey) keystr = keystr.toLowerCase();
+    }
     if (keyevent.key != 'Alt' && keyevent.altKey) keystr = "Alt+" + keystr;
     if (keyevent.key != 'Control' && keyevent.ctrlKey) keystr = "Ctrl+" + keystr;
     if (keyevent.key != 'Meta' && keyevent.metaKey) keystr = "Meta+" + keystr;
@@ -1127,6 +1133,7 @@ function hotkeydown(event) {
         case 'd': reset_dimensional(); break;
         case 'a': reset_atomic(); break;
         case 'b': reset_biological(); break;
+        case 'M': change_menu('matter'); screen_update(); break;
         case 'P': if (player.unlocked_photonic) { change_menu('photonic'); screen_update(); } break;
         case 'G': if (player.unlocked_gravitonic) { change_menu('gravitonic'); screen_update(); } break;
         case 'N': if (player.unlocked_neutronic) { change_menu('neutronic'); screen_update(); } break;
