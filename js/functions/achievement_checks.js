@@ -474,6 +474,10 @@ functions["check_142"] = () => {
     return !player.population.lt(1e6);
 };
 
+functions["check_143"] = () => {
+    return !player.matter.lt("1e30000") && player.upgrades["COLLISION_POINT"].amt == 0;
+};
+
 functions["check_144"] = () => {
     for (let key of Object.keys(player.challenges)) {
         if (key.includes('d') && player.challenges[key].completed) return true;
@@ -483,6 +487,14 @@ functions["check_144"] = () => {
 
 functions["check_145"] = () => {
     return !mortality_rate().lt(2.5);
+};
+
+functions["check_146"] = () => {
+    let meta_challenges = 0;
+    for (let key of Object.keys(player.challenges)) {
+        if (key.includes('0') && player.challenges[key].inC()) meta_challenges += 1;
+    }
+    return meta_challenges >= 4;
 };
 
 functions["check_147"] = () => {

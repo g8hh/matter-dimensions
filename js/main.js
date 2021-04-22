@@ -328,8 +328,10 @@ class Player {
 
         this.achievements["141"] = new Achievement("141", "90 degrees from infinity", "Buy 8th Matter Dimension", "check_141");
         this.achievements["142"] = new Achievement("142", "Light the City!", "Have at least 1 million of population", "check_142");
+        this.achievements["143"] = new Achievement("143", "Safe Driver", "Reach 1e30'000 matter without buying any Collision Points in the current Biological.\nReward: unlock autobuyer and auto-assigner for Collision Points", "check_143", "effective");
         this.achievements["144"] = new Achievement("144", "Buffed", "Complete a Dimensional challenge", "check_144");
         this.achievements["145"] = new Achievement("145", "One Death", "Reach a mortality rate of 2.5", "check_145");
+        this.achievements["146"] = new Achievement("146", "Metaphysics", "Be in four Meta-Challenges at once", "check_146");
         this.achievements["147"] = new Achievement("147", "Double Trouble", "Complete two regular Neutronic challenges five times.\nReward: you can max buy Atomic upgrades", "check_147", "effective");
         this.achievements["148"] = new Achievement("148", "SpaceL", "Have 50 Space Theorems in total", "check_148");
 
