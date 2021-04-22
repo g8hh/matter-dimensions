@@ -1,6 +1,7 @@
 class Upgrade {
-    constructor(id, max_level, cost_function, power_function, unlock_function, currency, currency_display_name, availability_function, custom_buy_function="", custom_cost_display_function="", unconventional=false) { // cost_function: (amt) -> cost; power_function: (amt) -> power; unlock_function: () -> unlock; availability_function: () -> availability
+    constructor(id, tab, max_level, cost_function, power_function, unlock_function, currency, currency_display_name, availability_function, custom_buy_function="", custom_cost_display_function="", unconventional=false) { // cost_function: (amt) -> cost; power_function: (amt) -> power; unlock_function: () -> unlock; availability_function: () -> availability
         this.id = id;
+        this.tab = tab;
         this.max_level = max_level;
         this.cost_function = cost_function;
         this.power_function = power_function;
@@ -117,6 +118,7 @@ class Upgrade {
     }
 
     screen_update() {
+        if (document.getElementById(this.tab).style.display == "none") return;
         if (!functions[this.availability_function]()) document.getElementById("upgrade_" + this.id).style.visibility = "hidden";
         else {
             document.getElementById("upgrade_" + this.id).style.visibility = "";
