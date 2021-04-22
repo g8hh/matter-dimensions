@@ -1,6 +1,7 @@
 class Dimension {
-    constructor(id, level, cost_function, power_function, unlock_function, currency, currency_display_name, produces, unconventional=false) { // cost_function: (amt_bought) -> cost; power_function: (amt_bought, amt) -> power; unlock_function: () -> unlock
+    constructor(id, tab, level, cost_function, power_function, unlock_function, currency, currency_display_name, produces, unconventional=false) { // cost_function: (amt_bought) -> cost; power_function: (amt_bought, amt) -> power; unlock_function: () -> unlock
         this.id = id;
+        this.tab = tab;
         this.level = level;
         this.cost_function = cost_function;
         this.power_function = power_function;
@@ -140,6 +141,7 @@ class Dimension {
     }
 
     screen_update() {
+        if (document.getElementById(this.tab).style.display == "none") return;
         if (!functions[this.unlock_function]()) document.getElementById("dimension_" + this.id).style.display = "none";
         else {
             document.getElementById("dimension_" + this.id).style.display = "";
