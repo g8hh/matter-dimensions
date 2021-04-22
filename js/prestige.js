@@ -596,6 +596,8 @@ function update_prestige() {
 
     if (document.getElementById("dimensional_dimensions").style.display != "none") screen_update_dimensional_dimensions();
 
+    if (document.getElementById("section_settings").style.display != "none") screen_update_settings();
+
     update_unlocked_menus();
     update_unlock_hint();
     update_hotkey_visibility();

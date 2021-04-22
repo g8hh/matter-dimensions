@@ -750,6 +750,8 @@ class Player {
         this.autobuyers["dimensional_11"] = new Autobuyer("dimensional_11", this.dimensions["dimensional_11"], "autobuyer_dimensional_11_available");
         this.autobuyers["dimensional_12"] = new Autobuyer("dimensional_12", this.dimensions["dimensional_12"], "autobuyer_dimensional_12_available");
 
+        this.autobuyers["COLLISION_POINT"] = new Autobuyer("COLLISION_POINT", this.upgrades["COLLISION_POINT"], "autobuyer_COLLISION_POINT_available", false);
+
         this.autobuyers["TICKSPEED"] = new Autobuyer("TICKSPEED", this.upgrades["TICKSPEED"], "autobuyer_TICKSPEED_available", false);
 
         this.autobuyers["photonic"] = new Autobuyer("photonic", "photonic", "autobuyer_photonic_available", false);
@@ -805,6 +807,8 @@ class Player {
 
         this.st_presets = [[], [], []];
 
+        this.auto_assigner_enabled = true;
+
         this.version = "v0.7.1";
     }
 }
@@ -836,6 +840,7 @@ var default_settings = {
     "auto_disable_vtree_autobuyer": true,
     "enable_vtree_autobuyer_on_higher_reset": false,
     "enable_vtree_autobuyer_on_preset_load": true,
+    "auto_disable_auto_assigner": true,
 };
 
 var player = new Player();

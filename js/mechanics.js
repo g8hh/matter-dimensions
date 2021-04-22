@@ -324,6 +324,9 @@ function change_collision_categories(id, amt) {
     if (id == 1) player.collision_points_in_reaction += amt;
     if (id == 2) player.collision_points_in_synthesis += amt;
     if (id == 3) player.collision_points_in_generation += amt;
+
+    // Disable auto-assigner
+    if (amt != 0 && player.achievements['143'].complete && player.auto_assigner_enabled && player.settings['auto_disable_auto_assigner']) player.auto_assigner_enabled = false;
 }
 
 function reaction_points_effect_photons() {
@@ -397,7 +400,50 @@ function levels_passed_through_reaction_ratio() {
     return big(0.5);
 }
 
+function switch_auto_assigner_status() {
+    player.auto_assigner_enabled = !player.auto_assigner_enabled;
+}
+
 function update_collider() {
+    // achievement 143: unlock autobuyer and auto-assigner for Collision Points
+    if (player.achievements['143'].complete && player.auto_assigner_enabled && player.collision_points > 0) {
+        let checked_reactions = 0;
+        for (let key of Object.keys(MECHANIC_COLLIDER_REACTION_LIST)) {
+            if (!document.getElementById("mechanic_collider_reaction_checkbox_" + key).checked) continue;
+    
+            let reaction_visible = true;
+            for (let i = 0; i < MECHANIC_COLLIDER_REACTION_LIST[key][0].length; i++) {
+                if (MECHANIC_COLLIDER_REACTION_LIST[key][0][i].includes('a') 
+                && !functions[player.upgrades[MECHANIC_COLLIDER_REACTION_LIST[key][0][i]].availability_function]()) {
+                    reaction_visible = false;
+                    break;
+                }
+            }
+            for (let i = 0; i < MECHANIC_COLLIDER_REACTION_LIST[key][1].length; i++) {
+                if (MECHANIC_COLLIDER_REACTION_LIST[key][1][i].includes('a') 
+                && !functions[player.upgrades[MECHANIC_COLLIDER_REACTION_LIST[key][1][i]].availability_function]()) {
+                    reaction_visible = false;
+                    break;
+                }
+            }
+            if (reaction_visible) checked_reactions++;
+        }
+        if (checked_reactions > player.collision_points_in_reaction) {
+            player.collision_points_in_reaction++;
+            player.collision_points--;
+        }
+        else {
+            if (highest_unlocked_element() < element_unlock_limit()) {
+                player.collision_points_in_synthesis++;
+                player.collision_points--;
+            }
+            else {
+                player.collision_points_in_generation++;
+                player.collision_points--;
+            }
+        }
+    }
+
     let generation_levels = generation_points_effect();
 
     for (let key of Object.keys(player.upgrades)) {
@@ -510,6 +556,20 @@ function update_collider() {
             if (!functions[player.upgrades[key].availability_function]()) free_atom_levels[key] = big(0);
             document.getElementById("mechanic_collider_" + key + "_level").textContent = format_number(get_atom_level(key));
             document.getElementById("upgrade_" + key + "_total_level").textContent = format_number(get_atom_level(key));
+        }
+    }
+
+    // achievement 143: unlock autobuyer and auto-assigner for Collision Points
+    if (!player.achievements['143'].complete) document.getElementById('mechanic_collider_auto_assigner').style.display = 'none';
+    else {
+        document.getElementById('mechanic_collider_auto_assigner').style.display = '';
+        if (player.auto_assigner_enabled) {
+            document.getElementById('mechanic_collider_auto_assigner_state').textContent = "enabled";
+            document.getElementById('mechanic_collider_auto_assigner_button_text').textContent = "Disable";
+        }
+        else {
+            document.getElementById('mechanic_collider_auto_assigner_state').textContent = "disabled";
+            document.getElementById('mechanic_collider_auto_assigner_button_text').textContent = "Enable";
         }
     }
 }

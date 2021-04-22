@@ -48,6 +48,7 @@
         <script src="js/render/neutronic/dimensions.js?rev=23" defer></script>
         <script src="js/render/vacuumic/dimensions.js?rev=23" defer></script>
         <script src="js/render/dimensional/dimensions.js?rev=23" defer></script>
+        <script src="js/render/settings.js?rev=23" defer></script>
         <script src="js/bignum.js?rev=23" defer></script>
         <script src="js/nerfs.js?rev=23" defer></script>
         <script src="js/prestige.js?rev=23" defer></script>
@@ -3623,10 +3624,22 @@
                                 <p id="upgrade_COLLISION_POINT_next_cost">Cost: <span id="upgrade_COLLISION_POINT_cost"></span></p>
                             </div>
                             <p class="upgrade" style="display: flex; flex-direction: column; justify-content: center; align-items: center; min-width: 10%;" onclick="player.upgrades['COLLISION_POINT'].buy(player.upgrades['COLLISION_POINT'].binary_search_max())">Buy max</p>
+                            <div id="autobuyer_COLLISION_POINT" style="align-self: center"><input id="autobuyer_COLLISION_POINT_toggle" type="checkbox" onclick="player.autobuyers['COLLISION_POINT'].update_params()"></div>
                         </div>
                         <p>You have <span id="resource_collision_points" class="large-number"></span> free Collision Points. Distribute them between categories to obtain boosts.
                         <br>You can re-distribute your points at any time.
                         <br>Hold Ctrl while pressing a button to re-distribute max.</p>
+                        <p>&nbsp;</p>
+                        <div id="mechanic_collider_auto_assigner">
+                            <p>Auto-assigner is currently <span id="mechanic_collider_auto_assigner_state" style="font-weight: bold"></span>.</p>
+                            <div style="display: flex; flex-direction: row; justify-content: center;">
+                                <div class="setting-button" onclick="switch_auto_assigner_status()" style="width: 20%"><p id="mechanic_collider_auto_assigner_button_text">Disable</p></div>
+                            </div>
+                            <p>Auto-assigner distributes one point per tick.</p>
+                            <p>Auto-assigner places the point in Reaction if there are any picked unactive reactions.
+                            <br>Otherwise, it places the point in Synthesis if another element can be unlocked.
+                            <br>Failing that, it places the point in Generation.</p>
+                        </div>
 
                         <div class="collider-category-table">
                             <p class="large-number" style="grid-column: 1; grid-row: 1; text-align: center;">Reaction</p>
@@ -4782,6 +4795,10 @@
                             <label class="settings-block-selector-checkbox"><input type="checkbox" name="auto_disable_vtree_autobuyer"><p>Disable autobuyers on manual upgrade tree reset</p></label>
                             <label class="settings-block-selector-checkbox"><input type="checkbox" name="enable_vtree_autobuyer_on_higher_reset"><p>Enable autobuyers on higher resets</p></label>
                             <label class="settings-block-selector-checkbox unlock-on-st-presets"><input type="checkbox" name="enable_vtree_autobuyer_on_preset_load"><p>Reset upgrade tree and enable autobuyers on preset load</p></label>
+                        </div>
+                        <div class="unlock-on-auto-assigner">
+                            <p>Collision Points auto-assigner:</p>
+                            <label class="settings-block-selector-checkbox"><input type="checkbox" name="auto_disable_auto_assigner"><p>Disable auto-assigner on manual Collision Points change</p></label>
                         </div>
                     </div>
 

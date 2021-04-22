@@ -518,3 +518,8 @@ functions["autobuyer_dimensional_12_available"] = () => {
     // AUTO4_1: unlock Dimensional Dimension autobuyers
     return player.upgrades["AUTO4_1"].is_active();
 };
+
+functions["autobuyer_COLLISION_POINT_available"] = () => {
+    // achievement 143: unlock autobuyer and auto-assigner for Collision Points
+    return player.achievements["143"].complete;
+};
