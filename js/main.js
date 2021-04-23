@@ -807,7 +807,7 @@ class Player {
 
         this.st_presets = [[], [], []];
 
-        this.auto_assigner_enabled = true;
+        this.auto_assigner_enabled = false;
 
         this.version = "v0.7.1";
     }
