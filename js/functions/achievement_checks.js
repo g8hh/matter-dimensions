@@ -508,3 +508,16 @@ functions["check_147"] = () => {
 functions["check_148"] = () => {
     return player.space_theorems.add(space_theorems_invested()).gt(49.5);
 };
+
+
+functions["check_157"] = () => {
+    let completed_challenges = 0;
+    for (let key of Object.keys(player.challenges)) {
+        if (key.includes('n') && player.challenges[key].completions >= 5) completed_challenges++;
+    }
+    return completed_challenges >= 3;
+};
+
+functions["check_158"] = () => {
+    return !player.atoms.lt(big(2).pow(1024));
+};
