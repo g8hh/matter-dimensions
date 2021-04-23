@@ -25,6 +25,9 @@ functions["evo_b08_cost"] = () => {
 functions["evo_b09_cost"] = () => {
     return big(8);
 }
+functions["evo_b10_cost"] = () => {
+    return big(16);
+}
 
 functions["evo_b01_power"] = (x) => {
     return x.div(3).add(1).log(10).div(3).add(1).log(10).add(1);
@@ -52,6 +55,9 @@ functions["evo_b08_power"] = (x) => {
 }
 functions["evo_b09_power"] = (x) => {
     return x.div(10).add(1).log(10).div(2).add(1).log(10).mult(3);
+}
+functions["evo_b10_power"] = (x) => {
+    return x.add(1).log(10).pow(0.5).add(1);
 }
 
 functions["evo_b01_secondary"] = () => {
@@ -87,6 +93,9 @@ functions["evo_b08_secondary"] = () => {
 }
 functions["evo_b09_secondary"] = () => {
     return big(10).pow(player.matter.add(1).log(10).pow(0.75));
+}
+functions["evo_b10_secondary"] = () => {
+    return player.genes.add(1);
 }
 
 functions["evo_b01_buy"] = (amt) => {

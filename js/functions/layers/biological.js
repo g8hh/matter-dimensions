@@ -7,6 +7,8 @@ function prestige_earn_genes() {
     if (!base_income.lt(1)) {
         // b01: gain more Genes on Biological resets
         if (player.upgrades['b01'].is_active()) base_income = base_income.mult(player.upgrades['b01'].get_effect());
+        // evolution b10: gain more Genes on Biological resets
+        if (player.evolutions['b10'].is_active()) base_income = base_income.mult(player.evolutions['b10'].get_effect());
     }
 
     return base_income.rounddown().max(0);
@@ -22,6 +24,8 @@ function biological_hint_next(amt) {
 
     // b01: gain more Genes on Biological resets
     if (player.upgrades['b01'].is_active()) resource_need = resource_need.div(player.upgrades['b01'].get_effect());
+    // evolution b10: gain more Genes on Biological resets
+    if (player.evolutions['b10'].is_active()) resource_need = resource_need.div(player.evolutions['b10'].get_effect());
 
     // achievement 135: gene gain is raised to the power of 1.618
     if (player.achievements['135'].complete) resource_need = resource_need.pow(1 / 1.618);

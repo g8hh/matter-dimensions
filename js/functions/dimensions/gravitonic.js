@@ -63,6 +63,8 @@ functions['gravitonic_1_pow'] = (amt_bought, amt) => {
     if (player.upgrades['d111'].is_active()) base_pow = base_pow.mult(player.upgrades['d111'].get_effect());
     // Dimensional Dimensions boost respective dimensions
     base_pow = base_pow.mult(power_manifolds().pow(player.dimensions['dimensional_1'].amt_bought));
+    // evolution b10: boost all Dimensions based on unspent Genes
+    if (player.evolutions['b10'].is_active()) base_pow = base_pow.mult(player.evolutions['b10'].get_secondary_effect());
 
     return base_pow;
 };
@@ -84,6 +86,8 @@ functions['gravitonic_2_pow'] = (amt_bought, amt) => {
     if (player.challenges['v2'].completed) base_pow = base_pow.mult(2);
     // Dimensional Dimensions boost respective dimensions
     base_pow = base_pow.mult(power_manifolds().pow(player.dimensions['dimensional_2'].amt_bought));
+    // evolution b10: boost all Dimensions based on unspent Genes
+    if (player.evolutions['b10'].is_active()) base_pow = base_pow.mult(player.evolutions['b10'].get_secondary_effect());
 
     return base_pow;
 };
@@ -103,6 +107,8 @@ functions['gravitonic_3_pow'] = (amt_bought, amt) => {
     if (player.upgrades['d111'].is_active()) base_pow = base_pow.mult(player.upgrades['d111'].get_effect());
     // Dimensional Dimensions boost respective dimensions
     base_pow = base_pow.mult(power_manifolds().pow(player.dimensions['dimensional_3'].amt_bought));
+    // evolution b10: boost all Dimensions based on unspent Genes
+    if (player.evolutions['b10'].is_active()) base_pow = base_pow.mult(player.evolutions['b10'].get_secondary_effect());
 
     // Vacuumic Challenge 3: 3rd dimensions do not produce anything
     if (player.challenges['v3'].inC()) base_pow = big(0);
@@ -125,6 +131,8 @@ functions['gravitonic_4_pow'] = (amt_bought, amt) => {
     if (player.challenges['v2'].completed) base_pow = base_pow.mult(2);
     // Dimensional Dimensions boost respective dimensions
     base_pow = base_pow.mult(power_manifolds().pow(player.dimensions['dimensional_4'].amt_bought));
+    // evolution b10: boost all Dimensions based on unspent Genes
+    if (player.evolutions['b10'].is_active()) base_pow = base_pow.mult(player.evolutions['b10'].get_secondary_effect());
 
     return base_pow;
 };
@@ -142,6 +150,8 @@ functions['gravitonic_5_pow'] = (amt_bought, amt) => {
     if (player.upgrades['n35'].is_active()) base_pow = base_pow.mult(player.upgrades['n35'].get_effect());
     // Dimensional Dimensions boost respective dimensions
     base_pow = base_pow.mult(power_manifolds().pow(player.dimensions['dimensional_5'].amt_bought));
+    // evolution b10: boost all Dimensions based on unspent Genes
+    if (player.evolutions['b10'].is_active()) base_pow = base_pow.mult(player.evolutions['b10'].get_secondary_effect());
 
     return base_pow;
 };
@@ -161,6 +171,8 @@ functions['gravitonic_6_pow'] = (amt_bought, amt) => {
     if (player.challenges['v2'].completed) base_pow = base_pow.mult(2);
     // Dimensional Dimensions boost respective dimensions
     base_pow = base_pow.mult(power_manifolds().pow(player.dimensions['dimensional_6'].amt_bought));
+    // evolution b10: boost all Dimensions based on unspent Genes
+    if (player.evolutions['b10'].is_active()) base_pow = base_pow.mult(player.evolutions['b10'].get_secondary_effect());
 
     return base_pow;
 };
@@ -178,6 +190,8 @@ functions['gravitonic_7_pow'] = (amt_bought, amt) => {
     if (player.upgrades['n35'].is_active()) base_pow = base_pow.mult(player.upgrades['n35'].get_effect());
     // Dimensional Dimensions boost respective dimensions
     base_pow = base_pow.mult(power_manifolds().pow(player.dimensions['dimensional_7'].amt_bought));
+    // evolution b10: boost all Dimensions based on unspent Genes
+    if (player.evolutions['b10'].is_active()) base_pow = base_pow.mult(player.evolutions['b10'].get_secondary_effect());
 
     return base_pow;
 };
@@ -197,6 +211,8 @@ functions['gravitonic_8_pow'] = (amt_bought, amt) => {
     if (player.challenges['v2'].completed) base_pow = base_pow.mult(2);
     // Dimensional Dimensions boost respective dimensions
     base_pow = base_pow.mult(power_manifolds().pow(player.dimensions['dimensional_8'].amt_bought));
+    // evolution b10: boost all Dimensions based on unspent Genes
+    if (player.evolutions['b10'].is_active()) base_pow = base_pow.mult(player.evolutions['b10'].get_secondary_effect());
 
     return base_pow;
 };
@@ -214,6 +230,8 @@ functions['gravitonic_9_pow'] = (amt_bought, amt) => {
     if (player.upgrades['n35'].is_active()) base_pow = base_pow.mult(player.upgrades['n35'].get_effect());
     // Dimensional Dimensions boost respective dimensions
     base_pow = base_pow.mult(power_manifolds().pow(player.dimensions['dimensional_9'].amt_bought));
+    // evolution b10: boost all Dimensions based on unspent Genes
+    if (player.evolutions['b10'].is_active()) base_pow = base_pow.mult(player.evolutions['b10'].get_secondary_effect());
 
     return base_pow;
 };
@@ -233,6 +251,8 @@ functions['gravitonic_10_pow'] = (amt_bought, amt) => {
     if (player.challenges['v2'].completed) base_pow = base_pow.mult(2);
     // Dimensional Dimensions boost respective dimensions
     base_pow = base_pow.mult(power_manifolds().pow(player.dimensions['dimensional_10'].amt_bought));
+    // evolution b10: boost all Dimensions based on unspent Genes
+    if (player.evolutions['b10'].is_active()) base_pow = base_pow.mult(player.evolutions['b10'].get_secondary_effect());
 
     return base_pow;
 };
@@ -250,6 +270,8 @@ functions['gravitonic_11_pow'] = (amt_bought, amt) => {
     if (player.upgrades['n35'].is_active()) base_pow = base_pow.mult(player.upgrades['n35'].get_effect());
     // Dimensional Dimensions boost respective dimensions
     base_pow = base_pow.mult(power_manifolds().pow(player.dimensions['dimensional_11'].amt_bought));
+    // evolution b10: boost all Dimensions based on unspent Genes
+    if (player.evolutions['b10'].is_active()) base_pow = base_pow.mult(player.evolutions['b10'].get_secondary_effect());
 
     return base_pow;
 };
@@ -269,6 +291,8 @@ functions['gravitonic_12_pow'] = (amt_bought, amt) => {
     if (player.challenges['v2'].completed) base_pow = base_pow.mult(2);
     // Dimensional Dimensions boost respective dimensions
     base_pow = base_pow.mult(power_manifolds().pow(player.dimensions['dimensional_12'].amt_bought));
+    // evolution b10: boost all Dimensions based on unspent Genes
+    if (player.evolutions['b10'].is_active()) base_pow = base_pow.mult(player.evolutions['b10'].get_secondary_effect());
 
     return base_pow;
 };

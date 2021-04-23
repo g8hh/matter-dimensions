@@ -44,6 +44,8 @@ functions['dimensional_1_pow'] = (amt_bought, amt) => {
     let base_pow = base_exp.pow(amt_bought);
     // a06: boost to all Dimensional Dimensions
     base_pow = base_pow.mult(player.upgrades['a06'].get_effect());
+    // evolution b10: boost all Dimensions based on unspent Genes
+    if (player.evolutions['b10'].is_active()) base_pow = base_pow.mult(player.evolutions['b10'].get_secondary_effect());
 
     return base_pow;
 };
@@ -55,6 +57,8 @@ functions['dimensional_2_pow'] = (amt_bought, amt) => {
     let base_pow = base_exp.pow(amt_bought);
     // a06: boost to all Dimensional Dimensions
     base_pow = base_pow.mult(player.upgrades['a06'].get_effect());
+    // evolution b10: boost all Dimensions based on unspent Genes
+    if (player.evolutions['b10'].is_active()) base_pow = base_pow.mult(player.evolutions['b10'].get_secondary_effect());
 
     return base_pow;
 };
@@ -66,6 +70,8 @@ functions['dimensional_3_pow'] = (amt_bought, amt) => {
     let base_pow = base_exp.pow(amt_bought);
     // a06: boost to all Dimensional Dimensions
     base_pow = base_pow.mult(player.upgrades['a06'].get_effect());
+    // evolution b10: boost all Dimensions based on unspent Genes
+    if (player.evolutions['b10'].is_active()) base_pow = base_pow.mult(player.evolutions['b10'].get_secondary_effect());
 
     return base_pow;
 };
@@ -77,6 +83,8 @@ functions['dimensional_4_pow'] = (amt_bought, amt) => {
     let base_pow = base_exp.pow(amt_bought);
     // a06: boost to all Dimensional Dimensions
     base_pow = base_pow.mult(player.upgrades['a06'].get_effect());
+    // evolution b10: boost all Dimensions based on unspent Genes
+    if (player.evolutions['b10'].is_active()) base_pow = base_pow.mult(player.evolutions['b10'].get_secondary_effect());
 
     return base_pow;
 };
@@ -88,6 +96,8 @@ functions['dimensional_5_pow'] = (amt_bought, amt) => {
     let base_pow = base_exp.pow(amt_bought);
     // a06: boost to all Dimensional Dimensions
     base_pow = base_pow.mult(player.upgrades['a06'].get_effect());
+    // evolution b10: boost all Dimensions based on unspent Genes
+    if (player.evolutions['b10'].is_active()) base_pow = base_pow.mult(player.evolutions['b10'].get_secondary_effect());
 
     return base_pow;
 };
@@ -99,6 +109,8 @@ functions['dimensional_6_pow'] = (amt_bought, amt) => {
     let base_pow = base_exp.pow(amt_bought);
     // a06: boost to all Dimensional Dimensions
     base_pow = base_pow.mult(player.upgrades['a06'].get_effect());
+    // evolution b10: boost all Dimensions based on unspent Genes
+    if (player.evolutions['b10'].is_active()) base_pow = base_pow.mult(player.evolutions['b10'].get_secondary_effect());
 
     return base_pow;
 };
@@ -110,6 +122,8 @@ functions['dimensional_7_pow'] = (amt_bought, amt) => {
     let base_pow = base_exp.pow(amt_bought);
     // a06: boost to all Dimensional Dimensions
     base_pow = base_pow.mult(player.upgrades['a06'].get_effect());
+    // evolution b10: boost all Dimensions based on unspent Genes
+    if (player.evolutions['b10'].is_active()) base_pow = base_pow.mult(player.evolutions['b10'].get_secondary_effect());
 
     return base_pow;
 };
@@ -121,6 +135,8 @@ functions['dimensional_8_pow'] = (amt_bought, amt) => {
     let base_pow = base_exp.pow(amt_bought);
     // a06: boost to all Dimensional Dimensions
     base_pow = base_pow.mult(player.upgrades['a06'].get_effect());
+    // evolution b10: boost all Dimensions based on unspent Genes
+    if (player.evolutions['b10'].is_active()) base_pow = base_pow.mult(player.evolutions['b10'].get_secondary_effect());
 
     return base_pow;
 };
@@ -132,6 +148,8 @@ functions['dimensional_9_pow'] = (amt_bought, amt) => {
     let base_pow = base_exp.pow(amt_bought);
     // a06: boost to all Dimensional Dimensions
     base_pow = base_pow.mult(player.upgrades['a06'].get_effect());
+    // evolution b10: boost all Dimensions based on unspent Genes
+    if (player.evolutions['b10'].is_active()) base_pow = base_pow.mult(player.evolutions['b10'].get_secondary_effect());
 
     return base_pow;
 };
@@ -143,6 +161,8 @@ functions['dimensional_10_pow'] = (amt_bought, amt) => {
     let base_pow = base_exp.pow(amt_bought);
     // a06: boost to all Dimensional Dimensions
     base_pow = base_pow.mult(player.upgrades['a06'].get_effect());
+    // evolution b10: boost all Dimensions based on unspent Genes
+    if (player.evolutions['b10'].is_active()) base_pow = base_pow.mult(player.evolutions['b10'].get_secondary_effect());
 
     return base_pow;
 };
@@ -154,6 +174,8 @@ functions['dimensional_11_pow'] = (amt_bought, amt) => {
     let base_pow = base_exp.pow(amt_bought);
     // a06: boost to all Dimensional Dimensions
     base_pow = base_pow.mult(player.upgrades['a06'].get_effect());
+    // evolution b10: boost all Dimensions based on unspent Genes
+    if (player.evolutions['b10'].is_active()) base_pow = base_pow.mult(player.evolutions['b10'].get_secondary_effect());
 
     return base_pow;
 };
@@ -165,6 +187,8 @@ functions['dimensional_12_pow'] = (amt_bought, amt) => {
     let base_pow = base_exp.pow(amt_bought);
     // a06: boost to all Dimensional Dimensions
     base_pow = base_pow.mult(player.upgrades['a06'].get_effect());
+    // evolution b10: boost all Dimensions based on unspent Genes
+    if (player.evolutions['b10'].is_active()) base_pow = base_pow.mult(player.evolutions['b10'].get_secondary_effect());
 
     return base_pow;
 };
