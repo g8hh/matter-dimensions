@@ -1,7 +1,7 @@
 const NEWSTICKER_SPEED = 0.08;
 const NEWSTICKER_GAP = 100;
 
-let newsticker_part_shown = 0;
+let newsticker_shift = 0;
 let newsticker_last_update_ts = -1;
 
 function choose_newsticker() {
@@ -33,7 +33,7 @@ function update_newsticker(ts) {
         let newsticker = document.getElementById("newsticker");
 
         let newsticker_length = newsticker.offsetWidth;
-        let current_shift = document.body.offsetWidth - newsticker_part_shown * (newsticker_length + 10);
+        let current_shift = document.body.offsetWidth - newsticker_shift;
 
         current_shift -= NEWSTICKER_SPEED * timedelta;
         if (current_shift < -(newsticker_length + 10) - NEWSTICKER_GAP) {
@@ -41,7 +41,7 @@ function update_newsticker(ts) {
             current_shift = document.body.offsetWidth;
         }
 
-        newsticker_part_shown = (document.body.offsetWidth - current_shift) / (newsticker_length + 10);
+        newsticker_shift = document.body.offsetWidth - current_shift;
         newsticker.style.left = current_shift + "px";
     }
 
