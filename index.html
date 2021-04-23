@@ -49,6 +49,7 @@
         <script src="js/render/vacuumic/dimensions.js?rev=23" defer></script>
         <script src="js/render/dimensional/dimensions.js?rev=23" defer></script>
         <script src="js/render/settings.js?rev=23" defer></script>
+        <script src="js/data/newsticker.js?rev=23" defer></script>
         <script src="js/bignum.js?rev=23" defer></script>
         <script src="js/nerfs.js?rev=23" defer></script>
         <script src="js/prestige.js?rev=23" defer></script>
@@ -64,16 +65,21 @@
         <script src="js/other.js?rev=23" defer></script>
         <script src="js/saveload.js?rev=23" defer></script>
         <script src="js/main.js?rev=23" defer></script>
+        <script src="js/newsticker.js?rev=23" defer></script>
 
         <link rel="stylesheet" type="text/css" href="fonts/Larabiefont/stylesheet.css">
         <link href="https://fonts.googleapis.com/css2?family=Recursive:wght,MONO@400..700,1&display=swap" rel="stylesheet">
 
         <link rel="stylesheet" type="text/css" href="index.css?rev=23">
         <link rel="stylesheet" type="text/css" href="css/st_presets.css?rev=23">
+        <link rel="stylesheet" type="text/css" href="css/newsticker.css?rev=23">
         <link rel="stylesheet" type="text/css" href="mobile.css?rev=23">
         <link rel='shortcut icon' type='image/x-icon' href='favicon.ico'>
     </head>
     <body class="theme-blue">
+        <div class="newsticker-outer">
+            <p id="newsticker"></p>
+        </div>
         <div class="layout-wrapper">
             <div class="settings-menu">
                 <div class="settings-menu-wrapper">
@@ -4790,6 +4796,7 @@
                         <label class="settings-block-selector-checkbox"><input type="checkbox" name="show_ids"><p>Show upgrade IDs</p></label>
                         <label class="settings-block-selector-checkbox"><input type="checkbox" name="show_all_changelog"><p>Show full changelog (might include spoilers)</p></label>
                         <label class="settings-block-selector-checkbox"><input type="checkbox" name="separate_scroll_right"><p>Scroll the right column separately</p></label>
+                        <label class="settings-block-selector-checkbox"><input type="checkbox" name="show_newsticker"><p>Show newsticker</p></label>
                     </div>
 
                     <div class="settings-page-block" style="grid-row: 2 / 4; grid-column: 1">

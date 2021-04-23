@@ -843,6 +843,7 @@ var default_settings = {
     "show_ids": false,
     "show_all_changelog": false,
     "separate_scroll_right": false,
+    "show_newsticker": true,
 
     "auto_disable_vtree_autobuyer": true,
     "enable_vtree_autobuyer_on_higher_reset": false,
