@@ -54,6 +54,8 @@ functions['protons_pow'] = (amt_bought, amt) => {
     if (player.upgrades['n36'].is_active()) base_pow = base_pow.mult(player.upgrades['n36'].get_effect());
     // evolution b06: particles produce more power
     if (player.evolutions['b06'].is_active()) base_pow = base_pow.mult(player.evolutions['b06'].get_effect());
+    // n17: Proton Power is increased
+    if (player.upgrades['n17'].is_active()) base_pow = base_pow.mult(player.upgrades['n17'].get_effect());
 
     // Challenge 2: all production greater than X is raised to power of Y
     if (base_pow.gt(player.challenge_addinfo_2)) {
@@ -88,6 +90,8 @@ functions['electrons_pow'] = (amt_bought, amt) => {
     if (player.upgrades['n16'].is_active()) base_pow = base_pow.mult(player.upgrades['n16'].get_effect());
     // evolution b06: particles produce more power
     if (player.evolutions['b06'].is_active()) base_pow = base_pow.mult(player.evolutions['b06'].get_effect());
+    // n27: Electron Power is increased
+    if (player.upgrades['n27'].is_active()) base_pow = base_pow.mult(player.upgrades['n27'].get_effect());
 
     // Challenge 2: all production greater than X is raised to power of Y
     if (base_pow.gt(player.challenge_addinfo_2)) {
@@ -122,6 +126,8 @@ functions['bosons_pow'] = (amt_bought, amt) => {
     if (player.upgrades['n26'].is_active()) base_pow = base_pow.mult(player.upgrades['n26'].get_effect());
     // evolution b06: particles produce more power
     if (player.evolutions['b06'].is_active()) base_pow = base_pow.mult(player.evolutions['b06'].get_effect());
+    // n37: Boson Power is increased
+    if (player.upgrades['n37'].is_active()) base_pow = base_pow.mult(player.upgrades['n37'].get_effect());
 
     // Challenge 2: all production greater than X is raised to power of Y
     if (base_pow.gt(player.challenge_addinfo_2)) {

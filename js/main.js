@@ -427,18 +427,21 @@ class Player {
         this.upgrades["n14"] = new Upgrade("n14", "neutronic_upgrades", 1, "upg_n14_cost", "upg_n14_power", "upg_n14_unlock", this.dimensions['protons'], [" Proton", " Protons"], "upg_n14_available");
         this.upgrades["n15"] = new Upgrade("n15", "neutronic_upgrades", 1, "upg_n15_cost", "upg_n15_power", "upg_n15_unlock", this.dimensions['protons'], [" Proton", " Protons"], "upg_n15_available");
         this.upgrades["n16"] = new Upgrade("n16", "neutronic_upgrades", 1, "upg_n16_cost", "upg_n16_power", "upg_n16_unlock", this.dimensions['protons'], [" Proton", " Protons"], "upg_n16_available");
+        this.upgrades["n17"] = new Upgrade("n17", "neutronic_upgrades", 1, "upg_n17_cost", "upg_n17_power", "upg_n17_unlock", this.dimensions['protons'], [" Proton", " Protons"], "upg_n17_available");
         this.upgrades["n21"] = new Upgrade("n21", "neutronic_upgrades", 1, "upg_n21_cost", "upg_n21_power", "upg_n21_unlock", this.dimensions['electrons'], [" Electron", " Electrons"], "upg_n21_available");
         this.upgrades["n22"] = new Upgrade("n22", "neutronic_upgrades", 1, "upg_n22_cost", "upg_n22_power", "upg_n22_unlock", this.dimensions['electrons'], [" Electron", " Electrons"], "upg_n22_available");
         this.upgrades["n23"] = new Upgrade("n23", "neutronic_upgrades", 1, "upg_n23_cost", "upg_n23_power", "upg_n23_unlock", this.dimensions['electrons'], [" Electron", " Electrons"], "upg_n23_available");
         this.upgrades["n24"] = new Upgrade("n24", "neutronic_upgrades", 1, "upg_n24_cost", "upg_n24_power", "upg_n24_unlock", this.dimensions['electrons'], [" Electron", " Electrons"], "upg_n24_available");
         this.upgrades["n25"] = new Upgrade("n25", "neutronic_upgrades", 1, "upg_n25_cost", "upg_n25_power", "upg_n25_unlock", this.dimensions['electrons'], [" Electron", " Electrons"], "upg_n25_available");
         this.upgrades["n26"] = new Upgrade("n26", "neutronic_upgrades", 1, "upg_n26_cost", "upg_n26_power", "upg_n26_unlock", this.dimensions['electrons'], [" Electron", " Electrons"], "upg_n26_available");
+        this.upgrades["n27"] = new Upgrade("n27", "neutronic_upgrades", 1, "upg_n27_cost", "upg_n27_power", "upg_n27_unlock", this.dimensions['electrons'], [" Electron", " Electrons"], "upg_n27_available");
         this.upgrades["n31"] = new Upgrade("n31", "neutronic_upgrades", 1, "upg_n31_cost", "upg_n31_power", "upg_n31_unlock", this.dimensions['bosons'], [" W-Boson", " W-Bosons"], "upg_n31_available");
         this.upgrades["n32"] = new Upgrade("n32", "neutronic_upgrades", 1, "upg_n32_cost", "upg_n32_power", "upg_n32_unlock", this.dimensions['bosons'], [" W-Boson", " W-Bosons"], "upg_n32_available");
         this.upgrades["n33"] = new Upgrade("n33", "neutronic_upgrades", 1, "upg_n33_cost", "upg_n33_power", "upg_n33_unlock", this.dimensions['bosons'], [" W-Boson", " W-Bosons"], "upg_n33_available");
         this.upgrades["n34"] = new Upgrade("n34", "neutronic_upgrades", 1, "upg_n34_cost", "upg_n34_power", "upg_n34_unlock", this.dimensions['bosons'], [" W-Boson", " W-Bosons"], "upg_n34_available");
         this.upgrades["n35"] = new Upgrade("n35", "neutronic_upgrades", 1, "upg_n35_cost", "upg_n35_power", "upg_n35_unlock", this.dimensions['bosons'], [" W-Boson", " W-Bosons"], "upg_n35_available");
         this.upgrades["n36"] = new Upgrade("n36", "neutronic_upgrades", 1, "upg_n36_cost", "upg_n36_power", "upg_n36_unlock", this.dimensions['bosons'], [" W-Boson", " W-Bosons"], "upg_n36_available");
+        this.upgrades["n37"] = new Upgrade("n37", "neutronic_upgrades", 1, "upg_n37_cost", "upg_n37_power", "upg_n37_unlock", this.dimensions['bosons'], [" W-Boson", " W-Bosons"], "upg_n37_available");
 
         this.upgrades["v01"] = new Upgrade("v01", "vacuumic_upgrades", -1, "upg_v01_cost", "upg_v01_power", "upg_v01_unlock", "vacuum_energy", " Vacuum Energy", "upg_v01_available", "upg_v01_buy");
         this.upgrades["v02"] = new Upgrade("v02", "vacuumic_upgrades", -1, "upg_v02_cost", "upg_v02_power", "upg_v02_unlock", this.dimensions['matter_3'], [" 3rd M. Dim", " 3rd M. Dims"], "upg_v02_available", "upg_v02_buy");
