@@ -472,22 +472,22 @@ function update_prestige() {
     else document.getElementsByClassName('prestige-menu')[0].classList.remove('scrollable');
 
 
-    if (document.getElementById("matter_dimensions").style.display != "none") screen_update_matter_dimensions();
+    if (get_current_menu() == "matter_dimensions") screen_update_matter_dimensions();
 
-    if (document.getElementById("photonic_dimensions").style.display != "none") screen_update_photonic_dimensions();
+    if (get_current_menu() == "photonic_dimensions") screen_update_photonic_dimensions();
 
-    if (document.getElementById("gravitonic_upgrades").style.display != "none") screen_update_gravitonic_upgrades();
-    if (document.getElementById("gravitonic_dimensions").style.display != "none") screen_update_gravitonic_dimensions();
+    if (get_current_menu() == "gravitonic_upgrades") screen_update_gravitonic_upgrades();
+    if (get_current_menu() == "gravitonic_dimensions") screen_update_gravitonic_dimensions();
 
-    if (document.getElementById("neutronic_upgrades").style.display != "none") screen_update_neutronic_upgrades();
-    if (document.getElementById("neutronic_dimensions").style.display != "none") screen_update_neutronic_dimensions();
+    if (get_current_menu() == "neutronic_upgrades") screen_update_neutronic_upgrades();
+    if (get_current_menu() == "neutronic_dimensions") screen_update_neutronic_dimensions();
 
-    if (document.getElementById("vacuumic_upgrades").style.display != "none") screen_update_vacuumic_upgrades();
-    if (document.getElementById("vacuumic_dimensions").style.display != "none") screen_update_vacuumic_dimensions();
+    if (get_current_menu() == "vacuumic_upgrades") screen_update_vacuumic_upgrades();
+    if (get_current_menu() == "vacuumic_dimensions") screen_update_vacuumic_dimensions();
 
-    if (document.getElementById("dimensional_dimensions").style.display != "none") screen_update_dimensional_dimensions();
+    if (get_current_menu() == "dimensional_dimensions") screen_update_dimensional_dimensions();
 
-    if (document.getElementById("section_settings").style.display != "none") screen_update_settings();
+    if (get_current_menu() == "section_settings") screen_update_settings();
 
     update_unlocked_menus();
     update_unlock_hint();

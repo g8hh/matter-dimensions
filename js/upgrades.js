@@ -118,7 +118,7 @@ class Upgrade {
     }
 
     screen_update() {
-        if (document.getElementById(this.tab).style.display == "none") return;
+        if (get_current_menu() != this.tab) return;
         if (!functions[this.availability_function]()) document.getElementById("upgrade_" + this.id).style.visibility = "hidden";
         else {
             document.getElementById("upgrade_" + this.id).style.visibility = "";

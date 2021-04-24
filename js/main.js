@@ -852,7 +852,7 @@ var default_settings = {
 };
 
 var player = new Player();
-var me = player;
+//var me = player;
 
 function processTimedelta(corrected_timedelta) {
     if (player.dimensions["matter_1"].amt.gt(0)) player.time_started = true;
@@ -1294,6 +1294,11 @@ function change_submenu(menu, submenu) {
     document.getElementById(menu + "_" + submenu).style.display = "";
 
     current_submenu[menu] = submenu;
+}
+
+function get_current_menu() {
+    if (current_menu in current_submenu) return current_menu + "_" + current_submenu[current_menu];
+    else return "section_" + current_menu;
 }
 
 // functions for radio-buttons

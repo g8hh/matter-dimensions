@@ -141,7 +141,7 @@ class Dimension {
     }
 
     screen_update() {
-        if (document.getElementById(this.tab).style.display == "none") return;
+        if (get_current_menu() != this.tab) return;
         if (!functions[this.unlock_function]()) document.getElementById("dimension_" + this.id).style.display = "none";
         else {
             document.getElementById("dimension_" + this.id).style.display = "";
