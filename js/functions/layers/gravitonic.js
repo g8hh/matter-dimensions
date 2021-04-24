@@ -114,6 +114,7 @@ function reset_gravitonic(force=false, higher_reset=false, autobuyer_induced=fal
     if (!force && !earned_gravitons.lt(5)) player.achievements['34'].award();
     if (!force && earned_gravitons.gt(10)) player.achievements['47'].award();
     if (!force && earned_gravitons.gt(10000)) player.achievements['116'].award();
+    if (!force && earned_gravitons.gt(1e6)) player.achievements['156'].award();
 
     // Challenge 4: all resources are capped
     player.gravitons = player.gravitons.add(earned_gravitons).round().min(player.challenge_strength_4);

@@ -510,6 +510,10 @@ functions["check_148"] = () => {
 };
 
 
+functions["check_156"] = () => {
+    return false; // external call
+};
+
 functions["check_157"] = () => {
     let completed_challenges = 0;
     for (let key of Object.keys(player.challenges)) {
