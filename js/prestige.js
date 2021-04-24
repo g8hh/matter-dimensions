@@ -310,27 +310,6 @@ function update_prestige() {
         document.getElementById("statistics_fastest_biological").style.display = "none";
     }
 
-    // tickspeed
-    if (!functions[player.upgrades['TICKSPEED'].availability_function]()) document.getElementById("tickspeed_wrapper").style.display = "none";
-    else document.getElementById("tickspeed_wrapper").style.display = "";
-    document.getElementById("upgrade_TICKSPEED_reduction").textContent = format_number(get_tickspeed_power());
-
-    // vacuumic tree
-    document.getElementById("respec_space_theorems").textContent = format_number(space_theorems_invested());
-    update_vacuumic_tree();
-
-    // gravitonic challenges that remove blocks
-    if (player.challenges['g0'].inC()) document.getElementById("block_gravitonic_0").style.display = "none";
-    else document.getElementById("block_gravitonic_0").style.display = "";
-    if (player.challenges['g1'].inC()) document.getElementById("block_gravitonic_1").style.display = "none";
-    else document.getElementById("block_gravitonic_1").style.display = "";
-    if (player.challenges['g2'].inC()) document.getElementById("block_gravitonic_2").style.display = "none";
-    else document.getElementById("block_gravitonic_2").style.display = "";
-    if (player.challenges['g3'].inC()) document.getElementById("block_gravitonic_3").style.display = "none";
-    else document.getElementById("block_gravitonic_3").style.display = "";
-    if (player.challenges['g4'].inC()) document.getElementById("block_gravitonic_4").style.display = "none";
-    else document.getElementById("block_gravitonic_4").style.display = "";
-
     // achievement 62: unlock buy max photonic upgrades
     if (player.achievements['62'].complete || player.achievements['72'].complete) {
         document.getElementById("upgrades_photonic_buy_max").style.display = "";
@@ -338,10 +317,6 @@ function update_prestige() {
     else {
         document.getElementById("upgrades_photonic_buy_max").style.display = "none";
     }
-
-    // tickspeed compound type
-    if (player.challenges['n3'].inC()) document.getElementById("tickspeed_compound_type").textContent = "+";
-    else document.getElementById("tickspeed_compound_type").textContent = "×";
 
     // v211: BREAK INFINITY
     if (player.upgrades['v211'].is_active()) {
@@ -352,24 +327,6 @@ function update_prestige() {
         document.getElementById("challenge_strength_4").style.display = "";
         document.getElementById("challenge_broken_4").style.display = "none";
     }
-
-    // Gravitonic unlocks
-    if (!player.challenges['p1'].completed) document.getElementById("pc1_unlock_upgrade").style.display = "";
-    else document.getElementById("pc1_unlock_upgrade").style.display = "none";
-    if (!player.challenges['p2'].completed) document.getElementById("pc2_unlock_upgrade").style.display = "";
-    else document.getElementById("pc2_unlock_upgrade").style.display = "none";
-    if (!player.challenges['p3'].completed) document.getElementById("pc3_unlock_upgrade").style.display = "";
-    else document.getElementById("pc3_unlock_upgrade").style.display = "none";
-    if (!player.challenges['p4'].completed) document.getElementById("pc4_unlock_upgrade").style.display = "";
-    else document.getElementById("pc4_unlock_upgrade").style.display = "none";
-    if (!player.challenges['p5'].completed) document.getElementById("pc5_unlock_upgrade").style.display = "";
-    else document.getElementById("pc5_unlock_upgrade").style.display = "none";
-    if (!player.challenges['p6'].completed) document.getElementById("pc6_unlock_upgrade").style.display = "";
-    else document.getElementById("pc6_unlock_upgrade").style.display = "none";
-    if (!player.challenges['p7'].completed) document.getElementById("pc7_unlock_upgrade").style.display = "";
-    else document.getElementById("pc7_unlock_upgrade").style.display = "none";
-    if (!player.challenges['p8'].completed) document.getElementById("pc8_unlock_upgrade").style.display = "";
-    else document.getElementById("pc8_unlock_upgrade").style.display = "none";
 
     // various stats
     if (player.unlocked_photonic) document.getElementById("statistics_max_photons_at_once").style.display = "";
@@ -447,76 +404,12 @@ function update_prestige() {
     if (player.unlocked_biological) document.getElementById("automation_shop_biological").textContent = "Biological";
     else document.getElementById("automation_shop_biological").textContent = "???";
 
-    // Next Vacuumic costs
-    if (functions[player.upgrades['v01'].availability_function]()) {
-        document.getElementById("vacuumic_next_costs_with_ve").style.visibility = "";
-        document.getElementById("vacuumic_next_costs_with_ve_1").style.visibility = "";
-        document.getElementById("vacuumic_next_costs_with_ve_2").style.visibility = "";
-        document.getElementById("vacuumic_next_costs_with_ve_1").textContent = format_number(player.upgrades['v01'].get_cost(2).subtract(player.upgrades['v01'].get_cost(1)));
-        document.getElementById("vacuumic_next_costs_with_ve_2").textContent = format_number(player.upgrades['v01'].get_cost(3).subtract(player.upgrades['v01'].get_cost(2)));
-    }
-    else {
-        document.getElementById("vacuumic_next_costs_with_ve").style.visibility = "hidden";
-        document.getElementById("vacuumic_next_costs_with_ve_1").style.visibility = "hidden";
-        document.getElementById("vacuumic_next_costs_with_ve_2").style.visibility = "hidden";
-    }
-
-    if (functions[player.upgrades['v02'].availability_function]()) {
-        document.getElementById("vacuumic_next_costs_with_md3").style.visibility = "";
-        document.getElementById("vacuumic_next_costs_with_md3_1").style.visibility = "";
-        document.getElementById("vacuumic_next_costs_with_md3_2").style.visibility = "";
-        document.getElementById("vacuumic_next_costs_with_md3_1").textContent = format_number(player.upgrades['v02'].get_cost(2).subtract(player.upgrades['v02'].get_cost(1)));
-        document.getElementById("vacuumic_next_costs_with_md3_2").textContent = format_number(player.upgrades['v02'].get_cost(3).subtract(player.upgrades['v02'].get_cost(2)));
-    }
-    else {
-        document.getElementById("vacuumic_next_costs_with_md3").style.visibility = "hidden";
-        document.getElementById("vacuumic_next_costs_with_md3_1").style.visibility = "hidden";
-        document.getElementById("vacuumic_next_costs_with_md3_2").style.visibility = "hidden";
-    }
-
-    if (functions[player.upgrades['v03'].availability_function]()) {
-        document.getElementById("vacuumic_next_costs_with_ntr").style.visibility = "";
-        document.getElementById("vacuumic_next_costs_with_ntr_1").style.visibility = "";
-        document.getElementById("vacuumic_next_costs_with_ntr_2").style.visibility = "";
-        document.getElementById("vacuumic_next_costs_with_ntr_1").textContent = format_number(player.upgrades['v03'].get_cost(2).subtract(player.upgrades['v03'].get_cost(1)));
-        document.getElementById("vacuumic_next_costs_with_ntr_2").textContent = format_number(player.upgrades['v03'].get_cost(3).subtract(player.upgrades['v03'].get_cost(2)));
-    }
-    else {
-        document.getElementById("vacuumic_next_costs_with_ntr").style.visibility = "hidden";
-        document.getElementById("vacuumic_next_costs_with_ntr_1").style.visibility = "hidden";
-        document.getElementById("vacuumic_next_costs_with_ntr_2").style.visibility = "hidden";
-    }
-
     // Dilation
     if (!player.experienced_dilation) document.getElementById("challenge_strength_11").style.display = "none";
     else document.getElementById("challenge_strength_11").style.display = "";
     
     // ST autobuyers
     if (player.milestones['a01_3'].is_active()) player.unlocked_st_autobuyers = true;
-    if (player.unlocked_st_autobuyers) {
-        document.getElementById("st_autobuyer_toggle").style.display = "";
-        document.getElementsByClassName("unlock-on-st-autobuyers")[0].style.display = "";
-        if (player.activated_st_autobuyers) {
-            document.getElementById("st_autobuyer_toggle_status").textContent = "enabled";
-            document.getElementById("st_autobuyer_button_text").textContent = "Disable";
-        }
-        else {
-            document.getElementById("st_autobuyer_toggle_status").textContent = "disabled";
-            document.getElementById("st_autobuyer_button_text").textContent = "Enable";
-        }
-    }
-    else {
-        document.getElementById("st_autobuyer_toggle").style.display = "none";
-        document.getElementsByClassName("unlock-on-st-autobuyers")[0].style.display = "none";
-    }
-
-    // achievement 64: unlock buy max gravitonic upgrades
-    if (player.achievements['64'].complete || player.upgrades['AUTO1_5'].is_active()) {
-        document.getElementById("upgrades_gravitonic_buy_max").style.display = "";
-    }
-    else {
-        document.getElementById("upgrades_gravitonic_buy_max").style.display = "none";
-    }
 
     // Wave autobuyers
     if (player.milestones['a04_1'].is_active()) player.unlocked_wave_autobuyers = true;
@@ -578,20 +471,18 @@ function update_prestige() {
     if (player.settings["separate_scroll_right"]) document.getElementsByClassName('prestige-menu')[0].classList.add('scrollable');
     else document.getElementsByClassName('prestige-menu')[0].classList.remove('scrollable');
 
-    // ST presets
-    for (let element of document.getElementsByClassName("unlock-on-st-presets")) {
-        if (player.upgrades['AUTO3_5'].is_active()) element.style.display = "";
-        else element.style.display = "none";
-    }
-    for (let i = 0; i < 3; i++) render_st_preset(i);
+
+    if (document.getElementById("matter_dimensions").style.display != "none") screen_update_matter_dimensions();
 
     if (document.getElementById("photonic_dimensions").style.display != "none") screen_update_photonic_dimensions();
 
+    if (document.getElementById("gravitonic_upgrades").style.display != "none") screen_update_gravitonic_upgrades();
     if (document.getElementById("gravitonic_dimensions").style.display != "none") screen_update_gravitonic_dimensions();
 
     if (document.getElementById("neutronic_upgrades").style.display != "none") screen_update_neutronic_upgrades();
     if (document.getElementById("neutronic_dimensions").style.display != "none") screen_update_neutronic_dimensions();
 
+    if (document.getElementById("vacuumic_upgrades").style.display != "none") screen_update_vacuumic_upgrades();
     if (document.getElementById("vacuumic_dimensions").style.display != "none") screen_update_vacuumic_dimensions();
 
     if (document.getElementById("dimensional_dimensions").style.display != "none") screen_update_dimensional_dimensions();
