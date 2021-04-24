@@ -109,6 +109,8 @@ function reset_dimensional(force=false, higher_reset=false, autobuyer_induced=fa
     for (let key of Object.keys(player.upgrades)) {
         // achievement 88: keep all automation upgrades
         if (player.achievements['88'].complete && (key == "v71" || key == "v72")) continue;
+        // a07_3: keep ST from VE on Dimensional
+        if (player.milestones['a07_3'].is_active() && key == "v01") continue;
         if (key.includes("v")) {
             player.upgrades[key].reset();
         }
@@ -141,7 +143,10 @@ function reset_dimensional(force=false, higher_reset=false, autobuyer_induced=fa
     player.vacuum_energy = big(0);
     // d11: start with Vacuum Energy
     if (player.upgrades['d11'].is_active()) player.vacuum_energy = player.upgrades["d11"].get_effect();
+
     player.space_theorems = big(0);
+    // a07_3: keep ST from VE on Dimensional
+    if (player.milestones['a07_3'].is_active()) player.space_theorems = big(player.upgrades['v01'].amt);
 
     if (!force) player.fastest_dimensional = Math.min(player.fastest_dimensional, player.time_dimensional);
 

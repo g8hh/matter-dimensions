@@ -79,6 +79,9 @@ functions["a07_1_availability"] = () => {
 functions["a07_2_availability"] = () => {
     return true;
 }
+functions["a07_3_availability"] = () => {
+    return true;
+}
 
 functions["a08_1_availability"] = () => {
     return true;
@@ -169,6 +172,9 @@ functions["a07_1_activation"] = () => {
 }
 functions["a07_2_activation"] = () => {
     return get_atom_level('a07').gt(14 - 0.5);
+}
+functions["a07_3_activation"] = () => {
+    return get_atom_level('a07').gt(1680 - 0.5);
 }
 
 functions["a08_1_activation"] = () => {
@@ -277,6 +283,9 @@ functions["a07_1_effect"] = () => {
 functions["a07_2_effect"] = () => {
     return big(1);
 }
+functions["a07_3_effect"] = () => {
+    return big(1);
+}
 
 functions["a08_1_effect"] = () => {
     return big(1.1);
@@ -367,6 +376,9 @@ functions["a07_1_goal"] = () => {
 }
 functions["a07_2_goal"] = () => {
     return big(14);
+}
+functions["a07_3_goal"] = () => {
+    return big(1680);
 }
 
 functions["a08_1_goal"] = () => {
