@@ -415,7 +415,7 @@ function update_prestige() {
     if (player.milestones['a04_1'].is_active()) player.unlocked_wave_autobuyers = true;
 
     // Show IDs
-    if (player.settings['show_ids']) {
+    if (player.settings['show_ids'] || pressed_buttons['shift']) {
         let elements = document.getElementsByClassName('upgrade-id');
         for (let i = 0; i < elements.length; i++) {
             elements.item(i).style.display = '';

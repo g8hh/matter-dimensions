@@ -1120,6 +1120,7 @@ function change_update_rate() {
 }
 
 var pressed_buttons = {
+    'shift': false,
     'ctrl': false,
     'alt': false
 }
@@ -1208,10 +1209,7 @@ function hotkeydown(event) {
                 if (current_menu == "atomic" && (player.achievements['147'].complete)) max_buy_upgrades('a');
             }
             break;
-        case 'Shift':
-            player.settings['show_ids'] = true;
-            radio_set_setting('show_ids', true);
-            break;
+        case 'Shift': pressed_buttons['shift'] = true; break;
         case 'Control': pressed_buttons['ctrl'] = true; break;
         case 'Alt': pressed_buttons['alt'] = true; break;
         default: console.log("keydown: " + event.key + " (" + key_transform(event) + ")");
@@ -1220,10 +1218,7 @@ function hotkeydown(event) {
 
 function hotkeyup(event) {
     switch (key_transform(event)) {
-        case 'Shift':
-            player.settings['show_ids'] = false;
-            radio_set_setting('show_ids', false);
-            break;
+        case 'Shift': pressed_buttons['shift'] = false; break;
         case 'Control': pressed_buttons['ctrl'] = false; break;
         case 'Alt': pressed_buttons['alt'] = false; break;
         default: console.log("keyup: " + event.key + " (" + key_transform(event) + ")");
