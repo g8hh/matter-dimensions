@@ -129,6 +129,8 @@ function wave_gain(type) {
     let wave_mult = big(1);
     // a04: gain more waves
     wave_mult = wave_mult.mult(player.upgrades['a04'].get_effect());
+    // Temperature Milestone 5: gain more waves
+    if (player.milestones['temperature_5'].is_active()) wave_mult = wave_mult.mult(player.milestones['temperature_5'].get_effect());
     switch (type) {
         case 'infrared': return get_temperature().div(2.73).pow(5).mult(wave_mult).rounddown();
         case 'red': return get_temperature().div(4.222).pow(4).mult(wave_mult).rounddown();
@@ -685,5 +687,5 @@ function update_settings_first() {
 }
 
 function update_settings() {
-    
+
 }

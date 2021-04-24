@@ -858,6 +858,8 @@ function get_tickspeed_power() {
     base_pow = base_pow.mult(power_black_holes_tickspeed());
     // p41: tickspeed power is increased
     base_pow = base_pow.mult(player.upgrades['p41'].get_effect());
+    // Temperature Milestone 8: tickspeed power is increased
+    if (player.milestones['temperature_8'].is_active()) base_pow = base_pow.mult(player.milestones['temperature_8'].get_effect());
 
     let tickspeed_effectiveness = big(1);
     // Neutronic Challenge 3 reward: Tickspeed Upgrades are more effective

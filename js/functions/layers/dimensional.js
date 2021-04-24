@@ -46,6 +46,8 @@ function prestige_earn_shards() {
     if (!player.challenges['d0'].inC() && (player.challenges['d1'].inC() || player.challenges['d1'].completed)) base_income = base_income.mult(10);
     // challenge d2: gain more Shards
     if (!player.challenges['d0'].inC() && (player.challenges['d2'].inC() || player.challenges['d2'].completed)) base_income = base_income.mult(player.challenges['d2'].get_effect());
+    // Temperature Milestone 7: gain more Shards
+    if (player.milestones['temperature_7'].is_active()) base_income = base_income.mult(player.milestones['temperature_7'].get_effect());
 
     return base_income.rounddown().max(1);
 }

@@ -772,6 +772,10 @@ class Player {
         this.milestones["temperature_2"] = new Milestone("temperature_2", "temperature_2_availability", "temperature_2_activation", "temperature_2_effect", "temperature_2_goal", "temperature_goal_display_function");
         this.milestones["temperature_3"] = new Milestone("temperature_3", "temperature_3_availability", "temperature_3_activation", "temperature_3_effect", "temperature_3_goal", "temperature_goal_display_function");
         this.milestones["temperature_4"] = new Milestone("temperature_4", "temperature_4_availability", "temperature_4_activation", "temperature_4_effect", "temperature_4_goal", "temperature_goal_display_function");
+        this.milestones["temperature_5"] = new Milestone("temperature_5", "temperature_5_availability", "temperature_5_activation", "temperature_5_effect", "temperature_5_goal", "temperature_goal_display_function");
+        this.milestones["temperature_6"] = new Milestone("temperature_6", "temperature_6_availability", "temperature_6_activation", "temperature_6_effect", "temperature_6_goal", "temperature_goal_display_function");
+        this.milestones["temperature_7"] = new Milestone("temperature_7", "temperature_7_availability", "temperature_7_activation", "temperature_7_effect", "temperature_7_goal", "temperature_goal_display_function");
+        this.milestones["temperature_8"] = new Milestone("temperature_8", "temperature_8_availability", "temperature_8_activation", "temperature_8_effect", "temperature_8_goal", "temperature_goal_display_function");
 
         this.milestones["a01_1"] = new Milestone("a01_1", "a01_1_availability", "a01_1_activation", "a01_1_effect", "a01_1_goal");
         this.milestones["a01_2"] = new Milestone("a01_2", "a01_2_availability", "a01_2_activation", "a01_2_effect", "a01_2_goal");
@@ -806,6 +810,7 @@ class Player {
         this.milestones["a07_2"] = new Milestone("a07_2", "a07_2_availability", "a07_2_activation", "a07_2_effect", "a07_2_goal");
 
         this.milestones["a08_1"] = new Milestone("a08_1", "a08_1_availability", "a08_1_activation", "a08_1_effect", "a08_1_goal");
+        this.milestones["a08_2"] = new Milestone("a08_2", "a08_2_availability", "a08_2_activation", "a08_2_effect", "a08_2_goal");
 
         this.settings = JSON.parse(JSON.stringify(default_settings));
 

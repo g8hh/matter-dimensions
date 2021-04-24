@@ -42,6 +42,9 @@ functions['protons_pow'] = (amt_bought, amt) => {
     var base_pow = new BigNumber();
     base_pow.copy(amt);
 
+    // Temperature Milestone 6: base power is boosted
+    if (player.milestones['temperature_6'].is_active()) base_pow = base_pow.pow(player.milestones['temperature_6'].get_effect());
+
     // Neutronic Challenge 1: particles do not produce power
     if (player.challenges['n1'].inC()) return big(0);
     // Neutronic Challenge 1 reward: particles produce more power
@@ -78,6 +81,9 @@ functions['electrons_pow'] = (amt_bought, amt) => {
     var base_pow = new BigNumber();
     base_pow.copy(amt);
 
+    // Temperature Milestone 6: base power is boosted
+    if (player.milestones['temperature_6'].is_active()) base_pow = base_pow.pow(player.milestones['temperature_6'].get_effect());
+
     // Neutronic Challenge 1: particles do not produce power
     if (player.challenges['n1'].inC()) return big(0);
     // Neutronic Challenge 1 reward: particles produce more power
@@ -113,6 +119,9 @@ functions['electrons_pow'] = (amt_bought, amt) => {
 functions['bosons_pow'] = (amt_bought, amt) => {
     var base_pow = new BigNumber();
     base_pow.copy(amt);
+
+    // Temperature Milestone 6: base power is boosted
+    if (player.milestones['temperature_6'].is_active()) base_pow = base_pow.pow(player.milestones['temperature_6'].get_effect());
 
     // Neutronic Challenge 1: particles do not produce power
     if (player.challenges['n1'].inC()) return big(0);
