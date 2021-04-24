@@ -685,7 +685,5 @@ function update_settings_first() {
 }
 
 function update_settings() {
-    for (let key of Object.keys(player.settings)) {
-        player.settings[key] = radio_get_setting(key);
-    }
+    
 }
