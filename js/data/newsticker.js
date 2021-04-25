@@ -17,7 +17,12 @@ const NEWSTICKER_LINES = [
     "This message appears randomly.",
     "Perform Hard Reset to get Hard Points! No, wait, don't do that...",
     "Click the next message if you can travel through time.",
-    "Press Shift to see upgrade numbers."
+    "Press Shift to see upgrade numbers.",
+    "Why is there Antimatter? I thought this was <b>Matter</b> Dimensions!",
+    "There's a newsticker?",
+    "They are called news messages, not newstickers.",
+    "Newsticker is on break right now.",
+    "In other news, it's HELP I'M TRAPPED IN NEWSTICKER FACTORY"
 ]
 
 const CONDITIONAL_NEWSTICKER_LINES = [
@@ -40,6 +45,8 @@ const CONDITIONAL_NEWSTICKER_LINES = [
     [function() { return player.unlocked_vacuumic }, "In space, no one can hear you click."],
     [function() { return player.unlocked_vacuumic }, "This message feels empty."],
     [function() { return player.unlocked_dimensional }, "Scientists have discovered that Shards are actually made out of rock candy."],
+    [function() { return player.unlocked_dimensional }, "12 dimensions=string theory."],
+    [function() { return player.achievements['93'].complete }, "The year is 2121, there are 25 layers, 46 elements, over three hundred reactions (collider presets are still not here), 14 rows of photonic upgrades, over a thousand achievements and no guide about vacuumic build. Over 99% of the document is Idea Dump. Neutronic Meta-Challenge can not be completed."],
 
     [function() { return player.challenge_strength_6 == 4 }, "5th Dimension is not real."],
     [function() { return player.challenge_strength_6 == 5 }, "6th Dimension is not real."],
