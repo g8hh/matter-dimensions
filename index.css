@@ -18,46 +18,26 @@ body {
     --color-900: #F7FAFC;
 
     --color-bought: #008000;
+    --color-overlay: #00000080;
+    --color-achievement: #00000080;
+    --color-achievement-complete: #00FF0080;
+    --color-achievement-effective: #00002280;
+    --color-achievement-effective-complete: #00FFFF80;
+
+    --color-block-red: #80000040;
+    --color-block-yellow: #80800040;
+    --color-block-green: #00800040;
+    --color-red-muted: #800000;
+    --color-green-muted: #006000;
+    --color-red: #C00000;
+    --color-yellow: #C0C000;
+    --color-green: #00C000;
+
+    --color-uncertain: #806400;
 
     --font-family: 'larabiefont_rg', 'Courier New', Courier, monospace;
 }
 
-.theme-blue {
-    --color-000: #06080A;
-    --color-100: #1B262C;
-    --color-200: #203D4E;
-    --color-300: #275877;
-    --color-400: #2C6C97;
-    --color-500: #3483B8;
-    --color-600: #639CB8;
-    --color-700: #8CB9D8;
-    --color-800: #C1D9EA;
-    --color-900: #F7FAFC;
-}
-.theme-yellow {
-    --color-000: #080A06;
-    --color-100: #2C261B;
-    --color-200: #4E3D20;
-    --color-300: #775827;
-    --color-400: #976C2C;
-    --color-500: #B88334;
-    --color-600: #B89C63;
-    --color-700: #D8B98C;
-    --color-800: #EAD9C1;
-    --color-900: #FCFAF7;
-}
-.theme-red {
-    --color-000: #0A0606;
-    --color-100: #2C1D1B;
-    --color-200: #4E2220;
-    --color-300: #772927;
-    --color-400: #972E2C;
-    --color-500: #B83634;
-    --color-600: #B86A63;
-    --color-700: #D88D8C;
-    --color-800: #EAC1C1;
-    --color-900: #FCF7F7;
-}
 
 .font-larabiefont {
     --font-family: 'larabiefont_rg', 'Courier New', Courier, monospace;
@@ -225,7 +205,7 @@ input {
     top: 0;
     bottom: 0;
 
-    background-color: #00000080;
+    background-color: var(--color-overlay);
 }
 .overlay-window {
     position: fixed;
@@ -298,7 +278,7 @@ input {
 .achievement {
     position: relative;
     border-radius: 10%;
-    background-color: #00000080;
+    background-color: var(--color-achievement);
 }
 .achievement p {
     position: absolute;
@@ -312,6 +292,7 @@ input {
 .achievement:hover::after {
     content: attr(data-desc);
     position: absolute;
+    color: var(--color-000);
     left: 20%; top: 20%; right: -20%;
     z-index: 1;
     background-color: var(--color-700);
@@ -326,13 +307,13 @@ input {
     margin: 10px;
 }
 .achievement.complete {
-    background-color: #00FF0080;
+    background-color: var(--color-achievement-complete);
 }
 .achievement.effective {
-    background-color: #00002280;
+    background-color: var(--color-achievement-effective);
 }
 .achievement.effective.complete {
-    background-color: #00FFFF80;
+    background-color: var(--color-achievement-effective-complete);
 }
 
 .upgrade-list-photonic {
@@ -410,22 +391,22 @@ input {
     border: 5px var(--color-200) solid;
 }
 .neutronic-block-matter {
-    background-color: #80000040;
+    background-color: var(--color-block-red);
 }
 .neutronic-block-photonic {
-    background-color: #80800040;
+    background-color: var(--color-block-yellow);
 }
 .neutronic-block-gravitonic {
-    background-color: #00800040;
+    background-color: var(--color-block-green);
 }
 .neutronic-number-matter {
-    color: #C00000;
+    color: var(--color-red);
 }
 .neutronic-number-photonic {
-    color: #C0C000;
+    color: var(--color-yellow);
 }
 .neutronic-number-gravitonic {
-    color: #00C000;
+    color: var(--color-green);
 }
 .vacuumic-tree-line {
     background-color: var(--color-200);
@@ -434,7 +415,7 @@ input {
     background-color: var(--color-bought);
 }
 .vacuumic-tree-line.possible {
-    background-color: #806400;
+    background-color: var(--color-uncertain);
 }
 
 .challenge-page {
@@ -472,7 +453,7 @@ input {
     text-align: center;
 }
 .challenge-card.in-progress .challenge-name, .challenge-card.in-progress .challenge-desc {
-    background-color: #806400;
+    background-color: var(--color-uncertain);
 }
 .challenge-card.complete .challenge-name, .challenge-card.complete .challenge-desc {
     background-color: var(--color-bought);
@@ -560,10 +541,10 @@ input {
     align-self: center;
 }
 .red-button {
-    background-color: #800000;
+    background-color: var(--color-red-muted);
 }
 .red-button:hover {
-    background-color: #C00000;
+    background-color: var(--color-red);
 }
 .settings-block-selector-option {
     padding-left: 20px;
@@ -967,7 +948,7 @@ input {
     cursor: auto;
 }
 .evolution.complete {
-    background-color: #006000;
+    background-color: var(--color-green-muted);
     cursor: auto;
 }
 .evolution .name {
