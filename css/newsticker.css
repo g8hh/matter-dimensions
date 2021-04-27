@@ -26,8 +26,11 @@ body.has-newsticker .layout-wrapper #achievement_track {
 body.has-newsticker .settings-menu .settings-menu-wrapper, body.has-newsticker .prestige-menu .prestige-menu-wrapper {
     padding-top: 30px;
 }
-body.has-newsticker .settings-menu .settings-menu-wrapper, body.has-newsticker .prestige-menu .prestige-menu-wrapper {
+body.has-newsticker .settings-menu .settings-menu-wrapper {
     height: calc(100vh - 50px);
+}
+body.has-newsticker .prestige-menu .prestige-menu-wrapper {
+    min-height: calc(100vh - 50px);
 }
 
 #newsticker {
