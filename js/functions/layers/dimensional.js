@@ -8,7 +8,7 @@ function prestige_earn_shards() {
         // challenge d3: 3rd Dims also count
         if (!player.challenges['d0'].inC() && (player.challenges['d3'].inC() || player.challenges['d3'].completed)) lowest_dim = 2;
 
-        // d123: all dimensions count for Shard gain
+        // d123: all dimensions count for Shard gain, higher ones double
         if ((key.includes("matter_") || player.upgrades['d123'].is_active()) && player.dimensions[key].level >= lowest_dim) {
             // modify when adding new dimensions
             let reset_level = 0;
@@ -20,7 +20,7 @@ function prestige_earn_shards() {
 
             let income_per_dim = big(0.1).mult(big(2).pow(reset_level));
             // d52: higher level dimensions give more shards
-            income_per_dim = income_per_dim.mult(player.upgrades['d52'].get_effect().pow(Math.max(0, player.dimensions[key].level - 3)));
+            income_per_dim = income_per_dim.mult(player.upgrades['d52'].get_effect().pow(Math.max(0, player.dimensions[key].level - lowest_dim)));
 
             base_income = base_income.add(big(player.dimensions[key].amt_bought).mult(income_per_dim));
         }
