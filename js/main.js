@@ -981,7 +981,7 @@ function processTimedelta(corrected_timedelta) {
     // evolution b02: anniilation produces more energy based on Shards
     if (player.evolutions['b02'].is_active()) energy_generated = energy_generated.mult(player.evolutions["b02"].get_effect());
     // a07: anniilation produces more energy
-    if (player.upgrades['a07'].is_active()) energy_generated = energy_generated.mult(player.upgrades["a07"].get_effect());
+    energy_generated = energy_generated.mult(player.upgrades["a07"].get_effect());
     // Photonic Challenge 2: annihilation does not produce energy
     if (player.challenges['p2'].inC()) energy_generated = big(0);
 

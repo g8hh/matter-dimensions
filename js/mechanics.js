@@ -108,7 +108,7 @@ function format_temperature(number, fixed=false) {
 function get_temperature() {
     let base_energy = player.temperature_energy.clone();
     // a08: energy boosts temperature more
-    if (player.upgrades['a08'].is_active()) base_energy = base_energy.mult(player.upgrades['a08'].get_effect());
+    base_energy = base_energy.mult(player.upgrades['a08'].get_effect());
 
     let base_temp = player.temperature_energy.pow(0.2).div(1000);
     if (base_temp.gt(273.15)) base_temp = big(273.15).mult(base_temp.div(273.15).log(10).add(1));
@@ -546,7 +546,7 @@ function update_collider() {
 
             let reaction_power = big(transfer_ratio);
             // a09: alpha is more effective
-            if (is_alpha_reaction(key) && player.upgrades['a09'].is_active()) reaction_power = reaction_power.mult(player.upgrades['a09'].get_effect()); 
+            if (is_alpha_reaction(key)) reaction_power = reaction_power.mult(player.upgrades['a09'].get_effect()); 
 
             total_free_levels = total_free_levels.mult(reaction_power).add(1e-6).rounddown();
 
