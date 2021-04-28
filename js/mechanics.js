@@ -267,6 +267,7 @@ function update_temperature() {
 // Collider
 
 var free_atom_levels = {};
+var alpha_reactions_active = 0;
 
 function update_collider_first() {
     for (let key of Object.keys(MECHANIC_COLLIDER_REACTION_LIST)) {
@@ -468,6 +469,8 @@ function update_collider() {
         free_atom_levels['a08'] = free_atom_levels['a08'].add(player.evolutions['b11'].get_effect().subtract(1).mult(player.upgrades['a08'].amt).rounddown());
     }
 
+    alpha_reactions_active = 0;
+
     if (!player.upgrades['v211'].is_active()) {
         document.getElementById("mechanic_collider_ck_prebreak").style.display = "";
         document.getElementById("mechanic_collider_next_ck_hint").style.display = "none";
@@ -539,6 +542,8 @@ function update_collider() {
 
         if (reaction_visible && player.active_reactions[key] && activated_reactions < player.collision_points_in_reaction) {
             activated_reactions += 1;
+            if (is_alpha_reaction(key)) alpha_reactions_active += 1;
+            
             let total_free_levels = big(0);
             for (let i = 0; i < MECHANIC_COLLIDER_REACTION_LIST[key][0].length; i++) {
                 total_free_levels = total_free_levels.add(get_atom_level(MECHANIC_COLLIDER_REACTION_LIST[key][0][i]));

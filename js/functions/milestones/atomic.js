@@ -90,6 +90,10 @@ functions["a08_2_availability"] = () => {
     return true;
 }
 
+functions["a09_1_availability"] = () => {
+    return true;
+}
+
 
 
 functions["a01_1_activation"] = () => {
@@ -182,6 +186,10 @@ functions["a08_1_activation"] = () => {
 }
 functions["a08_2_activation"] = () => {
     return get_atom_level('a08').gt(1000 - 0.5);
+}
+
+functions["a09_1_activation"] = () => {
+    return get_atom_level('a09').gt(9 - 0.5);
 }
 
 
@@ -294,6 +302,10 @@ functions["a08_2_effect"] = () => {
     return big(1);
 }
 
+functions["a09_1_effect"] = () => {
+    return big(2).add(alpha_reactions_active);
+}
+
 
 
 functions["a01_1_goal"] = () => {
@@ -386,4 +398,8 @@ functions["a08_1_goal"] = () => {
 }
 functions["a08_2_goal"] = () => {
     return big(1000);
+}
+
+functions["a09_1_goal"] = () => {
+    return big(9);
 }
