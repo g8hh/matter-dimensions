@@ -510,6 +510,10 @@ functions["check_148"] = () => {
 };
 
 
+functions["check_152"] = () => {
+    return player.matter.gt("1e1000000");
+};
+
 functions["check_156"] = () => {
     return false; // external call
 };
