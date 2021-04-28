@@ -228,7 +228,7 @@ class Evolution {
 }
 
 function base_evolution_time() {
-    let base = big(31415);
+    let base = big(314159);
 
     // b02: Evolutions are applied faster
     if (player.upgrades['b02'].is_active()) base = base.div(player.upgrades['b02'].get_effect());
