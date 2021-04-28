@@ -535,6 +535,7 @@ class Player {
         this.upgrades["a06"] = new Upgrade("a06", "atomic_upgrades", -1, "upg_a06_cost", "upg_a06_power", "upg_a06_unlock", "atoms", [" Atom", " Atoms"], "upg_a06_available");
         this.upgrades["a07"] = new Upgrade("a07", "atomic_upgrades", -1, "upg_a07_cost", "upg_a07_power", "upg_a07_unlock", "atoms", [" Atom", " Atoms"], "upg_a07_available");
         this.upgrades["a08"] = new Upgrade("a08", "atomic_upgrades", -1, "upg_a08_cost", "upg_a08_power", "upg_a08_unlock", "atoms", [" Atom", " Atoms"], "upg_a08_available");
+        this.upgrades["a09"] = new Upgrade("a09", "atomic_upgrades", -1, "upg_a09_cost", "upg_a09_power", "upg_a09_unlock", "atoms", [" Atom", " Atoms"], "upg_a09_available");
 
         this.upgrades["b01"] = new Upgrade("b01", "biological_population", -1, "upg_b01_cost", "upg_b01_power", "upg_b01_unlock", "genes", [" Gene", " Genes"], "upg_b01_available");
         this.upgrades["b02"] = new Upgrade("b02", "biological_population", -1, "upg_b02_cost", "upg_b02_power", "upg_b02_unlock", "genes", [" Gene", " Genes"], "upg_b02_available");
@@ -552,6 +553,7 @@ class Player {
         this.evolutions["b08"] = new Evolution("b08", "evo_b08_cost", "genes", [" Gene", " Genes"], "population", 10, "evo_b08_power", "evo_b08_secondary");
         this.evolutions["b09"] = new Evolution("b09", "evo_b09_cost", "genes", [" Gene", " Genes"], "population", 5, "evo_b09_power", "evo_b09_secondary");
         this.evolutions["b10"] = new Evolution("b10", "evo_b10_cost", "genes", [" Gene", " Genes"], "population", 12, "evo_b10_power", "evo_b10_secondary");
+        this.evolutions["b11"] = new Evolution("b11", "evo_b11_cost", "genes", [" Gene", " Genes"], "population", 4, "evo_b11_power", "evo_b11_secondary");
 
         this.challenges = {};
         this.challenges["p1"] = new Challenge("p1", "Photonic Challenge 1", "photonic", [], "start_p1", "goal_p1", "end_p1");

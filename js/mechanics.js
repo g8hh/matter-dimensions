@@ -285,6 +285,8 @@ function element_unlock_limit() {
     let base_limit = 6;
     // evolution b05: unlock elements up to Oxygen
     if (player.evolutions['b05'].is_active()) base_limit = 8;
+    // evolution b11: unlock elements up to Silicon
+    if (player.evolutions['b05'].is_active()) base_limit = 9;
     return base_limit;
 }
 
@@ -406,6 +408,10 @@ function switch_auto_assigner_status() {
     player.auto_assigner_enabled = !player.auto_assigner_enabled;
 }
 
+function is_alpha_reaction(key) {
+    return 13 <= Number(key.substr(2)) && Number(key.substr(2)) <= 24;
+}
+
 function update_collider() {
     // achievement 143: unlock autobuyer and auto-assigner for Collision Points
     if (player.achievements['143'].complete && player.auto_assigner_enabled && player.collision_points > 0) {
@@ -456,6 +462,11 @@ function update_collider() {
     }
     free_atom_levels['ph'] = big(0);
     free_atom_levels['n'] = big(0);
+
+    // evolution b11: get more base Oxygen levels
+    if (functions[player.upgrades['a08'].availability_function]() && player.evolutions['b11'].is_active()) {
+        free_atom_levels['a08'] = free_atom_levels['a08'].add(player.evolutions['b11'].get_effect().subtract(1).mult(player.upgrades['a08'].amt).rounddown());
+    }
 
     if (!player.upgrades['v211'].is_active()) {
         document.getElementById("mechanic_collider_ck_prebreak").style.display = "";
@@ -532,7 +543,13 @@ function update_collider() {
             for (let i = 0; i < MECHANIC_COLLIDER_REACTION_LIST[key][0].length; i++) {
                 total_free_levels = total_free_levels.add(get_atom_level(MECHANIC_COLLIDER_REACTION_LIST[key][0][i]));
             }
-            total_free_levels = total_free_levels.mult(transfer_ratio).add(1e-6).rounddown();
+
+            let reaction_power = big(transfer_ratio);
+            // a09: alpha is more effective
+            if (is_alpha_reaction(key) && player.upgrades['a09'].is_active()) reaction_power = reaction_power.mult(player.upgrades['a09'].get_effect()); 
+
+            total_free_levels = total_free_levels.mult(reaction_power).add(1e-6).rounddown();
+
             for (let i = 0; i < MECHANIC_COLLIDER_REACTION_LIST[key][1].length; i++) {
                 free_atom_levels[MECHANIC_COLLIDER_REACTION_LIST[key][1][i]] = free_atom_levels[MECHANIC_COLLIDER_REACTION_LIST[key][1][i]].add(total_free_levels);
             }

@@ -3683,6 +3683,28 @@
                                 </div>
                                 <p class="upgrade-atomic-buy-max-button" onclick="player.upgrades['a08'].buy(player.upgrades['a08'].binary_search_max())">Buy max</p>
                             </div>
+
+                            <div id="upgrade_a09" class="upgrade">
+                                <p class="upgrade-atomic-title">Fluorine</p>
+                                <p class="upgrade-atomic-level">Level <span id="upgrade_a09_total_level"></span> (<span id="upgrade_a09_level"></span>)</p>
+                                <p class="upgrade-atomic-symbol">F</p>
+                                <div class="upgrade-atomic-milestones">
+                                    <p id="milestone_a09_1_indicator" class="milestone">
+                                        <b>Level <span id="milestone_a09_1_goal"></span></b>: Boost Shard gain based on amout of Alpha process and Triple-alpha process reactions working. 
+                                        <br>Current: ×<span id="milestone_a09_1_effect"></span>.
+                                    </p>
+                                </div>
+                                <p class="upgrade-atomic-effect-desc">
+                                    Alpha process and Triple-alpha process are more effective.
+                                    <br>Current: ×<span id="upgrade_a09_current_effect"></span>
+                                </p>
+                                <div class="upgrade-atomic-buy-button" onclick="player.upgrades['a09'].buy()">
+                                    <p>Buy Fluorine<br>
+                                    <span id="upgrade_a09_next_cost">Cost: <span id="upgrade_a09_cost"></span><br></span>
+                                    Effect: ×<span id="upgrade_a09_next_effect"></span></p></p>
+                                </div>
+                                <p class="upgrade-atomic-buy-max-button" onclick="player.upgrades['a09'].buy(player.upgrades['a09'].binary_search_max())">Buy max</p>
+                            </div>
                         </div>
                     </div>
 
@@ -4158,6 +4180,7 @@
                         <p class="population-boost" upgrade="b07">^<span class="upgrade-effect" style="font-weight: bold"></span> more Atoms on Atomic resets</p>
                         <p class="population-boost" upgrade="b08">×<span class="upgrade-effect" style="font-weight: bold"></span> more Shards on Dimensional resets</p>
                         <p class="population-boost" upgrade="b10">×<span class="upgrade-effect" style="font-weight: bold"></span> more Genes on Biological resets</p>
+                        <p class="population-boost" upgrade="b11">×<span class="upgrade-effect" style="font-weight: bold"></span> more base Oxygen levels (rounded down)</p>
                     </div>
 
                     <div id="biological_evolutions" style="display: none;">
@@ -4409,6 +4432,30 @@
                                         <p class="implement-remaining">To 90%: <span class="implement-remaining-time"></span></p>
                                     </div>
                                     <p class="upgrade-id" style="display: none">10</p>
+                                </div>
+
+                                <div id="evolution_b11" class="evolution" onclick="player.evolutions['b11'].buy()">
+                                    <p class="name">Trachea</p>
+                                    <p class="advantage"></p>
+                                    <p>
+                                        You can unlock elements up to Silicon
+                                    </p>
+                                    <p>
+                                        Multiply base Oxygen levels (rounded down)<br>
+                                        Current: ×<span class="primary-effect"></span><br>
+                                        <span class="primary-effect-prediction-desc">(at 90%: ×<span class="primary-effect-prediction"></span>)</span>
+                                    </p>
+                                    <div class="cost-desc">
+                                        <p style="text-align: center">Cost: <span class="cost"></span></p>
+                                        <p>To 90%: <span class="implement-time"></span></p>
+                                    </div>
+                                    <div class="progress-bar-layout"></div>
+                                    <div class="progress-bar"></div>
+                                    <div class="progress-desc">
+                                        <p style="text-align: center"><span class="progress"></span></p>
+                                        <p class="implement-remaining">To 90%: <span class="implement-remaining-time"></span></p>
+                                    </div>
+                                    <p class="upgrade-id" style="display: none">11</p>
                                 </div>
                             </div>
                         </div>
