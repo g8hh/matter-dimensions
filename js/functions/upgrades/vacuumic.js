@@ -40,44 +40,60 @@ functions["upg_v21_cost"] = (amt) => {
 functions["upg_v31_cost"] = (amt) => {
     let base_cost = big(1);
 
+    let paths_taken = 0;
+    if (player.upgrades['v31'].amt > 0) paths_taken += 1;
+    if (player.upgrades['v32'].amt > 0) paths_taken += 1;
+
     // v201: each new path is twice more expensive
-    if (player.upgrades['v201'].is_active()) {
-        if (player.upgrades['v31'].amt > 0) base_cost = base_cost.mult(2);
-        if (player.upgrades['v32'].amt > 0) base_cost = base_cost.mult(2);
-    }
+    if (player.upgrades['v201'].is_active()) base_cost = base_cost.mult(big(2).pow(paths_taken));
+
+    // Vacuumic Challenge 8 reward: discount if >= 2 paths taken
+    if (player.challenges['v8'].completed && paths_taken >= 2) base_cost = base_cost.div(2);
 
     return base_cost;
 }
 functions["upg_v32_cost"] = (amt) => {
     let base_cost = big(1);
 
+    let paths_taken = 0;
+    if (player.upgrades['v31'].amt > 0) paths_taken += 1;
+    if (player.upgrades['v32'].amt > 0) paths_taken += 1;
+
     // v201: each new path is twice more expensive
-    if (player.upgrades['v201'].is_active()) {
-        if (player.upgrades['v31'].amt > 0) base_cost = base_cost.mult(2);
-        if (player.upgrades['v32'].amt > 0) base_cost = base_cost.mult(2);
-    }
+    if (player.upgrades['v201'].is_active()) base_cost = base_cost.mult(big(2).pow(paths_taken));
+
+    // Vacuumic Challenge 8 reward: discount if >= 2 paths taken
+    if (player.challenges['v8'].completed && paths_taken >= 2) base_cost = base_cost.div(2);
 
     return base_cost;
 }
 functions["upg_v41_cost"] = (amt) => {
     let base_cost = big(1);
 
+    let paths_taken = 0;
+    if (player.upgrades['v41'].amt > 0) paths_taken += 1;
+    if (player.upgrades['v42'].amt > 0) paths_taken += 1;
+
     // v201: each new path is twice more expensive
-    if (player.upgrades['v201'].is_active()) {
-        if (player.upgrades['v41'].amt > 0) base_cost = base_cost.mult(2);
-        if (player.upgrades['v42'].amt > 0) base_cost = base_cost.mult(2);
-    }
+    if (player.upgrades['v201'].is_active()) base_cost = base_cost.mult(big(2).pow(paths_taken));
+
+    // Vacuumic Challenge 8 reward: discount if >= 2 paths taken
+    if (player.challenges['v8'].completed && paths_taken >= 2) base_cost = base_cost.div(2);
 
     return base_cost;
 }
 functions["upg_v42_cost"] = (amt) => {
     let base_cost = big(1);
 
+    let paths_taken = 0;
+    if (player.upgrades['v41'].amt > 0) paths_taken += 1;
+    if (player.upgrades['v42'].amt > 0) paths_taken += 1;
+
     // v201: each new path is twice more expensive
-    if (player.upgrades['v201'].is_active()) {
-        if (player.upgrades['v41'].amt > 0) base_cost = base_cost.mult(2);
-        if (player.upgrades['v42'].amt > 0) base_cost = base_cost.mult(2);
-    }
+    if (player.upgrades['v201'].is_active()) base_cost = base_cost.mult(big(2).pow(paths_taken));
+
+    // Vacuumic Challenge 8 reward: discount if >= 2 paths taken
+    if (player.challenges['v8'].completed && paths_taken >= 2) base_cost = base_cost.div(2);
 
     return base_cost;
 }
@@ -96,152 +112,204 @@ functions["upg_v72_cost"] = (amt) => {
 functions["upg_v81_cost"] = (amt) => {
     let base_cost = big(1);
 
+    let paths_taken = 0;
+    if (player.upgrades['v81'].amt > 0) paths_taken += 1;
+    if (player.upgrades['v82'].amt > 0) paths_taken += 1;
+    if (player.upgrades['v83'].amt > 0) paths_taken += 1;
+
     // v201: each new path is twice more expensive
-    if (player.upgrades['v201'].is_active()) {
-        if (player.upgrades['v81'].amt > 0) base_cost = base_cost.mult(2);
-        if (player.upgrades['v82'].amt > 0) base_cost = base_cost.mult(2);
-        if (player.upgrades['v83'].amt > 0) base_cost = base_cost.mult(2);
-    }
+    if (player.upgrades['v201'].is_active()) base_cost = base_cost.mult(big(2).pow(paths_taken));
+
+    // Vacuumic Challenge 8 reward: discount if >= 2 paths taken
+    if (player.challenges['v8'].completed && paths_taken >= 2) base_cost = base_cost.div(2);
 
     return base_cost;
 }
 functions["upg_v82_cost"] = (amt) => {
     let base_cost = big(1);
 
+    let paths_taken = 0;
+    if (player.upgrades['v81'].amt > 0) paths_taken += 1;
+    if (player.upgrades['v82'].amt > 0) paths_taken += 1;
+    if (player.upgrades['v83'].amt > 0) paths_taken += 1;
+
     // v201: each new path is twice more expensive
-    if (player.upgrades['v201'].is_active()) {
-        if (player.upgrades['v81'].amt > 0) base_cost = base_cost.mult(2);
-        if (player.upgrades['v82'].amt > 0) base_cost = base_cost.mult(2);
-        if (player.upgrades['v83'].amt > 0) base_cost = base_cost.mult(2);
-    }
+    if (player.upgrades['v201'].is_active()) base_cost = base_cost.mult(big(2).pow(paths_taken));
+
+    // Vacuumic Challenge 8 reward: discount if >= 2 paths taken
+    if (player.challenges['v8'].completed && paths_taken >= 2) base_cost = base_cost.div(2);
 
     return base_cost;
 }
 functions["upg_v83_cost"] = (amt) => {
     let base_cost = big(1);
 
+    let paths_taken = 0;
+    if (player.upgrades['v81'].amt > 0) paths_taken += 1;
+    if (player.upgrades['v82'].amt > 0) paths_taken += 1;
+    if (player.upgrades['v83'].amt > 0) paths_taken += 1;
+
     // v201: each new path is twice more expensive
-    if (player.upgrades['v201'].is_active()) {
-        if (player.upgrades['v81'].amt > 0) base_cost = base_cost.mult(2);
-        if (player.upgrades['v82'].amt > 0) base_cost = base_cost.mult(2);
-        if (player.upgrades['v83'].amt > 0) base_cost = base_cost.mult(2);
-    }
+    if (player.upgrades['v201'].is_active()) base_cost = base_cost.mult(big(2).pow(paths_taken));
+
+    // Vacuumic Challenge 8 reward: discount if >= 2 paths taken
+    if (player.challenges['v8'].completed && paths_taken >= 2) base_cost = base_cost.div(2);
 
     return base_cost;
 }
 functions["upg_v91_cost"] = (amt) => {
     let base_cost = big(1);
 
+    let paths_taken = 0;
+    if (player.upgrades['v91'].amt > 0) paths_taken += 1;
+    if (player.upgrades['v92'].amt > 0) paths_taken += 1;
+    if (player.upgrades['v93'].amt > 0) paths_taken += 1;
+
     // v201: each new path is twice more expensive
-    if (player.upgrades['v201'].is_active()) {
-        if (player.upgrades['v91'].amt > 0) base_cost = base_cost.mult(2);
-        if (player.upgrades['v92'].amt > 0) base_cost = base_cost.mult(2);
-        if (player.upgrades['v93'].amt > 0) base_cost = base_cost.mult(2);
-    }
+    if (player.upgrades['v201'].is_active()) base_cost = base_cost.mult(big(2).pow(paths_taken));
+
+    // Vacuumic Challenge 8 reward: discount if >= 2 paths taken
+    if (player.challenges['v8'].completed && paths_taken >= 2) base_cost = base_cost.div(2);
 
     return base_cost;
 }
 functions["upg_v92_cost"] = (amt) => {
     let base_cost = big(1);
 
+    let paths_taken = 0;
+    if (player.upgrades['v91'].amt > 0) paths_taken += 1;
+    if (player.upgrades['v92'].amt > 0) paths_taken += 1;
+    if (player.upgrades['v93'].amt > 0) paths_taken += 1;
+
     // v201: each new path is twice more expensive
-    if (player.upgrades['v201'].is_active()) {
-        if (player.upgrades['v91'].amt > 0) base_cost = base_cost.mult(2);
-        if (player.upgrades['v92'].amt > 0) base_cost = base_cost.mult(2);
-        if (player.upgrades['v93'].amt > 0) base_cost = base_cost.mult(2);
-    }
+    if (player.upgrades['v201'].is_active()) base_cost = base_cost.mult(big(2).pow(paths_taken));
+
+    // Vacuumic Challenge 8 reward: discount if >= 2 paths taken
+    if (player.challenges['v8'].completed && paths_taken >= 2) base_cost = base_cost.div(2);
 
     return base_cost;
 }
 functions["upg_v93_cost"] = (amt) => {
     let base_cost = big(1);
 
+    let paths_taken = 0;
+    if (player.upgrades['v91'].amt > 0) paths_taken += 1;
+    if (player.upgrades['v92'].amt > 0) paths_taken += 1;
+    if (player.upgrades['v93'].amt > 0) paths_taken += 1;
+
     // v201: each new path is twice more expensive
-    if (player.upgrades['v201'].is_active()) {
-        if (player.upgrades['v91'].amt > 0) base_cost = base_cost.mult(2);
-        if (player.upgrades['v92'].amt > 0) base_cost = base_cost.mult(2);
-        if (player.upgrades['v93'].amt > 0) base_cost = base_cost.mult(2);
-    }
+    if (player.upgrades['v201'].is_active()) base_cost = base_cost.mult(big(2).pow(paths_taken));
+
+    // Vacuumic Challenge 8 reward: discount if >= 2 paths taken
+    if (player.challenges['v8'].completed && paths_taken >= 2) base_cost = base_cost.div(2);
 
     return base_cost;
 }
 functions["upg_v101_cost"] = (amt) => {
     let base_cost = big(1);
 
+    let paths_taken = 0;
+    if (player.upgrades['v101'].amt > 0) paths_taken += 1;
+    if (player.upgrades['v102'].amt > 0) paths_taken += 1;
+    if (player.upgrades['v103'].amt > 0) paths_taken += 1;
+
     // v201: each new path is twice more expensive
-    if (player.upgrades['v201'].is_active()) {
-        if (player.upgrades['v101'].amt > 0) base_cost = base_cost.mult(2);
-        if (player.upgrades['v102'].amt > 0) base_cost = base_cost.mult(2);
-        if (player.upgrades['v103'].amt > 0) base_cost = base_cost.mult(2);
-    }
+    if (player.upgrades['v201'].is_active()) base_cost = base_cost.mult(big(2).pow(paths_taken));
+
+    // Vacuumic Challenge 8 reward: discount if >= 2 paths taken
+    if (player.challenges['v8'].completed && paths_taken >= 2) base_cost = base_cost.div(2);
 
     return base_cost;
 }
 functions["upg_v102_cost"] = (amt) => {
     let base_cost = big(1);
 
+    let paths_taken = 0;
+    if (player.upgrades['v101'].amt > 0) paths_taken += 1;
+    if (player.upgrades['v102'].amt > 0) paths_taken += 1;
+    if (player.upgrades['v103'].amt > 0) paths_taken += 1;
+
     // v201: each new path is twice more expensive
-    if (player.upgrades['v201'].is_active()) {
-        if (player.upgrades['v101'].amt > 0) base_cost = base_cost.mult(2);
-        if (player.upgrades['v102'].amt > 0) base_cost = base_cost.mult(2);
-        if (player.upgrades['v103'].amt > 0) base_cost = base_cost.mult(2);
-    }
+    if (player.upgrades['v201'].is_active()) base_cost = base_cost.mult(big(2).pow(paths_taken));
+
+    // Vacuumic Challenge 8 reward: discount if >= 2 paths taken
+    if (player.challenges['v8'].completed && paths_taken >= 2) base_cost = base_cost.div(2);
 
     return base_cost;
 }
 functions["upg_v103_cost"] = (amt) => {
     let base_cost = big(1);
 
+    let paths_taken = 0;
+    if (player.upgrades['v101'].amt > 0) paths_taken += 1;
+    if (player.upgrades['v102'].amt > 0) paths_taken += 1;
+    if (player.upgrades['v103'].amt > 0) paths_taken += 1;
+
     // v201: each new path is twice more expensive
-    if (player.upgrades['v201'].is_active()) {
-        if (player.upgrades['v101'].amt > 0) base_cost = base_cost.mult(2);
-        if (player.upgrades['v102'].amt > 0) base_cost = base_cost.mult(2);
-        if (player.upgrades['v103'].amt > 0) base_cost = base_cost.mult(2);
-    }
+    if (player.upgrades['v201'].is_active()) base_cost = base_cost.mult(big(2).pow(paths_taken));
+
+    // Vacuumic Challenge 8 reward: discount if >= 2 paths taken
+    if (player.challenges['v8'].completed && paths_taken >= 2) base_cost = base_cost.div(2);
 
     return base_cost;
 }
 functions["upg_v111_cost"] = (amt) => {
     let base_cost = big(1);
 
+    let paths_taken = 0;
+    if (player.upgrades['v111'].amt > 0) paths_taken += 1;
+    if (player.upgrades['v112'].amt > 0) paths_taken += 1;
+
     // v201: each new path is twice more expensive
-    if (player.upgrades['v201'].is_active()) {
-        if (player.upgrades['v111'].amt > 0) base_cost = base_cost.mult(2);
-        if (player.upgrades['v112'].amt > 0) base_cost = base_cost.mult(2);
-    }
+    if (player.upgrades['v201'].is_active()) base_cost = base_cost.mult(big(2).pow(paths_taken));
+
+    // Vacuumic Challenge 8 reward: discount if >= 2 paths taken
+    if (player.challenges['v8'].completed && paths_taken >= 2) base_cost = base_cost.div(2);
 
     return base_cost;
 }
 functions["upg_v112_cost"] = (amt) => {
     let base_cost = big(1);
 
+    let paths_taken = 0;
+    if (player.upgrades['v111'].amt > 0) paths_taken += 1;
+    if (player.upgrades['v112'].amt > 0) paths_taken += 1;
+
     // v201: each new path is twice more expensive
-    if (player.upgrades['v201'].is_active()) {
-        if (player.upgrades['v111'].amt > 0) base_cost = base_cost.mult(2);
-        if (player.upgrades['v112'].amt > 0) base_cost = base_cost.mult(2);
-    }
+    if (player.upgrades['v201'].is_active()) base_cost = base_cost.mult(big(2).pow(paths_taken));
+
+    // Vacuumic Challenge 8 reward: discount if >= 2 paths taken
+    if (player.challenges['v8'].completed && paths_taken >= 2) base_cost = base_cost.div(2);
 
     return base_cost;
 }
 functions["upg_v121_cost"] = (amt) => {
     let base_cost = big(1);
 
+    let paths_taken = 0;
+    if (player.upgrades['v121'].amt > 0) paths_taken += 1;
+    if (player.upgrades['v122'].amt > 0) paths_taken += 1;
+
     // v201: each new path is twice more expensive
-    if (player.upgrades['v201'].is_active()) {
-        if (player.upgrades['v121'].amt > 0) base_cost = base_cost.mult(2);
-        if (player.upgrades['v122'].amt > 0) base_cost = base_cost.mult(2);
-    }
+    if (player.upgrades['v201'].is_active()) base_cost = base_cost.mult(big(2).pow(paths_taken));
+
+    // Vacuumic Challenge 8 reward: discount if >= 2 paths taken
+    if (player.challenges['v8'].completed && paths_taken >= 2) base_cost = base_cost.div(2);
 
     return base_cost;
 }
 functions["upg_v122_cost"] = (amt) => {
     let base_cost = big(1);
 
+    let paths_taken = 0;
+    if (player.upgrades['v121'].amt > 0) paths_taken += 1;
+    if (player.upgrades['v122'].amt > 0) paths_taken += 1;
+
     // v201: each new path is twice more expensive
-    if (player.upgrades['v201'].is_active()) {
-        if (player.upgrades['v121'].amt > 0) base_cost = base_cost.mult(2);
-        if (player.upgrades['v122'].amt > 0) base_cost = base_cost.mult(2);
-    }
+    if (player.upgrades['v201'].is_active()) base_cost = base_cost.mult(big(2).pow(paths_taken));
+
+    // Vacuumic Challenge 8 reward: discount if >= 2 paths taken
+    if (player.challenges['v8'].completed && paths_taken >= 2) base_cost = base_cost.div(2);
 
     return base_cost;
 }
@@ -263,208 +331,272 @@ functions["upg_v151_cost"] = (amt) => {
 functions["upg_v161_cost"] = (amt) => {
     let base_cost = big(1);
 
+    let paths_taken = 0;
+    if (player.upgrades['v161'].amt > 0) paths_taken += 1;
+    if (player.upgrades['v162'].amt > 0) paths_taken += 1;
+    if (player.upgrades['v163'].amt > 0) paths_taken += 1;
+    if (player.upgrades['v164'].amt > 0) paths_taken += 1;
+
     // v201: each new path is twice more expensive
-    if (player.upgrades['v201'].is_active()) {
-        if (player.upgrades['v161'].amt > 0) base_cost = base_cost.mult(2);
-        if (player.upgrades['v162'].amt > 0) base_cost = base_cost.mult(2);
-        if (player.upgrades['v163'].amt > 0) base_cost = base_cost.mult(2);
-        if (player.upgrades['v164'].amt > 0) base_cost = base_cost.mult(2);
-    }
+    if (player.upgrades['v201'].is_active()) base_cost = base_cost.mult(big(2).pow(paths_taken));
+
+    // Vacuumic Challenge 8 reward: discount if >= 2 paths taken
+    if (player.challenges['v8'].completed && paths_taken >= 2) base_cost = base_cost.div(2);
 
     return base_cost;
 }
 functions["upg_v162_cost"] = (amt) => {
     let base_cost = big(1);
 
+    let paths_taken = 0;
+    if (player.upgrades['v161'].amt > 0) paths_taken += 1;
+    if (player.upgrades['v162'].amt > 0) paths_taken += 1;
+    if (player.upgrades['v163'].amt > 0) paths_taken += 1;
+    if (player.upgrades['v164'].amt > 0) paths_taken += 1;
+
     // v201: each new path is twice more expensive
-    if (player.upgrades['v201'].is_active()) {
-        if (player.upgrades['v161'].amt > 0) base_cost = base_cost.mult(2);
-        if (player.upgrades['v162'].amt > 0) base_cost = base_cost.mult(2);
-        if (player.upgrades['v163'].amt > 0) base_cost = base_cost.mult(2);
-        if (player.upgrades['v164'].amt > 0) base_cost = base_cost.mult(2);
-    }
+    if (player.upgrades['v201'].is_active()) base_cost = base_cost.mult(big(2).pow(paths_taken));
+
+    // Vacuumic Challenge 8 reward: discount if >= 2 paths taken
+    if (player.challenges['v8'].completed && paths_taken >= 2) base_cost = base_cost.div(2);
 
     return base_cost;
 }
 functions["upg_v163_cost"] = (amt) => {
     let base_cost = big(1);
 
+    let paths_taken = 0;
+    if (player.upgrades['v161'].amt > 0) paths_taken += 1;
+    if (player.upgrades['v162'].amt > 0) paths_taken += 1;
+    if (player.upgrades['v163'].amt > 0) paths_taken += 1;
+    if (player.upgrades['v164'].amt > 0) paths_taken += 1;
+
     // v201: each new path is twice more expensive
-    if (player.upgrades['v201'].is_active()) {
-        if (player.upgrades['v161'].amt > 0) base_cost = base_cost.mult(2);
-        if (player.upgrades['v162'].amt > 0) base_cost = base_cost.mult(2);
-        if (player.upgrades['v163'].amt > 0) base_cost = base_cost.mult(2);
-        if (player.upgrades['v164'].amt > 0) base_cost = base_cost.mult(2);
-    }
+    if (player.upgrades['v201'].is_active()) base_cost = base_cost.mult(big(2).pow(paths_taken));
+
+    // Vacuumic Challenge 8 reward: discount if >= 2 paths taken
+    if (player.challenges['v8'].completed && paths_taken >= 2) base_cost = base_cost.div(2);
 
     return base_cost;
 }
 functions["upg_v164_cost"] = (amt) => {
     let base_cost = big(1);
 
+    let paths_taken = 0;
+    if (player.upgrades['v161'].amt > 0) paths_taken += 1;
+    if (player.upgrades['v162'].amt > 0) paths_taken += 1;
+    if (player.upgrades['v163'].amt > 0) paths_taken += 1;
+    if (player.upgrades['v164'].amt > 0) paths_taken += 1;
+
     // v201: each new path is twice more expensive
-    if (player.upgrades['v201'].is_active()) {
-        if (player.upgrades['v161'].amt > 0) base_cost = base_cost.mult(2);
-        if (player.upgrades['v162'].amt > 0) base_cost = base_cost.mult(2);
-        if (player.upgrades['v163'].amt > 0) base_cost = base_cost.mult(2);
-        if (player.upgrades['v164'].amt > 0) base_cost = base_cost.mult(2);
-    }
+    if (player.upgrades['v201'].is_active()) base_cost = base_cost.mult(big(2).pow(paths_taken));
+
+    // Vacuumic Challenge 8 reward: discount if >= 2 paths taken
+    if (player.challenges['v8'].completed && paths_taken >= 2) base_cost = base_cost.div(2);
 
     return base_cost;
 }
 functions["upg_v171_cost"] = (amt) => {
     let base_cost = big(1);
 
+    let paths_taken = 0;
+    if (player.upgrades['v171'].amt > 0) paths_taken += 1;
+    if (player.upgrades['v172'].amt > 0) paths_taken += 1;
+    if (player.upgrades['v173'].amt > 0) paths_taken += 1;
+    if (player.upgrades['v174'].amt > 0) paths_taken += 1;
+
     // v201: each new path is twice more expensive
-    if (player.upgrades['v201'].is_active()) {
-        if (player.upgrades['v171'].amt > 0) base_cost = base_cost.mult(2);
-        if (player.upgrades['v172'].amt > 0) base_cost = base_cost.mult(2);
-        if (player.upgrades['v173'].amt > 0) base_cost = base_cost.mult(2);
-        if (player.upgrades['v174'].amt > 0) base_cost = base_cost.mult(2);
-    }
+    if (player.upgrades['v201'].is_active()) base_cost = base_cost.mult(big(2).pow(paths_taken));
+
+    // Vacuumic Challenge 8 reward: discount if >= 2 paths taken
+    if (player.challenges['v8'].completed && paths_taken >= 2) base_cost = base_cost.div(2);
 
     return base_cost;
 }
 functions["upg_v172_cost"] = (amt) => {
     let base_cost = big(1);
 
+    let paths_taken = 0;
+    if (player.upgrades['v171'].amt > 0) paths_taken += 1;
+    if (player.upgrades['v172'].amt > 0) paths_taken += 1;
+    if (player.upgrades['v173'].amt > 0) paths_taken += 1;
+    if (player.upgrades['v174'].amt > 0) paths_taken += 1;
+
     // v201: each new path is twice more expensive
-    if (player.upgrades['v201'].is_active()) {
-        if (player.upgrades['v171'].amt > 0) base_cost = base_cost.mult(2);
-        if (player.upgrades['v172'].amt > 0) base_cost = base_cost.mult(2);
-        if (player.upgrades['v173'].amt > 0) base_cost = base_cost.mult(2);
-        if (player.upgrades['v174'].amt > 0) base_cost = base_cost.mult(2);
-    }
+    if (player.upgrades['v201'].is_active()) base_cost = base_cost.mult(big(2).pow(paths_taken));
+
+    // Vacuumic Challenge 8 reward: discount if >= 2 paths taken
+    if (player.challenges['v8'].completed && paths_taken >= 2) base_cost = base_cost.div(2);
 
     return base_cost;
 }
 functions["upg_v173_cost"] = (amt) => {
     let base_cost = big(1);
 
+    let paths_taken = 0;
+    if (player.upgrades['v171'].amt > 0) paths_taken += 1;
+    if (player.upgrades['v172'].amt > 0) paths_taken += 1;
+    if (player.upgrades['v173'].amt > 0) paths_taken += 1;
+    if (player.upgrades['v174'].amt > 0) paths_taken += 1;
+
     // v201: each new path is twice more expensive
-    if (player.upgrades['v201'].is_active()) {
-        if (player.upgrades['v171'].amt > 0) base_cost = base_cost.mult(2);
-        if (player.upgrades['v172'].amt > 0) base_cost = base_cost.mult(2);
-        if (player.upgrades['v173'].amt > 0) base_cost = base_cost.mult(2);
-        if (player.upgrades['v174'].amt > 0) base_cost = base_cost.mult(2);
-    }
+    if (player.upgrades['v201'].is_active()) base_cost = base_cost.mult(big(2).pow(paths_taken));
+
+    // Vacuumic Challenge 8 reward: discount if >= 2 paths taken
+    if (player.challenges['v8'].completed && paths_taken >= 2) base_cost = base_cost.div(2);
 
     return base_cost;
 }
 functions["upg_v174_cost"] = (amt) => {
     let base_cost = big(1);
 
+    let paths_taken = 0;
+    if (player.upgrades['v171'].amt > 0) paths_taken += 1;
+    if (player.upgrades['v172'].amt > 0) paths_taken += 1;
+    if (player.upgrades['v173'].amt > 0) paths_taken += 1;
+    if (player.upgrades['v174'].amt > 0) paths_taken += 1;
+
     // v201: each new path is twice more expensive
-    if (player.upgrades['v201'].is_active()) {
-        if (player.upgrades['v171'].amt > 0) base_cost = base_cost.mult(2);
-        if (player.upgrades['v172'].amt > 0) base_cost = base_cost.mult(2);
-        if (player.upgrades['v173'].amt > 0) base_cost = base_cost.mult(2);
-        if (player.upgrades['v174'].amt > 0) base_cost = base_cost.mult(2);
-    }
+    if (player.upgrades['v201'].is_active()) base_cost = base_cost.mult(big(2).pow(paths_taken));
+
+    // Vacuumic Challenge 8 reward: discount if >= 2 paths taken
+    if (player.challenges['v8'].completed && paths_taken >= 2) base_cost = base_cost.div(2);
 
     return base_cost;
 }
 functions["upg_v181_cost"] = (amt) => {
     let base_cost = big(1);
 
+    let paths_taken = 0;
+    if (player.upgrades['v181'].amt > 0) paths_taken += 1;
+    if (player.upgrades['v182'].amt > 0) paths_taken += 1;
+    if (player.upgrades['v183'].amt > 0) paths_taken += 1;
+    if (player.upgrades['v184'].amt > 0) paths_taken += 1;
+
     // v201: each new path is twice more expensive
-    if (player.upgrades['v201'].is_active()) {
-        if (player.upgrades['v181'].amt > 0) base_cost = base_cost.mult(2);
-        if (player.upgrades['v182'].amt > 0) base_cost = base_cost.mult(2);
-        if (player.upgrades['v183'].amt > 0) base_cost = base_cost.mult(2);
-        if (player.upgrades['v184'].amt > 0) base_cost = base_cost.mult(2);
-    }
+    if (player.upgrades['v201'].is_active()) base_cost = base_cost.mult(big(2).pow(paths_taken));
+
+    // Vacuumic Challenge 8 reward: discount if >= 2 paths taken
+    if (player.challenges['v8'].completed && paths_taken >= 2) base_cost = base_cost.div(2);
 
     return base_cost;
 }
 functions["upg_v182_cost"] = (amt) => {
     let base_cost = big(1);
 
+    let paths_taken = 0;
+    if (player.upgrades['v181'].amt > 0) paths_taken += 1;
+    if (player.upgrades['v182'].amt > 0) paths_taken += 1;
+    if (player.upgrades['v183'].amt > 0) paths_taken += 1;
+    if (player.upgrades['v184'].amt > 0) paths_taken += 1;
+
     // v201: each new path is twice more expensive
-    if (player.upgrades['v201'].is_active()) {
-        if (player.upgrades['v181'].amt > 0) base_cost = base_cost.mult(2);
-        if (player.upgrades['v182'].amt > 0) base_cost = base_cost.mult(2);
-        if (player.upgrades['v183'].amt > 0) base_cost = base_cost.mult(2);
-        if (player.upgrades['v184'].amt > 0) base_cost = base_cost.mult(2);
-    }
+    if (player.upgrades['v201'].is_active()) base_cost = base_cost.mult(big(2).pow(paths_taken));
+
+    // Vacuumic Challenge 8 reward: discount if >= 2 paths taken
+    if (player.challenges['v8'].completed && paths_taken >= 2) base_cost = base_cost.div(2);
 
     return base_cost;
 }
 functions["upg_v183_cost"] = (amt) => {
     let base_cost = big(1);
 
+    let paths_taken = 0;
+    if (player.upgrades['v181'].amt > 0) paths_taken += 1;
+    if (player.upgrades['v182'].amt > 0) paths_taken += 1;
+    if (player.upgrades['v183'].amt > 0) paths_taken += 1;
+    if (player.upgrades['v184'].amt > 0) paths_taken += 1;
+
     // v201: each new path is twice more expensive
-    if (player.upgrades['v201'].is_active()) {
-        if (player.upgrades['v181'].amt > 0) base_cost = base_cost.mult(2);
-        if (player.upgrades['v182'].amt > 0) base_cost = base_cost.mult(2);
-        if (player.upgrades['v183'].amt > 0) base_cost = base_cost.mult(2);
-        if (player.upgrades['v184'].amt > 0) base_cost = base_cost.mult(2);
-    }
+    if (player.upgrades['v201'].is_active()) base_cost = base_cost.mult(big(2).pow(paths_taken));
+
+    // Vacuumic Challenge 8 reward: discount if >= 2 paths taken
+    if (player.challenges['v8'].completed && paths_taken >= 2) base_cost = base_cost.div(2);
 
     return base_cost;
 }
 functions["upg_v184_cost"] = (amt) => {
     let base_cost = big(1);
 
+    let paths_taken = 0;
+    if (player.upgrades['v181'].amt > 0) paths_taken += 1;
+    if (player.upgrades['v182'].amt > 0) paths_taken += 1;
+    if (player.upgrades['v183'].amt > 0) paths_taken += 1;
+    if (player.upgrades['v184'].amt > 0) paths_taken += 1;
+
     // v201: each new path is twice more expensive
-    if (player.upgrades['v201'].is_active()) {
-        if (player.upgrades['v181'].amt > 0) base_cost = base_cost.mult(2);
-        if (player.upgrades['v182'].amt > 0) base_cost = base_cost.mult(2);
-        if (player.upgrades['v183'].amt > 0) base_cost = base_cost.mult(2);
-        if (player.upgrades['v184'].amt > 0) base_cost = base_cost.mult(2);
-    }
+    if (player.upgrades['v201'].is_active()) base_cost = base_cost.mult(big(2).pow(paths_taken));
+
+    // Vacuumic Challenge 8 reward: discount if >= 2 paths taken
+    if (player.challenges['v8'].completed && paths_taken >= 2) base_cost = base_cost.div(2);
 
     return base_cost;
 }
 functions["upg_v191_cost"] = (amt) => {
     let base_cost = big(1);
 
+    let paths_taken = 0;
+    if (player.upgrades['v191'].amt > 0) paths_taken += 1;
+    if (player.upgrades['v192'].amt > 0) paths_taken += 1;
+    if (player.upgrades['v193'].amt > 0) paths_taken += 1;
+    if (player.upgrades['v194'].amt > 0) paths_taken += 1;
+
     // v201: each new path is twice more expensive
-    if (player.upgrades['v201'].is_active()) {
-        if (player.upgrades['v191'].amt > 0) base_cost = base_cost.mult(2);
-        if (player.upgrades['v192'].amt > 0) base_cost = base_cost.mult(2);
-        if (player.upgrades['v193'].amt > 0) base_cost = base_cost.mult(2);
-        if (player.upgrades['v194'].amt > 0) base_cost = base_cost.mult(2);
-    }
+    if (player.upgrades['v201'].is_active()) base_cost = base_cost.mult(big(2).pow(paths_taken));
+
+    // Vacuumic Challenge 8 reward: discount if >= 2 paths taken
+    if (player.challenges['v8'].completed && paths_taken >= 2) base_cost = base_cost.div(2);
 
     return base_cost;
 }
 functions["upg_v192_cost"] = (amt) => {
     let base_cost = big(1);
 
+    let paths_taken = 0;
+    if (player.upgrades['v191'].amt > 0) paths_taken += 1;
+    if (player.upgrades['v192'].amt > 0) paths_taken += 1;
+    if (player.upgrades['v193'].amt > 0) paths_taken += 1;
+    if (player.upgrades['v194'].amt > 0) paths_taken += 1;
+
     // v201: each new path is twice more expensive
-    if (player.upgrades['v201'].is_active()) {
-        if (player.upgrades['v191'].amt > 0) base_cost = base_cost.mult(2);
-        if (player.upgrades['v192'].amt > 0) base_cost = base_cost.mult(2);
-        if (player.upgrades['v193'].amt > 0) base_cost = base_cost.mult(2);
-        if (player.upgrades['v194'].amt > 0) base_cost = base_cost.mult(2);
-    }
+    if (player.upgrades['v201'].is_active()) base_cost = base_cost.mult(big(2).pow(paths_taken));
+
+    // Vacuumic Challenge 8 reward: discount if >= 2 paths taken
+    if (player.challenges['v8'].completed && paths_taken >= 2) base_cost = base_cost.div(2);
 
     return base_cost;
 }
 functions["upg_v193_cost"] = (amt) => {
     let base_cost = big(1);
 
+    let paths_taken = 0;
+    if (player.upgrades['v191'].amt > 0) paths_taken += 1;
+    if (player.upgrades['v192'].amt > 0) paths_taken += 1;
+    if (player.upgrades['v193'].amt > 0) paths_taken += 1;
+    if (player.upgrades['v194'].amt > 0) paths_taken += 1;
+
     // v201: each new path is twice more expensive
-    if (player.upgrades['v201'].is_active()) {
-        if (player.upgrades['v191'].amt > 0) base_cost = base_cost.mult(2);
-        if (player.upgrades['v192'].amt > 0) base_cost = base_cost.mult(2);
-        if (player.upgrades['v193'].amt > 0) base_cost = base_cost.mult(2);
-        if (player.upgrades['v194'].amt > 0) base_cost = base_cost.mult(2);
-    }
+    if (player.upgrades['v201'].is_active()) base_cost = base_cost.mult(big(2).pow(paths_taken));
+
+    // Vacuumic Challenge 8 reward: discount if >= 2 paths taken
+    if (player.challenges['v8'].completed && paths_taken >= 2) base_cost = base_cost.div(2);
 
     return base_cost;
 }
 functions["upg_v194_cost"] = (amt) => {
     let base_cost = big(1);
 
+    let paths_taken = 0;
+    if (player.upgrades['v191'].amt > 0) paths_taken += 1;
+    if (player.upgrades['v192'].amt > 0) paths_taken += 1;
+    if (player.upgrades['v193'].amt > 0) paths_taken += 1;
+    if (player.upgrades['v194'].amt > 0) paths_taken += 1;
+
     // v201: each new path is twice more expensive
-    if (player.upgrades['v201'].is_active()) {
-        if (player.upgrades['v191'].amt > 0) base_cost = base_cost.mult(2);
-        if (player.upgrades['v192'].amt > 0) base_cost = base_cost.mult(2);
-        if (player.upgrades['v193'].amt > 0) base_cost = base_cost.mult(2);
-        if (player.upgrades['v194'].amt > 0) base_cost = base_cost.mult(2);
-    }
+    if (player.upgrades['v201'].is_active()) base_cost = base_cost.mult(big(2).pow(paths_taken));
+
+    // Vacuumic Challenge 8 reward: discount if >= 2 paths taken
+    if (player.challenges['v8'].completed && paths_taken >= 2) base_cost = base_cost.div(2);
 
     return base_cost;
 }
