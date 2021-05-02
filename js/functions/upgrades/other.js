@@ -9,27 +9,16 @@ functions["upg_TICKSPEED_cost"] = (amt) => {
 }
 functions["upg_TICKSPEED_power"] = (amt) => {
     let base_pow = get_tickspeed_power();
-    let base_amt = big(amt);
-
-    // Gravitonic Challenge 5: you gain -10 free tickspeed upgrades
-    if (player.challenges['g5'].inC()) base_amt = base_amt.subtract(10);
-    // Gravitonic Challenge 5 reward: you gain afree tickspeed upgrade
-    if (player.challenges['g5'].completed) base_amt = base_amt.add(1);
-    // v91: you gain free tickspeed upgrades based on bought 1st Matter Dimensions
-    if (player.upgrades['v91'].is_active()) base_amt = base_amt.add(player.upgrades['v91'].get_effect());
-    // v181: gain tickspeed upgrades based on max photons earned at once
-    if (player.upgrades['v181'].is_active()) base_amt = base_amt.add(player.upgrades['v181'].get_effect());
-    // a02_2: gain 6 Tickspeed Upgrades per Dimensional Shift
-    if (player.milestones['a02_2'].is_active()) base_amt = base_amt.add(player.milestones['a02_2'].get_effect());
-    
-    // Neutronic Challenge 2: you can gain Tickspeed Upgrades only from Stars
-    if (player.challenges['n2'].inC()) base_amt = big(0);
-    // Stars provide free Tickspeed Upgrades
-    base_amt = base_amt.add(power_stars_tickspeed());
+    let base_amt = get_tickspeed_amount(amt);
 
     // Neutronic Challenge 3: tickspeed effect is additive
-    if (player.challenges['n3'].inC()) return base_pow.mult(base_amt).add(1).max(1);
-    return base_pow.pow(base_amt);
+    if (player.challenges['n3'].inC()) base_pow = base_pow.mult(base_amt).add(1).max(1);
+    else base_pow = base_pow.pow(base_amt);
+
+    // a11_1: multiply Tickspeed based on Tickspeed Upgrades
+    if (player.milestones['a11_1'].is_active()) base_pow = base_pow.mult(player.milestones['a11_1'].get_effect());
+
+    return base_pow;
 }
 functions["upg_TICKSPEED_unlock"] = () => {
     // p33: unlock Tickspeed upgrades

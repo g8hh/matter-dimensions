@@ -3726,6 +3726,28 @@
                                 </div>
                                 <p class="upgrade-atomic-buy-max-button" onclick="player.upgrades['a10'].buy(player.upgrades['a10'].binary_search_max())">Buy max</p>
                             </div>
+
+                            <div id="upgrade_a11" class="upgrade">
+                                <p class="upgrade-atomic-title">Sodium</p>
+                                <p class="upgrade-atomic-level">Level <span id="upgrade_a11_total_level"></span> (<span id="upgrade_a11_level"></span>)</p>
+                                <p class="upgrade-atomic-symbol">Na</p>
+                                <div class="upgrade-atomic-milestones">
+                                    <p id="milestone_a11_1_indicator" class="milestone">
+                                        <b>Level <span id="milestone_a11_1_goal"></span></b>: Tickspeed is increased based on total amount of Tickspeed Upgrades. 
+                                        <br>Current: ×<span id="milestone_a11_1_effect"></span>.
+                                    </p>
+                                </div>
+                                <p class="upgrade-atomic-effect-desc">
+                                    Tickspeed Upgrades power is increased.
+                                    <br>Current: ×<span id="upgrade_a11_current_effect"></span>
+                                </p>
+                                <div class="upgrade-atomic-buy-button" onclick="player.upgrades['a11'].buy()">
+                                    <p>Buy Sodium<br>
+                                    <span id="upgrade_a11_next_cost">Cost: <span id="upgrade_a11_cost"></span><br></span>
+                                    Effect: ×<span id="upgrade_a11_next_effect"></span></p></p>
+                                </div>
+                                <p class="upgrade-atomic-buy-max-button" onclick="player.upgrades['a11'].buy(player.upgrades['a11'].binary_search_max())">Buy max</p>
+                            </div>
                         </div>
                     </div>
 
