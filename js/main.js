@@ -125,6 +125,8 @@ class Player {
         this.ultraviolet_waves = big(0);
         this.xray_waves = big(0);
 
+        this.got_shards_this_atomic = false;
+
         this.dimensions = {};
         this.dimensions['matter_1'] = new Dimension('matter_1', 'matter_dimensions', 0, 'matter_1_cost', 'matter_1_pow', 'matter_1_unlock', 'matter', '', 'matter');
         this.dimensions['matter_2'] = new Dimension('matter_2', 'matter_dimensions', 1, 'matter_2_cost', 'matter_2_pow', 'matter_2_unlock', 'matter', '', this.dimensions['matter_1']);
@@ -527,7 +529,7 @@ class Player {
         this.upgrades["d132"] = new Upgrade("d132", "dimensional_upgrades", -1, "upg_d132_cost", "upg_d132_power", "upg_d132_unlock", "shards", [" Shard", " Shards"], "upg_d132_available");
         this.upgrades["d141"] = new Upgrade("d141", "dimensional_upgrades", 1, "upg_d141_cost", "upg_d141_power", "upg_d141_unlock", "shards", [" Shard", " Shards"], "upg_d141_available");
 
-        this.upgrades["a01"] = new Upgrade("a01", "atomic_upgrades", -1, "upg_a01_cost", "upg_a01_power", "upg_a01_unlock", "atoms", [" Atom", " Atoms"], "upg_a01_available", "upg_a01_buy");
+        this.upgrades["a01"] = new Upgrade("a01", "atomic_upgrades", -1, "upg_a01_cost", "upg_a01_power", "upg_a01_unlock", "atoms", [" Atom", " Atoms"], "upg_a01_available");
         this.upgrades["a02"] = new Upgrade("a02", "atomic_upgrades", -1, "upg_a02_cost", "upg_a02_power", "upg_a02_unlock", "atoms", [" Atom", " Atoms"], "upg_a02_available");
         this.upgrades["a03"] = new Upgrade("a03", "atomic_upgrades", -1, "upg_a03_cost", "upg_a03_power", "upg_a03_unlock", "atoms", [" Atom", " Atoms"], "upg_a03_available");
         this.upgrades["a04"] = new Upgrade("a04", "atomic_upgrades", -1, "upg_a04_cost", "upg_a04_power", "upg_a04_unlock", "atoms", [" Atom", " Atoms"], "upg_a04_available");
@@ -1005,6 +1007,18 @@ function processTimedelta(corrected_timedelta) {
     player.space = player.space.add(get_space_production().mult(timedelta / 1000));
     // achievement 108: Space is not affected by resource limit
     if (!player.achievements['108'].complete) player.space = player.space.min(player.challenge_strength_4);
+
+    // a01_1: gain shards on Atomic, if you did not
+    if (!player.got_shards_this_atomic && player.milestones['a01_1'].is_active()) {
+        player.got_shards_this_atomic = true;
+
+        // Challenge 4: all resources are capped
+        player.shards = player.shards.add(player.milestones["a01_1"].get_effect()).round();
+        // challenge d4: Shards are not affected by resource limit
+        if (!(!player.challenges['d0'].inC() && (player.challenges['d4'].inC() || player.challenges['d4'].completed))) {
+            player.shards = player.shards.min(player.challenge_strength_4);
+        }
+    }
 
     for (let key of Object.keys(player.achievements)) {
         player.achievements[key].update();

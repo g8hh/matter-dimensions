@@ -110,9 +110,14 @@ function reset_atomic(force=false, higher_reset=false, autobuyer_induced=false, 
 
     if (!force || higher_reset) player.atomic_resets += count_as_reset_num;
 
+    player.got_shards_this_atomic = false;
+
     player.shards = big(0);
     // a01_1: start with Shards
-    if (player.milestones['a01_1'].is_active()) player.shards = player.milestones['a01_1'].get_effect();
+    if (player.milestones['a01_1'].is_active()) {
+        player.shards = player.milestones['a01_1'].get_effect();
+        player.got_shards_this_atomic = true;
+    }
 
     if (!force) player.fastest_atomic = Math.min(player.fastest_atomic, player.time_atomic);
 

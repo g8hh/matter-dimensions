@@ -157,17 +157,3 @@ functions["upg_a09_available"] = () => {
 functions["upg_a10_available"] = () => {
     return highest_unlocked_element() >= 10;
 }
-
-
-
-functions["upg_a01_buy"] = (amt) => {
-    if (amt == 0) return;
-    if (amt == player.upgrades['a01'].amt && free_atom_levels['a01'].lt(0.5)) {
-        // Challenge 4: all resources are capped
-        player.shards = player.shards.add(player.milestones["a01_1"].get_effect()).round();
-        // challenge d4: Shards are not affected by resource limit
-        if (!(!player.challenges['d0'].inC() && (player.challenges['d4'].inC() || player.challenges['d4'].completed))) {
-            player.shards = player.shards.min(player.challenge_strength_4);
-        }
-    }
-}
