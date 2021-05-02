@@ -229,7 +229,7 @@ class Player {
         this.achievements["27"] = new Achievement("27", "Blink of an eye", "Photonic in less than 200 milliseconds", "check_27");
         this.achievements["28"] = new Achievement("28", "Baryon Asymmetry", "Have zero antimatter.\nReward: antimatter grows 16% faster", "check_28", "effective");
 
-        this.achievements["31"] = new Achievement("31", "Three is a Crowd", "Buy 3rd Matter Dimension", "check_31");
+        this.achievements["31"] = new Achievement("31", "Three is a Crowd", "Buy 3rd Matter Dimension.\nReward: unlock 2nd Matter Dimension autobuyer if 1st Matter Dimension autobuyer is unlocked", "check_31", "effective");
         this.achievements["32"] = new Achievement("32", "Massive Consequences", "Go Neutronic.\nReward: you gain 20% more Gravitons from resets, and unlock Automation Shop", "check_32", "effective");
         this.achievements["33"] = new Achievement("33", "It's useless!", "Buy 3rd Photonic Dimension.\nReward: 3rd Photonic Dimensions produce 2 times faster", "check_33", "effective");
         this.achievements["34"] = new Achievement("34", "Five Star Rating", "Get at least 5 Gravitons from a single Gravitonic reset", "check_34");
