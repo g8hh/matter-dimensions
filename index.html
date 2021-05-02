@@ -3705,6 +3705,27 @@
                                 </div>
                                 <p class="upgrade-atomic-buy-max-button" onclick="player.upgrades['a09'].buy(player.upgrades['a09'].binary_search_max())">Buy max</p>
                             </div>
+
+                            <div id="upgrade_a10" class="upgrade">
+                                <p class="upgrade-atomic-title">Neon</p>
+                                <p class="upgrade-atomic-level">Level <span id="upgrade_a10_total_level"></span> (<span id="upgrade_a10_level"></span>)</p>
+                                <p class="upgrade-atomic-symbol">Ne</p>
+                                <div class="upgrade-atomic-milestones">
+                                    <p id="milestone_a10_1_indicator" class="milestone">
+                                        <b>Level <span id="milestone_a10_1_goal"></span></b>: gain <span id="milestone_a10_1_effect"></span> free levels of Generation.
+                                    </p>
+                                </div>
+                                <p class="upgrade-atomic-effect-desc">
+                                    Generation gives more levels (only affected by bought Neon).
+                                    <br>Current: ×<span id="upgrade_a10_current_effect"></span>
+                                </p>
+                                <div class="upgrade-atomic-buy-button" onclick="player.upgrades['a10'].buy()">
+                                    <p>Buy Neon<br>
+                                    <span id="upgrade_a10_next_cost">Cost: <span id="upgrade_a10_cost"></span><br></span>
+                                    Effect: ×<span id="upgrade_a10_next_effect"></span></p></p>
+                                </div>
+                                <p class="upgrade-atomic-buy-max-button" onclick="player.upgrades['a10'].buy(player.upgrades['a10'].binary_search_max())">Buy max</p>
+                            </div>
                         </div>
                     </div>
 

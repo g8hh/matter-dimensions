@@ -287,7 +287,7 @@ function element_unlock_limit() {
     // evolution b05: unlock elements up to Oxygen
     if (player.evolutions['b05'].is_active()) base_limit = 8;
     // evolution b11: unlock elements up to Silicon
-    if (player.evolutions['b05'].is_active()) base_limit = 9;
+    if (player.evolutions['b11'].is_active()) base_limit = 10;
     return base_limit;
 }
 
@@ -345,6 +345,11 @@ function generation_points_effect() {
     let base_effect = big(player.collision_points_in_generation);
     // evolution b04: get free levels of Generation
     if (player.evolutions['b04'].is_active()) base_effect = base_effect.add(player.evolutions['b04'].get_effect());
+    // a10_1: get free levels of Generation
+    if (player.milestones['a10_1'].is_active()) base_effect = base_effect.add(player.milestones['a10_1'].get_effect());
+
+    // a10: make all Generation more effective
+    base_effect = base_effect.mult(player.upgrades['a10'].get_effect()).rounddown();
 
     return base_effect;
 }
