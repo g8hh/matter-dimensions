@@ -287,7 +287,7 @@ function element_unlock_limit() {
     // evolution b05: unlock elements up to Oxygen
     if (player.evolutions['b05'].is_active()) base_limit = 8;
     // evolution b11: unlock elements up to Silicon
-    if (player.evolutions['b11'].is_active()) base_limit = 11;
+    if (player.evolutions['b11'].is_active()) base_limit = 12;
     return base_limit;
 }
 
@@ -647,6 +647,8 @@ function population_change_speed() {
 function population_power_multiplier() {
     let base = big(1);
     base = base.mult(extinction_effect());
+    // a12: population power is increased
+    base = base.mult(player.upgrades['a12'].get_effect());
     return base;
 }
 

@@ -102,6 +102,10 @@ functions["a11_1_availability"] = () => {
     return true;
 }
 
+functions["a12_1_availability"] = () => {
+    return true;
+}
+
 
 
 functions["a01_1_activation"] = () => {
@@ -206,6 +210,10 @@ functions["a10_1_activation"] = () => {
 
 functions["a11_1_activation"] = () => {
     return get_atom_level('a11').gt(11 - 0.5);
+}
+
+functions["a12_1_activation"] = () => {
+    return get_atom_level('a12').gt(1 - 0.5);
 }
 
 
@@ -331,6 +339,10 @@ functions["a11_1_effect"] = () => {
     else return big(2).pow(get_tickspeed_amount(0).max(0).add(1).log(2).pow(2));
 }
 
+functions["a12_1_effect"] = () => {
+    return big(6);
+}
+
 
 
 functions["a01_1_goal"] = () => {
@@ -435,4 +447,8 @@ functions["a10_1_goal"] = () => {
 
 functions["a11_1_goal"] = () => {
     return big(11);
+}
+
+functions["a12_1_goal"] = () => {
+    return big(1);
 }
