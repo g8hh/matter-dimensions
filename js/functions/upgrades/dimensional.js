@@ -177,7 +177,7 @@ functions["upg_d122_power"] = (amt) => {
     return big(1);
 }
 functions["upg_d123_power"] = (amt) => {
-    return big(1);
+    return big(2);
 }
 functions["upg_d131_power"] = (amt) => {
     return big(amt).div(2).add(1);

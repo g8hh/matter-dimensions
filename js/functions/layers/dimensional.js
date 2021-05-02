@@ -32,6 +32,8 @@ function prestige_earn_shards() {
     if (player.upgrades['d103'].is_active()) base_income = base_income.mult(player.upgrades['d103'].get_effect());
     // d114: gain more Shards
     if (player.upgrades['d114'].is_active()) base_income = base_income.mult(player.upgrades['d114'].get_effect());
+    // d123: gain more Shards
+    if (player.upgrades['d123'].is_active()) base_income = base_income.mult(player.upgrades['d123'].get_effect());
     // a06_2: gain more Shards
     if (player.milestones['a06_2'].is_active()) base_income = base_income.mult(player.milestones['a06_2'].get_effect());
 
