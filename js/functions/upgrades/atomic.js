@@ -47,7 +47,7 @@ functions["upg_a03_power"] = (amt) => {
     let levels = big(amt);
     if ('a03' in free_atom_levels) levels = levels.add(free_atom_levels['a03']);
 
-    return big(0.99).pow(levels);
+    return big(0.99).pow(levels.min(levels.pow(0.5).mult(14)));
 }
 functions["upg_a04_power"] = (amt) => {
     let levels = big(amt);
