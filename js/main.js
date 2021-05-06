@@ -543,6 +543,7 @@ class Player {
         this.upgrades["a11"] = new Upgrade("a11", "atomic_upgrades", -1, "upg_a11_cost", "upg_a11_power", "upg_a11_unlock", "atoms", [" Atom", " Atoms"], "upg_a11_available");
         this.upgrades["a12"] = new Upgrade("a12", "atomic_upgrades", -1, "upg_a12_cost", "upg_a12_power", "upg_a12_unlock", "atoms", [" Atom", " Atoms"], "upg_a12_available");
         this.upgrades["a13"] = new Upgrade("a13", "atomic_upgrades", -1, "upg_a13_cost", "upg_a13_power", "upg_a13_unlock", "atoms", [" Atom", " Atoms"], "upg_a13_available");
+        this.upgrades["a14"] = new Upgrade("a14", "atomic_upgrades", -1, "upg_a14_cost", "upg_a14_power", "upg_a14_unlock", "atoms", [" Atom", " Atoms"], "upg_a14_available");
 
         this.upgrades["b01"] = new Upgrade("b01", "biological_population", -1, "upg_b01_cost", "upg_b01_power", "upg_b01_unlock", "genes", [" Gene", " Genes"], "upg_b01_available");
         this.upgrades["b02"] = new Upgrade("b02", "biological_population", -1, "upg_b02_cost", "upg_b02_power", "upg_b02_unlock", "genes", [" Gene", " Genes"], "upg_b02_available");
@@ -833,6 +834,8 @@ class Player {
         this.milestones["a12_1"] = new Milestone("a12_1", "a12_1_availability", "a12_1_activation", "a12_1_effect", "a12_1_goal");
 
         this.milestones["a13_1"] = new Milestone("a13_1", "a13_1_availability", "a13_1_activation", "a13_1_effect", "a13_1_goal");
+
+        this.milestones["a14_1"] = new Milestone("a14_1", "a14_1_availability", "a14_1_activation", "a14_1_effect", "a14_1_goal");
 
         this.settings = JSON.parse(JSON.stringify(default_settings));
 

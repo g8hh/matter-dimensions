@@ -287,7 +287,7 @@ function element_unlock_limit() {
     // evolution b05: unlock elements up to Oxygen
     if (player.evolutions['b05'].is_active()) base_limit = 8;
     // evolution b11: unlock elements up to Silicon
-    if (player.evolutions['b11'].is_active()) base_limit = 13;
+    if (player.evolutions['b11'].is_active()) base_limit = 14;
     return base_limit;
 }
 
@@ -472,6 +472,19 @@ function update_collider() {
     // evolution b11: get more base Oxygen levels
     if (functions[player.upgrades['a08'].availability_function]() && player.evolutions['b11'].is_active()) {
         free_atom_levels['a08'] = free_atom_levels['a08'].add(player.evolutions['b11'].get_effect().subtract(1).mult(player.upgrades['a08'].amt).rounddown());
+    }
+
+
+    for (let key of Object.keys(player.upgrades)) {
+        if (key.includes('a')) {
+            if (!(functions[player.upgrades[key].availability_function]())) continue;
+            let element_level = Number(key.substr(1));
+
+            // a14_1: get free levels of elements up to Carbon
+            if (player.milestones['a14_1'].is_active() && element_level <= 6) {
+                free_atom_levels[key] = free_atom_levels[key].add(player.milestones['a14_1'].get_effect());
+            }
+        }
     }
 
     alpha_reactions_active = 0;

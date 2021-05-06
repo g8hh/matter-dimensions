@@ -110,6 +110,10 @@ functions["a13_1_availability"] = () => {
     return true;
 }
 
+functions["a14_1_availability"] = () => {
+    return true;
+}
+
 
 
 functions["a01_1_activation"] = () => {
@@ -222,6 +226,10 @@ functions["a12_1_activation"] = () => {
 
 functions["a13_1_activation"] = () => {
     return get_atom_level('a13').gt(13 - 0.5);
+}
+
+functions["a14_1_activation"] = () => {
+    return player.upgrades['a14'].is_active() && big(player.upgrades['a14'].amt).gt(1 - 0.5);
 }
 
 
@@ -355,6 +363,10 @@ functions["a13_1_effect"] = () => {
     return big(1.03);
 }
 
+functions["a14_1_effect"] = () => {
+    return big(70);
+}
+
 
 
 functions["a01_1_goal"] = () => {
@@ -467,4 +479,8 @@ functions["a12_1_goal"] = () => {
 
 functions["a13_1_goal"] = () => {
     return big(13);
+}
+
+functions["a14_1_goal"] = () => {
+    return big(1);
 }
