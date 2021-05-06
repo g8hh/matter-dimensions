@@ -372,34 +372,34 @@ const MECHANIC_COLLIDER_REACTION_LIST = {
     'cr7': [['a06', 'a01'], ['a07', 'ph']], // Carbon-nitrogen-oxygen cycle
     'cr8': [['a07', 'a01'], ['a08', 'ph']],
     'cr9': [['a07', 'a01'], ['a06', 'a02']],
-    /*'cr10': [['a08', 'a01'], ['a09', 'ph']],*/
+    'cr10': [['a08', 'a01'], ['a09', 'ph']],
     'cr11': [['a08', 'a01'], ['a07', 'a02']],
-    /*'cr12': [['a09', 'a01'], ['a10', 'ph']],*/
+    'cr12': [['a09', 'a01'], ['a10', 'ph']],
     'cr13': [['a02', 'a02'], ['a04']], // Triple-alpha process
     'cr14': [['a04', 'a02'], ['a06', 'ph', 'ph']],
     'cr15': [['a06', 'a02'], ['a08', 'ph']], // Alpha process
-    /*'cr16': [['a08', 'a02'], ['a10', 'ph']],
+    'cr16': [['a08', 'a02'], ['a10', 'ph']],
     'cr17': [['a10', 'a02'], ['a12', 'ph']],
     'cr18': [['a12', 'a02'], ['a14', 'ph']],
-    'cr19': [['a14', 'a02'], ['a16', 'ph']],
+    /*'cr19': [['a14', 'a02'], ['a16', 'ph']],
     'cr20': [['a16', 'a02'], ['a18', 'ph']],
     'cr21': [['a18', 'a02'], ['a20', 'ph']],
     'cr22': [['a20', 'a02'], ['a22', 'ph']],
     'cr23': [['a22', 'a02'], ['a24', 'ph']],
-    'cr24': [['a24', 'a02'], ['a26', 'ph']],
+    'cr24': [['a24', 'a02'], ['a26', 'ph']],*/
     'cr25': [['a06', 'a06'], ['a10', 'a02']], // Carbon burning
     'cr26': [['a06', 'a06'], ['a11', 'a01']],
     'cr27': [['a06', 'a06'], ['a12', 'n']],
-    'cr28': [['a06', 'a06'], ['a12', 'ph']],*/
+    'cr28': [['a06', 'a06'], ['a12', 'ph']],
     'cr29': [['a06', 'a06'], ['a08', 'a02', 'a02']],
-    /*'cr30': [['a10', 'a02'], ['a12', 'n']], // Neon burning
+    'cr30': [['a10', 'a02'], ['a12', 'n']], // Neon burning
     'cr31': [['a08', 'a08'], ['a14', 'a02']], // Oxygen burning
-    'cr32': [['a08', 'a08'], ['a15', 'a01']],
-    'cr33': [['a08', 'a08'], ['a16', 'n']],
+    /*'cr32': [['a08', 'a08'], ['a15', 'a01']],
+    'cr33': [['a08', 'a08'], ['a16', 'n']],*/
     'cr34': [['a08', 'a08'], ['a14', 'a01', 'a01']],
-    'cr35': [['a08', 'a08'], ['a15', 'a01']],
-    'cr36': [['a08', 'a08'], ['a16', 'ph']],
-    'cr37': [['a08', 'a08'], ['a12', 'a02', 'a02']]*/
+    /*'cr35': [['a08', 'a08'], ['a15', 'a01']],
+    'cr36': [['a08', 'a08'], ['a16', 'ph']],*/
+    'cr37': [['a08', 'a08'], ['a12', 'a02', 'a02']]
 };
 
 function format_element(num) {
@@ -589,6 +589,10 @@ function update_collider() {
     else document.getElementById("mechanic_collider_reactions_section_4").style.display = "";
     if (unlocked_elements < 8) document.getElementById("mechanic_collider_reactions_section_5").style.display = "none";
     else document.getElementById("mechanic_collider_reactions_section_5").style.display = "";
+    if (unlocked_elements < 12) document.getElementById("mechanic_collider_reactions_section_6").style.display = "none";
+    else document.getElementById("mechanic_collider_reactions_section_6").style.display = "";
+    if (unlocked_elements < 12) document.getElementById("mechanic_collider_reactions_section_7").style.display = "none";
+    else document.getElementById("mechanic_collider_reactions_section_7").style.display = "";
 
     document.getElementById("mechanic_collider_reaction_photons").textContent = format_number(reaction_points_effect_photons());
     document.getElementById("mechanic_collider_reaction_neutrons").textContent = format_number(reaction_points_effect_neutrons());
