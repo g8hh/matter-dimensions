@@ -287,7 +287,7 @@ function element_unlock_limit() {
     // evolution b05: unlock elements up to Oxygen
     if (player.evolutions['b05'].is_active()) base_limit = 8;
     // evolution b11: unlock elements up to Silicon
-    if (player.evolutions['b11'].is_active()) base_limit = 12;
+    if (player.evolutions['b11'].is_active()) base_limit = 13;
     return base_limit;
 }
 

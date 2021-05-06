@@ -24,6 +24,8 @@ function prestige_earn_gravitons_base() {
     if (player.challenges['g3'].completed) base_gravitons = base_gravitons.mult(1.05);
     // Vacuumic Challenge 4 reward: gain 4% more Gravitons
     if (player.challenges['v4'].completed) base_gravitons = base_gravitons.mult(1.04);
+    // a13: gain more gravitons
+    base_gravitons = base_gravitons.mult(player.upgrades['a13'].get_effect());
 
     // n31: free gravitons upon reset
     if (player.upgrades['n31'].is_active()) base_gravitons = base_gravitons.add(player.upgrades['n31'].get_effect());
@@ -38,6 +40,8 @@ function prestige_earn_gravitons_base() {
     if (player.challenges['g7'].inC()) base_gravitons = base_gravitons.pow(0.7);
     // Gravitonic Challenge 7 reward: graviton gain is raised to a power of 1.05
     if (player.challenges['g7'].completed) base_gravitons = base_gravitons.pow(1.05);
+    // a13_1: graviton gain is raised to a power
+    if (player.milestones['a13_1'].is_active()) base_gravitons = base_gravitons.pow(player.milestones['a13_1'].get_effect());
 
     // Vacuumic Challenge 4: graviton gain is divided by 4
     if (player.challenges['v4'].inC()) base_gravitons = base_gravitons.mult(0.25);
@@ -71,6 +75,8 @@ function gravitonic_hint_next(amt) {
     if (player.challenges['g7'].inC()) need_gravitons = need_gravitons.pow(1 / 0.7);
     // Gravitonic Challenge 7 reward: graviton gain is raised to a power of 1.05
     if (player.challenges['g7'].completed) need_gravitons = need_gravitons.pow(1 / 1.05);
+    // a13_1: graviton gain is raised to a power
+    if (player.milestones['a13_1'].is_active()) need_gravitons = need_gravitons.pow(big(1).div(player.milestones['a13_1'].get_effect()));
 
     // n31: free gravitons upon reset
     if (player.upgrades['n31'].is_active()) need_gravitons = need_gravitons.subtract(player.upgrades['n31'].get_effect());
@@ -91,6 +97,8 @@ function gravitonic_hint_next(amt) {
     if (player.challenges['g3'].completed) need_gravitons = need_gravitons.div(1.05);
     // Vacuumic Challenge 4 reward: gain 4% more Gravitons
     if (player.challenges['v4'].completed) need_gravitons = need_gravitons.div(1.04);
+    // a13: gain more gravitons
+    need_gravitons = need_gravitons.div(player.upgrades['a13'].get_effect());
 
     var base_req = base.pow(need_gravitons);
     // g22: light reduces the amount of required matter

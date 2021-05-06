@@ -34,6 +34,9 @@ functions["upg_a11_cost"] = (amt) => {
 functions["upg_a12_cost"] = (amt) => {
     return n_Fibonacci(12, amt + 1).max(big(1.10460).pow(big(amt).pow(2))).mult(big(2).pow(448));
 }
+functions["upg_a13_cost"] = (amt) => {
+    return n_Fibonacci(13, amt + 1).max(big(1.03971).pow(big(amt).pow(2))).mult(big(2).pow(896));
+}
 
 
 
@@ -109,6 +112,12 @@ functions["upg_a12_power"] = (amt) => {
 
     return big(levels).pow(0.25).add(1);
 }
+functions["upg_a13_power"] = (amt) => {
+    let levels = big(amt);
+    if ('a13' in free_atom_levels) levels = levels.add(free_atom_levels['a13']);
+
+    return big(levels).pow(0.4).div(2).add(1);
+}
 
 
 
@@ -146,6 +155,9 @@ functions["upg_a11_unlock"] = () => {
     return true;
 }
 functions["upg_a12_unlock"] = () => {
+    return true;
+}
+functions["upg_a13_unlock"] = () => {
     return true;
 }
 
@@ -186,4 +198,7 @@ functions["upg_a11_available"] = () => {
 }
 functions["upg_a12_available"] = () => {
     return highest_unlocked_element() >= 12;
+}
+functions["upg_a13_available"] = () => {
+    return highest_unlocked_element() >= 13;
 }
