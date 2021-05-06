@@ -338,6 +338,7 @@ class Player {
         this.achievements["148"] = new Achievement("148", "SpaceL", "Have 50 Space Theorems in total", "check_148");
 
         this.achievements["152"] = new Achievement("152", "Exponential Millionaire", "Reach 1e1'000'000 matter", "check_152");
+        this.achievements["153"] = new Achievement("153", "That's even more illegal!", "Finish Gravitonic Meta-Challenge in exactly 0 milliseconds", "check_153");
         this.achievements["156"] = new Achievement("156", "Graviyard", "Get more than 1e6 Gravitons in a single Gravitonic reset", "check_156");
         this.achievements["157"] = new Achievement("157", "Triple Threat", "Complete three regular Neutronic challenges five times", "check_157");
         this.achievements["158"] = new Achievement("158", "Infinite Universe", "Have at least 1.79e308 Atoms", "check_158");

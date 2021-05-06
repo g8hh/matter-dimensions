@@ -514,6 +514,10 @@ functions["check_152"] = () => {
     return player.matter.gt("1e1000000");
 };
 
+functions["check_153"] = () => {
+    return player.challenges['g0'].fastest_time == 0;
+};
+
 functions["check_156"] = () => {
     return false; // external call
 };
