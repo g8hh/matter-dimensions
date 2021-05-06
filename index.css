@@ -1006,7 +1006,7 @@ input {
     width: inherit;
     position: sticky;
     top: 10px;
-    height: calc(100vh - 20px);
+    height: calc(100vh - 50px);
     position: sticky;
     overflow-y: auto;
     -ms-overflow-style: none;
