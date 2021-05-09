@@ -5,6 +5,12 @@ function screen_update_settings() {
         else element.style.display = "none";
     }
 
+    // ST presets
+    for (let element of document.getElementsByClassName("unlock-on-st-presets")) {
+        if (player.upgrades['AUTO3_5'].is_active()) element.style.display = "";
+        else element.style.display = "none";
+    }
+
     // update settings
     for (let key of Object.keys(player.settings)) {
         player.settings[key] = radio_get_setting(key);

@@ -2442,7 +2442,7 @@
 
                             <div class="unlock-on-st-presets st-presets">
                                 <p style="font-size: 1.5em; text-align: center; margin-bottom: 10px">Presets</p>
-                                <div style="flex-grow: 1; display: grid; grid-template-rows: 1fr auto auto; grid-template-columns: repeat(3, 1fr); row-gap: 5px; column-gap: 10px">
+                                <div style="flex-grow: 1; display: grid; grid-template-rows: 1fr; grid-template-columns: repeat(3, 1fr); grid-auto-rows: auto; row-gap: 5px; column-gap: 10px">
                                     <div id="st_preset_preview_0" class="st-preset-preview" style="grid-column: 1; grid-row: 1">
                                         <div class="v11"></div>
                                         <div class="v21"></div>
@@ -2491,7 +2491,7 @@
                                         <div class="v201"></div>
                                         <div class="v211"></div>
                                     </div>
-                                    <div class="setting-button" style="grid-column: 1; grid-row: 2" onclick="save_st_preset(0)">
+                                    <div class="setting-button vtree-preset-save" style="grid-column: 1; grid-row: 2" onclick="save_st_preset(0)">
                                         <p>Save</p>
                                     </div>
                                     <div class="setting-button" style="grid-column: 1; grid-row: 3" onclick="load_st_preset(0)">
@@ -2546,7 +2546,7 @@
                                         <div class="v201"></div>
                                         <div class="v211"></div>
                                     </div>
-                                    <div class="setting-button" style="grid-column: 2; grid-row: 2" onclick="save_st_preset(1)">
+                                    <div class="setting-button vtree-preset-save" style="grid-column: 2; grid-row: 2" onclick="save_st_preset(1)">
                                         <p>Save</p>
                                     </div>
                                     <div class="setting-button" style="grid-column: 2; grid-row: 3" onclick="load_st_preset(1)">
@@ -2601,7 +2601,7 @@
                                         <div class="v201"></div>
                                         <div class="v211"></div>
                                     </div>
-                                    <div class="setting-button" style="grid-column: 3; grid-row: 2" onclick="save_st_preset(2)">
+                                    <div class="setting-button vtree-preset-save" style="grid-column: 3; grid-row: 2" onclick="save_st_preset(2)">
                                         <p>Save</p>
                                     </div>
                                     <div class="setting-button" style="grid-column: 3; grid-row: 3" onclick="load_st_preset(2)">
@@ -5268,6 +5268,7 @@
                             <label class="settings-block-selector-checkbox"><input type="checkbox" name="auto_disable_vtree_autobuyer"><p>Disable autobuyers on manual upgrade tree reset</p></label>
                             <label class="settings-block-selector-checkbox"><input type="checkbox" name="enable_vtree_autobuyer_on_higher_reset"><p>Enable autobuyers on higher resets</p></label>
                             <label class="settings-block-selector-checkbox unlock-on-st-presets"><input type="checkbox" name="enable_vtree_autobuyer_on_preset_load"><p>Reset upgrade tree and enable autobuyers on preset load</p></label>
+                            <label class="settings-block-selector-checkbox unlock-on-st-presets"><input type="checkbox" name="hide_saving_vtree_presets"><p>Hide "Save" buttons on presets</p></label>
                         </div>
                         <div class="unlock-on-auto-assigner">
                             <p>Collision Points auto-assigner:</p>

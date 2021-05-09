@@ -67,4 +67,10 @@ function screen_update_vacuumic_upgrades() {
         else element.style.display = "none";
     }
     for (let i = 0; i < 3; i++) render_st_preset(i);
+
+    // saving vtree presets
+    for (let element of document.getElementsByClassName("vtree-preset-save")) {
+        if (player.settings["hide_saving_vtree_presets"]) element.style.display = "none";
+        else element.style.display = "";
+    }
 }

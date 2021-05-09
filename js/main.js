@@ -881,6 +881,7 @@ var default_settings = {
     "auto_disable_vtree_autobuyer": true,
     "enable_vtree_autobuyer_on_higher_reset": false,
     "enable_vtree_autobuyer_on_preset_load": true,
+    "hide_saving_vtree_presets": false,
     "auto_disable_auto_assigner": true,
 };
 
