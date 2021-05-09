@@ -21,6 +21,7 @@ class Player {
 
         this.photons_carry = 0;
         this.neutrons_carry = 0;
+        this.vacuum_energy_carry = 0;
 
         this.light = new BigNumber(0);
         this.black_holes = new BigNumber(0);
@@ -364,13 +365,14 @@ class Player {
         this.upgrades["AUTO2_1"] = new Upgrade("AUTO2_1", "section_automation", 1, "upg_AUTO2_1_cost", "upg_automation_power", "upg_automation_vacuumic_unlock", "vacuum_energy", " VE", "upg_automation_vacuumic_unlock");
         this.upgrades["AUTO2_2"] = new Upgrade("AUTO2_2", "section_automation", 1, "upg_AUTO2_2_cost", "upg_automation_power", "upg_automation_vacuumic_unlock", "vacuum_energy", " VE", "upg_automation_vacuumic_unlock");
         this.upgrades["AUTO2_3"] = new Upgrade("AUTO2_3", "section_automation", 1, "upg_AUTO2_3_cost", "upg_automation_power", "upg_automation_dimensional_unlock", "shards", [" Shard", " Shards"], "upg_automation_dimensional_unlock");
-        this.upgrades["AUTO2_4"] = new Upgrade("AUTO2_4", "section_automation", 1, "upg_AUTO2_4_cost", "upg_automation_power", "upg_automation_atomic_unlock", "atoms", [" Atom", " Atoms"], "upg_automation_atomic_unlock");
         this.upgrades["AUTO2_5"] = new Upgrade("AUTO2_5", "section_automation", 1, "upg_AUTO2_5_cost", "upg_automation_power", "upg_automation_atomic_unlock", "atoms", [" Atom", " Atoms"], "upg_automation_atomic_unlock");
+        this.upgrades["AUTO2_4"] = new Upgrade("AUTO2_4", "section_automation", 1, "upg_AUTO2_4_cost", "upg_automation_power", "upg_automation_atomic_unlock", "atoms", [" Atom", " Atoms"], "upg_automation_atomic_unlock");
 
         this.upgrades["AUTO3_1"] = new Upgrade("AUTO3_1", "section_automation", 1, "upg_AUTO3_1_cost", "upg_automation_power", "upg_automation_dimensional_unlock", "shards", [" Shard", " Shards"], "upg_automation_dimensional_unlock");
         this.upgrades["AUTO3_2"] = new Upgrade("AUTO3_2", "section_automation", 1, "upg_AUTO3_2_cost", "upg_automation_power", "upg_automation_dimensional_unlock", "shards", [" Shard", " Shards"], "upg_automation_dimensional_unlock");
         this.upgrades["AUTO3_3"] = new Upgrade("AUTO3_3", "section_automation", 1, "upg_AUTO3_3_cost", "upg_automation_power", "upg_automation_atomic_unlock", "atoms", [" Atom", " Atoms"], "upg_automation_atomic_unlock");
         this.upgrades["AUTO3_5"] = new Upgrade("AUTO3_5", "section_automation", 1, "upg_AUTO3_5_cost", "upg_automation_power", "upg_automation_biological_unlock", "genes", [" Gene", " Genes"], "upg_automation_biological_unlock");
+        this.upgrades["AUTO3_4"] = new Upgrade("AUTO3_4", "section_automation", 1, "upg_AUTO3_4_cost", "upg_automation_power", "upg_automation_biological_unlock", "genes", [" Gene", " Genes"], "upg_automation_biological_unlock");
 
         this.upgrades["AUTO4_1"] = new Upgrade("AUTO4_1", "section_automation", 1, "upg_AUTO4_1_cost", "upg_automation_power", "upg_automation_atomic_unlock", "atoms", [" Atom", " Atoms"], "upg_automation_atomic_unlock");
         this.upgrades["AUTO4_2"] = new Upgrade("AUTO4_2", "section_automation", 1, "upg_AUTO4_2_cost", "upg_automation_power", "upg_automation_atomic_unlock", "atoms", [" Atom", " Atoms"], "upg_automation_atomic_unlock");
@@ -1080,6 +1082,20 @@ function processTimedelta(corrected_timedelta) {
 
             player.neutrons_carry = neutrons_gained.subtract(neutrons_gained.rounddown()).toInt();
             if (player.neutrons_carry > 1) player.neutrons_carry = 1;
+        }
+    }
+
+    // AUTO3_4: passive VE gain
+    if (player.upgrades['AUTO3_4'].is_active()) {
+        if (can_vacuumic()) {
+            let vacuum_energy_gained = prestige_earn_vacuum_energy().mult(timedelta / 1000).add(player.vacuum_energy_carry);
+            // Challenge 4: all resources are capped
+            // achievement 108: Vacuum Energy is not affected by resource limit
+            player.vacuum_energy = player.vacuum_energy.add(vacuum_energy_gained.rounddown()).round();
+            if (!player.achievements['108'].complete) player.vacuum_energy = player.vacuum_energy.min(player.challenge_strength_4);
+
+            player.vacuum_energy_carry = vacuum_energy_gained.subtract(vacuum_energy_gained.rounddown()).toInt();
+            if (player.vacuum_energy_carry > 1) player.vacuum_energy_carry = 1;
         }
     }
 

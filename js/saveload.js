@@ -8,7 +8,7 @@ var SAVE_NORMAL_VARS = ["unlocked_photonic", "unlocked_gravitonic", "unlocked_ne
                         "current_challenge",
                         "photonic_resets", "gravitonic_resets", "neutronic_resets", "vacuumic_resets", "dimensional_resets", "atomic_resets", "biological_resets",
                         "fastest_photonic", "fastest_gravitonic", "fastest_neutronic", "fastest_vacuumic", "fastest_dimensional", "fastest_atomic", "fastest_biological",
-                        "photons_carry", "neutrons_carry",
+                        "photons_carry", "neutrons_carry", "vacuum_energy_carry",
                         "collision_points", "collision_points_in_reaction", "collision_points_in_synthesis", "collision_points_in_generation", "active_reactions",
                         "total_realtime", "online_realtime",
                         "st_presets",
