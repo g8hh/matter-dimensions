@@ -670,7 +670,7 @@ function population_power_multiplier() {
 }
 
 function extinction_effect(x=player.population_sacrificed) {
-    return x.pow(0.1).min(x.add(1).log(10)).add(1);
+    return x.pow(0.1).min(x.pow(0.01).mult(8)).add(1);
 }
 
 function power_population_time() {
