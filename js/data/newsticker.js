@@ -70,7 +70,7 @@ const NEWSTICKER_LINES = [
     "Breaking news! Nothing has happened!",
     "Imagine if this showed actual news.",
     "I can't believe they made matter a real thing.",
-    "TetrationalMath47#5657 is scamming us, we need to prepare with a scam detector. Detects all scams by using price, info and seller in order to detect a scam in under a millisecond. For only 4.99$ a month for 60 months! Buy now, it's in stock! Get rid of all scammers by detecting their scams without working hard! Work smarter, not harder!",
+    "TetrationalMath is scamming us, we need to prepare with a scam detector. Detects all scams by using price, info and seller in order to detect a scam in under a millisecond. For only 4.99$ a month for 60 months! Buy now, it's in stock! Get rid of all scammers by detecting their scams without working hard! Work smarter, not harder!",
     "This is a good game, trust me.",
     "What, you expected a new sticker? Tough luck.",
 ]
