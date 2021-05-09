@@ -146,7 +146,8 @@ function load_save(data) {
         player.st_presets = [[], [], []];
     }
     if (player.version == "v0.7.1") {
-        // v0.7.1.2?
+        // v0.7.1.2
+        player.version = "v0.7.1.2";
         player.got_shards_this_atomic = player.milestones['a01_1'].is_active();
     }
 }
