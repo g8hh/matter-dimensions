@@ -32,6 +32,9 @@ body.has-newsticker .settings-menu .settings-menu-wrapper {
 body.has-newsticker .prestige-menu .prestige-menu-wrapper {
     min-height: calc(100vh - 50px);
 }
+body.has-newsticker .prestige-menu.scrollable .prestige-menu-wrapper {
+    height: calc(100vh - 50px);
+}
 
 #newsticker {
     font-size: 1.4em;
