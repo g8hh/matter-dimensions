@@ -145,6 +145,19 @@
     --color-900: #FCF9F7;
 }
 
+.theme-blue_orchid {
+    --color-000: #06080A;
+    --color-100: #1B262C;
+    --color-200: #203D4E;
+    --color-300: #774427;
+    --color-400: #97522C;
+    --color-500: #B86234;
+    --color-600: #B88663;
+    --color-700: #D8A68C;
+    --color-800: #EACFC1;
+    --color-900: #FCF9F7;
+}
+
 .theme-inverted {
     --color-000: #F9F7F5;
     --color-100: #E4D9D3;
