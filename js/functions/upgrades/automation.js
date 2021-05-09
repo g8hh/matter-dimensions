@@ -38,7 +38,7 @@ functions["upg_AUTO3_3_cost"] = (amt) => {
     return big(16);
 }
 functions["upg_AUTO3_4_cost"] = (amt) => {
-    return big(111);
+    return big(235);
 }
 functions["upg_AUTO3_5_cost"] = (amt) => {
     return big(5);
