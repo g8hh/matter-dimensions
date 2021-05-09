@@ -98,7 +98,8 @@ function reset_neutronic(force=false, higher_reset=false, autobuyer_induced=fals
     }
 
     // Neutronic Challenge 6: Neutronic resets all Neutronic upgrades and particles
-    if (player.challenges['n6'].inC()) {
+    // Neutronic Meta-Challenge reward: Neutonic upgrades and particles are never reset
+    if (!player.challenges['n0'].completed && player.challenges['n6'].inC()) {
         player.dimensions["protons"].reset();
         player.dimensions["electrons"].reset();
         player.dimensions["bosons"].reset();
