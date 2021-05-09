@@ -518,6 +518,10 @@ functions["check_153"] = () => {
     return player.challenges['g0'].fastest_time == 0;
 };
 
+functions["check_155"] = () => {
+    return !player.population.lt(100) && !population_change_speed().lt(2);
+};
+
 functions["check_156"] = () => {
     return false; // external call
 };
