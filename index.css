@@ -265,7 +265,7 @@ input {
 
     display: grid;
     grid-template-columns: repeat(8, 1fr);
-    grid-template-rows: repeat(15, 1fr);
+    grid-template-rows: repeat(16, 1fr);
     grid-gap: 10px;
 }
 .achievement-list div::before {

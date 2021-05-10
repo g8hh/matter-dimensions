@@ -407,7 +407,11 @@ function format_element(num) {
 }
 
 function levels_passed_through_reaction_ratio() {
-    return big(0.5);
+    let base = big(0.5);
+    // achievement 151: reactions are 2% more effective
+    if (player.achievements['151'].complete) base = base.mult(1.02);
+    
+    return base;
 }
 
 function switch_auto_assigner_status() {

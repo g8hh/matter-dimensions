@@ -510,12 +510,26 @@ functions["check_148"] = () => {
 };
 
 
+functions["check_151"] = () => {
+    for (let key of Object.keys(player.upgrades)) {
+        if (key.includes('a') && get_atom_level(key).gt(1e5)) return true;
+    }
+};
+
 functions["check_152"] = () => {
     return player.matter.gt("1e1000000");
 };
 
 functions["check_153"] = () => {
     return player.challenges['g0'].fastest_time == 0;
+};
+
+functions["check_154"] = () => {
+    let completed_challenges = 0;
+    for (let key of Object.keys(player.challenges)) {
+        if (key.includes('d') && player.challenges[key].completed) completed_challenges++;
+    }
+    return completed_challenges >= 3;
 };
 
 functions["check_155"] = () => {
