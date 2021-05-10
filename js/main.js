@@ -862,7 +862,7 @@ class Player {
 
         this.auto_assigner_enabled = false;
 
-        this.version = "v0.7.1.2";
+        this.version = "v0.7.1.3";
     }
 }
 
