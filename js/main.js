@@ -354,6 +354,7 @@ class Player {
         this.achievements["163"] = new Achievement("163", "Abiogenesis", "Biological with only one Atomic reset in the current Biological", "check_163");
         this.achievements["165"] = new Achievement("165", "Blood for the Blood God", "Sacrifice 1e10 population in total", "check_165");
         this.achievements["167"] = new Achievement("167", "Three Challenging Minutes", "Fully complete 36 challenges in total", "check_167");
+        this.achievements["168"] = new Achievement("168", "All your Neutrons belong to us", "Complete Neutronic Meta-Challenge", "check_168");
 
         this.upgrades = {};
         this.upgrades["INERTIA_1"] = new Upgrade("INERTIA_1", "section_inertia", -1, "upg_INERTIA_1_cost", "upg_INERTIA_1_power", "upg_INERTIA_1_unlock", "inertia", " of Inertia", "upg_INERTIA_1_available", "", "upg_INERTIA_1_cost_display_function", true);

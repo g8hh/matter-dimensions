@@ -580,3 +580,7 @@ functions["check_167"] = () => {
     }
     return completed_challenges >= 36;
 };
+
+functions["check_168"] = () => {
+    return player.challenges['n0'].completed;
+};
