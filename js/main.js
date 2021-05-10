@@ -534,6 +534,7 @@ class Player {
         this.upgrades["d131"] = new Upgrade("d131", "dimensional_upgrades", -1, "upg_d131_cost", "upg_d131_power", "upg_d131_unlock", "shards", [" Shard", " Shards"], "upg_d131_available");
         this.upgrades["d132"] = new Upgrade("d132", "dimensional_upgrades", -1, "upg_d132_cost", "upg_d132_power", "upg_d132_unlock", "shards", [" Shard", " Shards"], "upg_d132_available");
         this.upgrades["d141"] = new Upgrade("d141", "dimensional_upgrades", 1, "upg_d141_cost", "upg_d141_power", "upg_d141_unlock", "shards", [" Shard", " Shards"], "upg_d141_available");
+        this.upgrades["d151"] = new Upgrade("d151", "dimensional_upgrades", 1, "upg_d151_cost", "upg_d151_power", "upg_d151_unlock", "shards", [" Shard", " Shards"], "upg_d151_available");
 
         this.upgrades["a01"] = new Upgrade("a01", "atomic_upgrades", -1, "upg_a01_cost", "upg_a01_power", "upg_a01_unlock", "atoms", [" Atom", " Atoms"], "upg_a01_available");
         this.upgrades["a02"] = new Upgrade("a02", "atomic_upgrades", -1, "upg_a02_cost", "upg_a02_power", "upg_a02_unlock", "atoms", [" Atom", " Atoms"], "upg_a02_available");
@@ -817,6 +818,7 @@ class Player {
         this.milestones["a05_1"] = new Milestone("a05_1", "a05_1_availability", "a05_1_activation", "a05_1_effect", "a05_1_goal");
         this.milestones["a05_2"] = new Milestone("a05_2", "a05_2_availability", "a05_2_activation", "a05_2_effect", "a05_2_goal");
         this.milestones["a05_3"] = new Milestone("a05_3", "a05_3_availability", "a05_3_activation", "a05_3_effect", "a05_3_goal");
+        this.milestones["a05_4"] = new Milestone("a05_4", "a05_4_availability", "a05_4_activation", "a05_4_effect", "a05_4_goal");
 
         this.milestones["a06_1"] = new Milestone("a06_1", "a06_1_availability", "a06_1_activation", "a06_1_effect", "a06_1_goal");
         this.milestones["a06_2"] = new Milestone("a06_2", "a06_2_availability", "a06_2_activation", "a06_2_effect", "a06_2_goal");

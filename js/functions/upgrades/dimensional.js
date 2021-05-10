@@ -82,6 +82,9 @@ functions["upg_d132_cost"] = (amt) => {
 functions["upg_d141_cost"] = (amt) => {
     return big(1e8);
 }
+functions["upg_d151_cost"] = (amt) => {
+    return big(1e12);
+}
 
 
 
@@ -188,6 +191,9 @@ functions["upg_d132_power"] = (amt) => {
 functions["upg_d141_power"] = (amt) => {
     return big(1);
 }
+functions["upg_d151_power"] = (amt) => {
+    return big(1);
+}
 
 
 
@@ -195,7 +201,7 @@ functions["upg_d11_unlock"] = () => {
     return true;
 }
 functions["upg_d21_unlock"] = () => {
-    return player.upgrades['d11'].amt > 0;
+    return player.upgrades['d11'].amt > 0 && max_dimensional_shifts() > 0;
 }
 functions["upg_d31_unlock"] = () => {
     return player.upgrades['d21'].amt > 0;
@@ -204,7 +210,7 @@ functions["upg_d32_unlock"] = () => {
     return player.upgrades['d21'].amt > 0;
 }
 functions["upg_d41_unlock"] = () => {
-    return player.upgrades['d21'].amt > 0;
+    return player.upgrades['d21'].amt > 0 && max_dimensional_shifts() > 1;
 }
 functions["upg_d51_unlock"] = () => {
     return player.upgrades['d41'].amt > 0;
@@ -228,7 +234,7 @@ functions["upg_d72_unlock"] = () => {
     return player.upgrades['d41'].amt > 0;
 }
 functions["upg_d81_unlock"] = () => {
-    return player.upgrades['d41'].amt > 0;
+    return player.upgrades['d41'].amt > 0 && max_dimensional_shifts() > 2;
 }
 functions["upg_d91_unlock"] = () => {
     return player.upgrades['d81'].amt > 0;
@@ -273,7 +279,10 @@ functions["upg_d132_unlock"] = () => {
     return player.upgrades['d81'].amt > 0;
 }
 functions["upg_d141_unlock"] = () => {
-    return player.upgrades['d81'].amt > 0;
+    return player.upgrades['d81'].amt > 0 && max_dimensional_shifts() > 3;
+}
+functions["upg_d151_unlock"] = () => {
+    return player.upgrades['d141'].amt > 0 && max_dimensional_shifts() > 4;
 }
 
 
@@ -282,7 +291,7 @@ functions["upg_d11_available"] = () => {
     return true;
 }
 functions["upg_d21_available"] = () => {
-    return player.upgrades['d11'].amt > 0;
+    return player.upgrades['d11'].amt > 0 && max_dimensional_shifts() > 0;
 }
 functions["upg_d31_available"] = () => {
     return player.upgrades['d21'].amt > 0;
@@ -291,7 +300,7 @@ functions["upg_d32_available"] = () => {
     return player.upgrades['d21'].amt > 0;
 }
 functions["upg_d41_available"] = () => {
-    return player.upgrades['d21'].amt > 0;
+    return player.upgrades['d21'].amt > 0 && max_dimensional_shifts() > 1;
 }
 functions["upg_d51_available"] = () => {
     return player.upgrades['d41'].amt > 0;
@@ -317,7 +326,7 @@ functions["upg_d72_available"] = () => {
     return player.upgrades['d41'].amt > 0;
 }
 functions["upg_d81_available"] = () => {
-    return player.upgrades['d41'].amt > 0;
+    return player.upgrades['d41'].amt > 0 && max_dimensional_shifts() > 2;
 }
 functions["upg_d91_available"] = () => {
     return player.upgrades['d81'].amt > 0;
@@ -362,7 +371,10 @@ functions["upg_d132_available"] = () => {
     return player.upgrades['d81'].amt > 0;
 }
 functions["upg_d141_available"] = () => {
-    return player.upgrades['d81'].amt > 0;
+    return player.upgrades['d81'].amt > 0 && max_dimensional_shifts() > 3;
+}
+functions["upg_d151_available"] = () => {
+    return player.upgrades['d141'].amt > 0 && max_dimensional_shifts() > 4;
 }
 
 

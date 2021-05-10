@@ -164,3 +164,12 @@ function power_manifolds() {
     if (!player.milestones['a06_1'].is_active()) return big(1);
     return player.manifolds.add(1).log(2).add(1).log(2).div(Math.E).add(1);
 }
+
+
+function max_dimensional_shifts() {
+    let base = 4;
+    // a05_4: can perform one more DimShift
+    if (player.milestones['a05_4'].is_active()) base += 1;
+    
+    return base;
+}
