@@ -514,6 +514,7 @@ functions["check_151"] = () => {
     for (let key of Object.keys(player.upgrades)) {
         if (key.includes('a') && get_atom_level(key).gt(1e5)) return true;
     }
+    return false;
 };
 
 functions["check_152"] = () => {
@@ -550,4 +551,24 @@ functions["check_157"] = () => {
 
 functions["check_158"] = () => {
     return !player.atoms.lt(big(2).pow(1024));
+};
+
+
+functions["check_162"] = () => {
+    for (let key of Object.keys(player.upgrades)) {
+        if (key.includes('a') && get_atom_level(key).gt(1e6)) return true;
+    }
+    return false;
+};
+
+functions["check_165"] = () => {
+    return !player.population_sacrificed.lt(1e10);
+};
+
+functions["check_167"] = () => {
+    let completed_challenges = 0;
+    for (let key of Object.keys(player.challenges)) {
+        if (player.challenges[key].completions == player.challenges[key].max_completions) completed_challenges += 1;
+    }
+    return completed_challenges >= 36;
 };

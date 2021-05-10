@@ -347,6 +347,10 @@ class Player {
         this.achievements["157"] = new Achievement("157", "Triple Threat", "Complete three regular Neutronic challenges five times", "check_157");
         this.achievements["158"] = new Achievement("158", "Infinite Universe", "Have at least 1.79e308 Atoms", "check_158");
 
+        this.achievements["162"] = new Achievement("162", "Elemental Millionaire", "Have an element with a total level of over a million", "check_162");
+        this.achievements["165"] = new Achievement("165", "Blood for the Blood God", "Sacrifice 1e10 population in total", "check_165");
+        this.achievements["167"] = new Achievement("167", "Three Challenging Minutes", "Fully complete 36 challenges in total", "check_167");
+
         this.upgrades = {};
         this.upgrades["INERTIA_1"] = new Upgrade("INERTIA_1", "section_inertia", -1, "upg_INERTIA_1_cost", "upg_INERTIA_1_power", "upg_INERTIA_1_unlock", "inertia", " of Inertia", "upg_INERTIA_1_available", "", "upg_INERTIA_1_cost_display_function", true);
         this.upgrades["INERTIA_2"] = new Upgrade("INERTIA_2", "section_inertia", 4, "upg_INERTIA_2_cost", "upg_INERTIA_2_power", "upg_INERTIA_2_unlock", "inertia", " of Inertia", "upg_INERTIA_2_available", "", "upg_INERTIA_2_cost_display_function", true);
