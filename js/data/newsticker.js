@@ -105,7 +105,7 @@ const CONDITIONAL_NEWSTICKER_LINES = [
     [function() { return player.unlocked_vacuumic }, "Remember to expand your limits before going to sleep!"],
     [function() { return player.unlocked_vacuumic }, "In space, no one can hear you click."],
     [function() { return player.unlocked_vacuumic }, "This message feels empty."],
-    [function() { return player.unlocked_vacuumic }, "Feeling tied up with resourse cap? Vacuumic will help you."],
+    [function() { return player.unlocked_vacuumic }, "Feeling tied up with resource cap? Vacuumic will help you."],
     [function() { return player.unlocked_dimensional }, "Scientists have discovered that Shards are actually made out of rock candy."],
     [function() { return player.unlocked_dimensional }, "12 dimensions=string theory."],
     [function() { return player.unlocked_dimensional }, "𝕋𝕙𝕚𝕤 𝕞𝕖𝕤𝕤𝕒𝕘𝕖 𝕚𝕤 𝕕𝕚𝕞𝕖𝕟𝕤𝕚𝕠𝕟𝕒𝕝 𝕤𝕙𝕚𝕗𝕥𝕖𝕕."],
