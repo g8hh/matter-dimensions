@@ -128,6 +128,8 @@ class Player {
 
         this.got_shards_this_atomic = false;
 
+        this.atomic_resets_in_current_biological = 0;
+
         this.dimensions = {};
         this.dimensions['matter_1'] = new Dimension('matter_1', 'matter_dimensions', 0, 'matter_1_cost', 'matter_1_pow', 'matter_1_unlock', 'matter', '', 'matter');
         this.dimensions['matter_2'] = new Dimension('matter_2', 'matter_dimensions', 1, 'matter_2_cost', 'matter_2_pow', 'matter_2_unlock', 'matter', '', this.dimensions['matter_1']);
@@ -347,7 +349,9 @@ class Player {
         this.achievements["157"] = new Achievement("157", "Triple Threat", "Complete three regular Neutronic challenges five times", "check_157");
         this.achievements["158"] = new Achievement("158", "Infinite Universe", "Have at least 1.79e308 Atoms", "check_158");
 
+        this.achievements["161"] = new Achievement("161", "Heresy", "Buy 9th Matter Dimension", "check_161");
         this.achievements["162"] = new Achievement("162", "Elemental Millionaire", "Have an element with a total level of over a million", "check_162");
+        this.achievements["163"] = new Achievement("163", "Abiogenesis", "Biological with only one Atomic reset in the current Biological", "check_163");
         this.achievements["165"] = new Achievement("165", "Blood for the Blood God", "Sacrifice 1e10 population in total", "check_165");
         this.achievements["167"] = new Achievement("167", "Three Challenging Minutes", "Fully complete 36 challenges in total", "check_167");
 

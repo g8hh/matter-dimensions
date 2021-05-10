@@ -554,11 +554,19 @@ functions["check_158"] = () => {
 };
 
 
+functions["check_161"] = () => {
+    return player.dimensions["matter_9"].amt_bought > 0;
+};
+
 functions["check_162"] = () => {
     for (let key of Object.keys(player.upgrades)) {
         if (key.includes('a') && get_atom_level(key).gt(1e6)) return true;
     }
     return false;
+};
+
+functions["check_163"] = () => {
+    return false; // external call
 };
 
 functions["check_165"] = () => {

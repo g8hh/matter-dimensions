@@ -108,6 +108,8 @@ function reset_atomic(force=false, higher_reset=false, autobuyer_induced=false, 
     cap_resources();
     reset_dimensional(true, true, false, reset_multiplier * count_as_reset_num);
 
+    player.atomic_resets_in_current_biological += 1;
+
     if (!force || higher_reset) player.atomic_resets += count_as_reset_num;
 
     player.got_shards_this_atomic = false;

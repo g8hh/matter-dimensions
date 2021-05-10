@@ -44,6 +44,7 @@ function reset_biological(force=false, higher_reset=false, autobuyer_induced=fal
     let earned_genes = prestige_earn_genes();
     if (!force) player.achievements['121'].award();
     if (!force && earned_genes.gt(1)) player.achievements['135'].award();
+    if (!force && player.atomic_resets_in_current_biological <= 1) player.achievements['163'].award();
 
     // Challenge 4: all resources are capped
     player.genes = player.genes.add(earned_genes).min(player.challenge_strength_4);
@@ -70,6 +71,8 @@ function reset_biological(force=false, higher_reset=false, autobuyer_induced=fal
 
     update_collider();
     reset_atomic(true, true, false, 0);
+    
+    player.atomic_resets_in_current_biological = 0;
 
     if (!force || higher_reset) player.biological_resets += count_as_reset_num;
 
