@@ -9,7 +9,7 @@ functions["autobuyer_matter_2_available"] = () => {
     // g41: unlock 1st Matter Dimension autobuyer
     // achievement 31: unlock 2nd Matter Dimension autobuyer if 1st Matter Dimension autobuyer is active 
     // Gravitonic Challenge 4 reward: unlock other Matter Dimension autobuyers if 1st Matter Dimension autobuyer is active
-    return player.challenges['g4'].completed && (player.achievements['31'].complete || player.upgrades["g41"].is_active());
+    return (player.achievements['31'].complete ||  player.challenges['g4'].completed) && player.upgrades["g41"].is_active();
 };
 
 functions["autobuyer_matter_3_available"] = () => {
