@@ -270,6 +270,10 @@ functions["a02_2_effect"] = () => {
     if (player.upgrades['d41'].is_active()) dimensional_resets += 1;
     // d81: unlock new Dimension
     if (player.upgrades['d81'].is_active()) dimensional_resets += 1;
+    // d141: unlock new Dimension
+    if (player.upgrades['d141'].is_active()) dimensional_resets += 1;
+    // d151: unlock new Dimension
+    if (player.upgrades['d151'].is_active()) dimensional_resets += 1;
 
     return big(6).mult(dimensional_resets);
 }
