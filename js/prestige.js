@@ -534,6 +534,7 @@ function update_unlocked_menus() {
     document.getElementById("menu_button_atomic").style.display = "none";
     document.getElementById("menu_button_atomic_upgrades").style.display = "none";
     document.getElementById("menu_button_atomic_collider").style.display = "none";
+    document.getElementById("menu_button_atomic_experiments").style.display = "none";
     document.getElementById("menu_button_biological").style.display = "none";
     document.getElementById("menu_button_biological_population").style.display = "none";
     document.getElementById("menu_button_biological_evolutions").style.display = "none";
@@ -651,6 +652,12 @@ function update_unlocked_menus() {
     if (player.evolutions['b08'].is_active()) {
         document.getElementById("menu_button_dimensional").style.display = "";
         document.getElementById("menu_button_dimensional_challenges").style.display = "";
+    }
+
+    // Atomic experiments
+    if (player.evolutions['b12'].is_active()) {
+        document.getElementById("menu_button_atomic").style.display = "";
+        document.getElementById("menu_button_atomic_experiments").style.display = "";
     }
 }
 
