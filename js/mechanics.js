@@ -192,7 +192,7 @@ function reset_temperature(type) {
 
 function wave_effect(type) {
     switch (type) {
-        case 'infrared': return player.infrared_waves.min(player.infrared_waves.pow(0.5).mult(1e2)).min(player.infrared_waves.pow(0.2).mult(1e5)).min(player.infrared_waves.pow(0.04).mult(1e13)).add(1);
+        case 'infrared': return player.infrared_waves.min(player.infrared_waves.pow(0.5).mult(1e2)).min(player.infrared_waves.pow(0.2).mult(1e5)).min(player.infrared_waves.pow(0.04).mult(1e13)).min(player.infrared_waves.add(1).log(10).mult("1e409").add(1)).add(1);
         case 'red': return player.red_waves.add(1).pow(2);
         case 'green': return player.green_waves.add(1).log(10).pow(2);
         case 'blue': return player.space.pow(player.blue_waves.add(1).log(10).pow(0.5).mult(0.05)).max(1);
