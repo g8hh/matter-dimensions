@@ -76,6 +76,9 @@ function reset_atomic(force=false, higher_reset=false, autobuyer_induced=false, 
         }
     }
 
+    // v01 still resets on Atomic
+    player.upgrades['v01'].reset();
+
     for (let key of Object.keys(player.upgrades)) {
         // achievement 88: keep all automation upgrades
         if (player.achievements['88'].complete && (key == "d72")) continue;
