@@ -131,14 +131,21 @@ function wave_gain(type) {
     wave_mult = wave_mult.mult(player.upgrades['a04'].get_effect());
     // Temperature Milestone 5: gain more waves
     if (player.milestones['temperature_5'].is_active()) wave_mult = wave_mult.mult(player.milestones['temperature_5'].get_effect());
+    
+    let wave_gain = big(0);
     switch (type) {
-        case 'infrared': return get_temperature().div(2.73).pow(5).mult(wave_mult).rounddown();
-        case 'red': return get_temperature().div(4.222).pow(4).mult(wave_mult).rounddown();
-        case 'green': return get_temperature().div(5.19).pow(3).mult(wave_mult).rounddown();
-        case 'blue': return get_temperature().div(13.99).pow(2).mult(wave_mult).rounddown();
-        case 'ultraviolet': return get_temperature().div(20.28).pow(1).mult(wave_mult).rounddown();
-        case 'xray': return get_temperature().div(273.15).pow(0.8).mult(wave_mult).rounddown();
+        case 'infrared': wave_gain = get_temperature().div(2.73).pow(5).mult(wave_mult);
+        case 'red': wave_gain = get_temperature().div(4.222).pow(4).mult(wave_mult);
+        case 'green': wave_gain = get_temperature().div(5.19).pow(3).mult(wave_mult);
+        case 'blue': wave_gain = get_temperature().div(13.99).pow(2).mult(wave_mult);
+        case 'ultraviolet': wave_gain = get_temperature().div(20.28).pow(1).mult(wave_mult);
+        case 'xray': wave_gain = get_temperature().div(273.15).pow(0.8).mult(wave_mult);
     }
+
+    // evolution b12: wave gain is raised to a power
+    if (player.evolutions['b12'].is_active()) wave_gain = wave_gain.pow(player.evolutions['b12'].get_effect());
+
+    return wave_gain.rounddown();
 }
 
 function can_reset_temperature(type) {

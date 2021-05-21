@@ -31,6 +31,9 @@ functions["evo_b10_cost"] = () => {
 functions["evo_b11_cost"] = () => {
     return big(48);
 }
+functions["evo_b12_cost"] = () => {
+    return big(720);
+}
 
 functions["evo_b01_power"] = (x) => {
     let base_pow = x.div(3).add(1).log(10).div(3).add(1).log(10).add(1);
@@ -74,6 +77,9 @@ functions["evo_b10_power"] = (x) => {
 functions["evo_b11_power"] = (x) => {
     return x.add(1).log(2).add(1).log(2).pow(2).add(1);
 }
+functions["evo_b12_power"] = (x) => {
+    return x.add(1).log(10).add(1).log(10).add(1).pow(0.5);
+}
 
 functions["evo_b01_secondary"] = () => {
     let base_reward = unlocked_layers();
@@ -113,6 +119,9 @@ functions["evo_b10_secondary"] = () => {
     return player.genes.add(1);
 }
 functions["evo_b11_secondary"] = () => {
+    return big(1);
+}
+functions["evo_b12_secondary"] = () => {
     return big(1);
 }
 
