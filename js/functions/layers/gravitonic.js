@@ -50,7 +50,7 @@ function prestige_earn_gravitons_base() {
 }
 
 function prestige_earn_gravitons() {
-    return prestige_earn_gravitons_base().subtract(player.gravitons).rounddown().max(0);
+    return prestige_earn_gravitons_base().subtract(player.gravitons).round().max(0);
 }
 
 function can_gravitonic() {
