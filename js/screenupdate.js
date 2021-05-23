@@ -111,6 +111,10 @@ function screen_update() {
         player.evolutions[key].screen_update();
     }
 
+    for (let key of Object.keys(player.experiments)) {
+        player.experiments[key].screen_update();
+    }
+
     let body_class = "theme-" + player.settings['theme'] + " font-" + player.settings['font'];
     if (player.settings['show_newsticker']) body_class += " has-newsticker";
     document.body.className = body_class;

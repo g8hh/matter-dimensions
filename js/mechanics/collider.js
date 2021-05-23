@@ -39,8 +39,13 @@ function highest_unlocked_element() {
 function next_ck_hint(amt) {
     let resource_need = big(amt).add(1);
 
+    // experiments boost CK gain
+    if (player.evolutions['b12'].is_active()) resource_need = resource_need.pow(big(1).div(get_current_experiment_effect()));
+
     // a03_1: increase CK gain
     if (player.milestones['a03_1'].is_active()) resource_need = resource_need.div(player.milestones['a03_1'].get_effect());
+    // achievement 121: double gain
+    if (player.achievements['121'].complete) resource_need = resource_need.div(2);
 
     return resource_need.mult(2).max(2).pow(1024);
 }

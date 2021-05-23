@@ -294,81 +294,81 @@ functions["upg_d21_available"] = () => {
     return player.upgrades['d11'].amt > 0 && max_dimensional_shifts() > 0;
 }
 functions["upg_d31_available"] = () => {
-    return player.upgrades['d21'].amt > 0;
+    return player.upgrades['d21'].amt > 0 && max_dimensional_shifts() > 1;
 }
 functions["upg_d32_available"] = () => {
-    return player.upgrades['d21'].amt > 0;
+    return player.upgrades['d21'].amt > 0 && max_dimensional_shifts() > 1;
 }
 functions["upg_d41_available"] = () => {
     return player.upgrades['d21'].amt > 0 && max_dimensional_shifts() > 1;
 }
 functions["upg_d51_available"] = () => {
-    return player.upgrades['d41'].amt > 0;
+    return player.upgrades['d41'].amt > 0 && max_dimensional_shifts() > 2;
 }
 functions["upg_d52_available"] = () => {
-    return player.upgrades['d41'].amt > 0;
+    return player.upgrades['d41'].amt > 0 && max_dimensional_shifts() > 2;
 }
 functions["upg_d61_available"] = () => {
-    return player.upgrades['d41'].amt > 0;
+    return player.upgrades['d41'].amt > 0 && max_dimensional_shifts() > 2;
 }
 functions["upg_d62_available"] = () => {
-    return player.upgrades['d41'].amt > 0;
+    return player.upgrades['d41'].amt > 0 && max_dimensional_shifts() > 2;
 }
 functions["upg_d63_available"] = () => {
-    return player.upgrades['d41'].amt > 0;
+    return player.upgrades['d41'].amt > 0 && max_dimensional_shifts() > 2;
 }
 functions["upg_d71_available"] = () => {
-    return player.upgrades['d41'].amt > 0;
+    return player.upgrades['d41'].amt > 0 && max_dimensional_shifts() > 2;
 }
 functions["upg_d72_available"] = () => {
     // achievement 88: keep all automation
     if (player.upgrades['d72'].amt > 0 && player.achievements['88'].complete) return true;
-    return player.upgrades['d41'].amt > 0;
+    return player.upgrades['d41'].amt > 0 && max_dimensional_shifts() > 2;
 }
 functions["upg_d81_available"] = () => {
     return player.upgrades['d41'].amt > 0 && max_dimensional_shifts() > 2;
 }
 functions["upg_d91_available"] = () => {
-    return player.upgrades['d81'].amt > 0;
+    return player.upgrades['d81'].amt > 0 && max_dimensional_shifts() > 3;
 }
 functions["upg_d92_available"] = () => {
-    return player.upgrades['d81'].amt > 0;
+    return player.upgrades['d81'].amt > 0 && max_dimensional_shifts() > 3;
 }
 functions["upg_d101_available"] = () => {
-    return player.upgrades['d81'].amt > 0;
+    return player.upgrades['d81'].amt > 0 && max_dimensional_shifts() > 3;
 }
 functions["upg_d102_available"] = () => {
-    return player.upgrades['d81'].amt > 0;
+    return player.upgrades['d81'].amt > 0 && max_dimensional_shifts() > 3;
 }
 functions["upg_d103_available"] = () => {
-    return player.upgrades['d81'].amt > 0;
+    return player.upgrades['d81'].amt > 0 && max_dimensional_shifts() > 3;
 }
 functions["upg_d111_available"] = () => {
-    return player.upgrades['d81'].amt > 0;
+    return player.upgrades['d81'].amt > 0 && max_dimensional_shifts() > 3;
 }
 functions["upg_d112_available"] = () => {
-    return player.upgrades['d81'].amt > 0;
+    return player.upgrades['d81'].amt > 0 && max_dimensional_shifts() > 3;
 }
 functions["upg_d113_available"] = () => {
-    return player.upgrades['d81'].amt > 0;
+    return player.upgrades['d81'].amt > 0 && max_dimensional_shifts() > 3;
 }
 functions["upg_d114_available"] = () => {
-    return player.upgrades['d81'].amt > 0;
+    return player.upgrades['d81'].amt > 0 && max_dimensional_shifts() > 3;
 }
 functions["upg_d121_available"] = () => {
-    return player.upgrades['d81'].amt > 0;
+    return player.upgrades['d81'].amt > 0 && max_dimensional_shifts() > 3;
 }
 functions["upg_d122_available"] = () => {
-    return player.upgrades['d81'].amt > 0;
+    return player.upgrades['d81'].amt > 0 && max_dimensional_shifts() > 3;
 }
 functions["upg_d123_available"] = () => {
-    return player.upgrades['d81'].amt > 0;
+    return player.upgrades['d81'].amt > 0 && max_dimensional_shifts() > 3;
 }
 functions["upg_d131_available"] = () => {
-    return player.upgrades['d81'].amt > 0;
+    return player.upgrades['d81'].amt > 0 && max_dimensional_shifts() > 3;
 }
 functions["upg_d132_available"] = () => {
-    return player.upgrades['d81'].amt > 0;
+    return player.upgrades['d81'].amt > 0 && max_dimensional_shifts() > 3;
 }
 functions["upg_d141_available"] = () => {
     return player.upgrades['d81'].amt > 0 && max_dimensional_shifts() > 3;

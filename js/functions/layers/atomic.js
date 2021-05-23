@@ -27,6 +27,9 @@ function prestige_earn_collision_knowledge() {
     // achievement 121: double gain
     if (player.achievements['121'].complete) base_income = base_income.mult(2);
 
+    // experiments boost CK gain
+    if (player.evolutions['b12'].is_active()) base_income = base_income.pow(get_current_experiment_effect());
+
     return base_income.rounddown().max(0);
 }
 function can_atomic() {
@@ -68,6 +71,11 @@ function reset_atomic(force=false, higher_reset=false, autobuyer_induced=false, 
     if (!player.milestones['a05_2'].is_active()) {
         player.atoms = player.atoms.min(player.challenge_strength_4);
         player.collision_knowledge = player.collision_knowledge.min(player.challenge_strength_4);
+    }
+
+    // Exit Experiments automatically
+    if ((player.settings['exit_experiments_on_atomic'] && !higher_reset) || (player.settings['exit_experiments_on_higher_reset'] && higher_reset)) {
+        exit_experiments();
     }
 
     for (let key of Object.keys(player.dimensions)) {

@@ -11,6 +11,12 @@ function screen_update_settings() {
         else element.style.display = "none";
     }
 
+    // Experiments
+    for (let element of document.getElementsByClassName("unlock-on-experiments")) {
+        if (player.experienced_experiments) element.style.display = "";
+        else element.style.display = "none";
+    }
+
     // update settings
     for (let key of Object.keys(player.settings)) {
         player.settings[key] = radio_get_setting(key);

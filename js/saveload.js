@@ -1,5 +1,5 @@
 var SAVE_NORMAL_VARS = ["unlocked_photonic", "unlocked_gravitonic", "unlocked_neutronic", "unlocked_vacuumic", "unlocked_dimensional", "unlocked_atomic", "unlocked_biological",
-                        "experienced_dilation", "unlocked_st_autobuyers", "unlocked_wave_autobuyers", "uncapped_atoms", 
+                        "experienced_dilation", "unlocked_st_autobuyers", "unlocked_wave_autobuyers", "uncapped_atoms", "experienced_experiments",
                         "activated_st_autobuyers",               
                         "time_passed", "overall_time", "best_time_speed", "last_update_ts",
                         "inertia_multiplier", "inertia_enabled", "heating_enabled", "heating_smart_distribution", "auto_assigner_enabled",
@@ -66,6 +66,13 @@ function create_save() {
         }
     }
 
+    data["experiments"] = {};
+    if (player.experiments !== undefined) {
+        for (let key of Object.keys(player.experiments)) {
+            data["experiments"][key] = player.experiments[key].create_save();
+        }
+    }
+
     return data;
 }
 
@@ -103,6 +110,12 @@ function load_save(data) {
     if (data["evolutions"] !== undefined) {
         for (let key of Object.keys(data["evolutions"])) {
             if (player.evolutions.hasOwnProperty(key)) player.evolutions[key].load_save(data["evolutions"][key]);
+        }
+    }
+
+    if (data["experiments"] !== undefined) {
+        for (let key of Object.keys(data["experiments"])) {
+            if (player.experiments.hasOwnProperty(key)) player.experiments[key].load_save(data["experiments"][key]);
         }
     }
 

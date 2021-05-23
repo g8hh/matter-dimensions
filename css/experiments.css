@@ -1,0 +1,100 @@
+.current-experiments-outer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+    margin-top: 10px;
+}
+
+.current-experiments {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+
+    margin-bottom: 30px;
+}
+
+.current-experiments-list {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.current-experiments-list > p {
+    text-align: center;
+}
+.current-experiments-list > p .level {
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+.current-experiments-list .title {
+    font-size: 1.25em;
+    margin-bottom: 5px;
+}
+
+
+.experiment-desc {
+    margin-bottom: 30px;
+}
+
+.experiment-desc > .title {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.experiment-desc-table {
+    display: grid;
+    grid-auto-rows: 1fr;
+    gap: 5px;
+}
+
+.experiment-desc > .table-header, .experiment-desc-table > .table-line {
+    display: grid;
+    grid-template-columns: 8em 1fr 8em 3em;
+    gap: 5px;
+}
+
+.experiment-desc > .table-header {
+    margin-bottom: 10px;
+}
+
+.experiment-desc > .table-header > p {
+    font-size: 1.25em;
+    text-align: center;
+    align-self: flex-end;
+}
+
+.experiment-desc-table > .table-line > div {
+    background-color: var(--color-200);
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.experiment-desc-table > .table-line.selected > div {
+    background-color: var(--color-uncertain);
+}
+.experiment-desc-table > .table-line.current > div {
+    background-color: var(--color-bought);
+}
+
+.experiment-desc-table > .table-line > input {
+    width: 1.5em;
+    height: 1.5em;
+    justify-self: center;
+    align-self: center;
+}
+
+.experiment-desc-table > .table-line .level {
+    font-size: 2em;
+    text-align: center;
+}
+
+.experiment-desc-table > .table-line .effect {
+    font-size: 1.4em;
+    text-align: center;
+}

@@ -479,7 +479,8 @@ input {
     padding: 0.2em;
     border-radius: 0.2em;
     min-width: 12em;
-    margin-top: 3px;
+    margin-top: 5px;
+    margin-bottom: 5px;
     background-color: var(--color-500);
 }
 .tickspeed-wrapper .upgrade:hover {

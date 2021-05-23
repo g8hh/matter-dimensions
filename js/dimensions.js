@@ -19,6 +19,7 @@ class Dimension {
         var base_production = functions[this.power_function](this.amt_bought, this.amt);
 
         if (!this.unconventional) {
+            base_production = base_production.mult(omniboost());
             // Achievement bonus
             base_production = base_production.mult(player.achievement_multiplier);
             // Challenge 2: all production greater than X is raised to power of Y
@@ -219,4 +220,13 @@ class Dimension {
         this.amt.load_save(data[8]);
         this.amt_bought = data[9];
     }
+}
+
+function omniboost() {
+    let boost = big(1);
+
+    // "Quantum Entanglement" experiment: all dimension multipliers are smaller
+    if (player.evolutions['b12'].is_active()) boost = boost.div(player.experiments['quantum_entanglement'].get_nerf());
+
+    return boost;
 }

@@ -467,6 +467,9 @@ function update_prestige() {
     // Uncapped atoms
     if (player.milestones['a05_2'].is_active()) player.uncapped_atoms = true;
 
+    // Unlocked experiments
+    if (player.evolutions['b12'].is_active()) player.experienced_experiments = true;
+
     // Scrollable prestige menu
     if (player.settings["separate_scroll_right"]) document.getElementsByClassName('prestige-menu')[0].classList.add('scrollable');
     else document.getElementsByClassName('prestige-menu')[0].classList.remove('scrollable');

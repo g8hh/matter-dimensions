@@ -57,6 +57,7 @@ class Player {
         this.unlocked_st_autobuyers = false;
         this.unlocked_wave_autobuyers = false;
         this.uncapped_atoms = false;
+        this.experienced_experiments = false;
 
         this.activated_st_autobuyers = true;
 
@@ -638,6 +639,13 @@ class Player {
             "dimensional": ""
         };
 
+        this.experiments = {};
+        this.experiments["bullet_time"] = new Experiment("bullet_time", "atomic_experiments", "bullet_time_nerf", "atomic_experiment_effect");
+        this.experiments["controlled_reaction"] = new Experiment("controlled_reaction", "atomic_experiments", "controlled_reaction_nerf", "atomic_experiment_effect");
+        this.experiments["quantum_entanglement"] = new Experiment("quantum_entanglement", "atomic_experiments", "quantum_entanglement_nerf", "atomic_experiment_effect");
+        this.experiments["capacity_studies"] = new Experiment("capacity_studies", "atomic_experiments", "capacity_studies_nerf", "atomic_experiment_effect");
+        this.experiments["projection_analysis"] = new Experiment("projection_analysis", "atomic_experiments", "projection_analysis_nerf", "atomic_experiment_effect");
+
         this.autobuyers = {};
         this.autobuyers["matter_1"] = new Autobuyer("matter_1", this.dimensions["matter_1"], "autobuyer_matter_1_available");
         this.autobuyers["matter_2"] = new Autobuyer("matter_2", this.dimensions["matter_2"], "autobuyer_matter_2_available");
@@ -883,6 +891,7 @@ var default_settings = {
     "prestige_confirmation_vacuumic_tree": true,
     "prestige_confirmation_dimensional": true,
     "prestige_confirmation_atomic": true,
+    "prestige_confirmation_experiments": true,
     "prestige_confirmation_biological": true,
     "prestige_confirmation_extinction": true,
 
@@ -897,6 +906,8 @@ var default_settings = {
     "enable_vtree_autobuyer_on_preset_load": true,
     "hide_saving_vtree_presets": false,
     "auto_disable_auto_assigner": true,
+    "exit_experiments_on_atomic": false,
+    "exit_experiments_on_higher_reset": true,
 };
 
 var player = new Player();

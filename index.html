@@ -36,6 +36,7 @@
         <script src="js/functions/challenges/dimensional.js?rev=25" defer></script>
         <script src="js/functions/milestones/temperature.js?rev=25" defer></script>
         <script src="js/functions/milestones/atomic.js?rev=25" defer></script>
+        <script src="js/functions/experiments/atomic.js?rev=25" defer></script>
         <script src="js/functions/achievement_checks.js?rev=25" defer></script>
         <script src="js/functions/challenge_resets.js?rev=25" defer></script>
         <script src="js/functions/autobuyer_availability.js?rev=25" defer></script>
@@ -57,6 +58,7 @@
         <script src="js/mechanics/temperature.js?rev=25" defer></script>
         <script src="js/mechanics/collider.js?rev=25" defer></script>
         <script src="js/mechanics/population.js?rev=25" defer></script>
+        <script src="js/mechanics/experiments.js?rev=25" defer></script>
         <script src="js/bignum.js?rev=25" defer></script>
         <script src="js/nerfs.js?rev=25" defer></script>
         <script src="js/prestige.js?rev=25" defer></script>
@@ -68,6 +70,7 @@
         <script src="js/challenges.js?rev=25" defer></script>
         <script src="js/autobuyers.js?rev=25" defer></script>
         <script src="js/milestones.js?rev=25" defer></script>
+        <script src="js/experiments.js?rev=25" defer></script>
         <script src="js/mechanics.js?rev=25" defer></script>
         <script src="js/other.js?rev=25" defer></script>
         <script src="js/saveload.js?rev=25" defer></script>
@@ -79,6 +82,7 @@
 
         <link rel="stylesheet" type="text/css" href="index.css?rev=25">
         <link rel="stylesheet" type="text/css" href="css/st_presets.css?rev=25">
+        <link rel="stylesheet" type="text/css" href="css/experiments.css?rev=25">
         <link rel="stylesheet" type="text/css" href="css/newsticker.css?rev=25">
         <link rel="stylesheet" type="text/css" href="css/themes.css?rev=25">
         <link rel="stylesheet" type="text/css" href="mobile.css?rev=25">
@@ -4404,7 +4408,244 @@
                     </div>
 
                     <div id="atomic_experiments" style="display: none">
-                    
+                        <p>Experiments are nerfs with different difficulty levels. You can pick any combination of Experiments.<br>
+                        While you are running some Experiments, their nerfs affect your production, but the Collision Knowledge gain is increased.<br>
+                        Entering Experiments requires performing an Atomic reset.<br>
+                        You can exit Experiments at any time without resetting anything, but their reward will be lost.<br>
+                        You automatically leave your Experiments on Biological or higher resets. This can be changed in Settings.</p>
+                        <div class="current-experiments-outer">
+                            <div class="current-experiments">
+                                <div id="mechanic_experiments_current_list" class="current-experiments-list">
+                                    <p class="title">Current Experiments</p>
+                                    <p>Bullet Time <span class="level" experiment="bullet_time"></span></p>
+                                    <p>Controlled Reaction <span class="level" experiment="controlled_reaction"></span></p>
+                                    <p>Quantum Entanglement <span class="level" experiment="quantum_entanglement"></span></p>
+                                    <p>Capacity Studies <span class="level" experiment="capacity_studies"></span></p>
+                                    <p>Projection Analysis <span class="level" experiment="projection_analysis"></span></p>
+                                </div>
+                                <div id="mechanic_experiments_selected_list" class="current-experiments-list">
+                                    <p class="title">Selected Experiments</p>
+                                    <p>Bullet Time <span class="level" experiment="bullet_time"></span></p>
+                                    <p>Controlled Reaction <span class="level" experiment="controlled_reaction"></span></p>
+                                    <p>Quantum Entanglement <span class="level" experiment="quantum_entanglement"></span></p>
+                                    <p>Capacity Studies <span class="level" experiment="capacity_studies"></span></p>
+                                    <p>Projection Analysis <span class="level" experiment="projection_analysis"></span></p>
+                                </div>
+                                <p style="text-align: center">CK gain ^<span id="mechanic_experiments_current_effect"></span></p>
+                                <p style="text-align: center">CK gain ^<span id="mechanic_experiments_selected_effect"></span></p>
+                                <div class="setting-button" onclick="exit_experiments()">
+                                    <p>Exit Experiments</p>
+                                </div>
+                                <div class="setting-button" onclick="start_experiments()">
+                                    <p>Start Experiments</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="experiment-desc">
+                            <p class="title">Bullet Time</p>
+                            <div class="table-header">
+                                <p>Level</p>
+                                <p>Effect</p>
+                                <p>CK gain</p>
+                            </div>
+                            <div id="exp_table_bullet_time" class="experiment-desc-table">
+                                <label class="table-line" level="0">
+                                    <div><p class="level"></p></div>
+                                    <div><p>No effect.</p></div>
+                                    <div><p class="effect">^<span class="effect-value"></span></p></div>
+                                    <input type="radio" name="experiment_bullet_time" value="0">
+                                </label>
+                                <label class="table-line" level="1">
+                                    <div><p class="level"></p></div>
+                                    <div><p>Time is <span class="nerf-value"></span>× slower.</p></div>
+                                    <div><p class="effect">^<span class="effect-value"></span></p></div>
+                                    <input type="radio" name="experiment_bullet_time" value="1">
+                                </label>
+                                <label class="table-line" level="2">
+                                    <div><p class="level"></p></div>
+                                    <div><p>Time is <span class="nerf-value"></span>× slower.</p></div>
+                                    <div><p class="effect">^<span class="effect-value"></span></p></div>
+                                    <input type="radio" name="experiment_bullet_time" value="2">
+                                </label>
+                                <label class="table-line" level="3">
+                                    <div><p class="level"></p></div>
+                                    <div><p>Time is <span class="nerf-value"></span>× slower.</p></div>
+                                    <div><p class="effect">^<span class="effect-value"></span></p></div>
+                                    <input type="radio" name="experiment_bullet_time" value="3">
+                                </label>
+                                <label class="table-line" level="4">
+                                    <div><p class="level"></p></div>
+                                    <div><p>Time is <span class="nerf-value"></span>× slower.</p></div>
+                                    <div><p class="effect">^<span class="effect-value"></span></p></div>
+                                    <input type="radio" name="experiment_bullet_time" value="4">
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="experiment-desc">
+                            <p class="title">Controlled Reaction</p>
+                            <div class="table-header">
+                                <p>Level</p>
+                                <p>Effect</p>
+                                <p>CK gain</p>
+                            </div>
+                            <div id="exp_table_controlled_reaction" class="experiment-desc-table">
+                                <label class="table-line" level="0">
+                                    <div><p class="level"></p></div>
+                                    <div><p>No effect.</p></div>
+                                    <div><p class="effect">^<span class="effect-value"></span></p></div>
+                                    <input type="radio" name="experiment_controlled_reaction" value="0">
+                                </label>
+                                <label class="table-line" level="1">
+                                    <div><p class="level"></p></div>
+                                    <div><p>Non-protected production multipliers are ^<span class="nerf-value"></span>.</p></div>
+                                    <div><p class="effect">^<span class="effect-value"></span></p></div>
+                                    <input type="radio" name="experiment_controlled_reaction" value="1">
+                                </label>
+                                <label class="table-line" level="2">
+                                    <div><p class="level"></p></div>
+                                    <div><p>Non-protected production multipliers are ^<span class="nerf-value"></span>.</p></div>
+                                    <div><p class="effect">^<span class="effect-value"></span></p></div>
+                                    <input type="radio" name="experiment_controlled_reaction" value="2">
+                                </label>
+                                <label class="table-line" level="3">
+                                    <div><p class="level"></p></div>
+                                    <div><p>Non-protected production multipliers are ^<span class="nerf-value"></span>.</p></div>
+                                    <div><p class="effect">^<span class="effect-value"></span></p></div>
+                                    <input type="radio" name="experiment_controlled_reaction" value="3">
+                                </label>
+                                <label class="table-line" level="4">
+                                    <div><p class="level"></p></div>
+                                    <div><p>Non-protected production multipliers are ^<span class="nerf-value"></span>.</p></div>
+                                    <div><p class="effect">^<span class="effect-value"></span></p></div>
+                                    <input type="radio" name="experiment_controlled_reaction" value="4">
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="experiment-desc">
+                            <p class="title">Quantum Entanglement</p>
+                            <div class="table-header">
+                                <p>Level</p>
+                                <p>Effect</p>
+                                <p>CK gain</p>
+                            </div>
+                            <div id="exp_table_quantum_entanglement" class="experiment-desc-table">
+                                <label class="table-line" level="0">
+                                    <div><p class="level"></p></div>
+                                    <div><p>No effect.</p></div>
+                                    <div><p class="effect">^<span class="effect-value"></span></p></div>
+                                    <input type="radio" name="experiment_quantum_entanglement" value="0">
+                                </label>
+                                <label class="table-line" level="1">
+                                    <div><p class="level"></p></div>
+                                    <div><p>Each dimension is <span class="nerf-value"></span>× slower than the previous one.<br>All dimension multipliers are divided by <span class="nerf-value"></span>.</p></div>
+                                    <div><p class="effect">^<span class="effect-value"></span></p></div>
+                                    <input type="radio" name="experiment_quantum_entanglement" value="1">
+                                </label>
+                                <label class="table-line" level="2">
+                                    <div><p class="level"></p></div>
+                                    <div><p>Each dimension is <span class="nerf-value"></span>× slower than the previous one.<br>All dimension multipliers are divided by <span class="nerf-value"></span>.</p></div>
+                                    <div><p class="effect">^<span class="effect-value"></span></p></div>
+                                    <input type="radio" name="experiment_quantum_entanglement" value="2">
+                                </label>
+                                <label class="table-line" level="3">
+                                    <div><p class="level"></p></div>
+                                    <div><p>Each dimension is <span class="nerf-value"></span>× slower than the previous one.<br>All dimension multipliers are divided by <span class="nerf-value"></span>.</p></div>
+                                    <div><p class="effect">^<span class="effect-value"></span></p></div>
+                                    <input type="radio" name="experiment_quantum_entanglement" value="3">
+                                </label>
+                                <label class="table-line" level="4">
+                                    <div><p class="level"></p></div>
+                                    <div><p>Each dimension is <span class="nerf-value"></span>× slower than the previous one.<br>All dimension multipliers are divided by <span class="nerf-value"></span>.</p></div>
+                                    <div><p class="effect">^<span class="effect-value"></span></p></div>
+                                    <input type="radio" name="experiment_quantum_entanglement" value="4">
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="experiment-desc">
+                            <p class="title">Capacity Studies</p>
+                            <div class="table-header">
+                                <p>Level</p>
+                                <p>Effect</p>
+                                <p>CK gain</p>
+                            </div>
+                            <div id="exp_table_capacity_studies" class="experiment-desc-table">
+                                <label class="table-line" level="0">
+                                    <div><p class="level"></p></div>
+                                    <div><p>No effect.</p></div>
+                                    <div><p class="effect">^<span class="effect-value"></span></p></div>
+                                    <input type="radio" name="experiment_capacity_studies" value="0">
+                                </label>
+                                <label class="table-line" level="1">
+                                    <div><p class="level"></p></div>
+                                    <div><p>The resource limit is ^<span class="nerf-value"></span>.</p></div>
+                                    <div><p class="effect">^<span class="effect-value"></span></p></div>
+                                    <input type="radio" name="experiment_capacity_studies" value="1">
+                                </label>
+                                <label class="table-line" level="2">
+                                    <div><p class="level"></p></div>
+                                    <div><p>The resource limit is ^<span class="nerf-value"></span>.</p></div>
+                                    <div><p class="effect">^<span class="effect-value"></span></p></div>
+                                    <input type="radio" name="experiment_capacity_studies" value="2">
+                                </label>
+                                <label class="table-line" level="3">
+                                    <div><p class="level"></p></div>
+                                    <div><p>The resource limit is ^<span class="nerf-value"></span>.</p></div>
+                                    <div><p class="effect">^<span class="effect-value"></span></p></div>
+                                    <input type="radio" name="experiment_capacity_studies" value="3">
+                                </label>
+                                <label class="table-line" level="4">
+                                    <div><p class="level"></p></div>
+                                    <div><p>The resource limit is ^<span class="nerf-value"></span>.</p></div>
+                                    <div><p class="effect">^<span class="effect-value"></span></p></div>
+                                    <input type="radio" name="experiment_capacity_studies" value="4">
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="experiment-desc">
+                            <p class="title">Projection Analysis</p>
+                            <div class="table-header">
+                                <p>Level</p>
+                                <p>Effect</p>
+                                <p>CK gain</p>
+                            </div>
+                            <div id="exp_table_projection_analysis" class="experiment-desc-table">
+                                <label class="table-line" level="0">
+                                    <div><p class="level"></p></div>
+                                    <div><p>No effect.</p></div>
+                                    <div><p class="effect">^<span class="effect-value"></span></p></div>
+                                    <input type="radio" name="experiment_projection_analysis" value="0">
+                                </label>
+                                <label class="table-line" level="1">
+                                    <div><p class="level"></p></div>
+                                    <div><p>You can do <span class="nerf-value"></span> less Dimensional shifts.</p></div>
+                                    <div><p class="effect">^<span class="effect-value"></span></p></div>
+                                    <input type="radio" name="experiment_projection_analysis" value="1">
+                                </label>
+                                <label class="table-line" level="2">
+                                    <div><p class="level"></p></div>
+                                    <div><p>You can do <span class="nerf-value"></span> less Dimensional shifts.</p></div>
+                                    <div><p class="effect">^<span class="effect-value"></span></p></div>
+                                    <input type="radio" name="experiment_projection_analysis" value="2">
+                                </label>
+                                <label class="table-line" level="3">
+                                    <div><p class="level"></p></div>
+                                    <div><p>You can do <span class="nerf-value"></span> less Dimensional shifts.</p></div>
+                                    <div><p class="effect">^<span class="effect-value"></span></p></div>
+                                    <input type="radio" name="experiment_projection_analysis" value="3">
+                                </label>
+                                <label class="table-line" level="4">
+                                    <div><p class="level"></p></div>
+                                    <div><p>You can do <span class="nerf-value"></span> less Dimensional shifts.</p></div>
+                                    <div><p class="effect">^<span class="effect-value"></span></p></div>
+                                    <input type="radio" name="experiment_projection_analysis" value="4">
+                                </label>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -5298,6 +5539,7 @@
                             <label class="settings-block-selector-checkbox display-none-until-vacuumic" style="margin-left: 1em; font-size: 0.8em"><input type="checkbox" name="prestige_confirmation_vacuumic_tree"><p>on Space Theorem tree reset, if you will lose Vacuum Energy due to resource limit reduction</p></label>
                             <label class="settings-block-selector-checkbox display-none-until-dimensional"><input type="checkbox" name="prestige_confirmation_dimensional"><p>on Dimensional reset</p></label>
                             <label class="settings-block-selector-checkbox display-none-until-atomic"><input type="checkbox" name="prestige_confirmation_atomic"><p>on Atomic reset</p></label>
+                            <label class="settings-block-selector-checkbox unlock-on-experiments" style="margin-left: 1em; font-size: 0.8em"><input type="checkbox" name="prestige_confirmation_experiments"><p>on entering Experiments</p></label>
                             <label class="settings-block-selector-checkbox display-none-until-biological"><input type="checkbox" name="prestige_confirmation_biological"><p>on Biological reset</p></label>
                             <label id="perform_extinction_setting" class="settings-block-selector-checkbox" style="margin-left: 1em; font-size: 0.8em; display: none"><input type="checkbox" name="prestige_confirmation_extinction"><p>on Extinction</p></label>
                         </div>
@@ -5341,6 +5583,11 @@
                         <div class="unlock-on-auto-assigner">
                             <p>Collision Points auto-assigner:</p>
                             <label class="settings-block-selector-checkbox"><input type="checkbox" name="auto_disable_auto_assigner"><p>Disable auto-assigner on manual Collision Points change</p></label>
+                        </div>
+                        <div class="unlock-on-experiments">
+                            <p>Experiments:</p>
+                            <label class="settings-block-selector-checkbox"><input type="checkbox" name="exit_experiments_on_atomic"><p>Automatically exit Experiments on Atomic</p></label>
+                            <label class="settings-block-selector-checkbox"><input type="checkbox" name="exit_experiments_on_higher_reset"><p>Automatically exit Experiments on higher resets</p></label>
                         </div>
                     </div>
 
