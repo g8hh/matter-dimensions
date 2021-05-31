@@ -19,9 +19,27 @@ functions["evo_b06_cost"] = () => {
 functions["evo_b07_cost"] = () => {
     return big(4);
 }
+functions["evo_b08_cost"] = () => {
+    return big(6);
+}
+functions["evo_b09_cost"] = () => {
+    return big(8);
+}
+functions["evo_b10_cost"] = () => {
+    return big(16);
+}
+functions["evo_b11_cost"] = () => {
+    return big(48);
+}
+functions["evo_b12_cost"] = () => {
+    return big(720);
+}
 
 functions["evo_b01_power"] = (x) => {
-    return x.div(3).add(1).log(10).div(3).add(1).log(10).add(1);
+    let base_pow = x.div(3).add(1).log(10).div(3).add(1).log(10).add(1);
+    // a12_1: fertility upgrades are boosted
+    if (player.milestones['a12_1'].is_active()) base_pow = base_pow.mult(player.milestones['a12_1'].get_effect().div(100).add(1));
+    return base_pow;
 }
 functions["evo_b02_power"] = (x) => {
     return x.pow(3).max(1);
@@ -33,13 +51,34 @@ functions["evo_b04_power"] = (x) => {
     return x.add(1).log(10).pow(0.5).rounddown();
 }
 functions["evo_b05_power"] = (x) => {
-    return x.add(1).log(10).add(1).log(10).mult(2);
+    let base_pow = x.add(1).log(10).add(1).log(10).mult(2);
+    // a12_1: fertility upgrades are boosted
+    if (player.milestones['a12_1'].is_active()) base_pow = base_pow.mult(player.milestones['a12_1'].get_effect().div(100).add(1));
+    return base_pow;
 }
 functions["evo_b06_power"] = (x) => {
     return x.add(1).log(2).add(1);
 }
 functions["evo_b07_power"] = (x) => {
     return x.max(1).log(10).pow(0.5).div(x.max(1).log(10).pow(0.5).add(40)).mult(1024).div(308.25).add(1);
+}
+functions["evo_b08_power"] = (x) => {
+    return x.add(1).log(10).add(1);
+}
+functions["evo_b09_power"] = (x) => {
+    let base_pow = x.div(10).add(1).log(10).div(2).add(1).log(10).mult(3);
+    // a12_1: fertility upgrades are boosted
+    if (player.milestones['a12_1'].is_active()) base_pow = base_pow.mult(player.milestones['a12_1'].get_effect().div(100).add(1));
+    return base_pow;
+}
+functions["evo_b10_power"] = (x) => {
+    return x.add(1).log(10).pow(0.5).add(1);
+}
+functions["evo_b11_power"] = (x) => {
+    return x.add(1).log(2).add(1).log(2).pow(2).add(1);
+}
+functions["evo_b12_power"] = (x) => {
+    return x.add(1).log(10).add(1).log(10).add(1).pow(0.5);
 }
 
 functions["evo_b01_secondary"] = () => {
@@ -68,6 +107,21 @@ functions["evo_b06_secondary"] = () => {
     return big(1);
 }
 functions["evo_b07_secondary"] = () => {
+    return big(1);
+}
+functions["evo_b08_secondary"] = () => {
+    return big(1);
+}
+functions["evo_b09_secondary"] = () => {
+    return big(10).pow(player.matter.add(1).log(10).pow(0.75));
+}
+functions["evo_b10_secondary"] = () => {
+    return player.genes.add(1);
+}
+functions["evo_b11_secondary"] = () => {
+    return big(1);
+}
+functions["evo_b12_secondary"] = () => {
     return big(1);
 }
 

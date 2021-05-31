@@ -6,6 +6,7 @@ body {
     margin: 0px;
     background-color: var(--color-100);
 
+    --color-000: #06080A;
     --color-100: #1B262C;
     --color-200: #203D4E;
     --color-300: #275877;
@@ -15,32 +16,28 @@ body {
     --color-700: #8CB9D8;
     --color-800: #C1D9EA;
     --color-900: #F7FAFC;
+
+    --color-bought: #008000;
+    --color-overlay: #00000080;
+    --color-achievement: #00000080;
+    --color-achievement-complete: #00FF0080;
+    --color-achievement-effective: #00002280;
+    --color-achievement-effective-complete: #00FFFF80;
+
+    --color-block-red: #80000040;
+    --color-block-yellow: #80800040;
+    --color-block-green: #00800040;
+    --color-red-muted: #800000;
+    --color-green-muted: #006000;
+    --color-red: #C00000;
+    --color-yellow: #C0C000;
+    --color-green: #00C000;
+
+    --color-uncertain: #806400;
 
     --font-family: 'larabiefont_rg', 'Courier New', Courier, monospace;
 }
 
-.theme-blue {
-    --color-100: #1B262C;
-    --color-200: #203D4E;
-    --color-300: #275877;
-    --color-400: #2C6C97;
-    --color-500: #3483B8;
-    --color-600: #639CB8;
-    --color-700: #8CB9D8;
-    --color-800: #C1D9EA;
-    --color-900: #F7FAFC;
-}
-.theme-yellow {
-    --color-100: #2C261B;
-    --color-200: #4E3D20;
-    --color-300: #775827;
-    --color-400: #976C2C;
-    --color-500: #B88334;
-    --color-600: #B89C63;
-    --color-700: #D8B98C;
-    --color-800: #EAD9C1;
-    --color-900: #FCFAF7;
-}
 
 .font-larabiefont {
     --font-family: 'larabiefont_rg', 'Courier New', Courier, monospace;
@@ -76,6 +73,7 @@ input {
     height: 100%;
     min-height: 100vh;
     align-items: stretch;
+    box-sizing: border-box;
 }
 
 .settings-menu, .prestige-menu {
@@ -86,7 +84,7 @@ input {
     padding: 10px;
 }
 
-.settings-menu-wrapper, .prestige-menu {
+.settings-menu-wrapper, .prestige-menu-wrapper {
     display: flex;
     flex-direction: column;
     align-items: stretch;
@@ -99,7 +97,7 @@ input {
     height: calc(100vh - 20px);
 }
 
-.settings-menu-wrapper > div, .prestige-menu > div, .settings-submenu > div {
+.settings-menu-wrapper > div, .prestige-menu-wrapper > div, .settings-submenu > div {
     margin-bottom: 10px;
 }
 
@@ -207,7 +205,7 @@ input {
     top: 0;
     bottom: 0;
 
-    background-color: #00000080;
+    background-color: var(--color-overlay);
 }
 .overlay-window {
     position: fixed;
@@ -267,7 +265,7 @@ input {
 
     display: grid;
     grid-template-columns: repeat(8, 1fr);
-    grid-template-rows: repeat(14, 1fr);
+    grid-template-rows: repeat(16, 1fr);
     grid-gap: 10px;
 }
 .achievement-list div::before {
@@ -280,7 +278,7 @@ input {
 .achievement {
     position: relative;
     border-radius: 10%;
-    background-color: #00000080;
+    background-color: var(--color-achievement);
 }
 .achievement p {
     position: absolute;
@@ -294,6 +292,7 @@ input {
 .achievement:hover::after {
     content: attr(data-desc);
     position: absolute;
+    color: var(--color-000);
     left: 20%; top: 20%; right: -20%;
     z-index: 1;
     background-color: var(--color-700);
@@ -308,13 +307,13 @@ input {
     margin: 10px;
 }
 .achievement.complete {
-    background-color: #00FF0080;
+    background-color: var(--color-achievement-complete);
 }
 .achievement.effective {
-    background-color: #00002280;
+    background-color: var(--color-achievement-effective);
 }
 .achievement.effective.complete {
-    background-color: #00FFFF80;
+    background-color: var(--color-achievement-effective-complete);
 }
 
 .upgrade-list-photonic {
@@ -368,7 +367,7 @@ input {
     cursor: auto;
 }
 .upgrade.complete {
-    background-color: #008000;
+    background-color: var(--color-bought);
     cursor: auto;
 }
 /*.upgrade.partial {
@@ -392,31 +391,31 @@ input {
     border: 5px var(--color-200) solid;
 }
 .neutronic-block-matter {
-    background-color: #80000040;
+    background-color: var(--color-block-red);
 }
 .neutronic-block-photonic {
-    background-color: #80800040;
+    background-color: var(--color-block-yellow);
 }
 .neutronic-block-gravitonic {
-    background-color: #00800040;
+    background-color: var(--color-block-green);
 }
 .neutronic-number-matter {
-    color: #C00000;
+    color: var(--color-red);
 }
 .neutronic-number-photonic {
-    color: #C0C000;
+    color: var(--color-yellow);
 }
 .neutronic-number-gravitonic {
-    color: #00C000;
+    color: var(--color-green);
 }
 .vacuumic-tree-line {
     background-color: var(--color-200);
 }
 .vacuumic-tree-line.active {
-    background-color: #008000;
+    background-color: var(--color-bought);
 }
 .vacuumic-tree-line.possible {
-    background-color: #806400;
+    background-color: var(--color-uncertain);
 }
 
 .challenge-page {
@@ -454,10 +453,10 @@ input {
     text-align: center;
 }
 .challenge-card.in-progress .challenge-name, .challenge-card.in-progress .challenge-desc {
-    background-color: #806400;
+    background-color: var(--color-uncertain);
 }
 .challenge-card.complete .challenge-name, .challenge-card.complete .challenge-desc {
-    background-color: #008000;
+    background-color: var(--color-bought);
 }
 
 .statistics-page {
@@ -480,7 +479,8 @@ input {
     padding: 0.2em;
     border-radius: 0.2em;
     min-width: 12em;
-    margin-top: 3px;
+    margin-top: 5px;
+    margin-bottom: 5px;
     background-color: var(--color-500);
 }
 .tickspeed-wrapper .upgrade:hover {
@@ -542,10 +542,10 @@ input {
     align-self: center;
 }
 .red-button {
-    background-color: #800000;
+    background-color: var(--color-red-muted);
 }
 .red-button:hover {
-    background-color: #C00000;
+    background-color: var(--color-red);
 }
 .settings-block-selector-option {
     padding-left: 20px;
@@ -571,6 +571,14 @@ input {
     margin: 0px;
     margin-right: 10px;
 }
+.settings-block-selector-slider {
+    font-size: 0.9em;
+    user-select: none;
+}
+.settings-page-block .desc {
+    font-size: 0.9em;
+    margin-bottom: 0px;
+}
 
 .subsection-header {
     font-size: 1.5em;
@@ -589,7 +597,7 @@ input {
 }
 .temperature-milestone {
     display: grid;
-    grid-template-columns: 20% 80%;
+    grid-template-columns: 25% 75%;
     gap: 5px;
 }
 .temperature-milestone-goal {
@@ -623,7 +631,7 @@ input {
     background-color: var(--color-200);
 }
 .milestone.complete {
-    background-color: #008000;
+    background-color: var(--color-bought);
 }
 
 .automation-shop-layout {
@@ -818,7 +826,7 @@ input {
     background-color: var(--color-200);
 }
 .collider-reaction-formula.active .collider-reaction-formula-bg {
-    background-color: #008000;
+    background-color: var(--color-bought);
 }
 .two-numbers {
     font-size: 0.5em;
@@ -874,7 +882,7 @@ input {
 }
 #achievement_track > p {
     margin-bottom: 5px;
-    background-color: #008000;
+    background-color: var(--color-bought);
     cursor: pointer;
     padding: 10px;
     font-size: 1.1em;
@@ -941,7 +949,7 @@ input {
     cursor: auto;
 }
 .evolution.complete {
-    background-color: #006000;
+    background-color: var(--color-green-muted);
     cursor: auto;
 }
 .evolution .name {
@@ -969,7 +977,7 @@ input {
     grid-row: 4;
     grid-column: 1;
     justify-self: flex-start;
-    background-color: #008000;
+    background-color: var(--color-bought);
 }
 .evolution .progress-bar-layout {
     grid-row: 4;
@@ -993,4 +1001,18 @@ input {
 .autobuyer-toggle {
     padding-left: 10px; 
     padding-right: 10px;
+}
+
+.prestige-menu.scrollable .prestige-menu-wrapper {
+    width: inherit;
+    position: sticky;
+    top: 10px;
+    height: calc(100vh - 20px);
+    position: sticky;
+    overflow-y: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+.prestige-menu.scrollable .prestige-menu-wrapper::-webkit-scrollbar {
+    display: none;
 }

@@ -24,6 +24,8 @@ function prestige_earn_photons() {
     if (player.challenges['v4'].completed) base_photons = base_photons.mult(4);
     // evolution b02: Photon gain is multiplied
     if (player.evolutions['b02'].is_active()) base_photons = base_photons.mult(player.evolutions['b02'].get_secondary_effect());
+    // challenge d7: Photon gain is multiplied
+    if (!player.challenges['d0'].inC() && (player.challenges['d7'].inC() || player.challenges['d7'].completed)) base_photons = base_photons.mult(player.challenges['d7'].get_effect());
 
     // Vacuumic Challenge 4: Photon gain is raised to the power of 0.25
     if (player.challenges['v4'].inC()) base_photons = base_photons.pow(0.25);
@@ -64,6 +66,8 @@ function photonic_hint_next(amt) {
     if (player.challenges['v4'].completed) resource_need = resource_need.div(4);
     // evolution b02: Photon gain is multiplied
     if (player.evolutions['b02'].is_active()) resource_need = resource_need.div(player.evolutions['b02'].get_secondary_effect());
+    // challenge d7: Photon gain is multiplied
+    if (!player.challenges['d0'].inC() && (player.challenges['d7'].inC() || player.challenges['d7'].completed)) resource_need = resource_need.div(player.challenges['d7'].get_effect());
 
     let formula_exponent = new BigNumber(0.2);
     // p22: improve photon gain

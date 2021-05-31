@@ -4,8 +4,12 @@ function prestige_earn_shards() {
     let base_income = big(0);
 
     for (let key of Object.keys(player.dimensions)) {
-        // d123: all dimensions count for Shard gain
-        if ((key.includes("matter_") || player.upgrades['d123'].is_active()) && player.dimensions[key].level >= 3) {
+        let lowest_dim = 3;
+        // challenge d3: 3rd Dims also count
+        if (!player.challenges['d0'].inC() && (player.challenges['d3'].inC() || player.challenges['d3'].completed)) lowest_dim = 2;
+
+        // d123: all dimensions count for Shard gain, higher ones double
+        if ((key.includes("matter_") || player.upgrades['d123'].is_active()) && player.dimensions[key].level >= lowest_dim) {
             // modify when adding new dimensions
             let reset_level = 0;
             if (key.includes("photonic_")) reset_level = 1;
@@ -16,7 +20,7 @@ function prestige_earn_shards() {
 
             let income_per_dim = big(0.1).mult(big(2).pow(reset_level));
             // d52: higher level dimensions give more shards
-            income_per_dim = income_per_dim.mult(player.upgrades['d52'].get_effect().pow(player.dimensions[key].level - 3));
+            income_per_dim = income_per_dim.mult(player.upgrades['d52'].get_effect().pow(Math.max(0, player.dimensions[key].level - lowest_dim)));
 
             base_income = base_income.add(big(player.dimensions[key].amt_bought).mult(income_per_dim));
         }
@@ -28,14 +32,26 @@ function prestige_earn_shards() {
     if (player.upgrades['d103'].is_active()) base_income = base_income.mult(player.upgrades['d103'].get_effect());
     // d114: gain more Shards
     if (player.upgrades['d114'].is_active()) base_income = base_income.mult(player.upgrades['d114'].get_effect());
+    // d123: gain more Shards
+    if (player.upgrades['d123'].is_active()) base_income = base_income.mult(player.upgrades['d123'].get_effect());
     // a06_2: gain more Shards
     if (player.milestones['a06_2'].is_active()) base_income = base_income.mult(player.milestones['a06_2'].get_effect());
+    // a09_1: gain more Shards
+    if (player.milestones['a09_1'].is_active()) base_income = base_income.mult(player.milestones['a09_1'].get_effect());
 
     // achievement 61: +1 base shard
     if (player.achievements['61'].complete) base_income = base_income.add(1);
 
     // achievement 111: +111% of Shards on reset
     if (player.achievements['111'].complete) base_income = base_income.mult(2.11);
+    // evolution b08: gain more Shards
+    if (player.evolutions['b08'].is_active()) base_income = base_income.mult(player.evolutions['b08'].get_effect());
+    // challenge d1: gain 10x more Shards
+    if (!player.challenges['d0'].inC() && (player.challenges['d1'].inC() || player.challenges['d1'].completed)) base_income = base_income.mult(10);
+    // challenge d2: gain more Shards
+    if (!player.challenges['d0'].inC() && (player.challenges['d2'].inC() || player.challenges['d2'].completed)) base_income = base_income.mult(player.challenges['d2'].get_effect());
+    // Temperature Milestone 7: gain more Shards
+    if (player.milestones['temperature_7'].is_active()) base_income = base_income.mult(player.milestones['temperature_7'].get_effect());
 
     return base_income.rounddown().max(1);
 }
@@ -61,7 +77,11 @@ function reset_dimensional(force=false, higher_reset=false, autobuyer_induced=fa
     if (!force && player.time_dimensional - player.time_passed < 1e-9) player.achievements['106'].award();
 
     // Challenge 4: all resources are capped
-    player.shards = player.shards.add(earned_shards).round().min(player.challenge_strength_4);
+    player.shards = player.shards.add(earned_shards).round();
+    // challenge d4: Shards are not affected by resource limit
+    if (!(!player.challenges['d0'].inC() && (player.challenges['d4'].inC() || player.challenges['d4'].completed))) {
+        player.shards = player.shards.min(player.challenge_strength_4);
+    }
 
     player.temperature_energy = big(0);
 
@@ -93,6 +113,8 @@ function reset_dimensional(force=false, higher_reset=false, autobuyer_induced=fa
     for (let key of Object.keys(player.upgrades)) {
         // achievement 88: keep all automation upgrades
         if (player.achievements['88'].complete && (key == "v71" || key == "v72")) continue;
+        // a07_3: keep ST from VE on Dimensional
+        if (player.milestones['a07_3'].is_active() && key == "v01") continue;
         if (key.includes("v")) {
             player.upgrades[key].reset();
         }
@@ -125,7 +147,10 @@ function reset_dimensional(force=false, higher_reset=false, autobuyer_induced=fa
     player.vacuum_energy = big(0);
     // d11: start with Vacuum Energy
     if (player.upgrades['d11'].is_active()) player.vacuum_energy = player.upgrades["d11"].get_effect();
+
     player.space_theorems = big(0);
+    // a07_3: keep ST from VE on Dimensional
+    if (player.milestones['a07_3'].is_active()) player.space_theorems = big(player.upgrades['v01'].amt);
 
     if (!force) player.fastest_dimensional = Math.min(player.fastest_dimensional, player.time_dimensional);
 
@@ -138,4 +163,15 @@ function power_manifolds() {
     // a06_1: unlock Dimensional dimensions
     if (!player.milestones['a06_1'].is_active()) return big(1);
     return player.manifolds.add(1).log(2).add(1).log(2).div(Math.E).add(1);
+}
+
+
+function max_dimensional_shifts() {
+    let base = 4;
+    // a05_4: can perform one more DimShift
+    if (player.milestones['a05_4'].is_active()) base += 1;
+    // "Projection Analysis" experiment: can perform less DimShifts
+    if (player.evolutions['b12'].is_active()) base -= player.experiments['projection_analysis'].get_nerf().toInt();
+    
+    return Math.round(base);
 }

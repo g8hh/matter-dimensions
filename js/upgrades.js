@@ -1,6 +1,7 @@
 class Upgrade {
-    constructor(id, max_level, cost_function, power_function, unlock_function, currency, currency_display_name, availability_function, custom_buy_function="", custom_cost_display_function="", unconventional=false) { // cost_function: (amt) -> cost; power_function: (amt) -> power; unlock_function: () -> unlock; availability_function: () -> availability
+    constructor(id, tab, max_level, cost_function, power_function, unlock_function, currency, currency_display_name, availability_function, custom_buy_function="", custom_cost_display_function="", unconventional=false) { // cost_function: (amt) -> cost; power_function: (amt) -> power; unlock_function: () -> unlock; availability_function: () -> availability
         this.id = id;
+        this.tab = tab;
         this.max_level = max_level;
         this.cost_function = cost_function;
         this.power_function = power_function;
@@ -44,7 +45,7 @@ class Upgrade {
             if (buy_amt - i > 5) break;
             // Challenge 9: all costs are raised to a power
             let one_cost = big(0);
-            if (!this.unconventional) one_cost = functions[this.cost_function](this.amt + i).pow(me.challenge_strength_9).round().max(1);
+            if (!this.unconventional) one_cost = functions[this.cost_function](this.amt + i).pow(player.challenge_strength_9).round().max(1);
             else one_cost = functions[this.cost_function](this.amt + i).round();
             if (base_cost.gt(one_cost.mult(1e20))) break; 
             base_cost = base_cost.add(one_cost);
@@ -61,7 +62,7 @@ class Upgrade {
         if (this.currency instanceof Dimension) {
             return !(this.currency.amt.lt(this.get_cost(buy_amt)));
         }
-        else return !(me[this.currency].lt(this.get_cost(buy_amt)));
+        else return !(player[this.currency].lt(this.get_cost(buy_amt)));
     }
 
     buy(buy_amt = 1) {
@@ -75,10 +76,10 @@ class Upgrade {
             this.currency.amt = this.currency.amt.subtract(this.get_cost(buy_amt)).max(0);
         }
         else {
-            me[this.currency] = me[this.currency].subtract(this.get_cost(buy_amt)).max(0);
+            player[this.currency] = player[this.currency].subtract(this.get_cost(buy_amt)).max(0);
             // Rounding fix
             if (this.currency != "matter") {
-                me[this.currency] = me[this.currency].round();
+                player[this.currency] = player[this.currency].round();
             }
         }
 
@@ -86,7 +87,7 @@ class Upgrade {
         if (this.max_level != -1) this.amt = Math.min(this.amt, this.max_level);
         if (this.custom_buy_function != "") functions[this.custom_buy_function](buy_amt);
 
-        update_challenges_power(me);
+        update_challenges_power();
     }
 
     binary_search_max() {
@@ -117,6 +118,7 @@ class Upgrade {
     }
 
     screen_update() {
+        if (get_current_menu() != this.tab) return;
         if (!functions[this.availability_function]()) document.getElementById("upgrade_" + this.id).style.visibility = "hidden";
         else {
             document.getElementById("upgrade_" + this.id).style.visibility = "";
@@ -205,7 +207,7 @@ class Upgrade {
         //this.unlock_function = data[3];
 
         if (data[4][0] == 0) {
-            this.currency = me.dimensions[data[4][1]];
+            this.currency = player.dimensions[data[4][1]];
         }
         else {
             this.currency = data[4][1];

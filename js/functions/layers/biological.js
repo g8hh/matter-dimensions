@@ -7,6 +7,8 @@ function prestige_earn_genes() {
     if (!base_income.lt(1)) {
         // b01: gain more Genes on Biological resets
         if (player.upgrades['b01'].is_active()) base_income = base_income.mult(player.upgrades['b01'].get_effect());
+        // evolution b10: gain more Genes on Biological resets
+        if (player.evolutions['b10'].is_active()) base_income = base_income.mult(player.evolutions['b10'].get_effect());
     }
 
     return base_income.rounddown().max(0);
@@ -22,6 +24,8 @@ function biological_hint_next(amt) {
 
     // b01: gain more Genes on Biological resets
     if (player.upgrades['b01'].is_active()) resource_need = resource_need.div(player.upgrades['b01'].get_effect());
+    // evolution b10: gain more Genes on Biological resets
+    if (player.evolutions['b10'].is_active()) resource_need = resource_need.div(player.evolutions['b10'].get_effect());
 
     // achievement 135: gene gain is raised to the power of 1.618
     if (player.achievements['135'].complete) resource_need = resource_need.pow(1 / 1.618);
@@ -40,6 +44,7 @@ function reset_biological(force=false, higher_reset=false, autobuyer_induced=fal
     let earned_genes = prestige_earn_genes();
     if (!force) player.achievements['121'].award();
     if (!force && earned_genes.gt(1)) player.achievements['135'].award();
+    if (!force && player.atomic_resets_in_current_biological <= 1) player.achievements['163'].award();
 
     // Challenge 4: all resources are capped
     player.genes = player.genes.add(earned_genes).min(player.challenge_strength_4);
@@ -66,6 +71,8 @@ function reset_biological(force=false, higher_reset=false, autobuyer_induced=fal
 
     update_collider();
     reset_atomic(true, true, false, 0);
+    
+    player.atomic_resets_in_current_biological = 0;
 
     if (!force || higher_reset) player.biological_resets += count_as_reset_num;
 
@@ -87,8 +94,10 @@ function reset_biological(force=false, higher_reset=false, autobuyer_induced=fal
 
 
 function perform_extinction() {
-    let result = confirm("你确定要执行灭绝吗?\n(此警告可以在设置中禁用)");
-    if (!result) return;
+    if (player.settings['prestige_confirmation_extinction']) {
+        let result = confirm("您确定要执行灭绝吗？\n（可以在设置中禁用此警告）");
+        if (!result) return;
+    }
 
     player.achievements['134'].award();
 

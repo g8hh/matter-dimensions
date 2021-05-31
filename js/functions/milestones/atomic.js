@@ -59,6 +59,9 @@ functions["a05_2_availability"] = () => {
 functions["a05_3_availability"] = () => {
     return true;
 }
+functions["a05_4_availability"] = () => {
+    return true;
+}
 
 functions["a06_1_availability"] = () => {
     return true;
@@ -69,6 +72,9 @@ functions["a06_2_availability"] = () => {
 functions["a06_3_availability"] = () => {
     return true;
 }
+functions["a06_4_availability"] = () => {
+    return true;
+}
 
 functions["a07_1_availability"] = () => {
     return true;
@@ -76,8 +82,38 @@ functions["a07_1_availability"] = () => {
 functions["a07_2_availability"] = () => {
     return true;
 }
+functions["a07_3_availability"] = () => {
+    return true;
+}
 
 functions["a08_1_availability"] = () => {
+    return true;
+}
+functions["a08_2_availability"] = () => {
+    return true;
+}
+
+functions["a09_1_availability"] = () => {
+    return true;
+}
+
+functions["a10_1_availability"] = () => {
+    return true;
+}
+
+functions["a11_1_availability"] = () => {
+    return true;
+}
+
+functions["a12_1_availability"] = () => {
+    return true;
+}
+
+functions["a13_1_availability"] = () => {
+    return true;
+}
+
+functions["a14_1_availability"] = () => {
     return true;
 }
 
@@ -144,6 +180,9 @@ functions["a05_2_activation"] = () => {
 functions["a05_3_activation"] = () => {
     return get_atom_level('a05').gt(100 - 0.5);
 }
+functions["a05_4_activation"] = () => {
+    return get_atom_level('a05').gt(1000 - 0.5);
+}
 
 functions["a06_1_activation"] = () => {
     return get_atom_level('a06').gt(1 - 0.5);
@@ -154,6 +193,9 @@ functions["a06_2_activation"] = () => {
 functions["a06_3_activation"] = () => {
     return get_atom_level('a06').gt(625 - 0.5);
 }
+functions["a06_4_activation"] = () => {
+    return get_atom_level('a06').gt(3125 - 0.5);
+}
 
 functions["a07_1_activation"] = () => {
     return get_atom_level('a07').gt(1 - 0.5);
@@ -161,9 +203,39 @@ functions["a07_1_activation"] = () => {
 functions["a07_2_activation"] = () => {
     return get_atom_level('a07').gt(14 - 0.5);
 }
+functions["a07_3_activation"] = () => {
+    return get_atom_level('a07').gt(1680 - 0.5);
+}
 
 functions["a08_1_activation"] = () => {
     return get_atom_level('a08').gt(1 - 0.5);
+}
+functions["a08_2_activation"] = () => {
+    return get_atom_level('a08').gt(1000 - 0.5);
+}
+
+functions["a09_1_activation"] = () => {
+    return get_atom_level('a09').gt(9 - 0.5);
+}
+
+functions["a10_1_activation"] = () => {
+    return get_atom_level('a10').gt(1 - 0.5);
+}
+
+functions["a11_1_activation"] = () => {
+    return get_atom_level('a11').gt(11 - 0.5);
+}
+
+functions["a12_1_activation"] = () => {
+    return get_atom_level('a12').gt(1 - 0.5);
+}
+
+functions["a13_1_activation"] = () => {
+    return get_atom_level('a13').gt(13 - 0.5);
+}
+
+functions["a14_1_activation"] = () => {
+    return player.upgrades['a14'].is_active() && big(player.upgrades['a14'].amt).gt(1 - 0.5);
 }
 
 
@@ -198,6 +270,10 @@ functions["a02_2_effect"] = () => {
     if (player.upgrades['d41'].is_active()) dimensional_resets += 1;
     // d81: unlock new Dimension
     if (player.upgrades['d81'].is_active()) dimensional_resets += 1;
+    // d141: unlock new Dimension
+    if (player.upgrades['d141'].is_active()) dimensional_resets += 1;
+    // d151: unlock new Dimension
+    if (player.upgrades['d151'].is_active()) dimensional_resets += 1;
 
     return big(6).mult(dimensional_resets);
 }
@@ -245,6 +321,9 @@ functions["a05_2_effect"] = () => {
 functions["a05_3_effect"] = () => {
     return big(1);
 }
+functions["a05_4_effect"] = () => {
+    return big(1);
+}
 
 functions["a06_1_effect"] = () => {
     return big(1);
@@ -255,6 +334,9 @@ functions["a06_2_effect"] = () => {
 functions["a06_3_effect"] = () => {
     return get_atom_level('a06').pow(8).max(2);
 }
+functions["a06_4_effect"] = () => {
+    return big(1);
+}
 
 functions["a07_1_effect"] = () => {
     return big(1);
@@ -262,9 +344,40 @@ functions["a07_1_effect"] = () => {
 functions["a07_2_effect"] = () => {
     return big(1);
 }
+functions["a07_3_effect"] = () => {
+    return big(1);
+}
 
 functions["a08_1_effect"] = () => {
     return big(1.1);
+}
+functions["a08_2_effect"] = () => {
+    return big(1);
+}
+
+functions["a09_1_effect"] = () => {
+    return big(2).add(alpha_reactions_active);
+}
+
+functions["a10_1_effect"] = () => {
+    return big(3);
+}
+
+functions["a11_1_effect"] = () => {
+    if (player.upgrades['TICKSPEED'].is_active()) return big(2).pow(get_tickspeed_amount().max(0).add(1).log(2).pow(2));
+    else return big(2).pow(get_tickspeed_amount(0).max(0).add(1).log(2).pow(2));
+}
+
+functions["a12_1_effect"] = () => {
+    return big(6);
+}
+
+functions["a13_1_effect"] = () => {
+    return big(1.03);
+}
+
+functions["a14_1_effect"] = () => {
+    return big(70);
 }
 
 
@@ -330,6 +443,9 @@ functions["a05_2_goal"] = () => {
 functions["a05_3_goal"] = () => {
     return big(100);
 }
+functions["a05_4_goal"] = () => {
+    return big(1000);
+}
 
 functions["a06_1_goal"] = () => {
     return big(1);
@@ -340,6 +456,9 @@ functions["a06_2_goal"] = () => {
 functions["a06_3_goal"] = () => {
     return big(625);
 }
+functions["a06_4_goal"] = () => {
+    return big(3125);
+}
 
 functions["a07_1_goal"] = () => {
     return big(1);
@@ -347,7 +466,37 @@ functions["a07_1_goal"] = () => {
 functions["a07_2_goal"] = () => {
     return big(14);
 }
+functions["a07_3_goal"] = () => {
+    return big(1680);
+}
 
 functions["a08_1_goal"] = () => {
+    return big(1);
+}
+functions["a08_2_goal"] = () => {
+    return big(1000);
+}
+
+functions["a09_1_goal"] = () => {
+    return big(9);
+}
+
+functions["a10_1_goal"] = () => {
+    return big(1);
+}
+
+functions["a11_1_goal"] = () => {
+    return big(11);
+}
+
+functions["a12_1_goal"] = () => {
+    return big(1);
+}
+
+functions["a13_1_goal"] = () => {
+    return big(13);
+}
+
+functions["a14_1_goal"] = () => {
     return big(1);
 }

@@ -46,7 +46,7 @@ class Evolution {
     get_cost() {
         var base_cost = functions[this.cost_function]();
         // Challenge 9: all costs are raised to a power
-        base_cost = base_cost.pow(me.challenge_strength_9).round().max(1);
+        base_cost = base_cost.pow(player.challenge_strength_9).round().max(1);
         return base_cost;
     }
 
@@ -228,7 +228,7 @@ class Evolution {
 }
 
 function base_evolution_time() {
-    let base = big(31415);
+    let base = big(314159);
 
     // b02: Evolutions are applied faster
     if (player.upgrades['b02'].is_active()) base = base.div(player.upgrades['b02'].get_effect());

@@ -34,6 +34,9 @@ functions["upg_n15_cost"] = (amt) => {
 functions["upg_n16_cost"] = (amt) => {
     return big(13);
 }
+functions["upg_n17_cost"] = (amt) => {
+    return big(27);
+}
 functions["upg_n21_cost"] = (amt) => {
     return big(1);
 }
@@ -52,6 +55,9 @@ functions["upg_n25_cost"] = (amt) => {
 functions["upg_n26_cost"] = (amt) => {
     return big(13);
 }
+functions["upg_n27_cost"] = (amt) => {
+    return big(27);
+}
 functions["upg_n31_cost"] = (amt) => {
     return big(1);
 }
@@ -69,6 +75,9 @@ functions["upg_n35_cost"] = (amt) => {
 }
 functions["upg_n36_cost"] = (amt) => {
     return big(13);
+}
+functions["upg_n37_cost"] = (amt) => {
+    return big(27);
 }
 
 functions["upg_n01_power"] = (amt) => {
@@ -119,6 +128,9 @@ functions["upg_n15_power"] = (amt) => {
 functions["upg_n16_power"] = (amt) => {
     return player.proton_power.add(1).pow(0.5);
 }
+functions["upg_n17_power"] = (amt) => {
+    return big(player.photonic_resets).add(1);
+}
 functions["upg_n21_power"] = (amt) => {
     return player.electron_power.mult(2400).add(1).pow(0.25);
 }
@@ -137,6 +149,9 @@ functions["upg_n25_power"] = (amt) => {
 functions["upg_n26_power"] = (amt) => {
     return player.electron_power.add(1).pow(0.5);
 }
+functions["upg_n27_power"] = (amt) => {
+    return big(player.gravitonic_resets).add(1);
+}
 functions["upg_n31_power"] = (amt) => {
     return player.boson_power.mult(124).add(1).log(5).div(3);
 }
@@ -154,6 +169,9 @@ functions["upg_n35_power"] = (amt) => {
 }
 functions["upg_n36_power"] = (amt) => {
     return player.boson_power.add(1).pow(0.5);
+}
+functions["upg_n37_power"] = (amt) => {
+    return big(player.neutronic_resets).add(1);
 }
 
 functions["upg_n01_unlock"] = () => {
@@ -192,6 +210,9 @@ functions["upg_n15_unlock"] = () => {
 functions["upg_n16_unlock"] = () => {
     return player.upgrades['n04'].amt > 0;
 }
+functions["upg_n17_unlock"] = () => {
+    return player.upgrades['n04'].amt > 0;
+}
 functions["upg_n21_unlock"] = () => {
     return player.upgrades['n05'].amt > 0;
 }
@@ -210,6 +231,9 @@ functions["upg_n25_unlock"] = () => {
 functions["upg_n26_unlock"] = () => {
     return player.upgrades['n05'].amt > 0;
 }
+functions["upg_n27_unlock"] = () => {
+    return player.upgrades['n05'].amt > 0;
+}
 functions["upg_n31_unlock"] = () => {
     return player.upgrades['n06'].amt > 0;
 }
@@ -226,6 +250,9 @@ functions["upg_n35_unlock"] = () => {
     return player.upgrades['n06'].amt > 0;
 }
 functions["upg_n36_unlock"] = () => {
+    return player.upgrades['n06'].amt > 0;
+}
+functions["upg_n37_unlock"] = () => {
     return player.upgrades['n06'].amt > 0;
 }
 
@@ -269,6 +296,9 @@ functions["upg_n15_available"] = () => {
 functions["upg_n16_available"] = () => {
     return player.upgrades['n04'].amt > 0;
 }
+functions["upg_n17_available"] = () => {
+    return player.upgrades['n04'].amt > 0;
+}
 functions["upg_n21_available"] = () => {
     return player.upgrades['n05'].amt > 0;
 }
@@ -287,6 +317,9 @@ functions["upg_n25_available"] = () => {
 functions["upg_n26_available"] = () => {
     return player.upgrades['n05'].amt > 0;
 }
+functions["upg_n27_available"] = () => {
+    return player.upgrades['n05'].amt > 0;
+}
 functions["upg_n31_available"] = () => {
     return player.upgrades['n06'].amt > 0;
 }
@@ -303,6 +336,9 @@ functions["upg_n35_available"] = () => {
     return player.upgrades['n06'].amt > 0;
 }
 functions["upg_n36_available"] = () => {
+    return player.upgrades['n06'].amt > 0;
+}
+functions["upg_n37_available"] = () => {
     return player.upgrades['n06'].amt > 0;
 }
 

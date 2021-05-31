@@ -111,7 +111,13 @@ function screen_update() {
         player.evolutions[key].screen_update();
     }
 
-    document.body.className = "theme-" + player.settings['theme'] + " font-" + player.settings['font'];
+    for (let key of Object.keys(player.experiments)) {
+        player.experiments[key].screen_update();
+    }
+
+    let body_class = "theme-" + player.settings['theme'] + " font-" + player.settings['font'];
+    if (player.settings['show_newsticker']) body_class += " has-newsticker";
+    document.body.className = body_class;
 
     document.getElementById("achievement_bonus").textContent = format_number(player.achievement_multiplier);
 

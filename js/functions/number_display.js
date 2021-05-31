@@ -51,12 +51,12 @@ function modified_log2(number) {
 }
 
 function format_number(number, fixed=false, ignore_infinity=false, notation="", integer=false) {
-    if (notation == "") notation = me.settings["notation"];
+    if (notation == "") notation = player.settings["notation"];
     if (notation == "blind") return "";
     if (!(number instanceof BigNumber)) number = new BigNumber(number);
 
     // Challenge 4: all resources are capped
-    if (number.gt(me.challenge_strength_4) && !ignore_infinity && !me.settings["no_resource_limit"]) {
+    if (number.gt(player.challenge_strength_4) && !ignore_infinity && !player.settings["no_resource_limit"]) {
         return "Infinite";
     }
 

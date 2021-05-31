@@ -27,6 +27,9 @@ function prestige_earn_collision_knowledge() {
     // achievement 121: double gain
     if (player.achievements['121'].complete) base_income = base_income.mult(2);
 
+    // experiments boost CK gain
+    if (player.evolutions['b12'].is_active()) base_income = base_income.pow(get_current_experiment_effect());
+
     return base_income.rounddown().max(0);
 }
 function can_atomic() {
@@ -70,15 +73,25 @@ function reset_atomic(force=false, higher_reset=false, autobuyer_induced=false, 
         player.collision_knowledge = player.collision_knowledge.min(player.challenge_strength_4);
     }
 
+    // Exit Experiments automatically
+    if ((player.settings['exit_experiments_on_atomic'] && !higher_reset) || (player.settings['exit_experiments_on_higher_reset'] && higher_reset)) {
+        exit_experiments();
+    }
+
     for (let key of Object.keys(player.dimensions)) {
         if (key.includes("dimensional_")) {
             player.dimensions[key].reset();
         }
     }
 
+    // v01 still resets on Atomic
+    player.upgrades['v01'].reset();
+
     for (let key of Object.keys(player.upgrades)) {
         // achievement 88: keep all automation upgrades
         if (player.achievements['88'].complete && (key == "d72")) continue;
+        // challenge d6: Atomic does not reset Dimensional upgrades
+        if (!player.challenges['d0'].inC() && (player.challenges['d6'].inC() || player.challenges['d6'].completed) && !higher_reset) continue;
         if (key.includes("d")) {
             player.upgrades[key].reset();
         }
@@ -93,6 +106,12 @@ function reset_atomic(force=false, higher_reset=false, autobuyer_induced=false, 
         }
     }
 
+    for (let key of Object.keys(player.challenges)) {
+        if (key.includes("d")) {
+            if (player.challenges[key].in_challenge) player.challenges[key].exit(false);
+        }
+    }
+
     let reset_multiplier = 1;
     // evolution b03: multiply resets below Biological
     if (player.evolutions['b03'].is_active()) reset_multiplier *= player.evolutions['b03'].get_effect().toInt();
@@ -100,11 +119,18 @@ function reset_atomic(force=false, higher_reset=false, autobuyer_induced=false, 
     cap_resources();
     reset_dimensional(true, true, false, reset_multiplier * count_as_reset_num);
 
+    player.atomic_resets_in_current_biological += 1;
+
     if (!force || higher_reset) player.atomic_resets += count_as_reset_num;
+
+    player.got_shards_this_atomic = false;
 
     player.shards = big(0);
     // a01_1: start with Shards
-    if (player.milestones['a01_1'].is_active()) player.shards = player.milestones['a01_1'].get_effect();
+    if (player.milestones['a01_1'].is_active()) {
+        player.shards = player.milestones['a01_1'].get_effect();
+        player.got_shards_this_atomic = true;
+    }
 
     if (!force) player.fastest_atomic = Math.min(player.fastest_atomic, player.time_atomic);
 

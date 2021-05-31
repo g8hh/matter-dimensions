@@ -1,4 +1,4 @@
-function prestige_earn_gravitons() {
+function prestige_earn_gravitons_base() {
     if (!player.matter.gt(1)) return big(0);
 
     var base = big(10);
@@ -24,6 +24,8 @@ function prestige_earn_gravitons() {
     if (player.challenges['g3'].completed) base_gravitons = base_gravitons.mult(1.05);
     // Vacuumic Challenge 4 reward: gain 4% more Gravitons
     if (player.challenges['v4'].completed) base_gravitons = base_gravitons.mult(1.04);
+    // a13: gain more gravitons
+    base_gravitons = base_gravitons.mult(player.upgrades['a13'].get_effect());
 
     // n31: free gravitons upon reset
     if (player.upgrades['n31'].is_active()) base_gravitons = base_gravitons.add(player.upgrades['n31'].get_effect());
@@ -38,12 +40,19 @@ function prestige_earn_gravitons() {
     if (player.challenges['g7'].inC()) base_gravitons = base_gravitons.pow(0.7);
     // Gravitonic Challenge 7 reward: graviton gain is raised to a power of 1.05
     if (player.challenges['g7'].completed) base_gravitons = base_gravitons.pow(1.05);
+    // a13_1: graviton gain is raised to a power
+    if (player.milestones['a13_1'].is_active()) base_gravitons = base_gravitons.pow(player.milestones['a13_1'].get_effect());
 
     // Vacuumic Challenge 4: graviton gain is divided by 4
     if (player.challenges['v4'].inC()) base_gravitons = base_gravitons.mult(0.25);
 
-    return base_gravitons.subtract(player.gravitons).rounddown().max(0);
+    return base_gravitons.rounddown().max(0);
 }
+
+function prestige_earn_gravitons() {
+    return prestige_earn_gravitons_base().subtract(player.gravitons).round().max(0);
+}
+
 function can_gravitonic() {
     return prestige_earn_gravitons().gt(0);
 }
@@ -66,6 +75,8 @@ function gravitonic_hint_next(amt) {
     if (player.challenges['g7'].inC()) need_gravitons = need_gravitons.pow(1 / 0.7);
     // Gravitonic Challenge 7 reward: graviton gain is raised to a power of 1.05
     if (player.challenges['g7'].completed) need_gravitons = need_gravitons.pow(1 / 1.05);
+    // a13_1: graviton gain is raised to a power
+    if (player.milestones['a13_1'].is_active()) need_gravitons = need_gravitons.pow(big(1).div(player.milestones['a13_1'].get_effect()));
 
     // n31: free gravitons upon reset
     if (player.upgrades['n31'].is_active()) need_gravitons = need_gravitons.subtract(player.upgrades['n31'].get_effect());
@@ -86,6 +97,8 @@ function gravitonic_hint_next(amt) {
     if (player.challenges['g3'].completed) need_gravitons = need_gravitons.div(1.05);
     // Vacuumic Challenge 4 reward: gain 4% more Gravitons
     if (player.challenges['v4'].completed) need_gravitons = need_gravitons.div(1.04);
+    // a13: gain more gravitons
+    need_gravitons = need_gravitons.div(player.upgrades['a13'].get_effect());
 
     var base_req = base.pow(need_gravitons);
     // g22: light reduces the amount of required matter
@@ -109,6 +122,7 @@ function reset_gravitonic(force=false, higher_reset=false, autobuyer_induced=fal
     if (!force && !earned_gravitons.lt(5)) player.achievements['34'].award();
     if (!force && earned_gravitons.gt(10)) player.achievements['47'].award();
     if (!force && earned_gravitons.gt(10000)) player.achievements['116'].award();
+    if (!force && earned_gravitons.gt(1e6)) player.achievements['156'].award();
 
     // Challenge 4: all resources are capped
     player.gravitons = player.gravitons.add(earned_gravitons).round().min(player.challenge_strength_4);

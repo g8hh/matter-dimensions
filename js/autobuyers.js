@@ -17,7 +17,7 @@ class Autobuyer {
         if (!functions[this.availability_function]()) return;
         if (!this.enabled) return;
 
-        if (this.id.includes('VTREE') && !me.activated_st_autobuyers) return;
+        if (this.id.includes('VTREE') && !player.activated_st_autobuyers) return;
 
         if (typeof this.obj === 'string' || this.obj instanceof String) {
             if (this.obj == "photonic_upgrades") max_buy_upgrades('p');
@@ -25,7 +25,7 @@ class Autobuyer {
             if (this.obj == "neutronic_upgrades") max_buy_upgrades('n');
         }
 
-        if (me.time_passed == 0 && (typeof this.obj === 'string' || this.obj instanceof String)) return;
+        if (player.time_passed == 0 && (typeof this.obj === 'string' || this.obj instanceof String)) return;
 
         if (this.obj instanceof Dimension || this.obj instanceof Upgrade) {
             this.obj.buy(this.obj.binary_search_max());
@@ -34,11 +34,11 @@ class Autobuyer {
         if (typeof this.obj === 'string' || this.obj instanceof String) {
             if (this.buy_type == "amt") {
                 var pp_amt = big(0);
-                if (this.obj == "photonic") pp_amt = prestige_earn_photons(me);
-                if (this.obj == "gravitonic") pp_amt = prestige_earn_gravitons(me);
-                if (this.obj == "neutronic") pp_amt = prestige_earn_neutrons(me);
-                if (this.obj == "vacuumic") pp_amt = prestige_earn_vacuum_energy(me);
-                if (this.obj == "dimensional") pp_amt = prestige_earn_shards(me);
+                if (this.obj == "photonic") pp_amt = prestige_earn_photons();
+                if (this.obj == "gravitonic") pp_amt = prestige_earn_gravitons();
+                if (this.obj == "neutronic") pp_amt = prestige_earn_neutrons();
+                if (this.obj == "vacuumic") pp_amt = prestige_earn_vacuum_energy();
+                if (this.obj == "dimensional") pp_amt = prestige_earn_shards();
                 if (this.obj.includes("temperature")) pp_amt = wave_gain(this.obj.substr("temperature".length + 1));
 
                 if (!pp_amt.lt(this.param)) {
@@ -118,10 +118,10 @@ class Autobuyer {
 
     load_save(data) {     
         if (data[0][0] == 0) {
-            this.obj = me.dimensions[data[0][1]];
+            this.obj = player.dimensions[data[0][1]];
         }
         if (data[0][0] == 1) {
-            this.obj = me.upgrades[data[0][1]];
+            this.obj = player.upgrades[data[0][1]];
         }
         if (data[0][0] == 2) {
             this.obj = data[0][1];

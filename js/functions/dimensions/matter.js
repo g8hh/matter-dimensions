@@ -10,6 +10,8 @@ functions['matter_1_cost'] = (amt_bought) => {
     if (player.milestones['a04_4'].is_active()) base -= 1;
     // a05_3: base is decreased by 1
     if (player.milestones['a05_3'].is_active()) base -= 1;
+    // a06_4: base is decreased by 1
+    if (player.milestones['a06_4'].is_active()) base -= 1;
 
     var base_cost = big(base).pow(big(amt_bought).mult(amt_bought+1).div(2));
     return base_cost;
@@ -26,6 +28,8 @@ functions['matter_2_cost'] = (amt_bought) => {
     if (player.milestones['a04_4'].is_active()) base -= 1;
     // a05_3: base is decreased by 1
     if (player.milestones['a05_3'].is_active()) base -= 1;
+    // a06_4: base is decreased by 1
+    if (player.milestones['a06_4'].is_active()) base -= 1;
 
     var base_cost = big(base).pow(big(amt_bought).mult(amt_bought+3).div(2).add(1));
     return base_cost;
@@ -42,6 +46,8 @@ functions['matter_3_cost'] = (amt_bought) => {
     if (player.milestones['a04_4'].is_active()) base -= 1;
     // a05_3: base is decreased by 1
     if (player.milestones['a05_3'].is_active()) base -= 1;
+    // a06_4: base is decreased by 1
+    if (player.milestones['a06_4'].is_active()) base -= 1;
 
     var base_cost = big(base).pow(big(amt_bought).mult(amt_bought+5).div(2).add(2));
     return base_cost;
@@ -58,6 +64,8 @@ functions['matter_4_cost'] = (amt_bought) => {
     if (player.milestones['a04_4'].is_active()) base -= 1;
     // a05_3: base is decreased by 1
     if (player.milestones['a05_3'].is_active()) base -= 1;
+    // a06_4: base is decreased by 1
+    if (player.milestones['a06_4'].is_active()) base -= 1;
 
     var base_cost = big(base).pow(big(amt_bought).mult(amt_bought+7).div(2).add(4));
     return base_cost;
@@ -74,6 +82,8 @@ functions['matter_5_cost'] = (amt_bought) => {
     if (player.milestones['a04_4'].is_active()) base -= 1;
     // a05_3: base is decreased by 1
     if (player.milestones['a05_3'].is_active()) base -= 1;
+    // a06_4: base is decreased by 1
+    if (player.milestones['a06_4'].is_active()) base -= 1;
 
     var base_cost = big(base).pow(big(amt_bought).mult(amt_bought+9).div(2).add(8));
     return base_cost;
@@ -90,6 +100,8 @@ functions['matter_6_cost'] = (amt_bought) => {
     if (player.milestones['a04_4'].is_active()) base -= 1;
     // a05_3: base is decreased by 1
     if (player.milestones['a05_3'].is_active()) base -= 1;
+    // a06_4: base is decreased by 1
+    if (player.milestones['a06_4'].is_active()) base -= 1;
 
     var base_cost = big(base).pow(big(amt_bought).mult(amt_bought+11).div(2).add(16));
     return base_cost;
@@ -106,6 +118,8 @@ functions['matter_7_cost'] = (amt_bought) => {
     if (player.milestones['a04_4'].is_active()) base -= 1;
     // a05_3: base is decreased by 1
     if (player.milestones['a05_3'].is_active()) base -= 1;
+    // a06_4: base is decreased by 1
+    if (player.milestones['a06_4'].is_active()) base -= 1;
 
     var base_cost = big(base).pow(big(amt_bought).mult(amt_bought+13).div(2).add(32));
     return base_cost;
@@ -122,6 +136,8 @@ functions['matter_8_cost'] = (amt_bought) => {
     if (player.milestones['a04_4'].is_active()) base -= 1;
     // a05_3: base is decreased by 1
     if (player.milestones['a05_3'].is_active()) base -= 1;
+    // a06_4: base is decreased by 1
+    if (player.milestones['a06_4'].is_active()) base -= 1;
 
     var base_cost = big(base).pow(big(amt_bought).mult(amt_bought+15).div(2).add(64));
     return base_cost;
@@ -138,6 +154,8 @@ functions['matter_9_cost'] = (amt_bought) => {
     if (player.milestones['a04_4'].is_active()) base -= 1;
     // a05_3: base is decreased by 1
     if (player.milestones['a05_3'].is_active()) base -= 1;
+    // a06_4: base is decreased by 1
+    if (player.milestones['a06_4'].is_active()) base -= 1;
 
     var base_cost = big(base).pow(big(amt_bought).mult(amt_bought+17).div(2).add(128));
     return base_cost;
@@ -154,6 +172,8 @@ functions['matter_10_cost'] = (amt_bought) => {
     if (player.milestones['a04_4'].is_active()) base -= 1;
     // a05_3: base is decreased by 1
     if (player.milestones['a05_3'].is_active()) base -= 1;
+    // a06_4: base is decreased by 1
+    if (player.milestones['a06_4'].is_active()) base -= 1;
 
     var base_cost = big(base).pow(big(amt_bought).mult(amt_bought+19).div(2).add(256));
     return base_cost;
@@ -170,6 +190,8 @@ functions['matter_11_cost'] = (amt_bought) => {
     if (player.milestones['a04_4'].is_active()) base -= 1;
     // a05_3: base is decreased by 1
     if (player.milestones['a05_3'].is_active()) base -= 1;
+    // a06_4: base is decreased by 1
+    if (player.milestones['a06_4'].is_active()) base -= 1;
 
     var base_cost = big(base).pow(big(amt_bought).mult(amt_bought+21).div(2).add(512));
     return base_cost;
@@ -186,6 +208,8 @@ functions['matter_12_cost'] = (amt_bought) => {
     if (player.milestones['a04_4'].is_active()) base -= 1;
     // a05_3: base is decreased by 1
     if (player.milestones['a05_3'].is_active()) base -= 1;
+    // a06_4: base is decreased by 1
+    if (player.milestones['a06_4'].is_active()) base -= 1;
 
     var base_cost = big(base).pow(big(amt_bought).mult(amt_bought+23).div(2).add(1024));
     return base_cost;
@@ -227,6 +251,13 @@ functions['matter_1_pow'] = (amt_bought, amt) => {
     base_pow = base_pow.mult(player.upgrades['p51'].get_effect().pow(player.dimensions['photonic_1'].amt_bought));
     // Dimensional Dimensions boost respective dimensions
     base_pow = base_pow.mult(power_manifolds().pow(player.dimensions['dimensional_1'].amt_bought));
+    // evolution b09: boost all Matter Dimensions based on current matter
+    if (player.evolutions['b09'].is_active()) base_pow = base_pow.mult(player.evolutions['b09'].get_secondary_effect());
+    // evolution b10: boost all Dimensions based on unspent Genes
+    if (player.evolutions['b10'].is_active()) base_pow = base_pow.mult(player.evolutions['b10'].get_secondary_effect());
+
+    // challenge d5: raise Matter Dim multipliers to a power
+    if (!player.challenges['d0'].inC() && (player.challenges['d5'].inC() || player.challenges['d5'].completed)) base_pow = base_pow.pow(1.5);
 
     return base_pow;
 };
@@ -270,6 +301,13 @@ functions['matter_2_pow'] = (amt_bought, amt) => {
     if (player.challenges['v2'].completed) base_pow = base_pow.mult(2);
     // Dimensional Dimensions boost respective dimensions
     base_pow = base_pow.mult(power_manifolds().pow(player.dimensions['dimensional_2'].amt_bought));
+    // evolution b09: boost all Matter Dimensions based on current matter
+    if (player.evolutions['b09'].is_active()) base_pow = base_pow.mult(player.evolutions['b09'].get_secondary_effect());
+    // evolution b10: boost all Dimensions based on unspent Genes
+    if (player.evolutions['b10'].is_active()) base_pow = base_pow.mult(player.evolutions['b10'].get_secondary_effect());
+
+    // challenge d5: raise Matter Dim multipliers to a power
+    if (!player.challenges['d0'].inC() && (player.challenges['d5'].inC() || player.challenges['d5'].completed)) base_pow = base_pow.pow(1.5);
 
     return base_pow;
 };
@@ -305,6 +343,13 @@ functions['matter_3_pow'] = (amt_bought, amt) => {
     base_pow = base_pow.mult(player.upgrades['p51'].get_effect().pow(player.dimensions['photonic_3'].amt_bought));
     // Dimensional Dimensions boost respective dimensions
     base_pow = base_pow.mult(power_manifolds().pow(player.dimensions['dimensional_3'].amt_bought));
+    // evolution b09: boost all Matter Dimensions based on current matter
+    if (player.evolutions['b09'].is_active()) base_pow = base_pow.mult(player.evolutions['b09'].get_secondary_effect());
+    // evolution b10: boost all Dimensions based on unspent Genes
+    if (player.evolutions['b10'].is_active()) base_pow = base_pow.mult(player.evolutions['b10'].get_secondary_effect());
+
+    // challenge d5: raise Matter Dim multipliers to a power
+    if (!player.challenges['d0'].inC() && (player.challenges['d5'].inC() || player.challenges['d5'].completed)) base_pow = base_pow.pow(1.5);
 
     // v121: the power is at least square of 4th MD power
     if (player.upgrades['v121'].is_active()) base_pow = base_pow.max(player.upgrades['v121'].get_effect()); 
@@ -348,6 +393,13 @@ functions['matter_4_pow'] = (amt_bought, amt) => {
     if (player.challenges['v2'].completed) base_pow = base_pow.mult(2);
     // Dimensional Dimensions boost respective dimensions
     base_pow = base_pow.mult(power_manifolds().pow(player.dimensions['dimensional_4'].amt_bought));
+    // evolution b09: boost all Matter Dimensions based on current matter
+    if (player.evolutions['b09'].is_active()) base_pow = base_pow.mult(player.evolutions['b09'].get_secondary_effect());
+    // evolution b10: boost all Dimensions based on unspent Genes
+    if (player.evolutions['b10'].is_active()) base_pow = base_pow.mult(player.evolutions['b10'].get_secondary_effect());
+
+    // challenge d5: raise Matter Dim multipliers to a power
+    if (!player.challenges['d0'].inC() && (player.challenges['d5'].inC() || player.challenges['d5'].completed)) base_pow = base_pow.pow(1.5);
 
     // v101: bonus to 4th Matter Dimension based on 1st and 2nd Matter Dimension multipliers
     if (player.upgrades['v101'].is_active()) base_pow = base_pow.mult(player.upgrades['v101'].get_effect());
@@ -388,6 +440,13 @@ functions['matter_5_pow'] = (amt_bought, amt) => {
     base_pow = base_pow.mult(player.upgrades['p51'].get_effect().pow(player.dimensions['photonic_5'].amt_bought));
     // Dimensional Dimensions boost respective dimensions
     base_pow = base_pow.mult(power_manifolds().pow(player.dimensions['dimensional_5'].amt_bought));
+    // evolution b09: boost all Matter Dimensions based on current matter
+    if (player.evolutions['b09'].is_active()) base_pow = base_pow.mult(player.evolutions['b09'].get_secondary_effect());
+    // evolution b10: boost all Dimensions based on unspent Genes
+    if (player.evolutions['b10'].is_active()) base_pow = base_pow.mult(player.evolutions['b10'].get_secondary_effect());
+
+    // challenge d5: raise Matter Dim multipliers to a power
+    if (!player.challenges['d0'].inC() && (player.challenges['d5'].inC() || player.challenges['d5'].completed)) base_pow = base_pow.pow(1.5);
 
     return base_pow;
 };
@@ -425,6 +484,13 @@ functions['matter_6_pow'] = (amt_bought, amt) => {
     if (player.challenges['v2'].completed) base_pow = base_pow.mult(2);
     // Dimensional Dimensions boost respective dimensions
     base_pow = base_pow.mult(power_manifolds().pow(player.dimensions['dimensional_6'].amt_bought));
+    // evolution b09: boost all Matter Dimensions based on current matter
+    if (player.evolutions['b09'].is_active()) base_pow = base_pow.mult(player.evolutions['b09'].get_secondary_effect());
+    // evolution b10: boost all Dimensions based on unspent Genes
+    if (player.evolutions['b10'].is_active()) base_pow = base_pow.mult(player.evolutions['b10'].get_secondary_effect());
+
+    // challenge d5: raise Matter Dim multipliers to a power
+    if (!player.challenges['d0'].inC() && (player.challenges['d5'].inC() || player.challenges['d5'].completed)) base_pow = base_pow.pow(1.5);
 
     return base_pow;
 };
@@ -462,6 +528,13 @@ functions['matter_7_pow'] = (amt_bought, amt) => {
     base_pow = base_pow.mult(player.upgrades['p51'].get_effect().pow(player.dimensions['photonic_7'].amt_bought));
     // Dimensional Dimensions boost respective dimensions
     base_pow = base_pow.mult(power_manifolds().pow(player.dimensions['dimensional_7'].amt_bought));
+    // evolution b09: boost all Matter Dimensions based on current matter
+    if (player.evolutions['b09'].is_active()) base_pow = base_pow.mult(player.evolutions['b09'].get_secondary_effect());
+    // evolution b10: boost all Dimensions based on unspent Genes
+    if (player.evolutions['b10'].is_active()) base_pow = base_pow.mult(player.evolutions['b10'].get_secondary_effect());
+
+    // challenge d5: raise Matter Dim multipliers to a power
+    if (!player.challenges['d0'].inC() && (player.challenges['d5'].inC() || player.challenges['d5'].completed)) base_pow = base_pow.pow(1.5);
 
     return base_pow;
 };
@@ -499,6 +572,13 @@ functions['matter_8_pow'] = (amt_bought, amt) => {
     if (player.challenges['v2'].completed) base_pow = base_pow.mult(2);
     // Dimensional Dimensions boost respective dimensions
     base_pow = base_pow.mult(power_manifolds().pow(player.dimensions['dimensional_8'].amt_bought));
+    // evolution b09: boost all Matter Dimensions based on current matter
+    if (player.evolutions['b09'].is_active()) base_pow = base_pow.mult(player.evolutions['b09'].get_secondary_effect());
+    // evolution b10: boost all Dimensions based on unspent Genes
+    if (player.evolutions['b10'].is_active()) base_pow = base_pow.mult(player.evolutions['b10'].get_secondary_effect());
+
+    // challenge d5: raise Matter Dim multipliers to a power
+    if (!player.challenges['d0'].inC() && (player.challenges['d5'].inC() || player.challenges['d5'].completed)) base_pow = base_pow.pow(1.5);
 
     return base_pow;
 };
@@ -534,6 +614,13 @@ functions['matter_9_pow'] = (amt_bought, amt) => {
     base_pow = base_pow.mult(player.upgrades['p51'].get_effect().pow(player.dimensions['photonic_9'].amt_bought));
     // Dimensional Dimensions boost respective dimensions
     base_pow = base_pow.mult(power_manifolds().pow(player.dimensions['dimensional_9'].amt_bought));
+    // evolution b09: boost all Matter Dimensions based on current matter
+    if (player.evolutions['b09'].is_active()) base_pow = base_pow.mult(player.evolutions['b09'].get_secondary_effect());
+    // evolution b10: boost all Dimensions based on unspent Genes
+    if (player.evolutions['b10'].is_active()) base_pow = base_pow.mult(player.evolutions['b10'].get_secondary_effect());
+
+    // challenge d5: raise Matter Dim multipliers to a power
+    if (!player.challenges['d0'].inC() && (player.challenges['d5'].inC() || player.challenges['d5'].completed)) base_pow = base_pow.pow(1.5);
 
     return base_pow;
 };
@@ -571,6 +658,13 @@ functions['matter_10_pow'] = (amt_bought, amt) => {
     if (player.challenges['v2'].completed) base_pow = base_pow.mult(2);
     // Dimensional Dimensions boost respective dimensions
     base_pow = base_pow.mult(power_manifolds().pow(player.dimensions['dimensional_10'].amt_bought));
+    // evolution b09: boost all Matter Dimensions based on current matter
+    if (player.evolutions['b09'].is_active()) base_pow = base_pow.mult(player.evolutions['b09'].get_secondary_effect());
+    // evolution b10: boost all Dimensions based on unspent Genes
+    if (player.evolutions['b10'].is_active()) base_pow = base_pow.mult(player.evolutions['b10'].get_secondary_effect());
+
+    // challenge d5: raise Matter Dim multipliers to a power
+    if (!player.challenges['d0'].inC() && (player.challenges['d5'].inC() || player.challenges['d5'].completed)) base_pow = base_pow.pow(1.5);
 
     return base_pow;
 };
@@ -608,6 +702,13 @@ functions['matter_11_pow'] = (amt_bought, amt) => {
     base_pow = base_pow.mult(player.upgrades['p51'].get_effect().pow(player.dimensions['photonic_11'].amt_bought));
     // Dimensional Dimensions boost respective dimensions
     base_pow = base_pow.mult(power_manifolds().pow(player.dimensions['dimensional_11'].amt_bought));
+    // evolution b09: boost all Matter Dimensions based on current matter
+    if (player.evolutions['b09'].is_active()) base_pow = base_pow.mult(player.evolutions['b09'].get_secondary_effect());
+    // evolution b10: boost all Dimensions based on unspent Genes
+    if (player.evolutions['b10'].is_active()) base_pow = base_pow.mult(player.evolutions['b10'].get_secondary_effect());
+
+    // challenge d5: raise Matter Dim multipliers to a power
+    if (!player.challenges['d0'].inC() && (player.challenges['d5'].inC() || player.challenges['d5'].completed)) base_pow = base_pow.pow(1.5);
 
     return base_pow;
 };
@@ -645,6 +746,13 @@ functions['matter_12_pow'] = (amt_bought, amt) => {
     if (player.challenges['v2'].completed) base_pow = base_pow.mult(2);
     // Dimensional Dimensions boost respective dimensions
     base_pow = base_pow.mult(power_manifolds().pow(player.dimensions['dimensional_12'].amt_bought));
+    // evolution b09: boost all Matter Dimensions based on current matter
+    if (player.evolutions['b09'].is_active()) base_pow = base_pow.mult(player.evolutions['b09'].get_secondary_effect());
+    // evolution b10: boost all Dimensions based on unspent Genes
+    if (player.evolutions['b10'].is_active()) base_pow = base_pow.mult(player.evolutions['b10'].get_secondary_effect());
+
+    // challenge d5: raise Matter Dim multipliers to a power
+    if (!player.challenges['d0'].inC() && (player.challenges['d5'].inC() || player.challenges['d5'].completed)) base_pow = base_pow.pow(1.5);
 
     return base_pow;
 };

@@ -30,20 +30,20 @@ class Challenge {
 
     start() {
         if (this.in_challenge) return;
-        if (this.layer in me.current_challenge && me.current_challenge[this.layer] != "") return;
+        if (this.layer in player.current_challenge && player.current_challenge[this.layer] != "") return;
 
         functions[this.start_function]();
 
         this.combines.forEach(challenge_id => {
-            me.challenges[challenge_id].start_combined(this.id);
+            player.challenges[challenge_id].start_combined(this.id);
         });
 
         this.reset_layer();
         this.in_challenge = true;
-        me.current_challenge[this.layer] = this.id;
+        player.current_challenge[this.layer] = this.id;
 
         // achievement 25: start a challenge
-        me.achievements['25'].award();
+        player.achievements['25'].award();
     }
 
     start_combined(parent) {
@@ -52,7 +52,7 @@ class Challenge {
         this.parent_challenge_id = parent;
 
         this.combines.forEach(challenge_id => {
-            me.challenges[challenge_id].start_combined(parent);
+            player.challenges[challenge_id].start_combined(parent);
         });
     }
 
@@ -65,7 +65,7 @@ class Challenge {
         if (this.in_challenge) this.exit();
         else this.start();
 
-        screen_update(me);
+        screen_update();
     }
 
     update() {
@@ -88,12 +88,12 @@ class Challenge {
             status = "In challenge";
             btn_text = "Exit";
             if (this.in_combined_challenge) {
-                status = "In " + me.challenges[this.parent_challenge_id].name;
+                status = "In " + player.challenges[this.parent_challenge_id].name;
                 btn_text = "In challenge";
             }
             if (color == "challenge-card") color = "challenge-card in-progress";
         }
-        else if (this.layer in me.current_challenge && me.current_challenge[this.layer] != "") {
+        else if (this.layer in player.current_challenge && player.current_challenge[this.layer] != "") {
             btn_text = "In challenge";
         }
 
@@ -101,10 +101,10 @@ class Challenge {
         document.getElementById("challenge_" + this.id + "_button_text").textContent = btn_text;
         document.getElementById("challenge_" + this.id).className = color;
         document.getElementById("challenge_" + this.id + "_name").textContent = this.name;
+        if (document.getElementById("challenge_" + this.id + "_current_effect") !== null) document.getElementById("challenge_" + this.id + "_current_effect").textContent = format_number(this.get_effect());
         if (this.goal_function != "") document.getElementById("challenge_" + this.id + "_goal").textContent = format_number(this.goal());
         if (this.max_completions > 1) {
             document.getElementById("challenge_" + this.id + "_name").textContent += "x" + Math.min(this.max_completions, this.completions + 1);
-            document.getElementById("challenge_" + this.id + "_current_effect").textContent = format_number(this.get_effect());
             document.getElementById("challenge_" + this.id + "_next_effect").textContent = format_number(this.get_effect(Math.min(this.max_completions, this.completions + 1)));
             if (this.completions == this.max_completions) document.getElementById("challenge_" + this.id + "_next").style.display = "none";
             else document.getElementById("challenge_" + this.id + "_next").style.display = "";
@@ -119,13 +119,13 @@ class Challenge {
         if (this.in_challenge) {
             this.completed = true;
             if (this.completions < this.max_completions) this.completions += 1;
-            this.fastest_time = Math.min(this.fastest_time, me.time_passed);
+            this.fastest_time = Math.min(this.fastest_time, player.time_passed);
 
             // achievement 26: complete a challenge
-            me.achievements['26'].award();
+            player.achievements['26'].award();
 
             // achievement 76: complete PC6 while in GC6 and NC6
-            if (this.id == "p6" && me.challenges['g6'].inC() && me.challenges['n6'].inC()) me.achievements['76'].award();
+            if (this.id == "p6" && player.challenges['g6'].inC() && player.challenges['n6'].inC()) player.achievements['76'].award();
         }
 
         this.exit(false);
@@ -133,7 +133,7 @@ class Challenge {
 
     exit(force=true) {
         if (!this.inC()) return;
-        if (this.in_challenge) me.current_challenge[this.layer] = "";
+        if (this.in_challenge) player.current_challenge[this.layer] = "";
         // Quick reset
         if (force && this.in_challenge) this.reset_layer();
         
@@ -142,7 +142,7 @@ class Challenge {
         this.parent_challenge_id = "";
 
         this.combines.forEach(challenge_id => {
-            me.challenges[challenge_id].exit(force);
+            player.challenges[challenge_id].exit(force);
         });
         functions[this.end_function]();
     }

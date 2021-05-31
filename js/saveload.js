@@ -1,15 +1,18 @@
 var SAVE_NORMAL_VARS = ["unlocked_photonic", "unlocked_gravitonic", "unlocked_neutronic", "unlocked_vacuumic", "unlocked_dimensional", "unlocked_atomic", "unlocked_biological",
-                        "experienced_dilation", "unlocked_st_autobuyers", "unlocked_wave_autobuyers", "uncapped_atoms", 
+                        "experienced_dilation", "unlocked_st_autobuyers", "unlocked_wave_autobuyers", "uncapped_atoms", "experienced_experiments",
                         "activated_st_autobuyers",               
                         "time_passed", "overall_time", "best_time_speed", "last_update_ts",
-                        "inertia_multiplier", "inertia_enabled", "heating_enabled", "heating_smart_distribution",
+                        "inertia_multiplier", "inertia_enabled", "heating_enabled", "heating_smart_distribution", "auto_assigner_enabled",
+                        "got_shards_this_atomic",
                         "time_photonic", "time_gravitonic", "time_neutronic", "time_vacuumic", "time_dimensional", "time_atomic", "time_biological", "time_started",
                         "current_challenge",
                         "photonic_resets", "gravitonic_resets", "neutronic_resets", "vacuumic_resets", "dimensional_resets", "atomic_resets", "biological_resets",
                         "fastest_photonic", "fastest_gravitonic", "fastest_neutronic", "fastest_vacuumic", "fastest_dimensional", "fastest_atomic", "fastest_biological",
-                        "photons_carry", "neutrons_carry",
+                        "photons_carry", "neutrons_carry", "vacuum_energy_carry",
                         "collision_points", "collision_points_in_reaction", "collision_points_in_synthesis", "collision_points_in_generation", "active_reactions",
                         "total_realtime", "online_realtime",
+                        "st_presets",
+                        "atomic_resets_in_current_biological",
                         "version", "settings"];
 var SAVE_BIGNUM_VARS = ["matter", "antimatter", "energy", "temperature_energy", "collision_knowledge", "population", "population_sacrificed",
                         "photons", "gravitons", "neutrons", "vacuum_energy", "shards", "atoms", "genes",
@@ -63,6 +66,13 @@ function create_save() {
         }
     }
 
+    data["experiments"] = {};
+    if (player.experiments !== undefined) {
+        for (let key of Object.keys(player.experiments)) {
+            data["experiments"][key] = player.experiments[key].create_save();
+        }
+    }
+
     return data;
 }
 
@@ -103,6 +113,12 @@ function load_save(data) {
         }
     }
 
+    if (data["experiments"] !== undefined) {
+        for (let key of Object.keys(data["experiments"])) {
+            if (player.experiments.hasOwnProperty(key)) player.experiments[key].load_save(data["experiments"][key]);
+        }
+    }
+
     for (let key of Object.keys(default_settings)) {
         if (!(key in player.settings)) {
             player.settings[key] = default_settings[key];
@@ -137,6 +153,21 @@ function load_save(data) {
         player.upgrades['AUTO1_5'].currency = "shards";
         player.upgrades['AUTO1_5'].currency_display_name_singular = " Shard";
         player.upgrades['AUTO1_5'].currency_display_name_plural = " Shards";
+    }
+    if (player.version == "v0.7") {
+        // v0.7.1: Dimensional Challenges update
+        player.version = "v0.7.1";
+        player.st_presets = [[], [], []];
+    }
+    if (player.version == "v0.7.1") {
+        // v0.7.1.2
+        player.version = "v0.7.1.2";
+        player.got_shards_this_atomic = player.milestones['a01_1'].is_active();
+    }
+    if (player.version == "v0.7.1.2") {
+        // v0.7.1.3
+        player.version = "v0.7.1.3";
+        player.atomic_resets_in_current_biological = 2;
     }
 }
 
@@ -246,5 +277,5 @@ function onload_tick() {
     update_challenges_power();
     update_mechanics_first();
     //player.last_update_ts = Date.now();
-    game_loop();
+    change_update_rate();
 }

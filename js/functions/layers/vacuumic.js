@@ -70,7 +70,8 @@ function reset_vacuumic(force=false, higher_reset=false, autobuyer_induced=false
     }
 
     // d102: neutronic upgrades are not reset
-    if (higher_reset || !player.upgrades['d102'].is_active()) {
+    // Neutronic Meta-Challenge reward: Neutonic upgrades and particles are never reset
+    if (!player.challenges['n0'].completed && (higher_reset || !player.upgrades['d102'].is_active())) {
         for (let key of Object.keys(player.upgrades)) {
             if (key.includes("n0")) {
                 player.upgrades[key].reset();
@@ -79,7 +80,8 @@ function reset_vacuumic(force=false, higher_reset=false, autobuyer_induced=false
     }
 
     // d122: neutronic particles and their upgrades are not reset
-    if (higher_reset || !player.upgrades['d122'].is_active()) {
+    // Neutronic Meta-Challenge reward: Neutonic upgrades and particles are never reset
+    if (!player.challenges['n0'].completed && (higher_reset || !player.upgrades['d122'].is_active())) {
         player.dimensions["protons"].reset();
         player.dimensions["electrons"].reset();
         player.dimensions["bosons"].reset();
@@ -105,6 +107,8 @@ function reset_vacuumic(force=false, higher_reset=false, autobuyer_induced=false
             if (player.challenges[key].in_challenge) player.challenges[key].exit(false);
         }
     }
+
+    if (higher_reset && player.unlocked_st_autobuyers && player.settings["enable_vtree_autobuyer_on_higher_reset"]) player.activated_st_autobuyers = true;
 
     let reset_multiplier = 1;
     // evolution b03: multiply resets below Biological

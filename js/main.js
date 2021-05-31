@@ -21,6 +21,7 @@ class Player {
 
         this.photons_carry = 0;
         this.neutrons_carry = 0;
+        this.vacuum_energy_carry = 0;
 
         this.light = new BigNumber(0);
         this.black_holes = new BigNumber(0);
@@ -56,6 +57,7 @@ class Player {
         this.unlocked_st_autobuyers = false;
         this.unlocked_wave_autobuyers = false;
         this.uncapped_atoms = false;
+        this.experienced_experiments = false;
 
         this.activated_st_autobuyers = true;
 
@@ -125,88 +127,92 @@ class Player {
         this.ultraviolet_waves = big(0);
         this.xray_waves = big(0);
 
+        this.got_shards_this_atomic = false;
+
+        this.atomic_resets_in_current_biological = 0;
+
         this.dimensions = {};
-        this.dimensions['matter_1'] = new Dimension('matter_1', 0, 'matter_1_cost', 'matter_1_pow', 'matter_1_unlock', 'matter', '', 'matter');
-        this.dimensions['matter_2'] = new Dimension('matter_2', 1, 'matter_2_cost', 'matter_2_pow', 'matter_2_unlock', 'matter', '', this.dimensions['matter_1']);
-        this.dimensions['matter_3'] = new Dimension('matter_3', 2, 'matter_3_cost', 'matter_3_pow', 'matter_3_unlock', 'matter', '', this.dimensions['matter_2']);
-        this.dimensions['matter_4'] = new Dimension('matter_4', 3, 'matter_4_cost', 'matter_4_pow', 'matter_4_unlock', 'matter', '', this.dimensions['matter_3']);
-        this.dimensions['matter_5'] = new Dimension('matter_5', 4, 'matter_5_cost', 'matter_5_pow', 'matter_5_unlock', 'matter', '', this.dimensions['matter_4']);
-        this.dimensions['matter_6'] = new Dimension('matter_6', 5, 'matter_6_cost', 'matter_6_pow', 'matter_6_unlock', 'matter', '', this.dimensions['matter_5']);
-        this.dimensions['matter_7'] = new Dimension('matter_7', 6, 'matter_7_cost', 'matter_7_pow', 'matter_7_unlock', 'matter', '', this.dimensions['matter_6']);
-        this.dimensions['matter_8'] = new Dimension('matter_8', 7, 'matter_8_cost', 'matter_8_pow', 'matter_8_unlock', 'matter', '', this.dimensions['matter_7']);
-        this.dimensions['matter_9'] = new Dimension('matter_9', 8, 'matter_9_cost', 'matter_9_pow', 'matter_9_unlock', 'matter', '', this.dimensions['matter_8']);
-        this.dimensions['matter_10'] = new Dimension('matter_10', 9, 'matter_10_cost', 'matter_10_pow', 'matter_10_unlock', 'matter', '', this.dimensions['matter_9']);
-        this.dimensions['matter_11'] = new Dimension('matter_11', 10, 'matter_11_cost', 'matter_11_pow', 'matter_11_unlock', 'matter', '', this.dimensions['matter_10']);
-        this.dimensions['matter_12'] = new Dimension('matter_12', 11, 'matter_12_cost', 'matter_12_pow', 'matter_12_unlock', 'matter', '', this.dimensions['matter_11']);
+        this.dimensions['matter_1'] = new Dimension('matter_1', 'matter_dimensions', 0, 'matter_1_cost', 'matter_1_pow', 'matter_1_unlock', 'matter', '', 'matter');
+        this.dimensions['matter_2'] = new Dimension('matter_2', 'matter_dimensions', 1, 'matter_2_cost', 'matter_2_pow', 'matter_2_unlock', 'matter', '', this.dimensions['matter_1']);
+        this.dimensions['matter_3'] = new Dimension('matter_3', 'matter_dimensions', 2, 'matter_3_cost', 'matter_3_pow', 'matter_3_unlock', 'matter', '', this.dimensions['matter_2']);
+        this.dimensions['matter_4'] = new Dimension('matter_4', 'matter_dimensions', 3, 'matter_4_cost', 'matter_4_pow', 'matter_4_unlock', 'matter', '', this.dimensions['matter_3']);
+        this.dimensions['matter_5'] = new Dimension('matter_5', 'matter_dimensions', 4, 'matter_5_cost', 'matter_5_pow', 'matter_5_unlock', 'matter', '', this.dimensions['matter_4']);
+        this.dimensions['matter_6'] = new Dimension('matter_6', 'matter_dimensions', 5, 'matter_6_cost', 'matter_6_pow', 'matter_6_unlock', 'matter', '', this.dimensions['matter_5']);
+        this.dimensions['matter_7'] = new Dimension('matter_7', 'matter_dimensions', 6, 'matter_7_cost', 'matter_7_pow', 'matter_7_unlock', 'matter', '', this.dimensions['matter_6']);
+        this.dimensions['matter_8'] = new Dimension('matter_8', 'matter_dimensions', 7, 'matter_8_cost', 'matter_8_pow', 'matter_8_unlock', 'matter', '', this.dimensions['matter_7']);
+        this.dimensions['matter_9'] = new Dimension('matter_9', 'matter_dimensions', 8, 'matter_9_cost', 'matter_9_pow', 'matter_9_unlock', 'matter', '', this.dimensions['matter_8']);
+        this.dimensions['matter_10'] = new Dimension('matter_10', 'matter_dimensions', 9, 'matter_10_cost', 'matter_10_pow', 'matter_10_unlock', 'matter', '', this.dimensions['matter_9']);
+        this.dimensions['matter_11'] = new Dimension('matter_11', 'matter_dimensions', 10, 'matter_11_cost', 'matter_11_pow', 'matter_11_unlock', 'matter', '', this.dimensions['matter_10']);
+        this.dimensions['matter_12'] = new Dimension('matter_12', 'matter_dimensions', 11, 'matter_12_cost', 'matter_12_pow', 'matter_12_unlock', 'matter', '', this.dimensions['matter_11']);
 
-        this.dimensions['photonic_1'] = new Dimension('photonic_1', 0, 'photonic_1_cost', 'photonic_1_pow', 'photonic_1_unlock', 'photons', ' Ph', 'light');
-        this.dimensions['photonic_2'] = new Dimension('photonic_2', 1, 'photonic_2_cost', 'photonic_2_pow', 'photonic_2_unlock', 'photons', ' Ph', this.dimensions['photonic_1']);
-        this.dimensions['photonic_3'] = new Dimension('photonic_3', 2, 'photonic_3_cost', 'photonic_3_pow', 'photonic_3_unlock', 'photons', ' Ph', this.dimensions['photonic_2']);
-        this.dimensions['photonic_4'] = new Dimension('photonic_4', 3, 'photonic_4_cost', 'photonic_4_pow', 'photonic_4_unlock', 'photons', ' Ph', this.dimensions['photonic_3']);
-        this.dimensions['photonic_5'] = new Dimension('photonic_5', 4, 'photonic_5_cost', 'photonic_5_pow', 'photonic_5_unlock', 'photons', ' Ph', this.dimensions['photonic_4']);
-        this.dimensions['photonic_6'] = new Dimension('photonic_6', 5, 'photonic_6_cost', 'photonic_6_pow', 'photonic_6_unlock', 'photons', ' Ph', this.dimensions['photonic_5']);
-        this.dimensions['photonic_7'] = new Dimension('photonic_7', 6, 'photonic_7_cost', 'photonic_7_pow', 'photonic_7_unlock', 'photons', ' Ph', this.dimensions['photonic_6']);
-        this.dimensions['photonic_8'] = new Dimension('photonic_8', 7, 'photonic_8_cost', 'photonic_8_pow', 'photonic_8_unlock', 'photons', ' Ph', this.dimensions['photonic_7']);
-        this.dimensions['photonic_9'] = new Dimension('photonic_9', 8, 'photonic_9_cost', 'photonic_9_pow', 'photonic_9_unlock', 'photons', ' Ph', this.dimensions['photonic_8']);
-        this.dimensions['photonic_10'] = new Dimension('photonic_10', 9, 'photonic_10_cost', 'photonic_10_pow', 'photonic_10_unlock', 'photons', ' Ph', this.dimensions['photonic_9']);
-        this.dimensions['photonic_11'] = new Dimension('photonic_11', 10, 'photonic_11_cost', 'photonic_11_pow', 'photonic_11_unlock', 'photons', ' Ph', this.dimensions['photonic_10']);
-        this.dimensions['photonic_12'] = new Dimension('photonic_12', 11, 'photonic_12_cost', 'photonic_12_pow', 'photonic_12_unlock', 'photons', ' Ph', this.dimensions['photonic_11']);
+        this.dimensions['photonic_1'] = new Dimension('photonic_1', 'photonic_dimensions', 0, 'photonic_1_cost', 'photonic_1_pow', 'photonic_1_unlock', 'photons', ' Ph', 'light');
+        this.dimensions['photonic_2'] = new Dimension('photonic_2', 'photonic_dimensions', 1, 'photonic_2_cost', 'photonic_2_pow', 'photonic_2_unlock', 'photons', ' Ph', this.dimensions['photonic_1']);
+        this.dimensions['photonic_3'] = new Dimension('photonic_3', 'photonic_dimensions', 2, 'photonic_3_cost', 'photonic_3_pow', 'photonic_3_unlock', 'photons', ' Ph', this.dimensions['photonic_2']);
+        this.dimensions['photonic_4'] = new Dimension('photonic_4', 'photonic_dimensions', 3, 'photonic_4_cost', 'photonic_4_pow', 'photonic_4_unlock', 'photons', ' Ph', this.dimensions['photonic_3']);
+        this.dimensions['photonic_5'] = new Dimension('photonic_5', 'photonic_dimensions', 4, 'photonic_5_cost', 'photonic_5_pow', 'photonic_5_unlock', 'photons', ' Ph', this.dimensions['photonic_4']);
+        this.dimensions['photonic_6'] = new Dimension('photonic_6', 'photonic_dimensions', 5, 'photonic_6_cost', 'photonic_6_pow', 'photonic_6_unlock', 'photons', ' Ph', this.dimensions['photonic_5']);
+        this.dimensions['photonic_7'] = new Dimension('photonic_7', 'photonic_dimensions', 6, 'photonic_7_cost', 'photonic_7_pow', 'photonic_7_unlock', 'photons', ' Ph', this.dimensions['photonic_6']);
+        this.dimensions['photonic_8'] = new Dimension('photonic_8', 'photonic_dimensions', 7, 'photonic_8_cost', 'photonic_8_pow', 'photonic_8_unlock', 'photons', ' Ph', this.dimensions['photonic_7']);
+        this.dimensions['photonic_9'] = new Dimension('photonic_9', 'photonic_dimensions', 8, 'photonic_9_cost', 'photonic_9_pow', 'photonic_9_unlock', 'photons', ' Ph', this.dimensions['photonic_8']);
+        this.dimensions['photonic_10'] = new Dimension('photonic_10', 'photonic_dimensions', 9, 'photonic_10_cost', 'photonic_10_pow', 'photonic_10_unlock', 'photons', ' Ph', this.dimensions['photonic_9']);
+        this.dimensions['photonic_11'] = new Dimension('photonic_11', 'photonic_dimensions', 10, 'photonic_11_cost', 'photonic_11_pow', 'photonic_11_unlock', 'photons', ' Ph', this.dimensions['photonic_10']);
+        this.dimensions['photonic_12'] = new Dimension('photonic_12', 'photonic_dimensions', 11, 'photonic_12_cost', 'photonic_12_pow', 'photonic_12_unlock', 'photons', ' Ph', this.dimensions['photonic_11']);
 
-        this.dimensions['gravitonic_1'] = new Dimension('gravitonic_1', 0, 'gravitonic_1_cost', 'gravitonic_1_pow', 'gravitonic_1_unlock', 'gravitons', ' Gr', 'black_holes');
-        this.dimensions['gravitonic_2'] = new Dimension('gravitonic_2', 1, 'gravitonic_2_cost', 'gravitonic_2_pow', 'gravitonic_2_unlock', 'gravitons', ' Gr', this.dimensions['gravitonic_1']);
-        this.dimensions['gravitonic_3'] = new Dimension('gravitonic_3', 2, 'gravitonic_3_cost', 'gravitonic_3_pow', 'gravitonic_3_unlock', 'gravitons', ' Gr', this.dimensions['gravitonic_2']);
-        this.dimensions['gravitonic_4'] = new Dimension('gravitonic_4', 3, 'gravitonic_4_cost', 'gravitonic_4_pow', 'gravitonic_4_unlock', 'gravitons', ' Gr', this.dimensions['gravitonic_3']);
-        this.dimensions['gravitonic_5'] = new Dimension('gravitonic_5', 4, 'gravitonic_5_cost', 'gravitonic_5_pow', 'gravitonic_5_unlock', 'gravitons', ' Gr', this.dimensions['gravitonic_4']);
-        this.dimensions['gravitonic_6'] = new Dimension('gravitonic_6', 5, 'gravitonic_6_cost', 'gravitonic_6_pow', 'gravitonic_6_unlock', 'gravitons', ' Gr', this.dimensions['gravitonic_5']);
-        this.dimensions['gravitonic_7'] = new Dimension('gravitonic_7', 6, 'gravitonic_7_cost', 'gravitonic_7_pow', 'gravitonic_7_unlock', 'gravitons', ' Gr', this.dimensions['gravitonic_6']);
-        this.dimensions['gravitonic_8'] = new Dimension('gravitonic_8', 7, 'gravitonic_8_cost', 'gravitonic_8_pow', 'gravitonic_8_unlock', 'gravitons', ' Gr', this.dimensions['gravitonic_7']);
-        this.dimensions['gravitonic_9'] = new Dimension('gravitonic_9', 8, 'gravitonic_9_cost', 'gravitonic_9_pow', 'gravitonic_9_unlock', 'gravitons', ' Gr', this.dimensions['gravitonic_8']);
-        this.dimensions['gravitonic_10'] = new Dimension('gravitonic_10', 9, 'gravitonic_10_cost', 'gravitonic_10_pow', 'gravitonic_10_unlock', 'gravitons', ' Gr', this.dimensions['gravitonic_9']);
-        this.dimensions['gravitonic_11'] = new Dimension('gravitonic_11', 10, 'gravitonic_11_cost', 'gravitonic_11_pow', 'gravitonic_11_unlock', 'gravitons', ' Gr', this.dimensions['gravitonic_10']);
-        this.dimensions['gravitonic_12'] = new Dimension('gravitonic_12', 11, 'gravitonic_12_cost', 'gravitonic_12_pow', 'gravitonic_12_unlock', 'gravitons', ' Gr', this.dimensions['gravitonic_11']);
+        this.dimensions['gravitonic_1'] = new Dimension('gravitonic_1', 'gravitonic_dimensions', 0, 'gravitonic_1_cost', 'gravitonic_1_pow', 'gravitonic_1_unlock', 'gravitons', ' Gr', 'black_holes');
+        this.dimensions['gravitonic_2'] = new Dimension('gravitonic_2', 'gravitonic_dimensions', 1, 'gravitonic_2_cost', 'gravitonic_2_pow', 'gravitonic_2_unlock', 'gravitons', ' Gr', this.dimensions['gravitonic_1']);
+        this.dimensions['gravitonic_3'] = new Dimension('gravitonic_3', 'gravitonic_dimensions', 2, 'gravitonic_3_cost', 'gravitonic_3_pow', 'gravitonic_3_unlock', 'gravitons', ' Gr', this.dimensions['gravitonic_2']);
+        this.dimensions['gravitonic_4'] = new Dimension('gravitonic_4', 'gravitonic_dimensions', 3, 'gravitonic_4_cost', 'gravitonic_4_pow', 'gravitonic_4_unlock', 'gravitons', ' Gr', this.dimensions['gravitonic_3']);
+        this.dimensions['gravitonic_5'] = new Dimension('gravitonic_5', 'gravitonic_dimensions', 4, 'gravitonic_5_cost', 'gravitonic_5_pow', 'gravitonic_5_unlock', 'gravitons', ' Gr', this.dimensions['gravitonic_4']);
+        this.dimensions['gravitonic_6'] = new Dimension('gravitonic_6', 'gravitonic_dimensions', 5, 'gravitonic_6_cost', 'gravitonic_6_pow', 'gravitonic_6_unlock', 'gravitons', ' Gr', this.dimensions['gravitonic_5']);
+        this.dimensions['gravitonic_7'] = new Dimension('gravitonic_7', 'gravitonic_dimensions', 6, 'gravitonic_7_cost', 'gravitonic_7_pow', 'gravitonic_7_unlock', 'gravitons', ' Gr', this.dimensions['gravitonic_6']);
+        this.dimensions['gravitonic_8'] = new Dimension('gravitonic_8', 'gravitonic_dimensions', 7, 'gravitonic_8_cost', 'gravitonic_8_pow', 'gravitonic_8_unlock', 'gravitons', ' Gr', this.dimensions['gravitonic_7']);
+        this.dimensions['gravitonic_9'] = new Dimension('gravitonic_9', 'gravitonic_dimensions', 8, 'gravitonic_9_cost', 'gravitonic_9_pow', 'gravitonic_9_unlock', 'gravitons', ' Gr', this.dimensions['gravitonic_8']);
+        this.dimensions['gravitonic_10'] = new Dimension('gravitonic_10', 'gravitonic_dimensions', 9, 'gravitonic_10_cost', 'gravitonic_10_pow', 'gravitonic_10_unlock', 'gravitons', ' Gr', this.dimensions['gravitonic_9']);
+        this.dimensions['gravitonic_11'] = new Dimension('gravitonic_11', 'gravitonic_dimensions', 10, 'gravitonic_11_cost', 'gravitonic_11_pow', 'gravitonic_11_unlock', 'gravitons', ' Gr', this.dimensions['gravitonic_10']);
+        this.dimensions['gravitonic_12'] = new Dimension('gravitonic_12', 'gravitonic_dimensions', 11, 'gravitonic_12_cost', 'gravitonic_12_pow', 'gravitonic_12_unlock', 'gravitons', ' Gr', this.dimensions['gravitonic_11']);
 
-        this.dimensions['neutronic_1'] = new Dimension('neutronic_1', 0, 'neutronic_1_cost', 'neutronic_1_pow', 'neutronic_1_unlock', 'neutrons', ' Ntr', 'stars');
-        this.dimensions['neutronic_2'] = new Dimension('neutronic_2', 1, 'neutronic_2_cost', 'neutronic_2_pow', 'neutronic_2_unlock', 'neutrons', ' Ntr', this.dimensions['neutronic_1']);
-        this.dimensions['neutronic_3'] = new Dimension('neutronic_3', 2, 'neutronic_3_cost', 'neutronic_3_pow', 'neutronic_3_unlock', 'neutrons', ' Ntr', this.dimensions['neutronic_2']);
-        this.dimensions['neutronic_4'] = new Dimension('neutronic_4', 3, 'neutronic_4_cost', 'neutronic_4_pow', 'neutronic_4_unlock', 'neutrons', ' Ntr', this.dimensions['neutronic_3']);
-        this.dimensions['neutronic_5'] = new Dimension('neutronic_5', 4, 'neutronic_5_cost', 'neutronic_5_pow', 'neutronic_5_unlock', 'neutrons', ' Ntr', this.dimensions['neutronic_4']);
-        this.dimensions['neutronic_6'] = new Dimension('neutronic_6', 5, 'neutronic_6_cost', 'neutronic_6_pow', 'neutronic_6_unlock', 'neutrons', ' Ntr', this.dimensions['neutronic_5']);
-        this.dimensions['neutronic_7'] = new Dimension('neutronic_7', 6, 'neutronic_7_cost', 'neutronic_7_pow', 'neutronic_7_unlock', 'neutrons', ' Ntr', this.dimensions['neutronic_6']);
-        this.dimensions['neutronic_8'] = new Dimension('neutronic_8', 7, 'neutronic_8_cost', 'neutronic_8_pow', 'neutronic_8_unlock', 'neutrons', ' Ntr', this.dimensions['neutronic_7']);
-        this.dimensions['neutronic_9'] = new Dimension('neutronic_9', 8, 'neutronic_9_cost', 'neutronic_9_pow', 'neutronic_9_unlock', 'neutrons', ' Ntr', this.dimensions['neutronic_8']);
-        this.dimensions['neutronic_10'] = new Dimension('neutronic_10', 9, 'neutronic_10_cost', 'neutronic_10_pow', 'neutronic_10_unlock', 'neutrons', ' Ntr', this.dimensions['neutronic_9']);
-        this.dimensions['neutronic_11'] = new Dimension('neutronic_11', 10, 'neutronic_11_cost', 'neutronic_11_pow', 'neutronic_11_unlock', 'neutrons', ' Ntr', this.dimensions['neutronic_10']);
-        this.dimensions['neutronic_12'] = new Dimension('neutronic_12', 11, 'neutronic_12_cost', 'neutronic_12_pow', 'neutronic_12_unlock', 'neutrons', ' Ntr', this.dimensions['neutronic_11']);
+        this.dimensions['neutronic_1'] = new Dimension('neutronic_1', 'neutronic_dimensions', 0, 'neutronic_1_cost', 'neutronic_1_pow', 'neutronic_1_unlock', 'neutrons', ' Ntr', 'stars');
+        this.dimensions['neutronic_2'] = new Dimension('neutronic_2', 'neutronic_dimensions', 1, 'neutronic_2_cost', 'neutronic_2_pow', 'neutronic_2_unlock', 'neutrons', ' Ntr', this.dimensions['neutronic_1']);
+        this.dimensions['neutronic_3'] = new Dimension('neutronic_3', 'neutronic_dimensions', 2, 'neutronic_3_cost', 'neutronic_3_pow', 'neutronic_3_unlock', 'neutrons', ' Ntr', this.dimensions['neutronic_2']);
+        this.dimensions['neutronic_4'] = new Dimension('neutronic_4', 'neutronic_dimensions', 3, 'neutronic_4_cost', 'neutronic_4_pow', 'neutronic_4_unlock', 'neutrons', ' Ntr', this.dimensions['neutronic_3']);
+        this.dimensions['neutronic_5'] = new Dimension('neutronic_5', 'neutronic_dimensions', 4, 'neutronic_5_cost', 'neutronic_5_pow', 'neutronic_5_unlock', 'neutrons', ' Ntr', this.dimensions['neutronic_4']);
+        this.dimensions['neutronic_6'] = new Dimension('neutronic_6', 'neutronic_dimensions', 5, 'neutronic_6_cost', 'neutronic_6_pow', 'neutronic_6_unlock', 'neutrons', ' Ntr', this.dimensions['neutronic_5']);
+        this.dimensions['neutronic_7'] = new Dimension('neutronic_7', 'neutronic_dimensions', 6, 'neutronic_7_cost', 'neutronic_7_pow', 'neutronic_7_unlock', 'neutrons', ' Ntr', this.dimensions['neutronic_6']);
+        this.dimensions['neutronic_8'] = new Dimension('neutronic_8', 'neutronic_dimensions', 7, 'neutronic_8_cost', 'neutronic_8_pow', 'neutronic_8_unlock', 'neutrons', ' Ntr', this.dimensions['neutronic_7']);
+        this.dimensions['neutronic_9'] = new Dimension('neutronic_9', 'neutronic_dimensions', 8, 'neutronic_9_cost', 'neutronic_9_pow', 'neutronic_9_unlock', 'neutrons', ' Ntr', this.dimensions['neutronic_8']);
+        this.dimensions['neutronic_10'] = new Dimension('neutronic_10', 'neutronic_dimensions', 9, 'neutronic_10_cost', 'neutronic_10_pow', 'neutronic_10_unlock', 'neutrons', ' Ntr', this.dimensions['neutronic_9']);
+        this.dimensions['neutronic_11'] = new Dimension('neutronic_11', 'neutronic_dimensions', 10, 'neutronic_11_cost', 'neutronic_11_pow', 'neutronic_11_unlock', 'neutrons', ' Ntr', this.dimensions['neutronic_10']);
+        this.dimensions['neutronic_12'] = new Dimension('neutronic_12', 'neutronic_dimensions', 11, 'neutronic_12_cost', 'neutronic_12_pow', 'neutronic_12_unlock', 'neutrons', ' Ntr', this.dimensions['neutronic_11']);
 
-        this.dimensions['vacuumic_1'] = new Dimension('vacuumic_1', 0, 'vacuumic_1_cost', 'vacuumic_1_pow', 'vacuumic_1_unlock', 'vacuum_energy', ' VE', 'inflation');
-        this.dimensions['vacuumic_2'] = new Dimension('vacuumic_2', 1, 'vacuumic_2_cost', 'vacuumic_2_pow', 'vacuumic_2_unlock', 'vacuum_energy', ' VE', this.dimensions['vacuumic_1']);
-        this.dimensions['vacuumic_3'] = new Dimension('vacuumic_3', 2, 'vacuumic_3_cost', 'vacuumic_3_pow', 'vacuumic_3_unlock', 'vacuum_energy', ' VE', this.dimensions['vacuumic_2']);
-        this.dimensions['vacuumic_4'] = new Dimension('vacuumic_4', 3, 'vacuumic_4_cost', 'vacuumic_4_pow', 'vacuumic_4_unlock', 'vacuum_energy', ' VE', this.dimensions['vacuumic_3']);
-        this.dimensions['vacuumic_5'] = new Dimension('vacuumic_5', 4, 'vacuumic_5_cost', 'vacuumic_5_pow', 'vacuumic_5_unlock', 'vacuum_energy', ' VE', this.dimensions['vacuumic_4']);
-        this.dimensions['vacuumic_6'] = new Dimension('vacuumic_6', 5, 'vacuumic_6_cost', 'vacuumic_6_pow', 'vacuumic_6_unlock', 'vacuum_energy', ' VE', this.dimensions['vacuumic_5']);
-        this.dimensions['vacuumic_7'] = new Dimension('vacuumic_7', 6, 'vacuumic_7_cost', 'vacuumic_7_pow', 'vacuumic_7_unlock', 'vacuum_energy', ' VE', this.dimensions['vacuumic_6']);
-        this.dimensions['vacuumic_8'] = new Dimension('vacuumic_8', 7, 'vacuumic_8_cost', 'vacuumic_8_pow', 'vacuumic_8_unlock', 'vacuum_energy', ' VE', this.dimensions['vacuumic_7']);
-        this.dimensions['vacuumic_9'] = new Dimension('vacuumic_9', 8, 'vacuumic_9_cost', 'vacuumic_9_pow', 'vacuumic_9_unlock', 'vacuum_energy', ' VE', this.dimensions['vacuumic_8']);
-        this.dimensions['vacuumic_10'] = new Dimension('vacuumic_10', 9, 'vacuumic_10_cost', 'vacuumic_10_pow', 'vacuumic_10_unlock', 'vacuum_energy', ' VE', this.dimensions['vacuumic_9']);
-        this.dimensions['vacuumic_11'] = new Dimension('vacuumic_11', 10, 'vacuumic_11_cost', 'vacuumic_11_pow', 'vacuumic_11_unlock', 'vacuum_energy', ' VE', this.dimensions['vacuumic_10']);
-        this.dimensions['vacuumic_12'] = new Dimension('vacuumic_12', 11, 'vacuumic_12_cost', 'vacuumic_12_pow', 'vacuumic_12_unlock', 'vacuum_energy', ' VE', this.dimensions['vacuumic_11']);
+        this.dimensions['vacuumic_1'] = new Dimension('vacuumic_1', 'vacuumic_dimensions', 0, 'vacuumic_1_cost', 'vacuumic_1_pow', 'vacuumic_1_unlock', 'vacuum_energy', ' VE', 'inflation');
+        this.dimensions['vacuumic_2'] = new Dimension('vacuumic_2', 'vacuumic_dimensions', 1, 'vacuumic_2_cost', 'vacuumic_2_pow', 'vacuumic_2_unlock', 'vacuum_energy', ' VE', this.dimensions['vacuumic_1']);
+        this.dimensions['vacuumic_3'] = new Dimension('vacuumic_3', 'vacuumic_dimensions', 2, 'vacuumic_3_cost', 'vacuumic_3_pow', 'vacuumic_3_unlock', 'vacuum_energy', ' VE', this.dimensions['vacuumic_2']);
+        this.dimensions['vacuumic_4'] = new Dimension('vacuumic_4', 'vacuumic_dimensions', 3, 'vacuumic_4_cost', 'vacuumic_4_pow', 'vacuumic_4_unlock', 'vacuum_energy', ' VE', this.dimensions['vacuumic_3']);
+        this.dimensions['vacuumic_5'] = new Dimension('vacuumic_5', 'vacuumic_dimensions', 4, 'vacuumic_5_cost', 'vacuumic_5_pow', 'vacuumic_5_unlock', 'vacuum_energy', ' VE', this.dimensions['vacuumic_4']);
+        this.dimensions['vacuumic_6'] = new Dimension('vacuumic_6', 'vacuumic_dimensions', 5, 'vacuumic_6_cost', 'vacuumic_6_pow', 'vacuumic_6_unlock', 'vacuum_energy', ' VE', this.dimensions['vacuumic_5']);
+        this.dimensions['vacuumic_7'] = new Dimension('vacuumic_7', 'vacuumic_dimensions', 6, 'vacuumic_7_cost', 'vacuumic_7_pow', 'vacuumic_7_unlock', 'vacuum_energy', ' VE', this.dimensions['vacuumic_6']);
+        this.dimensions['vacuumic_8'] = new Dimension('vacuumic_8', 'vacuumic_dimensions', 7, 'vacuumic_8_cost', 'vacuumic_8_pow', 'vacuumic_8_unlock', 'vacuum_energy', ' VE', this.dimensions['vacuumic_7']);
+        this.dimensions['vacuumic_9'] = new Dimension('vacuumic_9', 'vacuumic_dimensions', 8, 'vacuumic_9_cost', 'vacuumic_9_pow', 'vacuumic_9_unlock', 'vacuum_energy', ' VE', this.dimensions['vacuumic_8']);
+        this.dimensions['vacuumic_10'] = new Dimension('vacuumic_10', 'vacuumic_dimensions', 9, 'vacuumic_10_cost', 'vacuumic_10_pow', 'vacuumic_10_unlock', 'vacuum_energy', ' VE', this.dimensions['vacuumic_9']);
+        this.dimensions['vacuumic_11'] = new Dimension('vacuumic_11', 'vacuumic_dimensions', 10, 'vacuumic_11_cost', 'vacuumic_11_pow', 'vacuumic_11_unlock', 'vacuum_energy', ' VE', this.dimensions['vacuumic_10']);
+        this.dimensions['vacuumic_12'] = new Dimension('vacuumic_12', 'vacuumic_dimensions', 11, 'vacuumic_12_cost', 'vacuumic_12_pow', 'vacuumic_12_unlock', 'vacuum_energy', ' VE', this.dimensions['vacuumic_11']);
 
-        this.dimensions['dimensional_1'] = new Dimension('dimensional_1', 0, 'dimensional_1_cost', 'dimensional_1_pow', 'dimensional_1_unlock', 'shards', ' Sh', 'manifolds');
-        this.dimensions['dimensional_2'] = new Dimension('dimensional_2', 1, 'dimensional_2_cost', 'dimensional_2_pow', 'dimensional_2_unlock', 'shards', ' Sh', this.dimensions['dimensional_1']);
-        this.dimensions['dimensional_3'] = new Dimension('dimensional_3', 2, 'dimensional_3_cost', 'dimensional_3_pow', 'dimensional_3_unlock', 'shards', ' Sh', this.dimensions['dimensional_2']);
-        this.dimensions['dimensional_4'] = new Dimension('dimensional_4', 3, 'dimensional_4_cost', 'dimensional_4_pow', 'dimensional_4_unlock', 'shards', ' Sh', this.dimensions['dimensional_3']);
-        this.dimensions['dimensional_5'] = new Dimension('dimensional_5', 4, 'dimensional_5_cost', 'dimensional_5_pow', 'dimensional_5_unlock', 'shards', ' Sh', this.dimensions['dimensional_4']);
-        this.dimensions['dimensional_6'] = new Dimension('dimensional_6', 5, 'dimensional_6_cost', 'dimensional_6_pow', 'dimensional_6_unlock', 'shards', ' Sh', this.dimensions['dimensional_5']);
-        this.dimensions['dimensional_7'] = new Dimension('dimensional_7', 6, 'dimensional_7_cost', 'dimensional_7_pow', 'dimensional_7_unlock', 'shards', ' Sh', this.dimensions['dimensional_6']);
-        this.dimensions['dimensional_8'] = new Dimension('dimensional_8', 7, 'dimensional_8_cost', 'dimensional_8_pow', 'dimensional_8_unlock', 'shards', ' Sh', this.dimensions['dimensional_7']);
-        this.dimensions['dimensional_9'] = new Dimension('dimensional_9', 8, 'dimensional_9_cost', 'dimensional_9_pow', 'dimensional_9_unlock', 'shards', ' Sh', this.dimensions['dimensional_8']);
-        this.dimensions['dimensional_10'] = new Dimension('dimensional_10', 9, 'dimensional_10_cost', 'dimensional_10_pow', 'dimensional_10_unlock', 'shards', ' Sh', this.dimensions['dimensional_9']);
-        this.dimensions['dimensional_11'] = new Dimension('dimensional_11', 10, 'dimensional_11_cost', 'dimensional_11_pow', 'dimensional_11_unlock', 'shards', ' Sh', this.dimensions['dimensional_10']);
-        this.dimensions['dimensional_12'] = new Dimension('dimensional_12', 11, 'dimensional_12_cost', 'dimensional_12_pow', 'dimensional_12_unlock', 'shards', ' Sh', this.dimensions['dimensional_11']);
+        this.dimensions['dimensional_1'] = new Dimension('dimensional_1', 'dimensional_dimensions', 0, 'dimensional_1_cost', 'dimensional_1_pow', 'dimensional_1_unlock', 'shards', ' Sh', 'manifolds');
+        this.dimensions['dimensional_2'] = new Dimension('dimensional_2', 'dimensional_dimensions', 1, 'dimensional_2_cost', 'dimensional_2_pow', 'dimensional_2_unlock', 'shards', ' Sh', this.dimensions['dimensional_1']);
+        this.dimensions['dimensional_3'] = new Dimension('dimensional_3', 'dimensional_dimensions', 2, 'dimensional_3_cost', 'dimensional_3_pow', 'dimensional_3_unlock', 'shards', ' Sh', this.dimensions['dimensional_2']);
+        this.dimensions['dimensional_4'] = new Dimension('dimensional_4', 'dimensional_dimensions', 3, 'dimensional_4_cost', 'dimensional_4_pow', 'dimensional_4_unlock', 'shards', ' Sh', this.dimensions['dimensional_3']);
+        this.dimensions['dimensional_5'] = new Dimension('dimensional_5', 'dimensional_dimensions', 4, 'dimensional_5_cost', 'dimensional_5_pow', 'dimensional_5_unlock', 'shards', ' Sh', this.dimensions['dimensional_4']);
+        this.dimensions['dimensional_6'] = new Dimension('dimensional_6', 'dimensional_dimensions', 5, 'dimensional_6_cost', 'dimensional_6_pow', 'dimensional_6_unlock', 'shards', ' Sh', this.dimensions['dimensional_5']);
+        this.dimensions['dimensional_7'] = new Dimension('dimensional_7', 'dimensional_dimensions', 6, 'dimensional_7_cost', 'dimensional_7_pow', 'dimensional_7_unlock', 'shards', ' Sh', this.dimensions['dimensional_6']);
+        this.dimensions['dimensional_8'] = new Dimension('dimensional_8', 'dimensional_dimensions', 7, 'dimensional_8_cost', 'dimensional_8_pow', 'dimensional_8_unlock', 'shards', ' Sh', this.dimensions['dimensional_7']);
+        this.dimensions['dimensional_9'] = new Dimension('dimensional_9', 'dimensional_dimensions', 8, 'dimensional_9_cost', 'dimensional_9_pow', 'dimensional_9_unlock', 'shards', ' Sh', this.dimensions['dimensional_8']);
+        this.dimensions['dimensional_10'] = new Dimension('dimensional_10', 'dimensional_dimensions', 9, 'dimensional_10_cost', 'dimensional_10_pow', 'dimensional_10_unlock', 'shards', ' Sh', this.dimensions['dimensional_9']);
+        this.dimensions['dimensional_11'] = new Dimension('dimensional_11', 'dimensional_dimensions', 10, 'dimensional_11_cost', 'dimensional_11_pow', 'dimensional_11_unlock', 'shards', ' Sh', this.dimensions['dimensional_10']);
+        this.dimensions['dimensional_12'] = new Dimension('dimensional_12', 'dimensional_dimensions', 11, 'dimensional_12_cost', 'dimensional_12_pow', 'dimensional_12_unlock', 'shards', ' Sh', this.dimensions['dimensional_11']);
 
-        this.dimensions['protons'] = new Dimension('protons', 0, 'protons_cost', 'protons_pow', 'protons_unlock', 'neutrons', ' Neutrons', 'proton_power', true);
-        this.dimensions['electrons'] = new Dimension('electrons', 0, 'electrons_cost', 'electrons_pow', 'electrons_unlock', 'neutrons', ' Neutrons', 'electron_power', true);
-        this.dimensions['bosons'] = new Dimension('bosons', 0, 'bosons_cost', 'bosons_pow', 'bosons_unlock', 'neutrons', ' Neutrons', 'boson_power', true);
+        this.dimensions['protons'] = new Dimension('protons', 'neutronic_upgrades', 0, 'protons_cost', 'protons_pow', 'protons_unlock', 'neutrons', ' Neutrons', 'proton_power', true);
+        this.dimensions['electrons'] = new Dimension('electrons', 'neutronic_upgrades', 0, 'electrons_cost', 'electrons_pow', 'electrons_unlock', 'neutrons', ' Neutrons', 'electron_power', true);
+        this.dimensions['bosons'] = new Dimension('bosons', 'neutronic_upgrades', 0, 'bosons_cost', 'bosons_pow', 'bosons_unlock', 'neutrons', ' Neutrons', 'boson_power', true);
 
         this.achievements = {};
         this.achievements["11"] = new Achievement("11", "Rough Start", "Buy 1st Matter Dimension", "check_11");
@@ -227,7 +233,7 @@ class Player {
         this.achievements["27"] = new Achievement("27", "Blink of an eye", "Photonic in less than 200 milliseconds", "check_27");
         this.achievements["28"] = new Achievement("28", "Baryon Asymmetry", "Have zero antimatter.\nReward: antimatter grows 16% faster", "check_28", "effective");
 
-        this.achievements["31"] = new Achievement("31", "Three is a Crowd", "Buy 3rd Matter Dimension", "check_31");
+        this.achievements["31"] = new Achievement("31", "Three is a Crowd", "Buy 3rd Matter Dimension.\nReward: unlock 2nd Matter Dimension autobuyer if 1st Matter Dimension autobuyer is unlocked", "check_31", "effective");
         this.achievements["32"] = new Achievement("32", "Massive Consequences", "Go Neutronic.\nReward: you gain 20% more Gravitons from resets, and unlock Automation Shop", "check_32", "effective");
         this.achievements["33"] = new Achievement("33", "It's useless!", "Buy 3rd Photonic Dimension.\nReward: 3rd Photonic Dimensions produce 2 times faster", "check_33", "effective");
         this.achievements["34"] = new Achievement("34", "Five Star Rating", "Get at least 5 Gravitons from a single Gravitonic reset", "check_34");
@@ -326,202 +332,239 @@ class Player {
         this.achievements["137"] = new Achievement("137", "...breathe out", "Have an element with the total level of at least 1000", "check_137");
         this.achievements["138"] = new Achievement("138", "The Hindenburg", "Have 10 free levels from Generation", "check_138");
 
+        this.achievements["141"] = new Achievement("141", "90 degrees from infinity", "Buy 8th Matter Dimension", "check_141");
+        this.achievements["142"] = new Achievement("142", "Light the City!", "Have at least 1 million of population", "check_142");
+        this.achievements["143"] = new Achievement("143", "Safe Driver", "Reach 1e30'000 matter without buying any Collision Points in the current Biological.\nReward: unlock autobuyer and auto-assigner for Collision Points", "check_143", "effective");
+        this.achievements["144"] = new Achievement("144", "Buffed", "Complete a Dimensional challenge", "check_144");
+        this.achievements["145"] = new Achievement("145", "One Death", "Reach a mortality rate of 2.5", "check_145");
+        this.achievements["146"] = new Achievement("146", "Metaphysics", "Be in four Meta-Challenges at once", "check_146");
         this.achievements["147"] = new Achievement("147", "Double Trouble", "Complete two regular Neutronic challenges five times.\nReward: you can max buy Atomic upgrades", "check_147", "effective");
         this.achievements["148"] = new Achievement("148", "SpaceL", "Have 50 Space Theorems in total", "check_148");
 
+        this.achievements["151"] = new Achievement("151", "Supercritical", "Have an element with a total level of over 100000.\nReward: Reactions are 2% more effective", "check_151", "effective");
+        this.achievements["152"] = new Achievement("152", "Exponential Millionaire", "Reach 1e1'000'000 matter", "check_152");
+        this.achievements["153"] = new Achievement("153", "That's even more illegal!", "Finish Gravitonic Meta-Challenge in exactly 0 milliseconds", "check_153");
+        this.achievements["154"] = new Achievement("154", "Overbuffed", "Complete three Dimensional challenges", "check_154");
+        this.achievements["155"] = new Achievement("155", "Fertile Beginnings", "Reach 100 population with a growth rate of 100% per minute", "check_155");
+        this.achievements["156"] = new Achievement("156", "Graviyard", "Get more than 1e6 Gravitons in a single Gravitonic reset", "check_156");
+        this.achievements["157"] = new Achievement("157", "Triple Threat", "Complete three regular Neutronic challenges five times", "check_157");
+        this.achievements["158"] = new Achievement("158", "Infinite Universe", "Have at least 1.79e308 Atoms", "check_158");
+
+        this.achievements["161"] = new Achievement("161", "Heresy", "Buy 9th Matter Dimension", "check_161");
+        this.achievements["162"] = new Achievement("162", "Elemental Millionaire", "Have an element with a total level of over a million", "check_162");
+        this.achievements["163"] = new Achievement("163", "Abiogenesis", "Biological with only one Atomic reset in the current Biological", "check_163");
+        this.achievements["165"] = new Achievement("165", "Blood for the Blood God", "Sacrifice 1e10 population in total", "check_165");
+        this.achievements["167"] = new Achievement("167", "Three Challenging Minutes", "Fully complete 36 challenges in total", "check_167");
+        this.achievements["168"] = new Achievement("168", "All your Neutrons belong to us", "Complete Neutronic Meta-Challenge", "check_168");
+
         this.upgrades = {};
-        this.upgrades["INERTIA_1"] = new Upgrade("INERTIA_1", -1, "upg_INERTIA_1_cost", "upg_INERTIA_1_power", "upg_INERTIA_1_unlock", "inertia", " of Inertia", "upg_INERTIA_1_available", "", "upg_INERTIA_1_cost_display_function", true);
-        this.upgrades["INERTIA_2"] = new Upgrade("INERTIA_2", 4, "upg_INERTIA_2_cost", "upg_INERTIA_2_power", "upg_INERTIA_2_unlock", "inertia", " of Inertia", "upg_INERTIA_2_available", "", "upg_INERTIA_2_cost_display_function", true);
-        this.upgrades["INERTIA_3"] = new Upgrade("INERTIA_3", -1, "upg_INERTIA_3_cost", "upg_INERTIA_3_power", "upg_INERTIA_3_unlock", "inertia", " of Inertia", "upg_INERTIA_3_available", "upg_INERTIA_3_buy_function", "upg_INERTIA_3_cost_display_function", true);
-        this.upgrades["INERTIA_4"] = new Upgrade("INERTIA_4", -1, "upg_INERTIA_4_cost", "upg_INERTIA_4_power", "upg_INERTIA_4_unlock", "inertia", " of Inertia", "upg_INERTIA_4_available", "", "upg_INERTIA_4_cost_display_function", true);
-        this.upgrades["INERTIA_5"] = new Upgrade("INERTIA_5", 4, "upg_INERTIA_5_cost", "upg_INERTIA_5_power", "upg_INERTIA_5_unlock", "inertia", " of Inertia", "upg_INERTIA_5_available", "", "upg_INERTIA_5_cost_display_function", true);
+        this.upgrades["INERTIA_1"] = new Upgrade("INERTIA_1", "section_inertia", -1, "upg_INERTIA_1_cost", "upg_INERTIA_1_power", "upg_INERTIA_1_unlock", "inertia", " of Inertia", "upg_INERTIA_1_available", "", "upg_INERTIA_1_cost_display_function", true);
+        this.upgrades["INERTIA_2"] = new Upgrade("INERTIA_2", "section_inertia", 4, "upg_INERTIA_2_cost", "upg_INERTIA_2_power", "upg_INERTIA_2_unlock", "inertia", " of Inertia", "upg_INERTIA_2_available", "", "upg_INERTIA_2_cost_display_function", true);
+        this.upgrades["INERTIA_3"] = new Upgrade("INERTIA_3", "section_inertia", -1, "upg_INERTIA_3_cost", "upg_INERTIA_3_power", "upg_INERTIA_3_unlock", "inertia", " of Inertia", "upg_INERTIA_3_available", "upg_INERTIA_3_buy_function", "upg_INERTIA_3_cost_display_function", true);
+        this.upgrades["INERTIA_4"] = new Upgrade("INERTIA_4", "section_inertia", -1, "upg_INERTIA_4_cost", "upg_INERTIA_4_power", "upg_INERTIA_4_unlock", "inertia", " of Inertia", "upg_INERTIA_4_available", "", "upg_INERTIA_4_cost_display_function", true);
+        this.upgrades["INERTIA_5"] = new Upgrade("INERTIA_5", "section_inertia", 4, "upg_INERTIA_5_cost", "upg_INERTIA_5_power", "upg_INERTIA_5_unlock", "inertia", " of Inertia", "upg_INERTIA_5_available", "", "upg_INERTIA_5_cost_display_function", true);
 
-        this.upgrades["TICKSPEED"] = new Upgrade("TICKSPEED", -1, "upg_TICKSPEED_cost", "upg_TICKSPEED_power", "upg_TICKSPEED_unlock", "matter", "", "upg_TICKSPEED_available");
+        this.upgrades["TICKSPEED"] = new Upgrade("TICKSPEED", "matter_dimensions", -1, "upg_TICKSPEED_cost", "upg_TICKSPEED_power", "upg_TICKSPEED_unlock", "matter", "", "upg_TICKSPEED_available");
 
-        this.upgrades["COLLISION_POINT"] = new Upgrade("COLLISION_POINT", -1, "upg_COLLISION_POINT_cost", "upg_COLLISION_POINT_power", "upg_COLLISION_POINT_unlock", "collision_knowledge", " Collision Knowledge", "upg_COLLISION_POINT_available", "upg_COLLISION_POINT_buy");
+        this.upgrades["COLLISION_POINT"] = new Upgrade("COLLISION_POINT", "atomic_collider", -1, "upg_COLLISION_POINT_cost", "upg_COLLISION_POINT_power", "upg_COLLISION_POINT_unlock", "collision_knowledge", " Collision Knowledge", "upg_COLLISION_POINT_available", "upg_COLLISION_POINT_buy");
 
-        this.upgrades["AUTO1_1"] = new Upgrade("AUTO1_1", 1, "upg_AUTO1_1_cost", "upg_automation_power", "upg_automation_neutronic_unlock", "neutrons", [" Neutron", " Neutrons"], "upg_automation_neutronic_unlock");
-        this.upgrades["AUTO1_2"] = new Upgrade("AUTO1_2", 1, "upg_AUTO1_2_cost", "upg_automation_power", "upg_automation_neutronic_unlock", "neutrons", [" Neutron", " Neutrons"], "upg_automation_neutronic_unlock");
-        this.upgrades["AUTO1_3"] = new Upgrade("AUTO1_3", 1, "upg_AUTO1_3_cost", "upg_automation_power", "upg_automation_vacuumic_unlock", "vacuum_energy", " VE", "upg_automation_vacuumic_unlock");
-        this.upgrades["AUTO1_5"] = new Upgrade("AUTO1_5", 1, "upg_AUTO1_5_cost", "upg_automation_power", "upg_automation_dimensional_unlock", "shards", [" Shard", " Shards"], "upg_automation_dimensional_unlock");
-        this.upgrades["AUTO1_4"] = new Upgrade("AUTO1_4", 1, "upg_AUTO1_4_cost", "upg_automation_power", "upg_automation_dimensional_unlock", "shards", [" Shard", " Shards"], "upg_automation_dimensional_unlock");
+        this.upgrades["AUTO1_1"] = new Upgrade("AUTO1_1", "section_automation", 1, "upg_AUTO1_1_cost", "upg_automation_power", "upg_automation_neutronic_unlock", "neutrons", [" Neutron", " Neutrons"], "upg_automation_neutronic_unlock");
+        this.upgrades["AUTO1_2"] = new Upgrade("AUTO1_2", "section_automation", 1, "upg_AUTO1_2_cost", "upg_automation_power", "upg_automation_neutronic_unlock", "neutrons", [" Neutron", " Neutrons"], "upg_automation_neutronic_unlock");
+        this.upgrades["AUTO1_3"] = new Upgrade("AUTO1_3", "section_automation", 1, "upg_AUTO1_3_cost", "upg_automation_power", "upg_automation_vacuumic_unlock", "vacuum_energy", " VE", "upg_automation_vacuumic_unlock");
+        this.upgrades["AUTO1_5"] = new Upgrade("AUTO1_5", "section_automation", 1, "upg_AUTO1_5_cost", "upg_automation_power", "upg_automation_dimensional_unlock", "shards", [" Shard", " Shards"], "upg_automation_dimensional_unlock");
+        this.upgrades["AUTO1_4"] = new Upgrade("AUTO1_4", "section_automation", 1, "upg_AUTO1_4_cost", "upg_automation_power", "upg_automation_dimensional_unlock", "shards", [" Shard", " Shards"], "upg_automation_dimensional_unlock");
 
-        this.upgrades["AUTO2_1"] = new Upgrade("AUTO2_1", 1, "upg_AUTO2_1_cost", "upg_automation_power", "upg_automation_vacuumic_unlock", "vacuum_energy", " VE", "upg_automation_vacuumic_unlock");
-        this.upgrades["AUTO2_2"] = new Upgrade("AUTO2_2", 1, "upg_AUTO2_2_cost", "upg_automation_power", "upg_automation_vacuumic_unlock", "vacuum_energy", " VE", "upg_automation_vacuumic_unlock");
-        this.upgrades["AUTO2_3"] = new Upgrade("AUTO2_3", 1, "upg_AUTO2_3_cost", "upg_automation_power", "upg_automation_dimensional_unlock", "shards", [" Shard", " Shards"], "upg_automation_dimensional_unlock");
-        this.upgrades["AUTO2_4"] = new Upgrade("AUTO2_4", 1, "upg_AUTO2_4_cost", "upg_automation_power", "upg_automation_atomic_unlock", "atoms", [" Atom", " Atoms"], "upg_automation_atomic_unlock");
-        this.upgrades["AUTO2_5"] = new Upgrade("AUTO2_5", 1, "upg_AUTO2_5_cost", "upg_automation_power", "upg_automation_atomic_unlock", "atoms", [" Atom", " Atoms"], "upg_automation_atomic_unlock");
+        this.upgrades["AUTO2_1"] = new Upgrade("AUTO2_1", "section_automation", 1, "upg_AUTO2_1_cost", "upg_automation_power", "upg_automation_vacuumic_unlock", "vacuum_energy", " VE", "upg_automation_vacuumic_unlock");
+        this.upgrades["AUTO2_2"] = new Upgrade("AUTO2_2", "section_automation", 1, "upg_AUTO2_2_cost", "upg_automation_power", "upg_automation_vacuumic_unlock", "vacuum_energy", " VE", "upg_automation_vacuumic_unlock");
+        this.upgrades["AUTO2_3"] = new Upgrade("AUTO2_3", "section_automation", 1, "upg_AUTO2_3_cost", "upg_automation_power", "upg_automation_dimensional_unlock", "shards", [" Shard", " Shards"], "upg_automation_dimensional_unlock");
+        this.upgrades["AUTO2_5"] = new Upgrade("AUTO2_5", "section_automation", 1, "upg_AUTO2_5_cost", "upg_automation_power", "upg_automation_atomic_unlock", "atoms", [" Atom", " Atoms"], "upg_automation_atomic_unlock");
+        this.upgrades["AUTO2_4"] = new Upgrade("AUTO2_4", "section_automation", 1, "upg_AUTO2_4_cost", "upg_automation_power", "upg_automation_atomic_unlock", "atoms", [" Atom", " Atoms"], "upg_automation_atomic_unlock");
 
-        this.upgrades["AUTO3_1"] = new Upgrade("AUTO3_1", 1, "upg_AUTO3_1_cost", "upg_automation_power", "upg_automation_dimensional_unlock", "shards", [" Shard", " Shards"], "upg_automation_dimensional_unlock");
-        this.upgrades["AUTO3_2"] = new Upgrade("AUTO3_2", 1, "upg_AUTO3_2_cost", "upg_automation_power", "upg_automation_dimensional_unlock", "shards", [" Shard", " Shards"], "upg_automation_dimensional_unlock");
-        this.upgrades["AUTO3_3"] = new Upgrade("AUTO3_3", 1, "upg_AUTO3_3_cost", "upg_automation_power", "upg_automation_atomic_unlock", "atoms", [" Atom", " Atoms"], "upg_automation_atomic_unlock");
+        this.upgrades["AUTO3_1"] = new Upgrade("AUTO3_1", "section_automation", 1, "upg_AUTO3_1_cost", "upg_automation_power", "upg_automation_dimensional_unlock", "shards", [" Shard", " Shards"], "upg_automation_dimensional_unlock");
+        this.upgrades["AUTO3_2"] = new Upgrade("AUTO3_2", "section_automation", 1, "upg_AUTO3_2_cost", "upg_automation_power", "upg_automation_dimensional_unlock", "shards", [" Shard", " Shards"], "upg_automation_dimensional_unlock");
+        this.upgrades["AUTO3_3"] = new Upgrade("AUTO3_3", "section_automation", 1, "upg_AUTO3_3_cost", "upg_automation_power", "upg_automation_atomic_unlock", "atoms", [" Atom", " Atoms"], "upg_automation_atomic_unlock");
+        this.upgrades["AUTO3_5"] = new Upgrade("AUTO3_5", "section_automation", 1, "upg_AUTO3_5_cost", "upg_automation_power", "upg_automation_biological_unlock", "genes", [" Gene", " Genes"], "upg_automation_biological_unlock");
+        this.upgrades["AUTO3_4"] = new Upgrade("AUTO3_4", "section_automation", 1, "upg_AUTO3_4_cost", "upg_automation_power", "upg_automation_biological_unlock", "genes", [" Gene", " Genes"], "upg_automation_biological_unlock");
 
-        this.upgrades["AUTO4_1"] = new Upgrade("AUTO4_1", 1, "upg_AUTO4_1_cost", "upg_automation_power", "upg_automation_atomic_unlock", "atoms", [" Atom", " Atoms"], "upg_automation_atomic_unlock");
-        this.upgrades["AUTO4_2"] = new Upgrade("AUTO4_2", 1, "upg_AUTO4_2_cost", "upg_automation_power", "upg_automation_atomic_unlock", "atoms", [" Atom", " Atoms"], "upg_automation_atomic_unlock");
-        this.upgrades["AUTO4_3"] = new Upgrade("AUTO4_3", 1, "upg_AUTO4_3_cost", "upg_automation_power", "upg_automation_biological_unlock", "genes", [" Gene", " Genes"], "upg_automation_biological_unlock");
+        this.upgrades["AUTO4_1"] = new Upgrade("AUTO4_1", "section_automation", 1, "upg_AUTO4_1_cost", "upg_automation_power", "upg_automation_atomic_unlock", "atoms", [" Atom", " Atoms"], "upg_automation_atomic_unlock");
+        this.upgrades["AUTO4_2"] = new Upgrade("AUTO4_2", "section_automation", 1, "upg_AUTO4_2_cost", "upg_automation_power", "upg_automation_atomic_unlock", "atoms", [" Atom", " Atoms"], "upg_automation_atomic_unlock");
+        this.upgrades["AUTO4_3"] = new Upgrade("AUTO4_3", "section_automation", 1, "upg_AUTO4_3_cost", "upg_automation_power", "upg_automation_biological_unlock", "genes", [" Gene", " Genes"], "upg_automation_biological_unlock");
 
-        this.upgrades["p11"] = new Upgrade("p11", -1, "upg_p11_cost", "upg_p11_power", "upg_p11_unlock", "photons", [" Photon", " Photons"], "upg_p11_available");
-        this.upgrades["p12"] = new Upgrade("p12", -1, "upg_p12_cost", "upg_p12_power", "upg_p12_unlock", "photons", [" Photon", " Photons"], "upg_p12_available");
-        this.upgrades["p13"] = new Upgrade("p13", 1, "upg_p13_cost", "upg_p13_power", "upg_p13_unlock", "photons", [" Photon", " Photons"], "upg_p13_available");
-        this.upgrades["p14"] = new Upgrade("p14", 1, "upg_p14_cost", "upg_p14_power", "upg_p14_unlock", "photons", [" Photon", " Photons"], "upg_p14_available");
-        this.upgrades["p15"] = new Upgrade("p15", 1, "upg_p15_cost", "upg_p15_power", "upg_p15_unlock", "photons", [" Photon", " Photons"], "upg_p15_available");
-        this.upgrades["p21"] = new Upgrade("p21", -1, "upg_p21_cost", "upg_p21_power", "upg_p21_unlock", "photons", [" Photon", " Photons"], "upg_p21_available");
-        this.upgrades["p22"] = new Upgrade("p22", -1, "upg_p22_cost", "upg_p22_power", "upg_p22_unlock", "photons", [" Photon", " Photons"], "upg_p22_available");
-        this.upgrades["p23"] = new Upgrade("p23", 1, "upg_p23_cost", "upg_p23_power", "upg_p23_unlock", "photons", [" Photon", " Photons"], "upg_p23_available");
-        this.upgrades["p24"] = new Upgrade("p24", 1, "upg_p24_cost", "upg_p24_power", "upg_p24_unlock", "photons", [" Photon", " Photons"], "upg_p24_available");
-        this.upgrades["p25"] = new Upgrade("p25", 1, "upg_p25_cost", "upg_p25_power", "upg_p25_unlock", "photons", [" Photon", " Photons"], "upg_p25_available");
-        this.upgrades["p31"] = new Upgrade("p31", -1, "upg_p31_cost", "upg_p31_power", "upg_p31_unlock", "photons", [" Photon", " Photons"], "upg_p31_available");
-        this.upgrades["p32"] = new Upgrade("p32", -1, "upg_p32_cost", "upg_p32_power", "upg_p32_unlock", "photons", [" Photon", " Photons"], "upg_p32_available");
-        this.upgrades["p33"] = new Upgrade("p33", 1, "upg_p33_cost", "upg_p33_power", "upg_p33_unlock", "photons", [" Photon", " Photons"], "upg_p33_available");
-        this.upgrades["p34"] = new Upgrade("p34", 1, "upg_p34_cost", "upg_p34_power", "upg_p34_unlock", "photons", [" Photon", " Photons"], "upg_p34_available");
-        this.upgrades["p35"] = new Upgrade("p35", 1, "upg_p35_cost", "upg_p35_power", "upg_p35_unlock", "photons", [" Photon", " Photons"], "upg_p35_available");
-        this.upgrades["p41"] = new Upgrade("p41", -1, "upg_p41_cost", "upg_p41_power", "upg_p41_unlock", "photons", [" Photon", " Photons"], "upg_p41_available");
-        this.upgrades["p42"] = new Upgrade("p42", -1, "upg_p42_cost", "upg_p42_power", "upg_p42_unlock", "photons", [" Photon", " Photons"], "upg_p42_available");
-        this.upgrades["p43"] = new Upgrade("p43", 1, "upg_p43_cost", "upg_p43_power", "upg_p43_unlock", "photons", [" Photon", " Photons"], "upg_p43_available");
-        this.upgrades["p44"] = new Upgrade("p44", 1, "upg_p44_cost", "upg_p44_power", "upg_p44_unlock", "photons", [" Photon", " Photons"], "upg_p44_available");
-        this.upgrades["p45"] = new Upgrade("p45", 1, "upg_p45_cost", "upg_p45_power", "upg_p45_unlock", "photons", [" Photon", " Photons"], "upg_p45_available");
-        this.upgrades["p51"] = new Upgrade("p51", -1, "upg_p51_cost", "upg_p51_power", "upg_p51_unlock", "photons", [" Photon", " Photons"], "upg_p51_available");
-        this.upgrades["p52"] = new Upgrade("p52", -1, "upg_p52_cost", "upg_p52_power", "upg_p52_unlock", "photons", [" Photon", " Photons"], "upg_p52_available");
-        this.upgrades["p53"] = new Upgrade("p53", 1, "upg_p53_cost", "upg_p53_power", "upg_p53_unlock", "photons", [" Photon", " Photons"], "upg_p53_available");
-        this.upgrades["p54"] = new Upgrade("p54", 1, "upg_p54_cost", "upg_p54_power", "upg_p54_unlock", "photons", [" Photon", " Photons"], "upg_p54_available");
-        this.upgrades["p55"] = new Upgrade("p55", 1, "upg_p55_cost", "upg_p55_power", "upg_p55_unlock", "photons", [" Photon", " Photons"], "upg_p55_available");
+        this.upgrades["p11"] = new Upgrade("p11", "photonic_upgrades", -1, "upg_p11_cost", "upg_p11_power", "upg_p11_unlock", "photons", [" Photon", " Photons"], "upg_p11_available");
+        this.upgrades["p12"] = new Upgrade("p12", "photonic_upgrades", -1, "upg_p12_cost", "upg_p12_power", "upg_p12_unlock", "photons", [" Photon", " Photons"], "upg_p12_available");
+        this.upgrades["p13"] = new Upgrade("p13", "photonic_upgrades", 1, "upg_p13_cost", "upg_p13_power", "upg_p13_unlock", "photons", [" Photon", " Photons"], "upg_p13_available");
+        this.upgrades["p14"] = new Upgrade("p14", "photonic_upgrades", 1, "upg_p14_cost", "upg_p14_power", "upg_p14_unlock", "photons", [" Photon", " Photons"], "upg_p14_available");
+        this.upgrades["p15"] = new Upgrade("p15", "photonic_upgrades", 1, "upg_p15_cost", "upg_p15_power", "upg_p15_unlock", "photons", [" Photon", " Photons"], "upg_p15_available");
+        this.upgrades["p21"] = new Upgrade("p21", "photonic_upgrades", -1, "upg_p21_cost", "upg_p21_power", "upg_p21_unlock", "photons", [" Photon", " Photons"], "upg_p21_available");
+        this.upgrades["p22"] = new Upgrade("p22", "photonic_upgrades", -1, "upg_p22_cost", "upg_p22_power", "upg_p22_unlock", "photons", [" Photon", " Photons"], "upg_p22_available");
+        this.upgrades["p23"] = new Upgrade("p23", "photonic_upgrades", 1, "upg_p23_cost", "upg_p23_power", "upg_p23_unlock", "photons", [" Photon", " Photons"], "upg_p23_available");
+        this.upgrades["p24"] = new Upgrade("p24", "photonic_upgrades", 1, "upg_p24_cost", "upg_p24_power", "upg_p24_unlock", "photons", [" Photon", " Photons"], "upg_p24_available");
+        this.upgrades["p25"] = new Upgrade("p25", "photonic_upgrades", 1, "upg_p25_cost", "upg_p25_power", "upg_p25_unlock", "photons", [" Photon", " Photons"], "upg_p25_available");
+        this.upgrades["p31"] = new Upgrade("p31", "photonic_upgrades", -1, "upg_p31_cost", "upg_p31_power", "upg_p31_unlock", "photons", [" Photon", " Photons"], "upg_p31_available");
+        this.upgrades["p32"] = new Upgrade("p32", "photonic_upgrades", -1, "upg_p32_cost", "upg_p32_power", "upg_p32_unlock", "photons", [" Photon", " Photons"], "upg_p32_available");
+        this.upgrades["p33"] = new Upgrade("p33", "photonic_upgrades", 1, "upg_p33_cost", "upg_p33_power", "upg_p33_unlock", "photons", [" Photon", " Photons"], "upg_p33_available");
+        this.upgrades["p34"] = new Upgrade("p34", "photonic_upgrades", 1, "upg_p34_cost", "upg_p34_power", "upg_p34_unlock", "photons", [" Photon", " Photons"], "upg_p34_available");
+        this.upgrades["p35"] = new Upgrade("p35", "photonic_upgrades", 1, "upg_p35_cost", "upg_p35_power", "upg_p35_unlock", "photons", [" Photon", " Photons"], "upg_p35_available");
+        this.upgrades["p41"] = new Upgrade("p41", "photonic_upgrades", -1, "upg_p41_cost", "upg_p41_power", "upg_p41_unlock", "photons", [" Photon", " Photons"], "upg_p41_available");
+        this.upgrades["p42"] = new Upgrade("p42", "photonic_upgrades", -1, "upg_p42_cost", "upg_p42_power", "upg_p42_unlock", "photons", [" Photon", " Photons"], "upg_p42_available");
+        this.upgrades["p43"] = new Upgrade("p43", "photonic_upgrades", 1, "upg_p43_cost", "upg_p43_power", "upg_p43_unlock", "photons", [" Photon", " Photons"], "upg_p43_available");
+        this.upgrades["p44"] = new Upgrade("p44", "photonic_upgrades", 1, "upg_p44_cost", "upg_p44_power", "upg_p44_unlock", "photons", [" Photon", " Photons"], "upg_p44_available");
+        this.upgrades["p45"] = new Upgrade("p45", "photonic_upgrades", 1, "upg_p45_cost", "upg_p45_power", "upg_p45_unlock", "photons", [" Photon", " Photons"], "upg_p45_available");
+        this.upgrades["p51"] = new Upgrade("p51", "photonic_upgrades", -1, "upg_p51_cost", "upg_p51_power", "upg_p51_unlock", "photons", [" Photon", " Photons"], "upg_p51_available");
+        this.upgrades["p52"] = new Upgrade("p52", "photonic_upgrades", -1, "upg_p52_cost", "upg_p52_power", "upg_p52_unlock", "photons", [" Photon", " Photons"], "upg_p52_available");
+        this.upgrades["p53"] = new Upgrade("p53", "photonic_upgrades", 1, "upg_p53_cost", "upg_p53_power", "upg_p53_unlock", "photons", [" Photon", " Photons"], "upg_p53_available");
+        this.upgrades["p54"] = new Upgrade("p54", "photonic_upgrades", 1, "upg_p54_cost", "upg_p54_power", "upg_p54_unlock", "photons", [" Photon", " Photons"], "upg_p54_available");
+        this.upgrades["p55"] = new Upgrade("p55", "photonic_upgrades", 1, "upg_p55_cost", "upg_p55_power", "upg_p55_unlock", "photons", [" Photon", " Photons"], "upg_p55_available");
 
-        this.upgrades["g01"] = new Upgrade("g01", 1, "upg_g01_cost", "upg_g01_power", "upg_g01_unlock", "gravitons", [" Graviton", " Gravitons"], "upg_g01_available", "upg_g01_buy");
-        this.upgrades["g10"] = new Upgrade("g10", 1, "upg_g10_cost", "upg_g10_power", "upg_g10_unlock", "gravitons", [" Graviton", " Gravitons"], "upg_g10_available");
-        this.upgrades["g11"] = new Upgrade("g11", 1, "upg_g11_cost", "upg_g11_power", "upg_g11_unlock", "gravitons", [" Graviton", " Gravitons"], "upg_g11_available");
-        this.upgrades["g12"] = new Upgrade("g12", -1, "upg_g12_cost", "upg_g12_power", "upg_g12_unlock", "gravitons", [" Graviton", " Gravitons"], "upg_g12_available");
-        this.upgrades["g13"] = new Upgrade("g13", -1, "upg_g13_cost", "upg_g13_power", "upg_g13_unlock", "gravitons", [" Graviton", " Gravitons"], "upg_g13_available");
-        this.upgrades["g14"] = new Upgrade("g14", -1, "upg_g14_cost", "upg_g14_power", "upg_g14_unlock", "gravitons", [" Graviton", " Gravitons"], "upg_g14_available");
-        this.upgrades["g20"] = new Upgrade("g20", 1, "upg_g20_cost", "upg_g20_power", "upg_g20_unlock", "gravitons", [" Graviton", " Gravitons"], "upg_g20_available");
-        this.upgrades["g21"] = new Upgrade("g21", 1, "upg_g21_cost", "upg_g21_power", "upg_g21_unlock", "gravitons", [" Graviton", " Gravitons"], "upg_g21_available");
-        this.upgrades["g22"] = new Upgrade("g22", 1, "upg_g22_cost", "upg_g22_power", "upg_g22_unlock", "gravitons", [" Graviton", " Gravitons"], "upg_g22_available");
-        this.upgrades["g23"] = new Upgrade("g23", 1, "upg_g23_cost", "upg_g23_power", "upg_g23_unlock", "gravitons", [" Graviton", " Gravitons"], "upg_g23_available");
-        this.upgrades["g24"] = new Upgrade("g24", 1, "upg_g24_cost", "upg_g24_power", "upg_g24_unlock", "gravitons", [" Graviton", " Gravitons"], "upg_g24_available");
-        this.upgrades["g30"] = new Upgrade("g30", 1, "upg_g30_cost", "upg_g30_power", "upg_g30_unlock", "gravitons", [" Graviton", " Gravitons"], "upg_g30_available");
-        this.upgrades["g31"] = new Upgrade("g31", 1, "upg_g31_cost", "upg_g31_power", "upg_g31_unlock", "gravitons", [" Graviton", " Gravitons"], "upg_g31_available");
-        this.upgrades["g32"] = new Upgrade("g32", 7, "upg_g32_cost", "upg_g32_power", "upg_g32_unlock", "gravitons", [" Graviton", " Gravitons"], "upg_g32_available");
-        this.upgrades["g33"] = new Upgrade("g33", 1, "upg_g33_cost", "upg_g33_power", "upg_g33_unlock", "gravitons", [" Graviton", " Gravitons"], "upg_g33_available");
-        this.upgrades["g34"] = new Upgrade("g34", 1, "upg_g34_cost", "upg_g34_power", "upg_g34_unlock", "gravitons", [" Graviton", " Gravitons"], "upg_g34_available");
-        this.upgrades["g40"] = new Upgrade("g40", 1, "upg_g40_cost", "upg_g40_power", "upg_g40_unlock", "gravitons", [" Graviton", " Gravitons"], "upg_g40_available");
-        this.upgrades["g41"] = new Upgrade("g41", 1, "upg_g41_cost", "upg_g41_power", "upg_g41_unlock", "gravitons", [" Graviton", " Gravitons"], "upg_g41_available");
-        this.upgrades["g42"] = new Upgrade("g42", 1, "upg_g42_cost", "upg_g42_power", "upg_g42_unlock", "gravitons", [" Graviton", " Gravitons"], "upg_g42_available");
-        this.upgrades["g43"] = new Upgrade("g43", 1, "upg_g43_cost", "upg_g43_power", "upg_g43_unlock", "gravitons", [" Graviton", " Gravitons"], "upg_g43_available");
-        this.upgrades["g44"] = new Upgrade("g44", 1, "upg_g44_cost", "upg_g44_power", "upg_g44_unlock", "gravitons", [" Graviton", " Gravitons"], "upg_g44_available");
+        this.upgrades["g01"] = new Upgrade("g01", "gravitonic_upgrades", 1, "upg_g01_cost", "upg_g01_power", "upg_g01_unlock", "gravitons", [" Graviton", " Gravitons"], "upg_g01_available", "upg_g01_buy");
+        this.upgrades["g10"] = new Upgrade("g10", "gravitonic_upgrades", 1, "upg_g10_cost", "upg_g10_power", "upg_g10_unlock", "gravitons", [" Graviton", " Gravitons"], "upg_g10_available");
+        this.upgrades["g11"] = new Upgrade("g11", "gravitonic_upgrades", 1, "upg_g11_cost", "upg_g11_power", "upg_g11_unlock", "gravitons", [" Graviton", " Gravitons"], "upg_g11_available");
+        this.upgrades["g12"] = new Upgrade("g12", "gravitonic_upgrades", -1, "upg_g12_cost", "upg_g12_power", "upg_g12_unlock", "gravitons", [" Graviton", " Gravitons"], "upg_g12_available");
+        this.upgrades["g13"] = new Upgrade("g13", "gravitonic_upgrades", -1, "upg_g13_cost", "upg_g13_power", "upg_g13_unlock", "gravitons", [" Graviton", " Gravitons"], "upg_g13_available");
+        this.upgrades["g14"] = new Upgrade("g14", "gravitonic_upgrades", -1, "upg_g14_cost", "upg_g14_power", "upg_g14_unlock", "gravitons", [" Graviton", " Gravitons"], "upg_g14_available");
+        this.upgrades["g20"] = new Upgrade("g20", "gravitonic_upgrades", 1, "upg_g20_cost", "upg_g20_power", "upg_g20_unlock", "gravitons", [" Graviton", " Gravitons"], "upg_g20_available");
+        this.upgrades["g21"] = new Upgrade("g21", "gravitonic_upgrades", 1, "upg_g21_cost", "upg_g21_power", "upg_g21_unlock", "gravitons", [" Graviton", " Gravitons"], "upg_g21_available");
+        this.upgrades["g22"] = new Upgrade("g22", "gravitonic_upgrades", 1, "upg_g22_cost", "upg_g22_power", "upg_g22_unlock", "gravitons", [" Graviton", " Gravitons"], "upg_g22_available");
+        this.upgrades["g23"] = new Upgrade("g23", "gravitonic_upgrades", 1, "upg_g23_cost", "upg_g23_power", "upg_g23_unlock", "gravitons", [" Graviton", " Gravitons"], "upg_g23_available");
+        this.upgrades["g24"] = new Upgrade("g24", "gravitonic_upgrades", 1, "upg_g24_cost", "upg_g24_power", "upg_g24_unlock", "gravitons", [" Graviton", " Gravitons"], "upg_g24_available");
+        this.upgrades["g30"] = new Upgrade("g30", "gravitonic_upgrades", 1, "upg_g30_cost", "upg_g30_power", "upg_g30_unlock", "gravitons", [" Graviton", " Gravitons"], "upg_g30_available");
+        this.upgrades["g31"] = new Upgrade("g31", "gravitonic_upgrades", 1, "upg_g31_cost", "upg_g31_power", "upg_g31_unlock", "gravitons", [" Graviton", " Gravitons"], "upg_g31_available");
+        this.upgrades["g32"] = new Upgrade("g32", "gravitonic_upgrades", 7, "upg_g32_cost", "upg_g32_power", "upg_g32_unlock", "gravitons", [" Graviton", " Gravitons"], "upg_g32_available");
+        this.upgrades["g33"] = new Upgrade("g33", "gravitonic_upgrades", 1, "upg_g33_cost", "upg_g33_power", "upg_g33_unlock", "gravitons", [" Graviton", " Gravitons"], "upg_g33_available");
+        this.upgrades["g34"] = new Upgrade("g34", "gravitonic_upgrades", 1, "upg_g34_cost", "upg_g34_power", "upg_g34_unlock", "gravitons", [" Graviton", " Gravitons"], "upg_g34_available");
+        this.upgrades["g40"] = new Upgrade("g40", "gravitonic_upgrades", 1, "upg_g40_cost", "upg_g40_power", "upg_g40_unlock", "gravitons", [" Graviton", " Gravitons"], "upg_g40_available");
+        this.upgrades["g41"] = new Upgrade("g41", "gravitonic_upgrades", 1, "upg_g41_cost", "upg_g41_power", "upg_g41_unlock", "gravitons", [" Graviton", " Gravitons"], "upg_g41_available");
+        this.upgrades["g42"] = new Upgrade("g42", "gravitonic_upgrades", 1, "upg_g42_cost", "upg_g42_power", "upg_g42_unlock", "gravitons", [" Graviton", " Gravitons"], "upg_g42_available");
+        this.upgrades["g43"] = new Upgrade("g43", "gravitonic_upgrades", 1, "upg_g43_cost", "upg_g43_power", "upg_g43_unlock", "gravitons", [" Graviton", " Gravitons"], "upg_g43_available");
+        this.upgrades["g44"] = new Upgrade("g44", "gravitonic_upgrades", 1, "upg_g44_cost", "upg_g44_power", "upg_g44_unlock", "gravitons", [" Graviton", " Gravitons"], "upg_g44_available");
 
-        this.upgrades["n01"] = new Upgrade("n01", 1, "upg_n01_cost", "upg_n01_power", "upg_n01_unlock", "neutrons", [" Neutron", " Neutrons"], "upg_n01_available", "upg_n01_buy");
-        this.upgrades["n02"] = new Upgrade("n02", -1, "upg_n02_cost", "upg_n02_power", "upg_n02_unlock", "neutrons", [" Neutron", " Neutrons"], "upg_n02_available");
-        this.upgrades["n03"] = new Upgrade("n03", 7, "upg_n03_cost", "upg_n03_power", "upg_n03_unlock", "neutrons", [" Neutron", " Neutrons"], "upg_n03_available");
-        this.upgrades["n04"] = new Upgrade("n04", 1, "upg_n04_cost", "upg_n04_power", "upg_n04_unlock", "neutrons", [" Neutron", " Neutrons"], "upg_n04_available");
-        this.upgrades["n05"] = new Upgrade("n05", 1, "upg_n05_cost", "upg_n05_power", "upg_n05_unlock", "neutrons", [" Neutron", " Neutrons"], "upg_n05_available");
-        this.upgrades["n06"] = new Upgrade("n06", 1, "upg_n06_cost", "upg_n06_power", "upg_n06_unlock", "neutrons", [" Neutron", " Neutrons"], "upg_n06_available");
-        this.upgrades["n11"] = new Upgrade("n11", 1, "upg_n11_cost", "upg_n11_power", "upg_n11_unlock", this.dimensions['protons'], [" Proton", " Protons"], "upg_n11_available");
-        this.upgrades["n12"] = new Upgrade("n12", 1, "upg_n12_cost", "upg_n12_power", "upg_n12_unlock", this.dimensions['protons'], [" Proton", " Protons"], "upg_n12_available");
-        this.upgrades["n13"] = new Upgrade("n13", 1, "upg_n13_cost", "upg_n13_power", "upg_n13_unlock", this.dimensions['protons'], [" Proton", " Protons"], "upg_n13_available");
-        this.upgrades["n14"] = new Upgrade("n14", 1, "upg_n14_cost", "upg_n14_power", "upg_n14_unlock", this.dimensions['protons'], [" Proton", " Protons"], "upg_n14_available");
-        this.upgrades["n15"] = new Upgrade("n15", 1, "upg_n15_cost", "upg_n15_power", "upg_n15_unlock", this.dimensions['protons'], [" Proton", " Protons"], "upg_n15_available");
-        this.upgrades["n16"] = new Upgrade("n16", 1, "upg_n16_cost", "upg_n16_power", "upg_n16_unlock", this.dimensions['protons'], [" Proton", " Protons"], "upg_n16_available");
-        this.upgrades["n21"] = new Upgrade("n21", 1, "upg_n21_cost", "upg_n21_power", "upg_n21_unlock", this.dimensions['electrons'], [" Electron", " Electrons"], "upg_n21_available");
-        this.upgrades["n22"] = new Upgrade("n22", 1, "upg_n22_cost", "upg_n22_power", "upg_n22_unlock", this.dimensions['electrons'], [" Electron", " Electrons"], "upg_n22_available");
-        this.upgrades["n23"] = new Upgrade("n23", 1, "upg_n23_cost", "upg_n23_power", "upg_n23_unlock", this.dimensions['electrons'], [" Electron", " Electrons"], "upg_n23_available");
-        this.upgrades["n24"] = new Upgrade("n24", 1, "upg_n24_cost", "upg_n24_power", "upg_n24_unlock", this.dimensions['electrons'], [" Electron", " Electrons"], "upg_n24_available");
-        this.upgrades["n25"] = new Upgrade("n25", 1, "upg_n25_cost", "upg_n25_power", "upg_n25_unlock", this.dimensions['electrons'], [" Electron", " Electrons"], "upg_n25_available");
-        this.upgrades["n26"] = new Upgrade("n26", 1, "upg_n26_cost", "upg_n26_power", "upg_n26_unlock", this.dimensions['electrons'], [" Electron", " Electrons"], "upg_n26_available");
-        this.upgrades["n31"] = new Upgrade("n31", 1, "upg_n31_cost", "upg_n31_power", "upg_n31_unlock", this.dimensions['bosons'], [" W-Boson", " W-Bosons"], "upg_n31_available");
-        this.upgrades["n32"] = new Upgrade("n32", 1, "upg_n32_cost", "upg_n32_power", "upg_n32_unlock", this.dimensions['bosons'], [" W-Boson", " W-Bosons"], "upg_n32_available");
-        this.upgrades["n33"] = new Upgrade("n33", 1, "upg_n33_cost", "upg_n33_power", "upg_n33_unlock", this.dimensions['bosons'], [" W-Boson", " W-Bosons"], "upg_n33_available");
-        this.upgrades["n34"] = new Upgrade("n34", 1, "upg_n34_cost", "upg_n34_power", "upg_n34_unlock", this.dimensions['bosons'], [" W-Boson", " W-Bosons"], "upg_n34_available");
-        this.upgrades["n35"] = new Upgrade("n35", 1, "upg_n35_cost", "upg_n35_power", "upg_n35_unlock", this.dimensions['bosons'], [" W-Boson", " W-Bosons"], "upg_n35_available");
-        this.upgrades["n36"] = new Upgrade("n36", 1, "upg_n36_cost", "upg_n36_power", "upg_n36_unlock", this.dimensions['bosons'], [" W-Boson", " W-Bosons"], "upg_n36_available");
+        this.upgrades["n01"] = new Upgrade("n01", "neutronic_upgrades", 1, "upg_n01_cost", "upg_n01_power", "upg_n01_unlock", "neutrons", [" Neutron", " Neutrons"], "upg_n01_available", "upg_n01_buy");
+        this.upgrades["n02"] = new Upgrade("n02", "neutronic_upgrades", -1, "upg_n02_cost", "upg_n02_power", "upg_n02_unlock", "neutrons", [" Neutron", " Neutrons"], "upg_n02_available");
+        this.upgrades["n03"] = new Upgrade("n03", "neutronic_upgrades", 7, "upg_n03_cost", "upg_n03_power", "upg_n03_unlock", "neutrons", [" Neutron", " Neutrons"], "upg_n03_available");
+        this.upgrades["n04"] = new Upgrade("n04", "neutronic_upgrades", 1, "upg_n04_cost", "upg_n04_power", "upg_n04_unlock", "neutrons", [" Neutron", " Neutrons"], "upg_n04_available");
+        this.upgrades["n05"] = new Upgrade("n05", "neutronic_upgrades", 1, "upg_n05_cost", "upg_n05_power", "upg_n05_unlock", "neutrons", [" Neutron", " Neutrons"], "upg_n05_available");
+        this.upgrades["n06"] = new Upgrade("n06", "neutronic_upgrades", 1, "upg_n06_cost", "upg_n06_power", "upg_n06_unlock", "neutrons", [" Neutron", " Neutrons"], "upg_n06_available");
+        this.upgrades["n11"] = new Upgrade("n11", "neutronic_upgrades", 1, "upg_n11_cost", "upg_n11_power", "upg_n11_unlock", this.dimensions['protons'], [" Proton", " Protons"], "upg_n11_available");
+        this.upgrades["n12"] = new Upgrade("n12", "neutronic_upgrades", 1, "upg_n12_cost", "upg_n12_power", "upg_n12_unlock", this.dimensions['protons'], [" Proton", " Protons"], "upg_n12_available");
+        this.upgrades["n13"] = new Upgrade("n13", "neutronic_upgrades", 1, "upg_n13_cost", "upg_n13_power", "upg_n13_unlock", this.dimensions['protons'], [" Proton", " Protons"], "upg_n13_available");
+        this.upgrades["n14"] = new Upgrade("n14", "neutronic_upgrades", 1, "upg_n14_cost", "upg_n14_power", "upg_n14_unlock", this.dimensions['protons'], [" Proton", " Protons"], "upg_n14_available");
+        this.upgrades["n15"] = new Upgrade("n15", "neutronic_upgrades", 1, "upg_n15_cost", "upg_n15_power", "upg_n15_unlock", this.dimensions['protons'], [" Proton", " Protons"], "upg_n15_available");
+        this.upgrades["n16"] = new Upgrade("n16", "neutronic_upgrades", 1, "upg_n16_cost", "upg_n16_power", "upg_n16_unlock", this.dimensions['protons'], [" Proton", " Protons"], "upg_n16_available");
+        this.upgrades["n17"] = new Upgrade("n17", "neutronic_upgrades", 1, "upg_n17_cost", "upg_n17_power", "upg_n17_unlock", this.dimensions['protons'], [" Proton", " Protons"], "upg_n17_available");
+        this.upgrades["n21"] = new Upgrade("n21", "neutronic_upgrades", 1, "upg_n21_cost", "upg_n21_power", "upg_n21_unlock", this.dimensions['electrons'], [" Electron", " Electrons"], "upg_n21_available");
+        this.upgrades["n22"] = new Upgrade("n22", "neutronic_upgrades", 1, "upg_n22_cost", "upg_n22_power", "upg_n22_unlock", this.dimensions['electrons'], [" Electron", " Electrons"], "upg_n22_available");
+        this.upgrades["n23"] = new Upgrade("n23", "neutronic_upgrades", 1, "upg_n23_cost", "upg_n23_power", "upg_n23_unlock", this.dimensions['electrons'], [" Electron", " Electrons"], "upg_n23_available");
+        this.upgrades["n24"] = new Upgrade("n24", "neutronic_upgrades", 1, "upg_n24_cost", "upg_n24_power", "upg_n24_unlock", this.dimensions['electrons'], [" Electron", " Electrons"], "upg_n24_available");
+        this.upgrades["n25"] = new Upgrade("n25", "neutronic_upgrades", 1, "upg_n25_cost", "upg_n25_power", "upg_n25_unlock", this.dimensions['electrons'], [" Electron", " Electrons"], "upg_n25_available");
+        this.upgrades["n26"] = new Upgrade("n26", "neutronic_upgrades", 1, "upg_n26_cost", "upg_n26_power", "upg_n26_unlock", this.dimensions['electrons'], [" Electron", " Electrons"], "upg_n26_available");
+        this.upgrades["n27"] = new Upgrade("n27", "neutronic_upgrades", 1, "upg_n27_cost", "upg_n27_power", "upg_n27_unlock", this.dimensions['electrons'], [" Electron", " Electrons"], "upg_n27_available");
+        this.upgrades["n31"] = new Upgrade("n31", "neutronic_upgrades", 1, "upg_n31_cost", "upg_n31_power", "upg_n31_unlock", this.dimensions['bosons'], [" W-Boson", " W-Bosons"], "upg_n31_available");
+        this.upgrades["n32"] = new Upgrade("n32", "neutronic_upgrades", 1, "upg_n32_cost", "upg_n32_power", "upg_n32_unlock", this.dimensions['bosons'], [" W-Boson", " W-Bosons"], "upg_n32_available");
+        this.upgrades["n33"] = new Upgrade("n33", "neutronic_upgrades", 1, "upg_n33_cost", "upg_n33_power", "upg_n33_unlock", this.dimensions['bosons'], [" W-Boson", " W-Bosons"], "upg_n33_available");
+        this.upgrades["n34"] = new Upgrade("n34", "neutronic_upgrades", 1, "upg_n34_cost", "upg_n34_power", "upg_n34_unlock", this.dimensions['bosons'], [" W-Boson", " W-Bosons"], "upg_n34_available");
+        this.upgrades["n35"] = new Upgrade("n35", "neutronic_upgrades", 1, "upg_n35_cost", "upg_n35_power", "upg_n35_unlock", this.dimensions['bosons'], [" W-Boson", " W-Bosons"], "upg_n35_available");
+        this.upgrades["n36"] = new Upgrade("n36", "neutronic_upgrades", 1, "upg_n36_cost", "upg_n36_power", "upg_n36_unlock", this.dimensions['bosons'], [" W-Boson", " W-Bosons"], "upg_n36_available");
+        this.upgrades["n37"] = new Upgrade("n37", "neutronic_upgrades", 1, "upg_n37_cost", "upg_n37_power", "upg_n37_unlock", this.dimensions['bosons'], [" W-Boson", " W-Bosons"], "upg_n37_available");
 
-        this.upgrades["v01"] = new Upgrade("v01", -1, "upg_v01_cost", "upg_v01_power", "upg_v01_unlock", "vacuum_energy", " Vacuum Energy", "upg_v01_available", "upg_v01_buy");
-        this.upgrades["v02"] = new Upgrade("v02", -1, "upg_v02_cost", "upg_v02_power", "upg_v02_unlock", this.dimensions['matter_3'], [" 3rd M. Dim", " 3rd M. Dims"], "upg_v02_available", "upg_v02_buy");
-        this.upgrades["v03"] = new Upgrade("v03", -1, "upg_v03_cost", "upg_v03_power", "upg_v03_unlock", "neutrons", [" Neutron", " Neutrons"], "upg_v03_available", "upg_v03_buy");
-        this.upgrades["v11"] = new Upgrade("v11", 1, "upg_v11_cost", "upg_v11_power", "upg_v11_unlock", "space_theorems", [" Space Theorem", " Space Theorems"], "upg_v11_available", "upg_v11_buy");
-        this.upgrades["v21"] = new Upgrade("v21", 1, "upg_v21_cost", "upg_v21_power", "upg_v21_unlock", "space_theorems", [" Space Theorem", " Space Theorems"], "upg_v21_available");
-        this.upgrades["v31"] = new Upgrade("v31", 1, "upg_v31_cost", "upg_v31_power", "upg_v31_unlock", "space_theorems", [" Space Theorem", " Space Theorems"], "upg_v31_available");
-        this.upgrades["v32"] = new Upgrade("v32", 1, "upg_v32_cost", "upg_v32_power", "upg_v32_unlock", "space_theorems", [" Space Theorem", " Space Theorems"], "upg_v32_available");
-        this.upgrades["v41"] = new Upgrade("v41", 1, "upg_v41_cost", "upg_v41_power", "upg_v41_unlock", "space_theorems", [" Space Theorem", " Space Theorems"], "upg_v41_available");
-        this.upgrades["v42"] = new Upgrade("v42", 1, "upg_v42_cost", "upg_v42_power", "upg_v42_unlock", "space_theorems", [" Space Theorem", " Space Theorems"], "upg_v42_available");
-        this.upgrades["v51"] = new Upgrade("v51", 1, "upg_v51_cost", "upg_v51_power", "upg_v51_unlock", "space_theorems", [" Space Theorem", " Space Theorems"], "upg_v51_available");
-        this.upgrades["v61"] = new Upgrade("v61", 1, "upg_v61_cost", "upg_v61_power", "upg_v61_unlock", "space_theorems", [" Space Theorem", " Space Theorems"], "upg_v61_available");
-        this.upgrades["v71"] = new Upgrade("v71", 1, "upg_v71_cost", "upg_v71_power", "upg_v71_unlock", "space_theorems", [" Space Theorem", " Space Theorems"], "upg_v71_available");
-        this.upgrades["v72"] = new Upgrade("v72", 1, "upg_v72_cost", "upg_v72_power", "upg_v72_unlock", "space_theorems", [" Space Theorem", " Space Theorems"], "upg_v72_available");
-        this.upgrades["v81"] = new Upgrade("v81", 1, "upg_v81_cost", "upg_v81_power", "upg_v81_unlock", "space_theorems", [" Space Theorem", " Space Theorems"], "upg_v81_available");
-        this.upgrades["v82"] = new Upgrade("v82", 1, "upg_v82_cost", "upg_v82_power", "upg_v82_unlock", "space_theorems", [" Space Theorem", " Space Theorems"], "upg_v82_available");
-        this.upgrades["v83"] = new Upgrade("v83", 1, "upg_v83_cost", "upg_v83_power", "upg_v83_unlock", "space_theorems", [" Space Theorem", " Space Theorems"], "upg_v83_available");
-        this.upgrades["v91"] = new Upgrade("v91", 1, "upg_v91_cost", "upg_v91_power", "upg_v91_unlock", "space_theorems", [" Space Theorem", " Space Theorems"], "upg_v91_available");
-        this.upgrades["v92"] = new Upgrade("v92", 1, "upg_v92_cost", "upg_v92_power", "upg_v92_unlock", "space_theorems", [" Space Theorem", " Space Theorems"], "upg_v92_available");
-        this.upgrades["v93"] = new Upgrade("v93", 1, "upg_v93_cost", "upg_v93_power", "upg_v93_unlock", "space_theorems", [" Space Theorem", " Space Theorems"], "upg_v93_available");
-        this.upgrades["v101"] = new Upgrade("v101", 1, "upg_v101_cost", "upg_v101_power", "upg_v101_unlock", "space_theorems", [" Space Theorem", " Space Theorems"], "upg_v101_available");
-        this.upgrades["v102"] = new Upgrade("v102", 1, "upg_v102_cost", "upg_v102_power", "upg_v102_unlock", "space_theorems", [" Space Theorem", " Space Theorems"], "upg_v102_available");
-        this.upgrades["v103"] = new Upgrade("v103", 1, "upg_v103_cost", "upg_v103_power", "upg_v103_unlock", "space_theorems", [" Space Theorem", " Space Theorems"], "upg_v103_available");
-        this.upgrades["v111"] = new Upgrade("v111", 1, "upg_v111_cost", "upg_v111_power", "upg_v111_unlock", "space_theorems", [" Space Theorem", " Space Theorems"], "upg_v111_available");
-        this.upgrades["v112"] = new Upgrade("v112", 1, "upg_v112_cost", "upg_v112_power", "upg_v112_unlock", "space_theorems", [" Space Theorem", " Space Theorems"], "upg_v112_available");
-        this.upgrades["v121"] = new Upgrade("v121", 1, "upg_v121_cost", "upg_v121_power", "upg_v121_unlock", "space_theorems", [" Space Theorem", " Space Theorems"], "upg_v121_available");
-        this.upgrades["v122"] = new Upgrade("v122", 1, "upg_v122_cost", "upg_v122_power", "upg_v122_unlock", "space_theorems", [" Space Theorem", " Space Theorems"], "upg_v122_available");
-        this.upgrades["v131"] = new Upgrade("v131", 1, "upg_v131_cost", "upg_v131_power", "upg_v131_unlock", "space_theorems", [" Space Theorem", " Space Theorems"], "upg_v131_available");
-        this.upgrades["v141"] = new Upgrade("v141", 1, "upg_v141_cost", "upg_v141_power", "upg_v141_unlock", "space_theorems", [" Space Theorem", " Space Theorems"], "upg_v141_available");
-        this.upgrades["v142"] = new Upgrade("v142", 1, "upg_v142_cost", "upg_v142_power", "upg_v142_unlock", "space_theorems", [" Space Theorem", " Space Theorems"], "upg_v142_available");
-        this.upgrades["v143"] = new Upgrade("v143", 1, "upg_v143_cost", "upg_v143_power", "upg_v143_unlock", "space_theorems", [" Space Theorem", " Space Theorems"], "upg_v143_available");
-        this.upgrades["v151"] = new Upgrade("v151", 1, "upg_v151_cost", "upg_v151_power", "upg_v151_unlock", "space_theorems", [" Space Theorem", " Space Theorems"], "upg_v151_available");
-        this.upgrades["v161"] = new Upgrade("v161", 1, "upg_v161_cost", "upg_v161_power", "upg_v161_unlock", "space_theorems", [" Space Theorem", " Space Theorems"], "upg_v161_available");
-        this.upgrades["v162"] = new Upgrade("v162", 1, "upg_v162_cost", "upg_v162_power", "upg_v162_unlock", "space_theorems", [" Space Theorem", " Space Theorems"], "upg_v162_available");
-        this.upgrades["v163"] = new Upgrade("v163", 1, "upg_v163_cost", "upg_v163_power", "upg_v163_unlock", "space_theorems", [" Space Theorem", " Space Theorems"], "upg_v163_available");
-        this.upgrades["v164"] = new Upgrade("v164", 1, "upg_v164_cost", "upg_v164_power", "upg_v164_unlock", "space_theorems", [" Space Theorem", " Space Theorems"], "upg_v164_available");
-        this.upgrades["v171"] = new Upgrade("v171", 1, "upg_v171_cost", "upg_v171_power", "upg_v171_unlock", "space_theorems", [" Space Theorem", " Space Theorems"], "upg_v171_available");
-        this.upgrades["v172"] = new Upgrade("v172", 1, "upg_v172_cost", "upg_v172_power", "upg_v172_unlock", "space_theorems", [" Space Theorem", " Space Theorems"], "upg_v172_available");
-        this.upgrades["v173"] = new Upgrade("v173", 1, "upg_v173_cost", "upg_v173_power", "upg_v173_unlock", "space_theorems", [" Space Theorem", " Space Theorems"], "upg_v173_available");
-        this.upgrades["v174"] = new Upgrade("v174", 1, "upg_v174_cost", "upg_v174_power", "upg_v174_unlock", "space_theorems", [" Space Theorem", " Space Theorems"], "upg_v174_available");
-        this.upgrades["v181"] = new Upgrade("v181", 1, "upg_v181_cost", "upg_v181_power", "upg_v181_unlock", "space_theorems", [" Space Theorem", " Space Theorems"], "upg_v181_available");
-        this.upgrades["v182"] = new Upgrade("v182", 1, "upg_v182_cost", "upg_v182_power", "upg_v182_unlock", "space_theorems", [" Space Theorem", " Space Theorems"], "upg_v182_available");
-        this.upgrades["v183"] = new Upgrade("v183", 1, "upg_v183_cost", "upg_v183_power", "upg_v183_unlock", "space_theorems", [" Space Theorem", " Space Theorems"], "upg_v183_available");
-        this.upgrades["v184"] = new Upgrade("v184", 1, "upg_v184_cost", "upg_v184_power", "upg_v184_unlock", "space_theorems", [" Space Theorem", " Space Theorems"], "upg_v184_available");
-        this.upgrades["v191"] = new Upgrade("v191", 1, "upg_v191_cost", "upg_v191_power", "upg_v191_unlock", "space_theorems", [" Space Theorem", " Space Theorems"], "upg_v191_available");
-        this.upgrades["v192"] = new Upgrade("v192", 1, "upg_v192_cost", "upg_v192_power", "upg_v192_unlock", "space_theorems", [" Space Theorem", " Space Theorems"], "upg_v192_available");
-        this.upgrades["v193"] = new Upgrade("v193", 1, "upg_v193_cost", "upg_v193_power", "upg_v193_unlock", "space_theorems", [" Space Theorem", " Space Theorems"], "upg_v193_available");
-        this.upgrades["v194"] = new Upgrade("v194", 1, "upg_v194_cost", "upg_v194_power", "upg_v194_unlock", "space_theorems", [" Space Theorem", " Space Theorems"], "upg_v194_available");
-        this.upgrades["v201"] = new Upgrade("v201", 1, "upg_v201_cost", "upg_v201_power", "upg_v201_unlock", "space_theorems", [" Space Theorem", " Space Theorems"], "upg_v201_available");
-        this.upgrades["v211"] = new Upgrade("v211", 1, "upg_v211_cost", "upg_v211_power", "upg_v211_unlock", "space_theorems", [" Space Theorem", " Space Theorems"], "upg_v211_available");
+        this.upgrades["v01"] = new Upgrade("v01", "vacuumic_upgrades", -1, "upg_v01_cost", "upg_v01_power", "upg_v01_unlock", "vacuum_energy", " Vacuum Energy", "upg_v01_available", "upg_v01_buy");
+        this.upgrades["v02"] = new Upgrade("v02", "vacuumic_upgrades", -1, "upg_v02_cost", "upg_v02_power", "upg_v02_unlock", this.dimensions['matter_3'], [" 3rd M. Dim", " 3rd M. Dims"], "upg_v02_available", "upg_v02_buy");
+        this.upgrades["v03"] = new Upgrade("v03", "vacuumic_upgrades", -1, "upg_v03_cost", "upg_v03_power", "upg_v03_unlock", "neutrons", [" Neutron", " Neutrons"], "upg_v03_available", "upg_v03_buy");
+        this.upgrades["v11"] = new Upgrade("v11", "vacuumic_upgrades", 1, "upg_v11_cost", "upg_v11_power", "upg_v11_unlock", "space_theorems", [" Space Theorem", " Space Theorems"], "upg_v11_available", "upg_v11_buy");
+        this.upgrades["v21"] = new Upgrade("v21", "vacuumic_upgrades", 1, "upg_v21_cost", "upg_v21_power", "upg_v21_unlock", "space_theorems", [" Space Theorem", " Space Theorems"], "upg_v21_available");
+        this.upgrades["v31"] = new Upgrade("v31", "vacuumic_upgrades", 1, "upg_v31_cost", "upg_v31_power", "upg_v31_unlock", "space_theorems", [" Space Theorem", " Space Theorems"], "upg_v31_available");
+        this.upgrades["v32"] = new Upgrade("v32", "vacuumic_upgrades", 1, "upg_v32_cost", "upg_v32_power", "upg_v32_unlock", "space_theorems", [" Space Theorem", " Space Theorems"], "upg_v32_available");
+        this.upgrades["v41"] = new Upgrade("v41", "vacuumic_upgrades", 1, "upg_v41_cost", "upg_v41_power", "upg_v41_unlock", "space_theorems", [" Space Theorem", " Space Theorems"], "upg_v41_available");
+        this.upgrades["v42"] = new Upgrade("v42", "vacuumic_upgrades", 1, "upg_v42_cost", "upg_v42_power", "upg_v42_unlock", "space_theorems", [" Space Theorem", " Space Theorems"], "upg_v42_available");
+        this.upgrades["v51"] = new Upgrade("v51", "vacuumic_upgrades", 1, "upg_v51_cost", "upg_v51_power", "upg_v51_unlock", "space_theorems", [" Space Theorem", " Space Theorems"], "upg_v51_available");
+        this.upgrades["v61"] = new Upgrade("v61", "vacuumic_upgrades", 1, "upg_v61_cost", "upg_v61_power", "upg_v61_unlock", "space_theorems", [" Space Theorem", " Space Theorems"], "upg_v61_available");
+        this.upgrades["v71"] = new Upgrade("v71", "vacuumic_upgrades", 1, "upg_v71_cost", "upg_v71_power", "upg_v71_unlock", "space_theorems", [" Space Theorem", " Space Theorems"], "upg_v71_available");
+        this.upgrades["v72"] = new Upgrade("v72", "vacuumic_upgrades", 1, "upg_v72_cost", "upg_v72_power", "upg_v72_unlock", "space_theorems", [" Space Theorem", " Space Theorems"], "upg_v72_available");
+        this.upgrades["v81"] = new Upgrade("v81", "vacuumic_upgrades", 1, "upg_v81_cost", "upg_v81_power", "upg_v81_unlock", "space_theorems", [" Space Theorem", " Space Theorems"], "upg_v81_available");
+        this.upgrades["v82"] = new Upgrade("v82", "vacuumic_upgrades", 1, "upg_v82_cost", "upg_v82_power", "upg_v82_unlock", "space_theorems", [" Space Theorem", " Space Theorems"], "upg_v82_available");
+        this.upgrades["v83"] = new Upgrade("v83", "vacuumic_upgrades", 1, "upg_v83_cost", "upg_v83_power", "upg_v83_unlock", "space_theorems", [" Space Theorem", " Space Theorems"], "upg_v83_available");
+        this.upgrades["v91"] = new Upgrade("v91", "vacuumic_upgrades", 1, "upg_v91_cost", "upg_v91_power", "upg_v91_unlock", "space_theorems", [" Space Theorem", " Space Theorems"], "upg_v91_available");
+        this.upgrades["v92"] = new Upgrade("v92", "vacuumic_upgrades", 1, "upg_v92_cost", "upg_v92_power", "upg_v92_unlock", "space_theorems", [" Space Theorem", " Space Theorems"], "upg_v92_available");
+        this.upgrades["v93"] = new Upgrade("v93", "vacuumic_upgrades", 1, "upg_v93_cost", "upg_v93_power", "upg_v93_unlock", "space_theorems", [" Space Theorem", " Space Theorems"], "upg_v93_available");
+        this.upgrades["v101"] = new Upgrade("v101", "vacuumic_upgrades", 1, "upg_v101_cost", "upg_v101_power", "upg_v101_unlock", "space_theorems", [" Space Theorem", " Space Theorems"], "upg_v101_available");
+        this.upgrades["v102"] = new Upgrade("v102", "vacuumic_upgrades", 1, "upg_v102_cost", "upg_v102_power", "upg_v102_unlock", "space_theorems", [" Space Theorem", " Space Theorems"], "upg_v102_available");
+        this.upgrades["v103"] = new Upgrade("v103", "vacuumic_upgrades", 1, "upg_v103_cost", "upg_v103_power", "upg_v103_unlock", "space_theorems", [" Space Theorem", " Space Theorems"], "upg_v103_available");
+        this.upgrades["v111"] = new Upgrade("v111", "vacuumic_upgrades", 1, "upg_v111_cost", "upg_v111_power", "upg_v111_unlock", "space_theorems", [" Space Theorem", " Space Theorems"], "upg_v111_available");
+        this.upgrades["v112"] = new Upgrade("v112", "vacuumic_upgrades", 1, "upg_v112_cost", "upg_v112_power", "upg_v112_unlock", "space_theorems", [" Space Theorem", " Space Theorems"], "upg_v112_available");
+        this.upgrades["v121"] = new Upgrade("v121", "vacuumic_upgrades", 1, "upg_v121_cost", "upg_v121_power", "upg_v121_unlock", "space_theorems", [" Space Theorem", " Space Theorems"], "upg_v121_available");
+        this.upgrades["v122"] = new Upgrade("v122", "vacuumic_upgrades", 1, "upg_v122_cost", "upg_v122_power", "upg_v122_unlock", "space_theorems", [" Space Theorem", " Space Theorems"], "upg_v122_available");
+        this.upgrades["v131"] = new Upgrade("v131", "vacuumic_upgrades", 1, "upg_v131_cost", "upg_v131_power", "upg_v131_unlock", "space_theorems", [" Space Theorem", " Space Theorems"], "upg_v131_available");
+        this.upgrades["v141"] = new Upgrade("v141", "vacuumic_upgrades", 1, "upg_v141_cost", "upg_v141_power", "upg_v141_unlock", "space_theorems", [" Space Theorem", " Space Theorems"], "upg_v141_available");
+        this.upgrades["v142"] = new Upgrade("v142", "vacuumic_upgrades", 1, "upg_v142_cost", "upg_v142_power", "upg_v142_unlock", "space_theorems", [" Space Theorem", " Space Theorems"], "upg_v142_available");
+        this.upgrades["v143"] = new Upgrade("v143", "vacuumic_upgrades", 1, "upg_v143_cost", "upg_v143_power", "upg_v143_unlock", "space_theorems", [" Space Theorem", " Space Theorems"], "upg_v143_available");
+        this.upgrades["v151"] = new Upgrade("v151", "vacuumic_upgrades", 1, "upg_v151_cost", "upg_v151_power", "upg_v151_unlock", "space_theorems", [" Space Theorem", " Space Theorems"], "upg_v151_available");
+        this.upgrades["v161"] = new Upgrade("v161", "vacuumic_upgrades", 1, "upg_v161_cost", "upg_v161_power", "upg_v161_unlock", "space_theorems", [" Space Theorem", " Space Theorems"], "upg_v161_available");
+        this.upgrades["v162"] = new Upgrade("v162", "vacuumic_upgrades", 1, "upg_v162_cost", "upg_v162_power", "upg_v162_unlock", "space_theorems", [" Space Theorem", " Space Theorems"], "upg_v162_available");
+        this.upgrades["v163"] = new Upgrade("v163", "vacuumic_upgrades", 1, "upg_v163_cost", "upg_v163_power", "upg_v163_unlock", "space_theorems", [" Space Theorem", " Space Theorems"], "upg_v163_available");
+        this.upgrades["v164"] = new Upgrade("v164", "vacuumic_upgrades", 1, "upg_v164_cost", "upg_v164_power", "upg_v164_unlock", "space_theorems", [" Space Theorem", " Space Theorems"], "upg_v164_available");
+        this.upgrades["v171"] = new Upgrade("v171", "vacuumic_upgrades", 1, "upg_v171_cost", "upg_v171_power", "upg_v171_unlock", "space_theorems", [" Space Theorem", " Space Theorems"], "upg_v171_available");
+        this.upgrades["v172"] = new Upgrade("v172", "vacuumic_upgrades", 1, "upg_v172_cost", "upg_v172_power", "upg_v172_unlock", "space_theorems", [" Space Theorem", " Space Theorems"], "upg_v172_available");
+        this.upgrades["v173"] = new Upgrade("v173", "vacuumic_upgrades", 1, "upg_v173_cost", "upg_v173_power", "upg_v173_unlock", "space_theorems", [" Space Theorem", " Space Theorems"], "upg_v173_available");
+        this.upgrades["v174"] = new Upgrade("v174", "vacuumic_upgrades", 1, "upg_v174_cost", "upg_v174_power", "upg_v174_unlock", "space_theorems", [" Space Theorem", " Space Theorems"], "upg_v174_available");
+        this.upgrades["v181"] = new Upgrade("v181", "vacuumic_upgrades", 1, "upg_v181_cost", "upg_v181_power", "upg_v181_unlock", "space_theorems", [" Space Theorem", " Space Theorems"], "upg_v181_available");
+        this.upgrades["v182"] = new Upgrade("v182", "vacuumic_upgrades", 1, "upg_v182_cost", "upg_v182_power", "upg_v182_unlock", "space_theorems", [" Space Theorem", " Space Theorems"], "upg_v182_available");
+        this.upgrades["v183"] = new Upgrade("v183", "vacuumic_upgrades", 1, "upg_v183_cost", "upg_v183_power", "upg_v183_unlock", "space_theorems", [" Space Theorem", " Space Theorems"], "upg_v183_available");
+        this.upgrades["v184"] = new Upgrade("v184", "vacuumic_upgrades", 1, "upg_v184_cost", "upg_v184_power", "upg_v184_unlock", "space_theorems", [" Space Theorem", " Space Theorems"], "upg_v184_available");
+        this.upgrades["v191"] = new Upgrade("v191", "vacuumic_upgrades", 1, "upg_v191_cost", "upg_v191_power", "upg_v191_unlock", "space_theorems", [" Space Theorem", " Space Theorems"], "upg_v191_available");
+        this.upgrades["v192"] = new Upgrade("v192", "vacuumic_upgrades", 1, "upg_v192_cost", "upg_v192_power", "upg_v192_unlock", "space_theorems", [" Space Theorem", " Space Theorems"], "upg_v192_available");
+        this.upgrades["v193"] = new Upgrade("v193", "vacuumic_upgrades", 1, "upg_v193_cost", "upg_v193_power", "upg_v193_unlock", "space_theorems", [" Space Theorem", " Space Theorems"], "upg_v193_available");
+        this.upgrades["v194"] = new Upgrade("v194", "vacuumic_upgrades", 1, "upg_v194_cost", "upg_v194_power", "upg_v194_unlock", "space_theorems", [" Space Theorem", " Space Theorems"], "upg_v194_available");
+        this.upgrades["v201"] = new Upgrade("v201", "vacuumic_upgrades", 1, "upg_v201_cost", "upg_v201_power", "upg_v201_unlock", "space_theorems", [" Space Theorem", " Space Theorems"], "upg_v201_available");
+        this.upgrades["v211"] = new Upgrade("v211", "vacuumic_upgrades", 1, "upg_v211_cost", "upg_v211_power", "upg_v211_unlock", "space_theorems", [" Space Theorem", " Space Theorems"], "upg_v211_available");
 
-        this.upgrades["d11"] = new Upgrade("d11", 1, "upg_d11_cost", "upg_d11_power", "upg_d11_unlock", "shards", [" Shard", " Shards"], "upg_d11_available", "upg_d11_buy");
-        this.upgrades["d21"] = new Upgrade("d21", 1, "upg_d21_cost", "upg_d21_power", "upg_d21_unlock", "shards", [" Shard", " Shards"], "upg_d21_available");
-        this.upgrades["d31"] = new Upgrade("d31", 1, "upg_d31_cost", "upg_d31_power", "upg_d31_unlock", "shards", [" Shard", " Shards"], "upg_d31_available");
-        this.upgrades["d32"] = new Upgrade("d32", 1, "upg_d32_cost", "upg_d32_power", "upg_d32_unlock", "shards", [" Shard", " Shards"], "upg_d32_available");
-        this.upgrades["d41"] = new Upgrade("d41", 1, "upg_d41_cost", "upg_d41_power", "upg_d41_unlock", "shards", [" Shard", " Shards"], "upg_d41_available");
-        this.upgrades["d51"] = new Upgrade("d51", -1, "upg_d51_cost", "upg_d51_power", "upg_d51_unlock", "shards", [" Shard", " Shards"], "upg_d51_available");
-        this.upgrades["d52"] = new Upgrade("d52", -1, "upg_d52_cost", "upg_d52_power", "upg_d52_unlock", "shards", [" Shard", " Shards"], "upg_d52_available");
-        this.upgrades["d61"] = new Upgrade("d61", -1, "upg_d61_cost", "upg_d61_power", "upg_d61_unlock", "shards", [" Shard", " Shards"], "upg_d61_available");
-        this.upgrades["d62"] = new Upgrade("d62", -1, "upg_d62_cost", "upg_d62_power", "upg_d62_unlock", "shards", [" Shard", " Shards"], "upg_d62_available");
-        this.upgrades["d63"] = new Upgrade("d63", -1, "upg_d63_cost", "upg_d63_power", "upg_d63_unlock", "shards", [" Shard", " Shards"], "upg_d63_available");
-        this.upgrades["d71"] = new Upgrade("d71", 1, "upg_d71_cost", "upg_d71_power", "upg_d71_unlock", "shards", [" Shard", " Shards"], "upg_d71_available");
-        this.upgrades["d72"] = new Upgrade("d72", 1, "upg_d72_cost", "upg_d72_power", "upg_d72_unlock", "shards", [" Shard", " Shards"], "upg_d72_available");
-        this.upgrades["d81"] = new Upgrade("d81", 1, "upg_d81_cost", "upg_d81_power", "upg_d81_unlock", "shards", [" Shard", " Shards"], "upg_d81_available");
-        this.upgrades["d91"] = new Upgrade("d91", 1, "upg_d91_cost", "upg_d91_power", "upg_d91_unlock", "shards", [" Shard", " Shards"], "upg_d91_available");
-        this.upgrades["d92"] = new Upgrade("d92", 1, "upg_d92_cost", "upg_d92_power", "upg_d92_unlock", "shards", [" Shard", " Shards"], "upg_d92_available");
-        this.upgrades["d101"] = new Upgrade("d101", 1, "upg_d101_cost", "upg_d101_power", "upg_d101_unlock", "shards", [" Shard", " Shards"], "upg_d101_available");
-        this.upgrades["d102"] = new Upgrade("d102", 1, "upg_d102_cost", "upg_d102_power", "upg_d102_unlock", "shards", [" Shard", " Shards"], "upg_d102_available");
-        this.upgrades["d103"] = new Upgrade("d103", 1, "upg_d103_cost", "upg_d103_power", "upg_d103_unlock", "shards", [" Shard", " Shards"], "upg_d103_available");
-        this.upgrades["d111"] = new Upgrade("d111", 1, "upg_d111_cost", "upg_d111_power", "upg_d111_unlock", "shards", [" Shard", " Shards"], "upg_d111_available");
-        this.upgrades["d112"] = new Upgrade("d112", 1, "upg_d112_cost", "upg_d112_power", "upg_d112_unlock", "shards", [" Shard", " Shards"], "upg_d112_available");
-        this.upgrades["d113"] = new Upgrade("d113", 1, "upg_d113_cost", "upg_d113_power", "upg_d113_unlock", "shards", [" Shard", " Shards"], "upg_d113_available");
-        this.upgrades["d114"] = new Upgrade("d114", 1, "upg_d114_cost", "upg_d114_power", "upg_d114_unlock", "shards", [" Shard", " Shards"], "upg_d114_available");
-        this.upgrades["d121"] = new Upgrade("d121", 1, "upg_d121_cost", "upg_d121_power", "upg_d121_unlock", "shards", [" Shard", " Shards"], "upg_d121_available");
-        this.upgrades["d122"] = new Upgrade("d122", 1, "upg_d122_cost", "upg_d122_power", "upg_d122_unlock", "shards", [" Shard", " Shards"], "upg_d122_available");
-        this.upgrades["d123"] = new Upgrade("d123", 1, "upg_d123_cost", "upg_d123_power", "upg_d123_unlock", "shards", [" Shard", " Shards"], "upg_d123_available");
+        this.upgrades["d11"] = new Upgrade("d11", "dimensional_upgrades", 1, "upg_d11_cost", "upg_d11_power", "upg_d11_unlock", "shards", [" Shard", " Shards"], "upg_d11_available", "upg_d11_buy");
+        this.upgrades["d21"] = new Upgrade("d21", "dimensional_upgrades", 1, "upg_d21_cost", "upg_d21_power", "upg_d21_unlock", "shards", [" Shard", " Shards"], "upg_d21_available");
+        this.upgrades["d31"] = new Upgrade("d31", "dimensional_upgrades", 1, "upg_d31_cost", "upg_d31_power", "upg_d31_unlock", "shards", [" Shard", " Shards"], "upg_d31_available");
+        this.upgrades["d32"] = new Upgrade("d32", "dimensional_upgrades", 1, "upg_d32_cost", "upg_d32_power", "upg_d32_unlock", "shards", [" Shard", " Shards"], "upg_d32_available");
+        this.upgrades["d41"] = new Upgrade("d41", "dimensional_upgrades", 1, "upg_d41_cost", "upg_d41_power", "upg_d41_unlock", "shards", [" Shard", " Shards"], "upg_d41_available");
+        this.upgrades["d51"] = new Upgrade("d51", "dimensional_upgrades", -1, "upg_d51_cost", "upg_d51_power", "upg_d51_unlock", "shards", [" Shard", " Shards"], "upg_d51_available");
+        this.upgrades["d52"] = new Upgrade("d52", "dimensional_upgrades", -1, "upg_d52_cost", "upg_d52_power", "upg_d52_unlock", "shards", [" Shard", " Shards"], "upg_d52_available");
+        this.upgrades["d61"] = new Upgrade("d61", "dimensional_upgrades", -1, "upg_d61_cost", "upg_d61_power", "upg_d61_unlock", "shards", [" Shard", " Shards"], "upg_d61_available");
+        this.upgrades["d62"] = new Upgrade("d62", "dimensional_upgrades", -1, "upg_d62_cost", "upg_d62_power", "upg_d62_unlock", "shards", [" Shard", " Shards"], "upg_d62_available");
+        this.upgrades["d63"] = new Upgrade("d63", "dimensional_upgrades", -1, "upg_d63_cost", "upg_d63_power", "upg_d63_unlock", "shards", [" Shard", " Shards"], "upg_d63_available");
+        this.upgrades["d71"] = new Upgrade("d71", "dimensional_upgrades", 1, "upg_d71_cost", "upg_d71_power", "upg_d71_unlock", "shards", [" Shard", " Shards"], "upg_d71_available");
+        this.upgrades["d72"] = new Upgrade("d72", "dimensional_upgrades", 1, "upg_d72_cost", "upg_d72_power", "upg_d72_unlock", "shards", [" Shard", " Shards"], "upg_d72_available");
+        this.upgrades["d81"] = new Upgrade("d81", "dimensional_upgrades", 1, "upg_d81_cost", "upg_d81_power", "upg_d81_unlock", "shards", [" Shard", " Shards"], "upg_d81_available");
+        this.upgrades["d91"] = new Upgrade("d91", "dimensional_upgrades", 1, "upg_d91_cost", "upg_d91_power", "upg_d91_unlock", "shards", [" Shard", " Shards"], "upg_d91_available");
+        this.upgrades["d92"] = new Upgrade("d92", "dimensional_upgrades", 1, "upg_d92_cost", "upg_d92_power", "upg_d92_unlock", "shards", [" Shard", " Shards"], "upg_d92_available");
+        this.upgrades["d101"] = new Upgrade("d101", "dimensional_upgrades", 1, "upg_d101_cost", "upg_d101_power", "upg_d101_unlock", "shards", [" Shard", " Shards"], "upg_d101_available");
+        this.upgrades["d102"] = new Upgrade("d102", "dimensional_upgrades", 1, "upg_d102_cost", "upg_d102_power", "upg_d102_unlock", "shards", [" Shard", " Shards"], "upg_d102_available");
+        this.upgrades["d103"] = new Upgrade("d103", "dimensional_upgrades", 1, "upg_d103_cost", "upg_d103_power", "upg_d103_unlock", "shards", [" Shard", " Shards"], "upg_d103_available");
+        this.upgrades["d111"] = new Upgrade("d111", "dimensional_upgrades", 1, "upg_d111_cost", "upg_d111_power", "upg_d111_unlock", "shards", [" Shard", " Shards"], "upg_d111_available");
+        this.upgrades["d112"] = new Upgrade("d112", "dimensional_upgrades", 1, "upg_d112_cost", "upg_d112_power", "upg_d112_unlock", "shards", [" Shard", " Shards"], "upg_d112_available");
+        this.upgrades["d113"] = new Upgrade("d113", "dimensional_upgrades", 1, "upg_d113_cost", "upg_d113_power", "upg_d113_unlock", "shards", [" Shard", " Shards"], "upg_d113_available");
+        this.upgrades["d114"] = new Upgrade("d114", "dimensional_upgrades", 1, "upg_d114_cost", "upg_d114_power", "upg_d114_unlock", "shards", [" Shard", " Shards"], "upg_d114_available");
+        this.upgrades["d121"] = new Upgrade("d121", "dimensional_upgrades", 1, "upg_d121_cost", "upg_d121_power", "upg_d121_unlock", "shards", [" Shard", " Shards"], "upg_d121_available");
+        this.upgrades["d122"] = new Upgrade("d122", "dimensional_upgrades", 1, "upg_d122_cost", "upg_d122_power", "upg_d122_unlock", "shards", [" Shard", " Shards"], "upg_d122_available");
+        this.upgrades["d123"] = new Upgrade("d123", "dimensional_upgrades", 1, "upg_d123_cost", "upg_d123_power", "upg_d123_unlock", "shards", [" Shard", " Shards"], "upg_d123_available");
+        this.upgrades["d131"] = new Upgrade("d131", "dimensional_upgrades", -1, "upg_d131_cost", "upg_d131_power", "upg_d131_unlock", "shards", [" Shard", " Shards"], "upg_d131_available");
+        this.upgrades["d132"] = new Upgrade("d132", "dimensional_upgrades", -1, "upg_d132_cost", "upg_d132_power", "upg_d132_unlock", "shards", [" Shard", " Shards"], "upg_d132_available");
+        this.upgrades["d141"] = new Upgrade("d141", "dimensional_upgrades", 1, "upg_d141_cost", "upg_d141_power", "upg_d141_unlock", "shards", [" Shard", " Shards"], "upg_d141_available");
+        this.upgrades["d151"] = new Upgrade("d151", "dimensional_upgrades", 1, "upg_d151_cost", "upg_d151_power", "upg_d151_unlock", "shards", [" Shard", " Shards"], "upg_d151_available");
 
-        this.upgrades["a01"] = new Upgrade("a01", -1, "upg_a01_cost", "upg_a01_power", "upg_a01_unlock", "atoms", [" Atom", " Atoms"], "upg_a01_available", "upg_a01_buy");
-        this.upgrades["a02"] = new Upgrade("a02", -1, "upg_a02_cost", "upg_a02_power", "upg_a02_unlock", "atoms", [" Atom", " Atoms"], "upg_a02_available");
-        this.upgrades["a03"] = new Upgrade("a03", -1, "upg_a03_cost", "upg_a03_power", "upg_a03_unlock", "atoms", [" Atom", " Atoms"], "upg_a03_available");
-        this.upgrades["a04"] = new Upgrade("a04", -1, "upg_a04_cost", "upg_a04_power", "upg_a04_unlock", "atoms", [" Atom", " Atoms"], "upg_a04_available");
-        this.upgrades["a05"] = new Upgrade("a05", -1, "upg_a05_cost", "upg_a05_power", "upg_a05_unlock", "atoms", [" Atom", " Atoms"], "upg_a05_available");
-        this.upgrades["a06"] = new Upgrade("a06", -1, "upg_a06_cost", "upg_a06_power", "upg_a06_unlock", "atoms", [" Atom", " Atoms"], "upg_a06_available");
-        this.upgrades["a07"] = new Upgrade("a07", -1, "upg_a07_cost", "upg_a07_power", "upg_a07_unlock", "atoms", [" Atom", " Atoms"], "upg_a07_available");
-        this.upgrades["a08"] = new Upgrade("a08", -1, "upg_a08_cost", "upg_a08_power", "upg_a08_unlock", "atoms", [" Atom", " Atoms"], "upg_a08_available");
+        this.upgrades["a01"] = new Upgrade("a01", "atomic_upgrades", -1, "upg_a01_cost", "upg_a01_power", "upg_a01_unlock", "atoms", [" Atom", " Atoms"], "upg_a01_available");
+        this.upgrades["a02"] = new Upgrade("a02", "atomic_upgrades", -1, "upg_a02_cost", "upg_a02_power", "upg_a02_unlock", "atoms", [" Atom", " Atoms"], "upg_a02_available");
+        this.upgrades["a03"] = new Upgrade("a03", "atomic_upgrades", -1, "upg_a03_cost", "upg_a03_power", "upg_a03_unlock", "atoms", [" Atom", " Atoms"], "upg_a03_available");
+        this.upgrades["a04"] = new Upgrade("a04", "atomic_upgrades", -1, "upg_a04_cost", "upg_a04_power", "upg_a04_unlock", "atoms", [" Atom", " Atoms"], "upg_a04_available");
+        this.upgrades["a05"] = new Upgrade("a05", "atomic_upgrades", -1, "upg_a05_cost", "upg_a05_power", "upg_a05_unlock", "atoms", [" Atom", " Atoms"], "upg_a05_available");
+        this.upgrades["a06"] = new Upgrade("a06", "atomic_upgrades", -1, "upg_a06_cost", "upg_a06_power", "upg_a06_unlock", "atoms", [" Atom", " Atoms"], "upg_a06_available");
+        this.upgrades["a07"] = new Upgrade("a07", "atomic_upgrades", -1, "upg_a07_cost", "upg_a07_power", "upg_a07_unlock", "atoms", [" Atom", " Atoms"], "upg_a07_available");
+        this.upgrades["a08"] = new Upgrade("a08", "atomic_upgrades", -1, "upg_a08_cost", "upg_a08_power", "upg_a08_unlock", "atoms", [" Atom", " Atoms"], "upg_a08_available");
+        this.upgrades["a09"] = new Upgrade("a09", "atomic_upgrades", -1, "upg_a09_cost", "upg_a09_power", "upg_a09_unlock", "atoms", [" Atom", " Atoms"], "upg_a09_available");
+        this.upgrades["a10"] = new Upgrade("a10", "atomic_upgrades", -1, "upg_a10_cost", "upg_a10_power", "upg_a10_unlock", "atoms", [" Atom", " Atoms"], "upg_a10_available");
+        this.upgrades["a11"] = new Upgrade("a11", "atomic_upgrades", -1, "upg_a11_cost", "upg_a11_power", "upg_a11_unlock", "atoms", [" Atom", " Atoms"], "upg_a11_available");
+        this.upgrades["a12"] = new Upgrade("a12", "atomic_upgrades", -1, "upg_a12_cost", "upg_a12_power", "upg_a12_unlock", "atoms", [" Atom", " Atoms"], "upg_a12_available");
+        this.upgrades["a13"] = new Upgrade("a13", "atomic_upgrades", -1, "upg_a13_cost", "upg_a13_power", "upg_a13_unlock", "atoms", [" Atom", " Atoms"], "upg_a13_available");
+        this.upgrades["a14"] = new Upgrade("a14", "atomic_upgrades", -1, "upg_a14_cost", "upg_a14_power", "upg_a14_unlock", "atoms", [" Atom", " Atoms"], "upg_a14_available");
 
-        this.upgrades["b01"] = new Upgrade("b01", -1, "upg_b01_cost", "upg_b01_power", "upg_b01_unlock", "genes", [" Gene", " Genes"], "upg_b01_available");
-        this.upgrades["b02"] = new Upgrade("b02", -1, "upg_b02_cost", "upg_b02_power", "upg_b02_unlock", "genes", [" Gene", " Genes"], "upg_b02_available");
-        this.upgrades["b03"] = new Upgrade("b03", -1, "upg_b03_cost", "upg_b03_power", "upg_b03_unlock", "genes", [" Gene", " Genes"], "upg_b03_available");
-        this.upgrades["b04"] = new Upgrade("b04", -1, "upg_b04_cost", "upg_b04_power", "upg_b04_unlock", "genes", [" Gene", " Genes"], "upg_b04_available");
+        this.upgrades["b01"] = new Upgrade("b01", "biological_population", -1, "upg_b01_cost", "upg_b01_power", "upg_b01_unlock", "genes", [" Gene", " Genes"], "upg_b01_available");
+        this.upgrades["b02"] = new Upgrade("b02", "biological_population", -1, "upg_b02_cost", "upg_b02_power", "upg_b02_unlock", "genes", [" Gene", " Genes"], "upg_b02_available");
+        this.upgrades["b03"] = new Upgrade("b03", "biological_population", -1, "upg_b03_cost", "upg_b03_power", "upg_b03_unlock", "genes", [" Gene", " Genes"], "upg_b03_available");
+        this.upgrades["b04"] = new Upgrade("b04", "biological_population", -1, "upg_b04_cost", "upg_b04_power", "upg_b04_unlock", "genes", [" Gene", " Genes"], "upg_b04_available");
 
         this.evolutions = {};
         this.evolutions["b01"] = new Evolution("b01", "evo_b01_cost", "genes", [" Gene", " Genes"], "population", 100, "evo_b01_power", "evo_b01_secondary", "", "evo_b01_buy");
@@ -531,6 +574,11 @@ class Player {
         this.evolutions["b05"] = new Evolution("b05", "evo_b05_cost", "genes", [" Gene", " Genes"], "population", 10, "evo_b05_power", "evo_b05_secondary");
         this.evolutions["b06"] = new Evolution("b06", "evo_b06_cost", "genes", [" Gene", " Genes"], "population", 25, "evo_b06_power", "evo_b06_secondary");
         this.evolutions["b07"] = new Evolution("b07", "evo_b07_cost", "genes", [" Gene", " Genes"], "population", 20, "evo_b07_power", "evo_b07_secondary");
+        this.evolutions["b08"] = new Evolution("b08", "evo_b08_cost", "genes", [" Gene", " Genes"], "population", 10, "evo_b08_power", "evo_b08_secondary");
+        this.evolutions["b09"] = new Evolution("b09", "evo_b09_cost", "genes", [" Gene", " Genes"], "population", 5, "evo_b09_power", "evo_b09_secondary");
+        this.evolutions["b10"] = new Evolution("b10", "evo_b10_cost", "genes", [" Gene", " Genes"], "population", 12, "evo_b10_power", "evo_b10_secondary");
+        this.evolutions["b11"] = new Evolution("b11", "evo_b11_cost", "genes", [" Gene", " Genes"], "population", 4, "evo_b11_power", "evo_b11_secondary");
+        this.evolutions["b12"] = new Evolution("b12", "evo_b12_cost", "genes", [" Gene", " Genes"], "population", 2, "evo_b12_power", "evo_b12_secondary");
 
         this.challenges = {};
         this.challenges["p1"] = new Challenge("p1", "Photonic Challenge 1", "photonic", [], "start_p1", "goal_p1", "end_p1");
@@ -573,12 +621,30 @@ class Player {
         this.challenges["v8"] = new Challenge("v8", "Vacuumic Challenge 8", "vacuumic", [], "start_v8", "goal_v8", "end_v8");
         this.challenges["v0"] = new Challenge("v0", "Vacuumic Meta-Challenge", "vacuumic", ['v1','v2','v3','v4','v5','v6','v7','v8'], "start_v0", "goal_v0", "end_v0");
 
+        this.challenges["d1"] = new Challenge("d1", "Dimensional Challenge 1", "dimensional", [], "start_d1", "goal_d1", "end_d1");
+        this.challenges["d2"] = new Challenge("d2", "Dimensional Challenge 2", "dimensional", [], "start_d2", "goal_d2", "end_d2", 1, "", "effect_d2");
+        this.challenges["d3"] = new Challenge("d3", "Dimensional Challenge 3", "dimensional", [], "start_d3", "goal_d3", "end_d3");
+        this.challenges["d4"] = new Challenge("d4", "Dimensional Challenge 4", "dimensional", [], "start_d4", "goal_d4", "end_d4");
+        this.challenges["d5"] = new Challenge("d5", "Dimensional Challenge 5", "dimensional", [], "start_d5", "goal_d5", "end_d5");
+        this.challenges["d6"] = new Challenge("d6", "Dimensional Challenge 6", "dimensional", [], "start_d6", "goal_d6", "end_d6");
+        this.challenges["d7"] = new Challenge("d7", "Dimensional Challenge 7", "dimensional", [], "start_d7", "goal_d7", "end_d7", 1, "", "effect_d7");
+        this.challenges["d8"] = new Challenge("d8", "Dimensional Challenge 8", "dimensional", [], "start_d8", "goal_d8", "end_d8");
+        this.challenges["d0"] = new Challenge("d0", "Dimensional Meta-Challenge", "dimensional", ['d1','d2','d3','d4','d5','d6','d7','d8'], "start_d0", "goal_d0", "end_d0");
+
         this.current_challenge = {
             "photonic": "",
             "gravitonic": "",
             "neutronic": "",
-            "vacuumic": ""
+            "vacuumic": "",
+            "dimensional": ""
         };
+
+        this.experiments = {};
+        this.experiments["bullet_time"] = new Experiment("bullet_time", "atomic_experiments", "bullet_time_nerf", "atomic_experiment_effect");
+        this.experiments["controlled_reaction"] = new Experiment("controlled_reaction", "atomic_experiments", "controlled_reaction_nerf", "atomic_experiment_effect");
+        this.experiments["quantum_entanglement"] = new Experiment("quantum_entanglement", "atomic_experiments", "quantum_entanglement_nerf", "atomic_experiment_effect");
+        this.experiments["capacity_studies"] = new Experiment("capacity_studies", "atomic_experiments", "capacity_studies_nerf", "atomic_experiment_effect");
+        this.experiments["projection_analysis"] = new Experiment("projection_analysis", "atomic_experiments", "projection_analysis_nerf", "atomic_experiment_effect");
 
         this.autobuyers = {};
         this.autobuyers["matter_1"] = new Autobuyer("matter_1", this.dimensions["matter_1"], "autobuyer_matter_1_available");
@@ -649,23 +715,23 @@ class Player {
 
         this.autobuyers["VTREE_v11"] = new Autobuyer("VTREE_v11", this.upgrades["v11"], "autobuyer_VTREE_available");
         this.autobuyers["VTREE_v21"] = new Autobuyer("VTREE_v21", this.upgrades["v21"], "autobuyer_VTREE_available");
-        this.autobuyers["VTREE_v31"] = new Autobuyer("VTREE_v31", this.upgrades["v31"], "autobuyer_VTREE_available");
         this.autobuyers["VTREE_v32"] = new Autobuyer("VTREE_v32", this.upgrades["v32"], "autobuyer_VTREE_not_left_available");
-        this.autobuyers["VTREE_v41"] = new Autobuyer("VTREE_v41", this.upgrades["v41"], "autobuyer_VTREE_available");
+        this.autobuyers["VTREE_v31"] = new Autobuyer("VTREE_v31", this.upgrades["v31"], "autobuyer_VTREE_available");
         this.autobuyers["VTREE_v42"] = new Autobuyer("VTREE_v42", this.upgrades["v42"], "autobuyer_VTREE_not_left_available");
+        this.autobuyers["VTREE_v41"] = new Autobuyer("VTREE_v41", this.upgrades["v41"], "autobuyer_VTREE_available");
         this.autobuyers["VTREE_v51"] = new Autobuyer("VTREE_v51", this.upgrades["v51"], "autobuyer_VTREE_available");
         this.autobuyers["VTREE_v61"] = new Autobuyer("VTREE_v61", this.upgrades["v61"], "autobuyer_VTREE_available");
         this.autobuyers["VTREE_v71"] = new Autobuyer("VTREE_v71", this.upgrades["v71"], "autobuyer_VTREE_available");
         this.autobuyers["VTREE_v72"] = new Autobuyer("VTREE_v72", this.upgrades["v72"], "autobuyer_VTREE_available");
-        this.autobuyers["VTREE_v81"] = new Autobuyer("VTREE_v81", this.upgrades["v81"], "autobuyer_VTREE_available");
-        this.autobuyers["VTREE_v82"] = new Autobuyer("VTREE_v82", this.upgrades["v82"], "autobuyer_VTREE_not_left_available");
         this.autobuyers["VTREE_v83"] = new Autobuyer("VTREE_v83", this.upgrades["v83"], "autobuyer_VTREE_not_left_available");
-        this.autobuyers["VTREE_v91"] = new Autobuyer("VTREE_v91", this.upgrades["v91"], "autobuyer_VTREE_available");
-        this.autobuyers["VTREE_v92"] = new Autobuyer("VTREE_v92", this.upgrades["v92"], "autobuyer_VTREE_not_left_available");
+        this.autobuyers["VTREE_v82"] = new Autobuyer("VTREE_v82", this.upgrades["v82"], "autobuyer_VTREE_not_left_available");
+        this.autobuyers["VTREE_v81"] = new Autobuyer("VTREE_v81", this.upgrades["v81"], "autobuyer_VTREE_available");
         this.autobuyers["VTREE_v93"] = new Autobuyer("VTREE_v93", this.upgrades["v93"], "autobuyer_VTREE_not_left_available");
-        this.autobuyers["VTREE_v101"] = new Autobuyer("VTREE_v101", this.upgrades["v101"], "autobuyer_VTREE_available");
-        this.autobuyers["VTREE_v102"] = new Autobuyer("VTREE_v102", this.upgrades["v102"], "autobuyer_VTREE_not_left_available");
+        this.autobuyers["VTREE_v92"] = new Autobuyer("VTREE_v92", this.upgrades["v92"], "autobuyer_VTREE_not_left_available");
+        this.autobuyers["VTREE_v91"] = new Autobuyer("VTREE_v91", this.upgrades["v91"], "autobuyer_VTREE_available");
         this.autobuyers["VTREE_v103"] = new Autobuyer("VTREE_v103", this.upgrades["v103"], "autobuyer_VTREE_not_left_available");
+        this.autobuyers["VTREE_v102"] = new Autobuyer("VTREE_v102", this.upgrades["v102"], "autobuyer_VTREE_not_left_available");
+        this.autobuyers["VTREE_v101"] = new Autobuyer("VTREE_v101", this.upgrades["v101"], "autobuyer_VTREE_available");
         this.autobuyers["VTREE_v111"] = new Autobuyer("VTREE_v111", this.upgrades["v111"], "autobuyer_VTREE_available");
         this.autobuyers["VTREE_v112"] = new Autobuyer("VTREE_v112", this.upgrades["v112"], "autobuyer_VTREE_not_left_available");
         this.autobuyers["VTREE_v121"] = new Autobuyer("VTREE_v121", this.upgrades["v121"], "autobuyer_VTREE_available");
@@ -675,21 +741,21 @@ class Player {
         this.autobuyers["VTREE_v142"] = new Autobuyer("VTREE_v142", this.upgrades["v142"], "autobuyer_VTREE_available");
         this.autobuyers["VTREE_v143"] = new Autobuyer("VTREE_v143", this.upgrades["v143"], "autobuyer_VTREE_available");
         this.autobuyers["VTREE_v151"] = new Autobuyer("VTREE_v151", this.upgrades["v151"], "autobuyer_VTREE_available");
+        this.autobuyers["VTREE_v163"] = new Autobuyer("VTREE_v163", this.upgrades["v163"], "autobuyer_VTREE_not_left_available");
         this.autobuyers["VTREE_v161"] = new Autobuyer("VTREE_v161", this.upgrades["v161"], "autobuyer_VTREE_available");
         this.autobuyers["VTREE_v162"] = new Autobuyer("VTREE_v162", this.upgrades["v162"], "autobuyer_VTREE_not_left_available");
-        this.autobuyers["VTREE_v163"] = new Autobuyer("VTREE_v163", this.upgrades["v163"], "autobuyer_VTREE_not_left_available");
         this.autobuyers["VTREE_v164"] = new Autobuyer("VTREE_v164", this.upgrades["v164"], "autobuyer_VTREE_not_left_available");
+        this.autobuyers["VTREE_v173"] = new Autobuyer("VTREE_v173", this.upgrades["v173"], "autobuyer_VTREE_not_left_available");
         this.autobuyers["VTREE_v171"] = new Autobuyer("VTREE_v171", this.upgrades["v171"], "autobuyer_VTREE_available");
         this.autobuyers["VTREE_v172"] = new Autobuyer("VTREE_v172", this.upgrades["v172"], "autobuyer_VTREE_not_left_available");
-        this.autobuyers["VTREE_v173"] = new Autobuyer("VTREE_v173", this.upgrades["v173"], "autobuyer_VTREE_not_left_available");
         this.autobuyers["VTREE_v174"] = new Autobuyer("VTREE_v174", this.upgrades["v174"], "autobuyer_VTREE_not_left_available");
+        this.autobuyers["VTREE_v183"] = new Autobuyer("VTREE_v183", this.upgrades["v183"], "autobuyer_VTREE_not_left_available");
         this.autobuyers["VTREE_v181"] = new Autobuyer("VTREE_v181", this.upgrades["v181"], "autobuyer_VTREE_available");
         this.autobuyers["VTREE_v182"] = new Autobuyer("VTREE_v182", this.upgrades["v182"], "autobuyer_VTREE_not_left_available");
-        this.autobuyers["VTREE_v183"] = new Autobuyer("VTREE_v183", this.upgrades["v183"], "autobuyer_VTREE_not_left_available");
         this.autobuyers["VTREE_v184"] = new Autobuyer("VTREE_v184", this.upgrades["v184"], "autobuyer_VTREE_not_left_available");
+        this.autobuyers["VTREE_v193"] = new Autobuyer("VTREE_v193", this.upgrades["v193"], "autobuyer_VTREE_not_left_available");
         this.autobuyers["VTREE_v191"] = new Autobuyer("VTREE_v191", this.upgrades["v191"], "autobuyer_VTREE_available");
         this.autobuyers["VTREE_v192"] = new Autobuyer("VTREE_v192", this.upgrades["v192"], "autobuyer_VTREE_not_left_available");
-        this.autobuyers["VTREE_v193"] = new Autobuyer("VTREE_v193", this.upgrades["v193"], "autobuyer_VTREE_not_left_available");
         this.autobuyers["VTREE_v194"] = new Autobuyer("VTREE_v194", this.upgrades["v194"], "autobuyer_VTREE_not_left_available");
         this.autobuyers["VTREE_v201"] = new Autobuyer("VTREE_v201", this.upgrades["v201"], "autobuyer_VTREE_available");
         this.autobuyers["VTREE_v211"] = new Autobuyer("VTREE_v211", this.upgrades["v211"], "autobuyer_VTREE_available");
@@ -727,6 +793,8 @@ class Player {
         this.autobuyers["dimensional_11"] = new Autobuyer("dimensional_11", this.dimensions["dimensional_11"], "autobuyer_dimensional_11_available");
         this.autobuyers["dimensional_12"] = new Autobuyer("dimensional_12", this.dimensions["dimensional_12"], "autobuyer_dimensional_12_available");
 
+        this.autobuyers["COLLISION_POINT"] = new Autobuyer("COLLISION_POINT", this.upgrades["COLLISION_POINT"], "autobuyer_COLLISION_POINT_available", false);
+
         this.autobuyers["TICKSPEED"] = new Autobuyer("TICKSPEED", this.upgrades["TICKSPEED"], "autobuyer_TICKSPEED_available", false);
 
         this.autobuyers["photonic"] = new Autobuyer("photonic", "photonic", "autobuyer_photonic_available", false);
@@ -740,6 +808,10 @@ class Player {
         this.milestones["temperature_2"] = new Milestone("temperature_2", "temperature_2_availability", "temperature_2_activation", "temperature_2_effect", "temperature_2_goal", "temperature_goal_display_function");
         this.milestones["temperature_3"] = new Milestone("temperature_3", "temperature_3_availability", "temperature_3_activation", "temperature_3_effect", "temperature_3_goal", "temperature_goal_display_function");
         this.milestones["temperature_4"] = new Milestone("temperature_4", "temperature_4_availability", "temperature_4_activation", "temperature_4_effect", "temperature_4_goal", "temperature_goal_display_function");
+        this.milestones["temperature_5"] = new Milestone("temperature_5", "temperature_5_availability", "temperature_5_activation", "temperature_5_effect", "temperature_5_goal", "temperature_goal_display_function");
+        this.milestones["temperature_6"] = new Milestone("temperature_6", "temperature_6_availability", "temperature_6_activation", "temperature_6_effect", "temperature_6_goal", "temperature_goal_display_function");
+        this.milestones["temperature_7"] = new Milestone("temperature_7", "temperature_7_availability", "temperature_7_activation", "temperature_7_effect", "temperature_7_goal", "temperature_goal_display_function");
+        this.milestones["temperature_8"] = new Milestone("temperature_8", "temperature_8_availability", "temperature_8_activation", "temperature_8_effect", "temperature_8_goal", "temperature_goal_display_function");
 
         this.milestones["a01_1"] = new Milestone("a01_1", "a01_1_availability", "a01_1_activation", "a01_1_effect", "a01_1_goal");
         this.milestones["a01_2"] = new Milestone("a01_2", "a01_2_availability", "a01_2_activation", "a01_2_effect", "a01_2_goal");
@@ -764,22 +836,42 @@ class Player {
         this.milestones["a05_1"] = new Milestone("a05_1", "a05_1_availability", "a05_1_activation", "a05_1_effect", "a05_1_goal");
         this.milestones["a05_2"] = new Milestone("a05_2", "a05_2_availability", "a05_2_activation", "a05_2_effect", "a05_2_goal");
         this.milestones["a05_3"] = new Milestone("a05_3", "a05_3_availability", "a05_3_activation", "a05_3_effect", "a05_3_goal");
+        this.milestones["a05_4"] = new Milestone("a05_4", "a05_4_availability", "a05_4_activation", "a05_4_effect", "a05_4_goal");
 
         this.milestones["a06_1"] = new Milestone("a06_1", "a06_1_availability", "a06_1_activation", "a06_1_effect", "a06_1_goal");
         this.milestones["a06_2"] = new Milestone("a06_2", "a06_2_availability", "a06_2_activation", "a06_2_effect", "a06_2_goal");
         this.milestones["a06_3"] = new Milestone("a06_3", "a06_3_availability", "a06_3_activation", "a06_3_effect", "a06_3_goal");
+        this.milestones["a06_4"] = new Milestone("a06_4", "a06_4_availability", "a06_4_activation", "a06_4_effect", "a06_4_goal");
 
         this.milestones["a07_1"] = new Milestone("a07_1", "a07_1_availability", "a07_1_activation", "a07_1_effect", "a07_1_goal");
         this.milestones["a07_2"] = new Milestone("a07_2", "a07_2_availability", "a07_2_activation", "a07_2_effect", "a07_2_goal");
+        this.milestones["a07_3"] = new Milestone("a07_3", "a07_3_availability", "a07_3_activation", "a07_3_effect", "a07_3_goal");
 
         this.milestones["a08_1"] = new Milestone("a08_1", "a08_1_availability", "a08_1_activation", "a08_1_effect", "a08_1_goal");
+        this.milestones["a08_2"] = new Milestone("a08_2", "a08_2_availability", "a08_2_activation", "a08_2_effect", "a08_2_goal");
+
+        this.milestones["a09_1"] = new Milestone("a09_1", "a09_1_availability", "a09_1_activation", "a09_1_effect", "a09_1_goal");
+
+        this.milestones["a10_1"] = new Milestone("a10_1", "a10_1_availability", "a10_1_activation", "a10_1_effect", "a10_1_goal");
+
+        this.milestones["a11_1"] = new Milestone("a11_1", "a11_1_availability", "a11_1_activation", "a11_1_effect", "a11_1_goal");
+
+        this.milestones["a12_1"] = new Milestone("a12_1", "a12_1_availability", "a12_1_activation", "a12_1_effect", "a12_1_goal");
+
+        this.milestones["a13_1"] = new Milestone("a13_1", "a13_1_availability", "a13_1_activation", "a13_1_effect", "a13_1_goal");
+
+        this.milestones["a14_1"] = new Milestone("a14_1", "a14_1_availability", "a14_1_activation", "a14_1_effect", "a14_1_goal");
 
         this.settings = JSON.parse(JSON.stringify(default_settings));
 
         this.total_realtime = 0;
         this.online_realtime = 0;
 
-        this.version = "v0.7";
+        this.st_presets = [[], [], []];
+
+        this.auto_assigner_enabled = false;
+
+        this.version = "v0.7.1.3";
     }
 }
 
@@ -790,6 +882,8 @@ var default_settings = {
     "theme": "blue",
     "font": "larabiefont",
 
+    "update_rate": 50,
+
     "prestige_confirmation_photonic": true,
     "prestige_confirmation_gravitonic": true,
     "prestige_confirmation_neutronic": true,
@@ -797,16 +891,27 @@ var default_settings = {
     "prestige_confirmation_vacuumic_tree": true,
     "prestige_confirmation_dimensional": true,
     "prestige_confirmation_atomic": true,
+    "prestige_confirmation_experiments": true,
     "prestige_confirmation_biological": true,
     "prestige_confirmation_extinction": true,
 
     "no_resource_limit": false,
     "show_ids": false,
     "show_all_changelog": false,
+    "separate_scroll_right": false,
+    "show_newsticker": true,
+
+    "auto_disable_vtree_autobuyer": true,
+    "enable_vtree_autobuyer_on_higher_reset": false,
+    "enable_vtree_autobuyer_on_preset_load": true,
+    "hide_saving_vtree_presets": false,
+    "auto_disable_auto_assigner": true,
+    "exit_experiments_on_atomic": false,
+    "exit_experiments_on_higher_reset": true,
 };
 
 var player = new Player();
-var me = player;
+//var me = player;
 
 function processTimedelta(corrected_timedelta) {
     if (player.dimensions["matter_1"].amt.gt(0)) player.time_started = true;
@@ -816,12 +921,12 @@ function processTimedelta(corrected_timedelta) {
 
     // Inertia gain, pt.2
     let inertial_timedelta = corrected_timedelta;
-    if (me.time_started) inertial_timedelta *= me.upgrades['INERTIA_5'].get_effect().toInt() / 100; // Online gains
+    if (player.time_started) inertial_timedelta *= player.upgrades['INERTIA_5'].get_effect().toInt() / 100; // Online gains
 
-    me.inertia = me.inertia.add(inertia_gain_speed(me).mult(inertial_timedelta)).min(me.upgrades['INERTIA_1'].get_effect());
+    player.inertia = player.inertia.add(inertia_gain_speed().mult(inertial_timedelta)).min(player.upgrades['INERTIA_1'].get_effect());
 
     // Photonic Challenge 8: you really cannot gain Photons
-    if (player.challenges['p8'].inC()) me.photons = big(0);
+    if (player.challenges['p8'].inC()) player.photons = big(0);
 
     let timedelta = corrected_timedelta;
     if (!player.time_started) timedelta = 0;
@@ -925,12 +1030,12 @@ function processTimedelta(corrected_timedelta) {
     // evolution b02: anniilation produces more energy based on Shards
     if (player.evolutions['b02'].is_active()) energy_generated = energy_generated.mult(player.evolutions["b02"].get_effect());
     // a07: anniilation produces more energy
-    if (player.upgrades['a07'].is_active()) energy_generated = energy_generated.mult(player.upgrades["a07"].get_effect());
+    energy_generated = energy_generated.mult(player.upgrades["a07"].get_effect());
     // Photonic Challenge 2: annihilation does not produce energy
     if (player.challenges['p2'].inC()) energy_generated = big(0);
 
     // if heating enabled, don't gain any energy
-    if (me.upgrades['d91'].is_active() && player.heating_enabled) {
+    if (player.upgrades['d91'].is_active() && player.heating_enabled) {
         if (player.heating_smart_distribution) { // Smart distribution: 50/50
             player.temperature_energy = player.temperature_energy.add(energy_generated.div(2));
             player.energy = player.energy.add(energy_generated.div(2)).min(player.challenge_strength_4);
@@ -943,7 +1048,19 @@ function processTimedelta(corrected_timedelta) {
 
     player.space = player.space.add(get_space_production().mult(timedelta / 1000));
     // achievement 108: Space is not affected by resource limit
-    if (!me.achievements['108'].complete) player.space = player.space.min(player.challenge_strength_4);
+    if (!player.achievements['108'].complete) player.space = player.space.min(player.challenge_strength_4);
+
+    // a01_1: gain shards on Atomic, if you did not
+    if (!player.got_shards_this_atomic && player.milestones['a01_1'].is_active()) {
+        player.got_shards_this_atomic = true;
+
+        // Challenge 4: all resources are capped
+        player.shards = player.shards.add(player.milestones["a01_1"].get_effect()).round();
+        // challenge d4: Shards are not affected by resource limit
+        if (!(!player.challenges['d0'].inC() && (player.challenges['d4'].inC() || player.challenges['d4'].completed))) {
+            player.shards = player.shards.min(player.challenge_strength_4);
+        }
+    }
 
     for (let key of Object.keys(player.achievements)) {
         player.achievements[key].update();
@@ -994,6 +1111,20 @@ function processTimedelta(corrected_timedelta) {
         }
     }
 
+    // AUTO3_4: passive VE gain
+    if (player.upgrades['AUTO3_4'].is_active()) {
+        if (can_vacuumic()) {
+            let vacuum_energy_gained = prestige_earn_vacuum_energy().mult(timedelta / 1000).add(player.vacuum_energy_carry);
+            // Challenge 4: all resources are capped
+            // achievement 108: Vacuum Energy is not affected by resource limit
+            player.vacuum_energy = player.vacuum_energy.add(vacuum_energy_gained.rounddown()).round();
+            if (!player.achievements['108'].complete) player.vacuum_energy = player.vacuum_energy.min(player.challenge_strength_4);
+
+            player.vacuum_energy_carry = vacuum_energy_gained.subtract(vacuum_energy_gained.rounddown()).toInt();
+            if (player.vacuum_energy_carry > 1) player.vacuum_energy_carry = 1;
+        }
+    }
+
     // a04_3: passive Wave gain
     if (player.milestones['a04_3'].is_active()) {
         for (let i = 0; i < wave_types.length; i++) {
@@ -1004,7 +1135,7 @@ function processTimedelta(corrected_timedelta) {
     player.max_matter = player.max_matter.max(player.matter);
 
     // v193: Stars produce Black Holes
-    if (me.upgrades['d91'].is_active() && player.upgrades['v193'].is_active()) {
+    if (player.upgrades['d91'].is_active() && player.upgrades['v193'].is_active()) {
         // Challenge 4: all resources are capped
         player.black_holes = player.black_holes.add(player.upgrades['v193'].get_effect().mult(timedelta / 1000)).min(player.challenge_strength_4);
     }
@@ -1026,19 +1157,19 @@ function game_loop(do_screen_update = true) {
     if (last_local_storage_save == -1) load_from_local_storage();
     if (Date.now() - last_local_storage_save > 1000) save_to_local_storage();
 
-    let timedelta = Date.now() - me.last_update_ts;
+    let timedelta = Date.now() - player.last_update_ts;
     let corrected_timedelta = Math.min(Math.max(0, timedelta + timedelta_carry), 1000);
 
-    me.total_realtime += timedelta;
-    me.online_realtime += Math.min(Math.max(0, timedelta), 1000);
+    player.total_realtime += timedelta;
+    player.online_realtime += Math.min(Math.max(0, timedelta), 1000);
 
     // Inertia gain, pt. 1
     let inertial_timedelta = Math.max(0, timedelta - 1000); // Offline
 
-    me.inertia = me.inertia.add(inertia_gain_speed().mult(inertial_timedelta)).min(me.upgrades['INERTIA_1'].get_effect());
+    player.inertia = player.inertia.add(inertia_gain_speed().mult(inertial_timedelta)).min(player.upgrades['INERTIA_1'].get_effect());
 
 
-    me.last_update_ts = Date.now();
+    player.last_update_ts = Date.now();
 
     // Crazy antimatter growth fix: repeat time loop a lot of times
     let time_loop_repeats = Math.max(1, Math.floor(corrected_timedelta / 50));
@@ -1054,15 +1185,39 @@ function game_loop(do_screen_update = true) {
     }
 }
 
-setInterval(game_loop, 50);
+var game_interval_rate = 50;
+var game_interval = setInterval(game_loop, game_interval_rate);
+
+function change_update_rate() {
+    let rate = radio_get_setting("update_rate");
+
+    document.getElementById("settings_val_update_rate").textContent = rate;
+    document.getElementById("settings_val_update_per_sec").textContent = (1000 / rate).toPrecision(3);
+
+    if (rate === game_interval_rate) return;
+
+    if (game_interval !== null) clearInterval(game_interval);
+    game_interval_rate = rate;
+    game_interval = setInterval(game_loop, game_interval_rate);
+
+    // call it once now, because setInterval will wait a bit and we just canceled the previous one
+    game_loop();
+}
 
 var pressed_buttons = {
+    'shift': false,
     'ctrl': false,
     'alt': false
 }
 
 function key_transform(keyevent) {
     let keystr = keyevent.key;
+    // CapsLock fix
+    if (keystr.length == 1) {
+        let is_lowercase = keystr.toLowerCase() == keystr;
+        if (is_lowercase && keyevent.shiftKey) keystr = keystr.toUpperCase();
+        if (!is_lowercase && !keyevent.shiftKey) keystr = keystr.toLowerCase();
+    }
     if (keyevent.key != 'Alt' && keyevent.altKey) keystr = "Alt+" + keystr;
     if (keyevent.key != 'Control' && keyevent.ctrlKey) keystr = "Ctrl+" + keystr;
     if (keyevent.key != 'Meta' && keyevent.metaKey) keystr = "Meta+" + keystr;
@@ -1079,69 +1234,67 @@ function hotkeydown(event) {
         case 'd': reset_dimensional(); break;
         case 'a': reset_atomic(); break;
         case 'b': reset_biological(); break;
-        case 'P': if (me.unlocked_photonic) change_menu('photonic'); break;
-        case 'G': if (me.unlocked_gravitonic) change_menu('gravitonic'); break;
-        case 'N': if (me.unlocked_neutronic) change_menu('neutronic'); break;
-        case 'V': if (me.unlocked_vacuumic) change_menu('vacuumic'); break;
-        case 'D': if (me.unlocked_dimensional) change_menu('dimensional'); break;
-        case 'A': if (me.unlocked_atomic) change_menu('atomic'); break;
-        case 'B': if (me.unlocked_biological) change_menu('biological'); break;
+        case 'M': change_menu('matter'); screen_update(); break;
+        case 'P': if (player.unlocked_photonic) { change_menu('photonic'); screen_update(); } break;
+        case 'G': if (player.unlocked_gravitonic) { change_menu('gravitonic'); screen_update(); } break;
+        case 'N': if (player.unlocked_neutronic) { change_menu('neutronic'); screen_update(); } break;
+        case 'V': if (player.unlocked_vacuumic) { change_menu('vacuumic'); screen_update(); } break;
+        case 'D': if (player.unlocked_dimensional) { change_menu('dimensional'); screen_update(); } break;
+        case 'A': if (player.unlocked_atomic) { change_menu('atomic'); screen_update(); } break;
+        case 'B': if (player.unlocked_biological) { change_menu('biological'); screen_update(); } break;
         case '1': 
             if (current_menu in current_submenu && current_submenu[current_menu] == "dimensions") 
-                me.dimensions[current_menu + "_1"].buy(me.dimensions[current_menu + "_1"].binary_search_max()); 
+                player.dimensions[current_menu + "_1"].buy(player.dimensions[current_menu + "_1"].binary_search_max()); 
             break;
         case '2': 
             if (current_menu in current_submenu && current_submenu[current_menu] == "dimensions") 
-                me.dimensions[current_menu + "_2"].buy(me.dimensions[current_menu + "_2"].binary_search_max()); 
+                player.dimensions[current_menu + "_2"].buy(player.dimensions[current_menu + "_2"].binary_search_max()); 
             break;
         case '3': 
             if (current_menu in current_submenu && current_submenu[current_menu] == "dimensions") 
-                me.dimensions[current_menu + "_3"].buy(me.dimensions[current_menu + "_3"].binary_search_max()); 
+                player.dimensions[current_menu + "_3"].buy(player.dimensions[current_menu + "_3"].binary_search_max()); 
             break;
         case '4': 
             if (current_menu in current_submenu && current_submenu[current_menu] == "dimensions") 
-                me.dimensions[current_menu + "_4"].buy(me.dimensions[current_menu + "_4"].binary_search_max()); 
+                player.dimensions[current_menu + "_4"].buy(player.dimensions[current_menu + "_4"].binary_search_max()); 
             break;
         case '5': 
             if (current_menu in current_submenu && current_submenu[current_menu] == "dimensions") 
-                me.dimensions[current_menu + "_5"].buy(me.dimensions[current_menu + "_5"].binary_search_max()); 
+                player.dimensions[current_menu + "_5"].buy(player.dimensions[current_menu + "_5"].binary_search_max()); 
             break;
         case '6': 
             if (current_menu in current_submenu && current_submenu[current_menu] == "dimensions") 
-                me.dimensions[current_menu + "_6"].buy(me.dimensions[current_menu + "_6"].binary_search_max()); 
+                player.dimensions[current_menu + "_6"].buy(player.dimensions[current_menu + "_6"].binary_search_max()); 
             break;
         case '7': 
             if (current_menu in current_submenu && current_submenu[current_menu] == "dimensions") 
-                me.dimensions[current_menu + "_7"].buy(me.dimensions[current_menu + "_7"].binary_search_max()); 
+                player.dimensions[current_menu + "_7"].buy(player.dimensions[current_menu + "_7"].binary_search_max()); 
             break;
         case '8': 
             if (current_menu in current_submenu && current_submenu[current_menu] == "dimensions") 
-                me.dimensions[current_menu + "_8"].buy(me.dimensions[current_menu + "_8"].binary_search_max()); 
+                player.dimensions[current_menu + "_8"].buy(player.dimensions[current_menu + "_8"].binary_search_max()); 
             break;
         case '9': 
             if (current_menu in current_submenu && current_submenu[current_menu] == "dimensions") 
-                me.dimensions[current_menu + "_9"].buy(me.dimensions[current_menu + "_9"].binary_search_max()); 
+                player.dimensions[current_menu + "_9"].buy(player.dimensions[current_menu + "_9"].binary_search_max()); 
             break;
         case '0': 
             if (current_menu in current_submenu && current_submenu[current_menu] == "dimensions") 
-                me.dimensions[current_menu + "_10"].buy(me.dimensions[current_menu + "_10"].binary_search_max()); 
+                player.dimensions[current_menu + "_10"].buy(player.dimensions[current_menu + "_10"].binary_search_max()); 
             break;
         case 'm':
             if (current_menu in current_submenu && current_submenu[current_menu] == "dimensions") 
                 for (let i = 1; i <= 12; i++)
-                    me.dimensions[current_menu + "_" + i].buy(me.dimensions[current_menu + "_" + i].binary_search_max()); 
+                    player.dimensions[current_menu + "_" + i].buy(player.dimensions[current_menu + "_" + i].binary_search_max()); 
             if (current_menu in current_submenu && current_submenu[current_menu] == "upgrades") {
-                if (current_menu == "photonic" && (me.achievements['62'].complete || me.achievements['72'].complete)) max_buy_upgrades('p');
-                if (current_menu == "gravitonic" && (me.achievements['64'].complete || me.upgrades['AUTO1_5'].is_active())) max_buy_upgrades('g');
-                if (current_menu == "neutronic" && (me.achievements['97'].complete || me.upgrades['AUTO2_5'].is_active())) max_buy_upgrades('n');
-                if (current_menu == "dimensional" && (me.achievements['127'].complete)) max_buy_upgrades('d');
-                if (current_menu == "atomic" && (me.achievements['147'].complete)) max_buy_upgrades('a');
+                if (current_menu == "photonic" && (player.achievements['62'].complete || player.achievements['72'].complete)) max_buy_upgrades('p');
+                if (current_menu == "gravitonic" && (player.achievements['64'].complete || player.upgrades['AUTO1_5'].is_active())) max_buy_upgrades('g');
+                if (current_menu == "neutronic" && (player.achievements['97'].complete || player.upgrades['AUTO2_5'].is_active())) max_buy_upgrades('n');
+                if (current_menu == "dimensional" && (player.achievements['127'].complete)) max_buy_upgrades('d');
+                if (current_menu == "atomic" && (player.achievements['147'].complete)) max_buy_upgrades('a');
             }
             break;
-        case 'Shift':
-            me.settings['show_ids'] = true;
-            radio_set_setting('show_ids', true);
-            break;
+        case 'Shift': pressed_buttons['shift'] = true; break;
         case 'Control': pressed_buttons['ctrl'] = true; break;
         case 'Alt': pressed_buttons['alt'] = true; break;
         default: console.log("keydown: " + event.key + " (" + key_transform(event) + ")");
@@ -1150,10 +1303,7 @@ function hotkeydown(event) {
 
 function hotkeyup(event) {
     switch (key_transform(event)) {
-        case 'Shift':
-            me.settings['show_ids'] = false;
-            radio_set_setting('show_ids', false);
-            break;
+        case 'Shift': pressed_buttons['shift'] = false; break;
         case 'Control': pressed_buttons['ctrl'] = false; break;
         case 'Alt': pressed_buttons['alt'] = false; break;
         default: console.log("keyup: " + event.key + " (" + key_transform(event) + ")");
@@ -1226,6 +1376,11 @@ function change_submenu(menu, submenu) {
     current_submenu[menu] = submenu;
 }
 
+function get_current_menu() {
+    if (current_menu in current_submenu) return current_menu + "_" + current_submenu[current_menu];
+    else return "section_" + current_menu;
+}
+
 // functions for radio-buttons
 
 function radio_get_setting(name) {
@@ -1236,6 +1391,9 @@ function radio_get_setting(name) {
         }
         if (elements[i].type == "checkbox") {
             return elements[i].checked;
+        }
+        if (elements[i].type == "range") {
+            return +elements[i].value;
         }
     }
 }
@@ -1248,6 +1406,9 @@ function radio_set_setting(name, value) {
         }
         if (elements[i].type == "checkbox") {
             elements[i].checked = value;
+        }
+        if (elements[i].type == "range") {
+            elements[i].value = value;
         }
     }
 }
