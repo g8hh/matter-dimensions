@@ -1,0 +1,43 @@
+.newsticker-outer {
+    height: 30px;
+    background-color: var(--color-000);
+    display: none;
+
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    z-index: 10;
+
+    overflow: hidden;
+}
+
+body.has-newsticker .newsticker-outer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+body.has-newsticker .layout-wrapper .main-section {
+    padding-top: 40px;
+}
+body.has-newsticker .layout-wrapper #achievement_track {
+    top: 45px;
+}
+body.has-newsticker .settings-menu .settings-menu-wrapper, body.has-newsticker .prestige-menu .prestige-menu-wrapper {
+    padding-top: 30px;
+}
+body.has-newsticker .settings-menu .settings-menu-wrapper {
+    height: calc(100vh - 50px);
+}
+body.has-newsticker .prestige-menu .prestige-menu-wrapper {
+    min-height: calc(100vh - 50px);
+}
+body.has-newsticker .prestige-menu.scrollable .prestige-menu-wrapper {
+    height: calc(100vh - 50px);
+}
+
+#newsticker {
+    font-size: 1.4em;
+    position: absolute;
+    white-space: nowrap;
+}
