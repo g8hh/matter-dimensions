@@ -198,7 +198,7 @@ var cnItems = {
     'of any resource':' 资源(对所有资源)',
     'dimensions of each kind': ' 级维度',
     'Dimensions are working as if there are x^': '维度数量以 x^',
-    'of them':' 的效率起效      汉化优化:QwQ(qq3174905334)',
+    'of them':'. 的效率起效      汉化优化:QwQ(qq3174905334)',
     'You need to break Infinity in order to complete Vacuumic challenges.': '你需要打破无限才能完成真空挑战。',
     'You need to get a certain amount of matter to complete Photonic challenges.': '你需要获得一定数量的物质来完成光子挑战。',
     'You need to get a certain amount of matter to complete Neutronic challenges.': '你需要获得一定数量的物质来完成中子挑战。',
@@ -755,7 +755,7 @@ var cnExcludePostfix = [
 //小数点：([\d\.]+)
 //原样输出的字段：(.+)
 var cnRegReplace = new Map([
-    [/^All production above (\d+)is x^([\d\.]+)$/,'所有大于 $1 的产量变为 x^$2'],
+    [/^All production above(.+)is(.+)$/,'所有大于$1的产量变为$2'],
     [/^requires ([\d\.]+) more research points$/, '需要$1个研究点'],
     [/^Beat Photonic Challenge (\d+) to unlock!$/, '通过光子挑战 $1 即可解锁！'],
     [/^Unlock (\d+)th dimension$/, '解锁第 $1 维度'],
