@@ -1,0 +1,194 @@
+.theme-blue {
+    --color-000: #06080A;
+    --color-100: #1B262C;
+    --color-200: #203D4E;
+    --color-300: #275877;
+    --color-400: #2C6C97;
+    --color-500: #3483B8;
+    --color-600: #639CB8;
+    --color-700: #8CB9D8;
+    --color-800: #C1D9EA;
+    --color-900: #F7FAFC;
+}
+
+.theme-yellow {
+    --color-000: #080A06;
+    --color-100: #2C261B;
+    --color-200: #4E3D20;
+    --color-300: #775827;
+    --color-400: #976C2C;
+    --color-500: #B88334;
+    --color-600: #B89C63;
+    --color-700: #D8B98C;
+    --color-800: #EAD9C1;
+    --color-900: #FCFAF7;
+}
+
+.theme-red {
+    --color-000: #0A0606;
+    --color-100: #2C1D1B;
+    --color-200: #4E2220;
+    --color-300: #772927;
+    --color-400: #972E2C;
+    --color-500: #B83634;
+    --color-600: #B86A63;
+    --color-700: #D88D8C;
+    --color-800: #EAC1C1;
+    --color-900: #FCF7F7;
+}
+
+.theme-black {
+    --color-000: #000000;
+    --color-100: #0D0D0D;
+    --color-200: #1A1A1A;
+    --color-300: #2C2C2C;
+    --color-400: #393939;
+    --color-500: #484848;
+    --color-600: #6C6C6C;
+    --color-700: #8F8F8F;
+    --color-800: #B9B9B9;
+    --color-900: #E4E4E4;
+
+    --color-bought: #006C00;
+
+    --color-red-muted: #6C0000;
+    --color-green-muted: #004C00;
+    --color-red: #AC0000;
+    --color-yellow: #ACAC00;
+    --color-green: #00AC00;
+
+    --color-uncertain: #6C5000;
+}
+
+.theme-contrast {
+    --color-000: #000000;
+    --color-100: #0D0D0D;
+    --color-200: #1A1A1A;
+    --color-300: #772927;
+    --color-400: #972E2C;
+    --color-500: #B83634;
+    --color-600: #B86A63;
+    --color-700: #D88D8C;
+    --color-800: #EAC1C1;
+    --color-900: #FCF7F7;
+
+    --color-bought: #006C00;
+
+    --color-red-muted: #6C0000;
+    --color-green-muted: #004C00;
+    --color-red: #AC0000;
+    --color-yellow: #ACAC00;
+    --color-green: #00AC00;
+
+    --color-uncertain: #6C5000;
+}
+
+.theme-purple {
+    --color-000: #000002;
+    --color-100: #0A0718;
+    --color-200: #150C3A;
+    --color-300: #251363;
+    --color-400: #311883;
+    --color-500: #3F20A4;
+    --color-600: #5D4FA4;
+    --color-700: #8A78C4;
+    --color-800: #B7ADD6;
+    --color-900: #E4E3E8;
+
+    --color-bought: #006C00;
+
+    --color-red-muted: #6C0000;
+    --color-green-muted: #004C00;
+    --color-red: #AC0000;
+    --color-yellow: #ACAC00;
+    --color-green: #00AC00;
+
+    --color-uncertain: #6C5000;
+}
+
+.theme-pink {
+    --color-000: #1E1A1E;
+    --color-100: #402F3E;
+    --color-200: #623460;
+    --color-300: #8B3B89;
+    --color-400: #AB40A9;
+    --color-500: #CC48CA;
+    --color-600: #CC77C5;
+    --color-700: #ECA0EB;
+    --color-800: #FED5FE;
+    --color-900: #FFFFFF;
+}
+
+.theme-white {
+    --color-000: #2F2F2F;
+    --color-100: #494949;
+    --color-200: #565656;
+    --color-300: #686868;
+    --color-400: #757575;
+    --color-500: #848484;
+    --color-600: #A8A8A8;
+    --color-700: #CBCBCB;
+    --color-800: #F5F5F5;
+    --color-900: #FFFFFF;
+}
+
+.theme-orange {
+    --color-000: #0A0706;
+    --color-100: #2C231B;
+    --color-200: #4E3120;
+    --color-300: #774427;
+    --color-400: #97522C;
+    --color-500: #B86234;
+    --color-600: #B88663;
+    --color-700: #D8A68C;
+    --color-800: #EACFC1;
+    --color-900: #FCF9F7;
+}
+
+.theme-blue_orchid {
+    --color-000: #06080A;
+    --color-100: #1B262C;
+    --color-200: #203D4E;
+    --color-300: #774427;
+    --color-400: #97522C;
+    --color-500: #B86234;
+    --color-600: #B88663;
+    --color-700: #D8A68C;
+    --color-800: #EACFC1;
+    --color-900: #FCF9F7;
+}
+
+.theme-inverted {
+    --color-000: #F9F7F5;
+    --color-100: #E4D9D3;
+    --color-200: #DFC2B1;
+    --color-300: #D8A788;
+    --color-400: #D39368;
+    --color-500: #CB7C47;
+    --color-600: #9C6347;
+    --color-700: #734627;
+    --color-800: #3E2615;
+    --color-900: #080503;
+
+    --color-bought: #FF7FFF;
+    --color-overlay: #FFFFFF80;
+    --color-achievement: #FFFFFF80;
+    --color-achievement-complete: #FF00FF80;
+    --color-achievement-effective: #FFFFDD80;
+    --color-achievement-effective-complete: #FF000080;
+
+    --color-block-red: #7FFFFF40;
+    --color-block-yellow: #7F7FFF40;
+    --color-block-green: #FF7FFF40;
+    --color-red-muted: #7FFFFF;
+    --color-green-muted: #FF9FFF;
+    --color-red: #00C0C0;
+    --color-yellow: #0000C0;
+    --color-green: #C000C0;
+
+    --color-uncertain: #7F9BFF;
+}
+
+.theme-blurry > * {
+    filter: blur(1px);
+}
