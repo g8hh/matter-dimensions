@@ -84,6 +84,7 @@
         <link rel="stylesheet" type="text/css" href="css/st_presets.css?rev=26">
         <link rel="stylesheet" type="text/css" href="css/experiments.css?rev=26">
         <link rel="stylesheet" type="text/css" href="css/newsticker.css?rev=26">
+        <link rel="stylesheet" type="text/css" href="css/setting_specific.css?rev=26">
         <link rel="stylesheet" type="text/css" href="css/themes.css?rev=26">
         <link rel="stylesheet" type="text/css" href="mobile.css?rev=26">
         <link rel='shortcut icon' type='image/x-icon' href='favicon.ico'>
@@ -5512,6 +5513,11 @@
                         <label class="settings-block-selector-checkbox"><input type="checkbox" name="show_all_changelog"><p>Show full changelog (might include spoilers)</p></label>
                         <label class="settings-block-selector-checkbox"><input type="checkbox" name="separate_scroll_right"><p>Scroll the right column separately</p></label>
                         <label class="settings-block-selector-checkbox"><input type="checkbox" name="show_newsticker"><p>Show newsticker</p></label>
+                        <div class="display-none-until-photonic">
+                            <p>Prestige column format:</p>
+                            <label class="settings-block-selector-checkbox"><input type="checkbox" name="show_flavor_names"><p>Show flavor names of prestige resets</p></label>
+                            <label class="settings-block-selector-checkbox"><input type="checkbox" name="newline_after_prestige_currency"><p>Place prestige currency amount on a separate line</p></label>
+                        </div>
                     </div>
 
                     <div class="settings-page-block" style="grid-row: 2 / 4; grid-column: 1">
@@ -5932,7 +5938,7 @@
                 <div class="prestige-menu-wrapper">
                     <div id="prestige_layer_photonic" class="prestige-layer" style="display: none">
                         <p class="header">Photonic</p>
-                        <p>You have<br><span class="prestige_currency_photonic" style="font-weight: bold"></span> Photons</span></p>
+                        <p><span class="prestige_currency_photonic" style="font-weight: bold"></span><br class="prestige-layer-currency-linebreak"> Photons</span></p>
                         <div id="prestige_layer_photonic_reset" class="prestige-layer-ascend" onclick="reset_photonic()">
                             <p class="prestige-layer-name">Collect energy</p>
                             <p id="prestige_layer_photonic_gain" class="prestige-layer-desc">Gain <span class="prestige_currency_photonic_gain" style="font-weight: bold"></span> Photons</p>
@@ -5943,7 +5949,7 @@
                     </div>
                     <div id="prestige_layer_gravitonic" class="prestige-layer" style="display: none">
                         <p class="header">Gravitonic</p>
-                        <p>You have<br><span class="prestige_currency_gravitonic" style="font-weight: bold"></span> Gravitons</span></p>
+                        <p><span class="prestige_currency_gravitonic" style="font-weight: bold"></span><br class="prestige-layer-currency-linebreak"> Gravitons</span></p>
                         <div id="prestige_layer_gravitonic_reset" class="prestige-layer-ascend" onclick="reset_gravitonic()">
                             <p class="prestige-layer-name">Condense matter</p>
                             <p id="prestige_layer_gravitonic_gain" class="prestige-layer-desc">Gain <span class="prestige_currency_gravitonic_gain" style="font-weight: bold"></span> Gravitons</p>
@@ -5954,7 +5960,7 @@
                     </div>
                     <div id="prestige_layer_neutronic" class="prestige-layer" style="display: none">
                         <p class="header">Neutronic</p>
-                        <p>You have<br><span class="prestige_currency_neutronic" style="font-weight: bold"></span> Neutrons</span></p>
+                        <p><span class="prestige_currency_neutronic" style="font-weight: bold"></span><br class="prestige-layer-currency-linebreak"> Neutrons</span></p>
                         <div id="prestige_layer_neutronic_reset" class="prestige-layer-ascend" onclick="reset_neutronic()">
                             <p class="prestige-layer-name">Compress dimensions</p>
                             <p id="prestige_layer_neutronic_gain" class="prestige-layer-desc">Gain <span class="prestige_currency_neutronic_gain" style="font-weight: bold"></span> Neutrons</p>
@@ -5965,7 +5971,7 @@
                     </div>
                     <div id="prestige_layer_vacuumic" class="prestige-layer" style="display: none">
                         <p class="header">Vacuumic</p>
-                        <p>You have<br><span class="prestige_currency_vacuumic" style="font-weight: bold"></span> Vacuum Energy</span></p>
+                        <p><span class="prestige_currency_vacuumic" style="font-weight: bold"></span><br class="prestige-layer-currency-linebreak"> Vacuum Energy</span></p>
                         <div id="prestige_layer_vacuumic_reset" class="prestige-layer-ascend" onclick="reset_vacuumic()">
                             <p class="prestige-layer-name">Collapse space</p>
                             <p id="prestige_layer_vacuumic_gain" class="prestige-layer-desc">Gain <span class="prestige_currency_vacuumic_gain" style="font-weight: bold"></span> Vacuum Energy</p>
@@ -5976,7 +5982,7 @@
                     </div>
                     <div id="prestige_layer_dimensional" class="prestige-layer" style="display: none">
                         <p class="header">Dimensional</p>
-                        <p>You have<br><span class="prestige_currency_dimensional" style="font-weight: bold"></span> Shards</span></p>
+                        <p><span class="prestige_currency_dimensional" style="font-weight: bold"></span><br class="prestige-layer-currency-linebreak"> Shards</span></p>
                         <div id="prestige_layer_dimensional_reset" class="prestige-layer-ascend" onclick="reset_dimensional()">
                             <p class="prestige-layer-name">Coil dimensions</p>
                             <p id="prestige_layer_dimensional_gain" class="prestige-layer-desc">Gain <span class="prestige_currency_dimensional_gain" style="font-weight: bold"></span> Shards</p>
@@ -5986,7 +5992,7 @@
                     </div>
                     <div id="prestige_layer_atomic" class="prestige-layer" style="display: none">
                         <p class="header">Atomic</p>
-                        <p>You have<br><span class="prestige_currency_atomic" style="font-weight: bold"></span> Atoms</span></p>
+                        <p><span class="prestige_currency_atomic" style="font-weight: bold"></span><br class="prestige-layer-currency-linebreak"> Atoms</span></p>
                         <div id="prestige_layer_atomic_reset" class="prestige-layer-ascend" onclick="reset_atomic()">
                             <p class="prestige-layer-name">Collide matter</p>
                             <p id="prestige_layer_atomic_gain" class="prestige-layer-desc">Gain <span class="prestige_currency_atomic_gain" style="font-weight: bold"></span> Atoms<span id="prestige_layer_atomic_gain_ck"> and <span class="prestige_currency_atomic_gain_ck" style="font-weight: bold"></span> CK</span></p>
@@ -5997,7 +6003,7 @@
                     </div>
                     <div id="prestige_layer_biological" class="prestige-layer" style="display: none">
                         <p class="header">Biological</p>
-                        <p>You have<br><span class="prestige_currency_biological" style="font-weight: bold"></span> Genes</span></p>
+                        <p><span class="prestige_currency_biological" style="font-weight: bold"></span><br class="prestige-layer-currency-linebreak"> Genes</span></p>
                         <div id="prestige_layer_biological_reset" class="prestige-layer-ascend" onclick="reset_biological()">
                             <p class="prestige-layer-name">Combine atoms</p>
                             <p id="prestige_layer_biological_gain" class="prestige-layer-desc">Gain <span class="prestige_currency_biological_gain" style="font-weight: bold"></span> Genes</p>

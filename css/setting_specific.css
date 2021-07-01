@@ -1,0 +1,15 @@
+/* Flavor names for prestige resets */
+
+.no-flavor-names .prestige-layer-name {
+    display: none;
+}
+
+.no-flavor-names .prestige-layer-ascend {
+    height: 1.75em;
+}
+
+/* Newline after prestige currency amount */
+
+.no-prestige-currency-newline .prestige-layer-currency-linebreak {
+    display: none;
+}
