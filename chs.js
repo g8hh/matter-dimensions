@@ -763,6 +763,7 @@ var cnRegReplace = new Map([
     [/^(\d+) Genes$/, '$1 基因'],
     [/^(\d+) Photon$/, '$1 光子'],
     [/^(\d+) Photons$/, '$1 光子'],
+    [/^(\d+)Photons$/, '$1 光子'],
     [/^([\d\.]+) seconds$/, '$1 秒'],
     [/^to (\d+)th Dimension$/, '到第 $1 维度'],
     [/^Usages: (\d+)\/$/, '用途：$1\/'],
