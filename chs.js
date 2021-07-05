@@ -629,7 +629,8 @@ var cnPrefix = {
     "× more Photons from Photonic": "× 更多的光子来自光学",
     "× slower than the previous one": "x",
     "× slower": "× 更慢",
-    "is":"变为",
+    "All production above ":"大于 ",
+    "is":"的产量变为",
     "": "",
     "": "",
     "": "",
@@ -755,7 +756,6 @@ var cnExcludePostfix = [
 //小数点：([\d\.]+)
 //原样输出的字段：(.+)
 var cnRegReplace = new Map([
-    [/^All production above ([\d\.]+)$/, '所有大于$1的产量'],
     [/^requires ([\d\.]+) more research points$/, '需要$1个研究点'],
     [/^Beat Photonic Challenge (\d+) to unlock!$/, '通过光子挑战 $1 即可解锁！'],
     [/^Unlock (\d+)th dimension$/, '解锁第 $1 维度'],
