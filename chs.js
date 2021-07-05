@@ -639,6 +639,7 @@ var cnPrefix = {
     "days": "天",
     "years": "年",
     "All production above ":"大于 ",
+    "Production below x10 is not raised to a power":"大于x10的倍率不被指数影响.",
     "is":"的产量变为",
     " Gravitonic resets.": " 引力子重置。",
     "% of the total levels of all input elements (rounded down) as free levels. Reactions are applied from top to bottom.": "% 的输入的元素的总等级作为免费等级(向下取整)。反应从上到下触发。",
