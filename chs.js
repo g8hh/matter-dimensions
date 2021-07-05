@@ -400,7 +400,6 @@ var cnItems = {
     'is dilated with the power of': '被时间膨胀,效率变为 ^',
     'Only the first row of Photonic upgrades is available.': '只有第一排光子升级可用。',
     'Only the leftmost path is available on all splits.': '只有最左边的空间树升级可用。',
-    'production': '生产',
     'Photons.': '光子。',
     'Protons': '质子',
     'Stars do nothing.': '星辰无效。',
@@ -755,7 +754,7 @@ var cnExcludePostfix = [
 //小数点：([\d\.]+)
 //原样输出的字段：(.+)
 var cnRegReplace = new Map([
-    [/^All production above(.+)is(.+)$/,'所有大于$1的产量变为$2'],
+    [/^All production above(.+)is(.+)$/, '所有大于$1的产量变为$2'],
     [/^requires ([\d\.]+) more research points$/, '需要$1个研究点'],
     [/^Beat Photonic Challenge (\d+) to unlock!$/, '通过光子挑战 $1 即可解锁！'],
     [/^Unlock (\d+)th dimension$/, '解锁第 $1 维度'],
