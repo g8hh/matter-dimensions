@@ -1140,6 +1140,7 @@ var cnExcludeWhole = [
     /^[Atomic] (.+)$/,
     /^[Dimensional] (.+)$/,
     /^(\d+)$/,
+    /^现实秒$/
 ];
 var cnExcludePostfix = [
 ]
