@@ -12,7 +12,7 @@
 //1.汉化杂项
 var cnItems = {
     _OTHER_: [],
-    "All production above ":"大于 ",
+    "All production above":"大于 ",
     "is":"的产量变为",
     //设置
         'Save': '保存',
@@ -117,7 +117,7 @@ var cnItems = {
     'Neutronic dimensions': '中子维度',
     'Close': '关闭',
     'Hex': '十六进制',
-    'Gravitons.': '引力。',
+    'Gravitons.': '子。',
     'Green': '绿色',
     'Gravitons': '引力子',
     'Gravitonic': '引力学',
@@ -388,7 +388,7 @@ var cnItems = {
     'is not raised to a power': '没有被指数影响',
     'Boson Power': '玻色子能量',
     'Beryllium': '铍',
-    'If you had no Gravitons, your current matter could get you': '如果你没有引力子，你现在的物质可以让你',
+    'If you had no Gravitons, your current matter could get you': '如果你没有引力子，你现在的物质可以让你获得',
     'increase Collision Knowledge gain based on Lithium levels.': '基于锂,加成碰撞知识获取。',
     'Increase multiplier per Photonic dimension': '增加购买光子维度的加成',
     'Increase temperature by diverting energy production into heating the Universe.': '通过将产生的能量用来加热宇宙中来提高温度。',
@@ -534,8 +534,8 @@ var cnItems = {
     "All Gravitonic upgrades with the base cost below": "所有引力子升级中基础价格低于",
     "All Matter Dimensions gain a bonus based on Light": "所有物质维度基于光获得加成",
     "All Photonic Dimensions gain a boost based on the maximum Matter ever": "所有光子维度基于曾拥有过的最大物质获得加成",
-    '': '',
-    '': '',
+    '% more powerful in the first 30 seconds of a reset.': '% 在任何重置后的30s更强',
+    'All types of dimensions count for Shard gain, twice more for each layer above Matter. Also, gain twice more Shards': '所有类型的维度计入碎片产出公式，物质上每高一层级翻倍。同时，获得两倍的碎片。',
     '': '',
     '': '',
     '': '',
