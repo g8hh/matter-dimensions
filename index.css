@@ -97,8 +97,12 @@ input {
     height: calc(100vh - 20px);
 }
 
-.settings-menu-wrapper > div, .prestige-menu-wrapper > div, .settings-submenu > div {
+.settings-menu-wrapper > div, .settings-submenu > div {
     margin-bottom: 10px;
+}
+
+.prestige-menu-wrapper > div {
+    margin-bottom: 5px;
 }
 
 .settings-submenu {
@@ -238,7 +242,6 @@ input {
     border-bottom: 3px solid var(--color-100);
 }
 .prestige-layer {
-    padding-top: 5px;
     padding-bottom: 5px;
 
     display: flex;

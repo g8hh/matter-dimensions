@@ -117,6 +117,8 @@ function screen_update() {
 
     let body_class = "theme-" + player.settings['theme'] + " font-" + player.settings['font'];
     if (player.settings['show_newsticker']) body_class += " has-newsticker";
+    if (!player.settings['show_flavor_names']) body_class += " no-flavor-names";
+    if (!player.settings['newline_after_prestige_currency']) body_class += " no-prestige-currency-newline";
     document.body.className = body_class;
 
     document.getElementById("achievement_bonus").textContent = format_number(player.achievement_multiplier);

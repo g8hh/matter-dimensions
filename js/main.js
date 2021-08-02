@@ -900,6 +900,8 @@ var default_settings = {
     "show_all_changelog": false,
     "separate_scroll_right": false,
     "show_newsticker": true,
+    "show_flavor_names": true,
+    "newline_after_prestige_currency": false,
 
     "auto_disable_vtree_autobuyer": true,
     "enable_vtree_autobuyer_on_higher_reset": false,
